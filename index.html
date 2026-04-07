@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر MAR OMAR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Basic Page Styling */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; background: #212529; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; }
+        .cart-toggle-btn { background: #ffc107; color: #212529; border: none; padding: 10px 15px; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 16px; }
+        
+        /* Products Grid */
+        #mainGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card img { max-width: 100%; height: 150px; object-fit: contain; margin-bottom: 15px; }
+        .card h4 { margin: 0 0 10px 0; font-size: 18px; color: #333; }
+        .card .price { font-weight: bold; color: #28a745; font-size: 18px; margin-bottom: 15px; }
+        .btn-add { background: #007bff; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 5px; font-size: 16px; transition: 0.2s; }
+        .btn-add:hover { background: #0056b3; }
+
+        /* Cart Panel (Sliding Sidebar) */
+        #cartPanel { position: fixed; right: -350px; top: 0; width: 300px; height: 100%; background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.2); transition: right 0.3s ease; padding: 20px; overflow-y: auto; z-index: 1000; box-sizing: border-box; }
+        #cartPanel.active { right: 0; }
+        .close-btn { color: #dc3545; cursor: pointer; float: left; font-size: 24px; line-height: 1; }
+        #cartItems { margin-top: 20px; min-height: 100px; }
+        .fa-trash { cursor: pointer; }
+
+        /* Customer Form */
+        label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
+        input { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-checkout { background: #28a745; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        .btn-checkout:hover { background: #218838; }
+        
+        /* Receipt Overlay */
+        #receiptOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 2000; }
+        .receipt-box { background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 350px; }
+        .receipt-box h2 { text-align: center; color: #28a745; margin-top: 0; }
+        .btn-close-receipt { background: #6c757d; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 5px; margin-top: 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2 style="margin: 0;">MAR OMAR</h2>
+        <button class="cart-toggle-btn" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i> <span id="cartBtnText">السلة (0)</span>
+        </button>
+    </header>
+
+    <div id="mainGrid"></div>
+
+    <div id="cartPanel">
+        <span class="close-btn" onclick="toggleCart()">&times;</span>
+        <h2 style="margin-top: 0;">سلة المشتريات</h2>
+        
+        <div id="cartItems">
+            </div>
+        
+        <hr style="margin: 20px 0;">
+        <p style="color: #666; font-size: 14px;">+ 10 ج.م رسوم توصيل</p>
+        <h3>الإجمالي النهائي: <span id="finalTotal">0</span> ج.م</h3>
+        
+        <hr style="margin: 20px 0;">
+        <h4 style="margin-bottom: 5px;">بيانات التوصيل</h4>
+        <label>الاسم:</label>
+        <input type="text" id="clientName" placeholder="أدخل اسمك بالكامل">
+        
+        <label>العنوان:</label>
+        <input type="text" id="clientLocation" placeholder="أدخل عنوان التوصيل بالتفصيل">
+        
+        <button class="btn-checkout" onclick="processOrder()">إرسال الطلب عبر واتساب</button>
+    </div>
+
+    <div id="receiptOverlay">
+        <div class="receipt-box">
+            <h2>✅ تم تأكيد طلبك</h2>
+            <p style="text-align: center; color: #666;">سيتم تحويلك لواتساب لإرسال الطلب</p>
+            <hr>
+            <div id="rItems" style="margin: 15px 0; line-height: 1.8;">
+                </div>
+            <hr>
+            <h3 style="text-align: center;">الإجمالي: <span id="rTotal" style="color: #d9534f;">0 ج.م</span></h3>
+            <button class="btn-close-receipt" onclick="closeReceipt()">إغلاق الفاتورة</button>
+        </div>
+    </div>
+
+    <script>
+        const myNum = "201277423376"; 
+
+        const products = [
+            { id: 1, name: 'شيبسي تايجر عائلي', price: 20, img: 'https://m.media-amazon.com/images/I/41-qXlO-KFL._AC_.jpg' },
+            { id: 2, name: 'بيبسي كانز 330 مل', price: 15, img: 'https://m.media-amazon.com/images/I/51p4i7tE3rL._AC_SL1000_.jpg' },
+            { id: 3, name: 'جبنة عبور لاند 250جم', price: 35, img: 'https://m.media-amazon.com/images/I/61M3W2vE2GL._AC_SL1500_.jpg' },
+            { id: 4, name: 'لبن جهينة 1 لتر', price: 45, img: 'https://m.media-amazon.com/images/I/51r-FvG8G9L._AC_SL1000_.jpg' }
+        ];
+
+        let cart = [];
+
+        // عرض المنتجات
+        function renderProducts() {
+            const grid = document.getElementById('mainGrid');
+            grid.innerHTML = "";
+
+            products.forEach(p => {
+                grid.innerHTML += `
+                    <div class="card">
+                        <img src="${p.img}" alt="${p.name}">
+                        <h4>${p.name}</h4>
+                        <div class="price">${p.price} ج.م</div>
+                        <button class="btn-add" onclick="addToCart(${p.id})">
+                            أضف للسلة
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        // إضافة للسلة
+        function addToCart(id) {
+            cart.push(products.find(x => x.id === id));
+            updateCart();
+        }
+
+        // تحديث السلة
+        function updateCart() {
+            document.getElementById('cartBtnText').innerText = `السلة (${cart.length})`;
+
+            let sub = cart.reduce((s, i) => s + i.price, 0);
+            let total = sub > 0 ? (sub + 10) : 0;
+
+            document.getElementById('finalTotal').innerText = total;
+
+            document.getElementById('cartItems').innerHTML = cart.map((i, idx) => `
+                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #ddd;">
+                    <span>${i.name}</span>
+                    <span style="display:flex; align-items:center;">
+                        <span style="margin-left: 10px;">${i.price}ج</span>
+                        <i class="fas fa-trash" style="color:#dc3545;" onclick="removeItem(${idx})"></i>
+                    </span>
+                </div>
+            `).join('');
+        }
+
+        // حذف عنصر
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            updateCart();
+        }
+
+        // فتح/قفل السلة
+        function toggleCart() {
+            document.getElementById('cartPanel').classList.toggle('active');
+        }
+
+        // تنفيذ الطلب
+        function processOrder() {
+            const name = document.getElementById('clientName').value;
+            const loc = document.getElementById('clientLocation').value;
+
+            if (!cart.length || !loc || !name) {
+                alert("كمل بياناتك (الاسم والعنوان) واضف منتجات للسلة يا بطل!");
+                return;
+            }
+
+            let total = document.getElementById('finalTotal').innerText;
+
+            // الفاتورة
+            document.getElementById('rTotal').innerText = total + " ج.م";
+            document.getElementById('rItems').innerHTML = cart.map(i => `
+                <div style="display:flex; justify-content:space-between;">
+                    <span>${i.name}</span> <span>${i.price}ج</span>
+                </div>
+            `).join('');
+
+            document.getElementById('receiptOverlay').style.display = 'flex';
+
+            // رسالة واتساب
+            let msg = `📦 *أوردر جديد - MAR OMAR*%0A%0A👤 *العميل:* ${name}%0A📍 *العنوان:* ${loc}%0A%0A🛒 *الطلبات:*%0A`;
+
+            cart.forEach(i => {
+                msg += `- ${i.name}%0A`;
+            });
+
+            msg += `%0A💰 *الإجمالي:* ${total} ج.م (شامل التوصيل)`;
+
+            window.open(`https://wa.me/${myNum}?text=${msg}`);
+        }
+
+        // إغلاق الفاتورة
+        function closeReceipt() {
+            document.getElementById('receiptOverlay').style.display = 'none';
+            cart = [];
+            updateCart();
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientLocation').value = '';
+            document.getElementById('cartPanel').classList.remove('active');
+        }
+
+        // تشغيل
+        renderProducts();
+    </script>
+</body>
+</html>
