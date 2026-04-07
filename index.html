@@ -3,116 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر MAR OMAR - ماركيت شباب الأزهر</title>
+    <title>MAR OMAR - SUPERMARKET</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- BRAND-NEW BACKGROUND STYLING --- */
+        :root {
+            --main-red: #e63946;
+            --main-black: #1a1a1a;
+            --light-grey: #f8f9fa;
+        }
+
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
-            padding: 20px; 
-            
-            /* Modern Islamic/Azharite Background */
-            /* 1. Base color is very light grey-blue */
-            background-color: #f0f4f8; 
-            
-            /* 2. Light repeating geometric pattern */
-            background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png'); 
-            
-            /* 3. Ensures the pattern covers the whole screen */
-            background-attachment: fixed;
-            background-size: initial;
-            background-position: top center;
-            background-repeat: repeat;
+            background-color: #f0f0f0; 
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            padding-bottom: 50px;
         }
-        /* --- END OF BACKGROUND STYLING --- */
 
-        header { display: flex; justify-content: space-between; align-items: center; background: #212529; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; }
-        .cart-toggle-btn { background: #ffc107; color: #212529; border: none; padding: 10px 15px; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 16px; }
-        
-        /* Products Grid */
-        #mainGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        
-        /* Added a border to make the card defined on the pattern */
+        /* Top Header */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: var(--main-black); 
+            color: white; 
+            padding: 15px 5%; 
+            border-bottom: 4px solid var(--main-red);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .cart-toggle-btn { 
+            background: var(--main-red); 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 30px; 
+            transition: 0.3s;
+        }
+
+        /* Category Bar */
+        .category-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #fff;
+            overflow-x: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cat-btn {
+            background: #eee;
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .cat-btn.active {
+            background: var(--main-red);
+            color: white;
+            border-color: var(--main-black);
+        }
+
+        /* Grid */
+        #mainGrid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 20px; 
+            padding: 20px 5%;
+        }
+
         .card { 
             background: white; 
             padding: 15px; 
-            border-radius: 8px; 
+            border-radius: 12px; 
             text-align: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            border: 1px solid #e0e0e0; /* Defines the card boundary */
+            border-bottom: 5px solid var(--main-black);
+            transition: transform 0.2s;
         }
+        .card:hover { transform: translateY(-5px); border-bottom-color: var(--main-red); }
         
-        .card img { max-width: 100%; height: 150px; object-fit: contain; margin-bottom: 15px; }
-        .card h4 { margin: 0 0 10px 0; font-size: 18px; color: #333; }
-        .card .price { font-weight: bold; color: #28a745; font-size: 18px; margin-bottom: 15px; }
-        .btn-add { background: #007bff; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 5px; font-size: 16px; transition: 0.2s; }
-        .btn-add:hover { background: #0056b3; }
+        .card img { max-width: 100%; height: 140px; object-fit: contain; }
+        .card h4 { margin: 10px 0; color: var(--main-black); min-height: 45px; }
+        .card .price { font-weight: bold; color: var(--main-red); font-size: 20px; margin-bottom: 15px; }
 
-        /* Cart Panel (Sliding Sidebar) */
-        #cartPanel { position: fixed; right: -350px; top: 0; width: 300px; height: 100%; background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.2); transition: right 0.3s ease; padding: 20px; overflow-y: auto; z-index: 1000; box-sizing: border-box; }
+        .btn-add { 
+            background: var(--main-black); 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            width: 100%; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: bold;
+        }
+        .btn-add:hover { background: var(--main-red); }
+
+        /* Sidebar Cart */
+        #cartPanel { position: fixed; right: -350px; top: 0; width: 320px; height: 100%; background: #fff; transition: 0.3s; padding: 20px; z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.3); }
         #cartPanel.active { right: 0; }
-        .close-btn { color: #dc3545; cursor: pointer; float: left; font-size: 24px; line-height: 1; }
-        #cartItems { margin-top: 20px; min-height: 100px; }
-        .fa-trash { cursor: pointer; }
+        .btn-checkout { background: var(--main-red); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 
-        /* Customer Form */
-        label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
-        input { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .btn-checkout { background: #28a745; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; margin-top: 10px; }
-        .btn-checkout:hover { background: #218838; }
-        
         /* Receipt Overlay */
-        #receiptOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 2000; }
-        .receipt-box { background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 350px; }
-        .receipt-box h2 { text-align: center; color: #28a745; margin-top: 0; }
-        .btn-close-receipt { background: #6c757d; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 5px; margin-top: 20px; font-size: 16px; }
+        #receiptOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; color: white; }
+        .receipt-box { background: white; color: black; padding: 30px; border-radius: 15px; width: 320px; border-top: 10px solid var(--main-red); }
     </style>
 </head>
 <body>
 
     <header>
-        <h2 style="margin: 0;">MAR OMAR</h2>
+        <h2 style="margin:0; letter-spacing: 1px;">MAR <span style="color:var(--main-red)">OMAR</span></h2>
         <button class="cart-toggle-btn" onclick="toggleCart()">
-            <i class="fas fa-shopping-cart"></i> <span id="cartBtnText">السلة (0)</span>
+            <i class="fas fa-shopping-basket"></i> <span id="cartBtnText">السلة (0)</span>
         </button>
     </header>
+
+    <div class="category-bar">
+        <div class="cat-btn active" onclick="filterCat('all', this)">الكل</div>
+        <div class="cat-btn" onclick="filterCat('snacks', this)">سناكس</div>
+        <div class="cat-btn" onclick="filterCat('drinks', this)">مشروبات</div>
+        <div class="cat-btn" onclick="filterCat('dairy', this)">ألبان</div>
+    </div>
 
     <div id="mainGrid"></div>
 
     <div id="cartPanel">
-        <span class="close-btn" onclick="toggleCart()">&times;</span>
-        <h2 style="margin-top: 0;">سلة المشتريات</h2>
-        
-        <div id="cartItems">
-            </div>
-        
-        <hr style="margin: 20px 0;">
-        <p style="color: #666; font-size: 14px;">+ 10 ج.م رسوم توصيل</p>
-        <h3>الإجمالي النهائي: <span id="finalTotal">0</span> ج.م</h3>
-        
-        <hr style="margin: 20px 0;">
-        <h4 style="margin-bottom: 5px;">بيانات التوصيل</h4>
-        <label>الاسم:</label>
-        <input type="text" id="clientName" placeholder="أدخل اسمك بالكامل">
-        
-        <label>العنوان:</label>
-        <input type="text" id="clientLocation" placeholder="أدخل عنوان التوصيل بالتفصيل">
-        
-        <button class="btn-checkout" onclick="processOrder()">إرسال الطلب عبر واتساب</button>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>سلة التسوق</h3>
+            <i class="fas fa-times" onclick="toggleCart()" style="cursor:pointer; font-size:20px;"></i>
+        </div>
+        <div id="cartItems"></div>
+        <hr>
+        <h4>الإجمالي: <span id="finalTotal">0</span> ج.م</h4>
+        <input type="text" id="clientName" placeholder="الاسم بالكامل">
+        <input type="text" id="clientLocation" placeholder="العنوان بالتفصيل">
+        <button class="btn-checkout" onclick="processOrder()">تأكيد الطلب (WhatsApp)</button>
     </div>
 
     <div id="receiptOverlay">
         <div class="receipt-box">
-            <h2>✅ تم تأكيد طلبك</h2>
-            <p style="text-align: center; color: #666;">سيتم تحويلك لواتساب لإرسال الطلب</p>
+            <h2 style="text-align:center">طلب جديد ✅</h2>
+            <div id="rItems"></div>
             <hr>
-            <div id="rItems" style="margin: 15px 0; line-height: 1.8;">
-                </div>
-            <hr>
-            <h3 style="text-align: center;">الإجمالي: <span id="rTotal" style="color: #d9534f;">0 ج.م</span></h3>
-            <button class="btn-close-receipt" onclick="closeReceipt()">إغلاق الفاتورة</button>
+            <h3 style="text-align:center">الإجمالي: <span id="rTotal"></span></h3>
+            <button onclick="closeReceipt()" style="width:100%; padding:10px; background:#333; color:white; border:none; border-radius:5px;">إغلاق</button>
         </div>
     </div>
 
@@ -120,115 +162,89 @@
         const myNum = "201277423376"; 
 
         const products = [
-            { id: 1, name: 'شيبسي تايجر عائلي', price: 20, img: 'https://m.media-amazon.com/images/I/41-qXlO-KFL._AC_.jpg' },
-            { id: 2, name: 'بيبسي كانز 330 مل', price: 15, img: 'https://m.media-amazon.com/images/I/51p4i7tE3rL._AC_SL1000_.jpg' },
-            { id: 3, name: 'جبنة عبور لاند 250جم', price: 35, img: 'https://m.media-amazon.com/images/I/61M3W2vE2GL._AC_SL1500_.jpg' },
-            { id: 4, name: 'لبن جهينة 1 لتر', price: 45, img: 'https://m.media-amazon.com/images/I/51r-FvG8G9L._AC_SL1000_.jpg' }
+            { id: 1, name: 'شيبسي تايجر عائلي', price: 20, cat: 'snacks', img: 'https://m.media-amazon.com/images/I/41-qXlO-KFL._AC_.jpg' },
+            { id: 2, name: 'بيبسي كانز 330 مل', price: 15, cat: 'drinks', img: 'https://m.media-amazon.com/images/I/51p4i7tE3rL._AC_SL1000_.jpg' },
+            { id: 3, name: 'جبنة عبور لاند 250جم', price: 35, cat: 'dairy', img: 'https://m.media-amazon.com/images/I/61M3W2vE2GL._AC_SL1500_.jpg' },
+            { id: 4, name: 'لبن جهينة 1 لتر', price: 45, cat: 'dairy', img: 'https://m.media-amazon.com/images/I/51r-FvG8G9L._AC_SL1000_.jpg' }
         ];
 
         let cart = [];
 
-        // عرض المنتجات
-        function renderProducts() {
+        function renderProducts(filter = 'all') {
             const grid = document.getElementById('mainGrid');
             grid.innerHTML = "";
+            
+            const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
 
-            products.forEach(p => {
+            filtered.forEach(p => {
                 grid.innerHTML += `
                     <div class="card">
-                        <img src="${p.img}" alt="${p.name}">
+                        <img src="${p.img}">
                         <h4>${p.name}</h4>
                         <div class="price">${p.price} ج.م</div>
-                        <button class="btn-add" onclick="addToCart(${p.id})">
-                            أضف للسلة
-                        </button>
+                        <button class="btn-add" onclick="addToCart(${p.id})">أضف للسلة</button>
                     </div>
                 `;
             });
         }
 
-        // إضافة للسلة
+        function filterCat(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts(cat);
+        }
+
         function addToCart(id) {
             cart.push(products.find(x => x.id === id));
             updateCart();
         }
 
-        // تحديث السلة
         function updateCart() {
             document.getElementById('cartBtnText').innerText = `السلة (${cart.length})`;
-
             let sub = cart.reduce((s, i) => s + i.price, 0);
             let total = sub > 0 ? (sub + 10) : 0;
-
             document.getElementById('finalTotal').innerText = total;
 
             document.getElementById('cartItems').innerHTML = cart.map((i, idx) => `
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #ddd;">
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;">
                     <span>${i.name}</span>
-                    <span style="display:flex; align-items:center;">
-                        <span style="margin-left: 10px;">${i.price}ج</span>
-                        <i class="fas fa-trash" style="color:#dc3545;" onclick="removeItem(${idx})"></i>
-                    </span>
+                    <i class="fas fa-trash" style="color:#e63946; cursor:pointer;" onclick="removeItem(${idx})"></i>
                 </div>
             `).join('');
         }
 
-        // حذف عنصر
         function removeItem(idx) {
             cart.splice(idx, 1);
             updateCart();
         }
 
-        // فتح/قفل السلة
         function toggleCart() {
             document.getElementById('cartPanel').classList.toggle('active');
         }
 
-        // تنفيذ الطلب
         function processOrder() {
             const name = document.getElementById('clientName').value;
             const loc = document.getElementById('clientLocation').value;
-
-            if (!cart.length || !loc || !name) {
-                alert("كمل بياناتك (الاسم والعنوان) واضف منتجات للسلة يا بطل!");
-                return;
-            }
+            if (!cart.length || !loc || !name) { alert("من فضلك ادخل الاسم والعنوان!"); return; }
 
             let total = document.getElementById('finalTotal').innerText;
-
-            // الفاتورة
             document.getElementById('rTotal').innerText = total + " ج.م";
-            document.getElementById('rItems').innerHTML = cart.map(i => `
-                <div style="display:flex; justify-content:space-between;">
-                    <span>${i.name}</span> <span>${i.price}ج</span>
-                </div>
-            `).join('');
-
+            document.getElementById('rItems').innerHTML = cart.map(i => `<div>- ${i.name}</div>`).join('');
             document.getElementById('receiptOverlay').style.display = 'flex';
 
-            // رسالة واتساب
-            let msg = `📦 *أوردر جديد - MAR OMAR*%0A%0A👤 *العميل:* ${name}%0A📍 *العنوان:* ${loc}%0A%0A🛒 *الطلبات:*%0A`;
-
-            cart.forEach(i => {
-                msg += `- ${i.name}%0A`;
-            });
-
-            msg += `%0A💰 *الإجمالي:* ${total} ج.م (شامل التوصيل)`;
-
+            let msg = `📦 *طلب جديد من MAR OMAR*%0A%0A👤 *العميل:* ${name}%0A📍 *الموقع:* ${loc}%0A%0A🛒 *الطلبات:*%0A`;
+            cart.forEach(i => msg += `- ${i.name}%0A`);
+            msg += `%0A💰 *الإجمالي:* ${total} ج.م`;
             window.open(`https://wa.me/${myNum}?text=${msg}`);
         }
 
-        // إغلاق الفاتورة
         function closeReceipt() {
             document.getElementById('receiptOverlay').style.display = 'none';
             cart = [];
             updateCart();
-            document.getElementById('clientName').value = '';
-            document.getElementById('clientLocation').value = '';
-            document.getElementById('cartPanel').classList.remove('active');
+            toggleCart();
         }
 
-        // تشغيل
         renderProducts();
     </script>
 </body>
