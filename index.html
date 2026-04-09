@@ -10,22 +10,20 @@
         :root {
             --main-red: #e63946;
             --main-black: #1a1a1a;
-            --light-grey: #f8f9fa;
+            --bg-light: #f4f4f7;
         }
-        
-body { 
+
+        body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
-            /* الرابط المباشر الصحيح للصورة */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                              url('https://raw.githubusercontent.com/AMH012-hu/MarMarket/main/Gemini_Generated_Image_dnjw3kdnjw3kdnjw(1).png'); 
-            background-size: cover;
+            /* خلفية احترافية بنمط نقاط هادئة تبرز المنتجات */
+            background-color: var(--bg-light);
+            background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
             background-attachment: fixed;
-            background-position: center;
-            background-color: #f0f0f0;
             padding-bottom: env(safe-area-inset-bottom);
         }
-        
+
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -76,10 +74,13 @@ body {
             display: flex;
             gap: 8px;
             padding: 12px 10px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.9);
             overflow-x: auto;
             scrollbar-width: none;
             border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 68px;
+            z-index: 999;
         }
         .category-bar::-webkit-scrollbar { display: none; }
 
@@ -96,31 +97,34 @@ body {
         #mainGrid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-            padding: 10px;
+            gap: 12px; 
+            padding: 12px;
         }
 
         .card { 
-            background: white; 
-            padding: 10px; 
-            border-radius: 12px; 
+            background: #ffffff; 
+            padding: 15px; 
+            border-radius: 15px; 
             text-align: center; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            border: 1px solid rgba(230, 57, 70, 0.1);
+            transition: transform 0.2s ease;
         }
 
-        .card img { width: 100%; height: 90px; object-fit: contain; margin-bottom: 5px; }
-        .card h4 { font-size: 0.8rem; margin: 5px 0; height: 2.5em; overflow: hidden; }
-        .price { color: var(--main-red); font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; }
+        .card:active { transform: scale(0.98); }
+
+        .card img { width: 100%; height: 100px; object-fit: contain; margin-bottom: 8px; }
+        .card h4 { font-size: 0.85rem; margin: 5px 0; height: 2.5em; overflow: hidden; color: var(--main-black); }
+        .price { color: var(--main-red); font-weight: bold; font-size: 1rem; margin-bottom: 8px; }
 
         .btn-add { 
             background: var(--main-black); 
             color: white; 
             border: none; 
-            padding: 8px; 
+            padding: 10px; 
             width: 100%;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: bold;
         }
 
@@ -135,6 +139,7 @@ body {
             transition: 0.3s; 
             padding: 20px;
             z-index: 2000;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         }
         #cartPanel.active { right: 0; }
         .cart-overlay {
@@ -146,8 +151,9 @@ body {
         .cart-overlay.active { display: block; }
 
         input {
-            width: 100%; padding: 12px; margin: 5px 0;
-            border: 1px solid #ccc; border-radius: 8px; font-size: 16px;
+            width: 100%; padding: 12px; margin: 8px 0;
+            border: 1px solid #ddd; border-radius: 10px; font-size: 16px;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -158,7 +164,7 @@ body {
         <img src="https://amh012-hu.github.io/MarMarket/5958747406847380999(1).jpg" 
              alt="Logo" 
              class="logo" 
-             onerror="this.src='https://via.placeholder.com/50?text=DELIVERY'">
+             onerror="this.src='https://via.placeholder.com/50?text=Logo'">
         <h2>ALAZHAR <span style="color:var(--main-red);">CITY</span></h2>
     </div>
     <button class="cart-toggle-btn" onclick="toggleCart()">
@@ -180,19 +186,20 @@ body {
 
 <div id="cartPanel">
     <h3>سلة الطلبات</h3>
-    <div id="cartItems"></div>
+    <div id="cartItems" style="max-height: 300px; overflow-y: auto;"></div>
     <hr>
-    <h4>الإجمالي: <span id="finalTotal">0</span> ج.م</h4>
-    <input type="text" id="clientName" placeholder="الاسم">
-    <input type="text" id="clientLocation" placeholder="العنوان بالتفصيل">
-    <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:8px; font-weight:bold; margin-top:10px;">
-        إرسال الطلب (واتساب)
+    <h4 style="display:flex; justify-content:space-between;">الإجمالي: <span><span id="finalTotal">0</span> ج.م</span></h4>
+    <input type="text" id="clientName" placeholder="الاسم الكامل">
+    <input type="text" id="clientLocation" placeholder="العنوان (المنطقة / الشارع)">
+    <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer;">
+        إرسال الطلب عبر واتساب
     </button>
 </div>
 
 <script>
 const myNum = "201277423376";
 
+// ملاحظة: تأكد من أن روابط الصور هذه تعمل، أو استبدلها بروابط من مستودعك
 const products = [
     { id: 1, name: 'شيبسي تايجر عائلي', price: 20, cat: 'snacks', img: 'https://m.media-amazon.com/images/I/41-qXlO-KFL._AC_.jpg' },
     { id: 2, name: 'بيبسي كانز 330 مل', price: 15, cat: 'drinks', img: 'https://m.media-amazon.com/images/I/51p4i7tE3rL._AC_SL1000_.jpg' },
@@ -209,7 +216,7 @@ function renderProducts(filter = 'all') {
     filtered.forEach(p => {
         grid.innerHTML += `
             <div class="card">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
+                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/100?text=Alazhar'">
                 <h4>${p.name}</h4>
                 <div class="price">${p.price} ج.م</div>
                 <button class="btn-add" onclick="addToCart(${p.id})">أضف للسلة</button>
@@ -233,7 +240,11 @@ function updateCart() {
     document.getElementById('cartBtnText').innerText = `(${cart.length})`;
     let total = cart.reduce((s, i) => s + i.price, 0);
     document.getElementById('finalTotal').innerText = total;
-    document.getElementById('cartItems').innerHTML = cart.map(i => `<p style="font-size:0.8rem; margin:5px 0;">- ${i.name} (${i.price}ج.م)</p>`).join('');
+    document.getElementById('cartItems').innerHTML = cart.map(i => `
+        <div style="display:flex; justify-content:space-between; margin:10px 0; font-size:0.85rem;">
+            <span>${i.name}</span>
+            <span style="font-weight:bold;">${i.price} ج.م</span>
+        </div>`).join('');
 }
 
 function toggleCart() {
@@ -244,8 +255,17 @@ function toggleCart() {
 function processOrder() {
     let name = document.getElementById('clientName').value;
     let loc = document.getElementById('clientLocation').value;
-    if(!name || !loc || cart.length === 0) { alert("أكمل البيانات والطلبات"); return; }
-    let msg = `*طلب جديد من Alazhar Delivery*%0A👤 الاسم: ${name}%0A📍 الموقع: ${loc}%0A🛒 الطلبات:%0A` + cart.map(i => `- ${i.name}`).join('%0A');
+    if(!name || !loc || cart.length === 0) { alert("من فضلك أكمل البيانات وأضف منتجات للسلة"); return; }
+    
+    let total = cart.reduce((s, i) => s + i.price, 0);
+    let itemsList = cart.map(i => `- ${i.name} (${i.price} ج.م)`).join('%0A');
+    
+    let msg = `*طلب جديد - Alazhar City Delivery*%0A%0A` +
+              `*👤 العميل:* ${name}%0A` +
+              `*📍 العنوان:* ${loc}%0A` +
+              `*🛒 الطلبات:*%0A${itemsList}%0A%0A` +
+              `*💰 الإجمالي:* ${total} ج.م`;
+              
     window.open(`https://wa.me/${myNum}?text=${msg}`);
 }
 
