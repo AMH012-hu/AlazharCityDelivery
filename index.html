@@ -1,275 +1,306 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alazhar City Delivery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --main-red: #e63946;
-            --main-black: #1a1a1a;
-            --bg-light: #f4f4f7;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alazhar City Delivery</title>
 
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            /* خلفية احترافية بنمط نقاط هادئة تبرز المنتجات */
-            background-color: var(--bg-light);
-            background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
-            background-attachment: fixed;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: var(--main-black); 
-            color: white; 
-            padding: 10px 4%; 
-            border-bottom: 3px solid var(--main-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+<style>
+:root {
+    --main-red: #e63946;
+    --main-black: #1a1a1a;
+    --bg: #f5f5f5;
+}
 
-        .logo-container { display: flex; align-items: center; gap: 10px; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-        .logo {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-            border-radius: 50%;
-            background: white;
-            padding: 2px;
-            animation: floatLogo 2s ease-in-out infinite;
-        }
+    background: #0f0f0f; /* أسود ناعم مش حاد */
+    color: #ffffff;
 
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
+    padding-bottom: env(safe-area-inset-bottom);
+}
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--main-black);
+    color: white;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        header h2 { margin: 0; font-size: 0.9rem; white-space: nowrap; }
+.logo {
+    width: 40px;
+    border-radius: 50%;
+}
 
-        .cart-toggle-btn { 
-            background: var(--main-red); 
-            color: white; 
-            border: none; 
-            padding: 8px 12px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+.cart-btn {
+    background: var(--main-red);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
 
-        .category-bar {
-            display: flex;
-            gap: 8px;
-            padding: 12px 10px;
-            background: rgba(255, 255, 255, 0.9);
-            overflow-x: auto;
-            scrollbar-width: none;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 68px;
-            z-index: 999;
-        }
-        .category-bar::-webkit-scrollbar { display: none; }
+/* CATEGORY */
+.category-bar {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+}
 
-        .cat-btn {
-            background: #eee;
-            padding: 6px 18px;
-            border-radius: 15px;
-            white-space: nowrap;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .cat-btn.active { background: var(--main-red); color: white; }
+.cat-btn {
+    background: #eee;
+    padding: 6px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
 
-        #mainGrid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; 
-            padding: 12px;
-        }
+.cat-btn.active {
+    background: var(--main-red);
+    color: white;
+}
 
-        .card { 
-            background: #ffffff; 
-            padding: 15px; 
-            border-radius: 15px; 
-            text-align: center; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
-            border: 1px solid rgba(230, 57, 70, 0.1);
-            transition: transform 0.2s ease;
-        }
+/* PRODUCTS */
+#mainGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
 
-        .card:active { transform: scale(0.98); }
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
 
-        .card img { width: 100%; height: 100px; object-fit: contain; margin-bottom: 8px; }
-        .card h4 { font-size: 0.85rem; margin: 5px 0; height: 2.5em; overflow: hidden; color: var(--main-black); }
-        .price { color: var(--main-red); font-weight: bold; font-size: 1rem; margin-bottom: 8px; }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-        .btn-add { 
-            background: var(--main-black); 
-            color: white; 
-            border: none; 
-            padding: 10px; 
-            width: 100%;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
+.card img {
+    height: 100px;
+    object-fit: contain;
+}
 
-        #cartPanel { 
-            position: fixed; 
-            right: -100%; 
-            top: 0; 
-            width: 85%; 
-            max-width: 320px;
-            height: 100%; 
-            background: #fff; 
-            transition: 0.3s; 
-            padding: 20px;
-            z-index: 2000;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
-        #cartPanel.active { right: 0; }
-        .cart-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 1500;
-        }
-        .cart-overlay.active { display: block; }
+.price {
+    color: var(--main-red);
+    font-weight: bold;
+}
 
-        input {
-            width: 100%; padding: 12px; margin: 8px 0;
-            border: 1px solid #ddd; border-radius: 10px; font-size: 16px;
-            box-sizing: border-box;
-        }
-    </style>
+.btn-add {
+    background: var(--main-black);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* CART */
+#cartPanel {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 80%;
+    height: 100%;
+    background: white;
+    transition: 0.3s;
+    padding: 15px;
+    z-index: 2000;
+}
+
+#cartPanel.active {
+    right: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+}
+
+.overlay.active {
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+/* FLOAT BUTTON */
+.cart-floating {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--main-red);
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 18px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="https://amh012-hu.github.io/MarMarket/5958747406847380999(1).jpg" 
-             alt="Logo" 
-             class="logo" 
-             onerror="this.src='https://via.placeholder.com/50?text=Logo'">
-        <h2>ALAZHAR <span style="color:var(--main-red);">CITY</span></h2>
+    <div>
+        <img src="https://amh012-hu.github.io/MarMarket/5958747406847380999(1).jpg" class="logo">
+        ALAZHAR CITY
     </div>
-    <button class="cart-toggle-btn" onclick="toggleCart()">
-        <i class="fas fa-shopping-basket"></i>
-        <span id="cartBtnText">(0)</span>
+    <button class="cart-btn" onclick="toggleCart()">
+        🛒 <span id="cartCount">0</span>
     </button>
 </header>
 
 <div class="category-bar">
-    <div class="cat-btn active" onclick="filterCat('all', this)">الكل</div>
-    <div class="cat-btn" onclick="filterCat('snacks', this)">سناكس</div>
-    <div class="cat-btn" onclick="filterCat('drinks', this)">مشروبات</div>
-    <div class="cat-btn" onclick="filterCat('dairy', this)">ألبان</div>
+    <div class="cat-btn active" onclick="filterCat('all',this)">الكل</div>
+    <div class="cat-btn" onclick="filterCat('snacks',this)">سناكس</div>
+    <div class="cat-btn" onclick="filterCat('drinks',this)">مشروبات</div>
+    <div class="cat-btn" onclick="filterCat('dairy',this)">ألبان</div>
 </div>
 
 <div id="mainGrid"></div>
 
-<div class="cart-overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div id="cartPanel">
-    <h3>سلة الطلبات</h3>
-    <div id="cartItems" style="max-height: 300px; overflow-y: auto;"></div>
-    <hr>
-    <h4 style="display:flex; justify-content:space-between;">الإجمالي: <span><span id="finalTotal">0</span> ج.م</span></h4>
-    <input type="text" id="clientName" placeholder="الاسم الكامل">
-    <input type="text" id="clientLocation" placeholder="العنوان (المنطقة / الشارع)">
-    <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer;">
-        إرسال الطلب عبر واتساب
+    <h3>السلة</h3>
+    <div id="cartItems"></div>
+    <h4>الإجمالي: <span id="total">0</span> ج.م</h4>
+
+    <input id="name" placeholder="الاسم">
+    <input id="address" placeholder="العنوان">
+
+    <button onclick="sendOrder()" style="background:red;color:white;padding:10px;width:100%">
+        إرسال واتساب
     </button>
 </div>
 
 <script>
-const myNum = "201277423376";
+const phone = "201277423376";
 
-// ملاحظة: تأكد من أن روابط الصور هذه تعمل، أو استبدلها بروابط من مستودعك
 const products = [
-    { id: 1, name: 'شيبسي تايجر عائلي', price: 20, cat: 'snacks', img: 'https://m.media-amazon.com/images/I/41-qXlO-KFL._AC_.jpg' },
-    { id: 2, name: 'بيبسي كانز 330 مل', price: 15, cat: 'drinks', img: 'https://m.media-amazon.com/images/I/51p4i7tE3rL._AC_SL1000_.jpg' },
-    { id: 3, name: 'جبنة عبور لاند 250جم', price: 35, cat: 'dairy', img: 'https://m.media-amazon.com/images/I/61M3W2vE2GL._AC_SL1500_.jpg' },
-    { id: 4, name: 'لبن جهينة 1 لتر', price: 45, cat: 'dairy', img: 'https://m.media-amazon.com/images/I/51r-FvG8G9L._AC_SL1000_.jpg' }
+{ id:1,name:"شيبسي",price:20,cat:"snacks",img:"https://via.placeholder.com/100"},
+{ id:2,name:"بيبسي",price:15,cat:"drinks",img:"https://via.placeholder.com/100"},
+{ id:3,name:"جبنة",price:35,cat:"dairy",img:"https://via.placeholder.com/100"},
+{ id:4,name:"لبن",price:45,cat:"dairy",img:"https://via.placeholder.com/100"},
 ];
 
-let cart = [];
+let cart=[];
 
-function renderProducts(filter = 'all') {
-    const grid = document.getElementById('mainGrid');
-    grid.innerHTML = "";
-    const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
-    filtered.forEach(p => {
-        grid.innerHTML += `
-            <div class="card">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/100?text=Alazhar'">
-                <h4>${p.name}</h4>
-                <div class="price">${p.price} ج.م</div>
-                <button class="btn-add" onclick="addToCart(${p.id})">أضف للسلة</button>
-            </div>
-        `;
-    });
+/* RENDER */
+function render(cat="all"){
+let grid=document.getElementById("mainGrid");
+grid.innerHTML="";
+
+let list = cat=="all"?products:products.filter(p=>p.cat==cat);
+
+list.forEach(p=>{
+grid.innerHTML+=`
+<div class="card">
+<img src="${p.img}">
+<h4>${p.name}</h4>
+<div class="price">${p.price} ج.م</div>
+<button class="btn-add" onclick="add(${p.id},this)">أضف</button>
+</div>`;
+});
 }
 
-function filterCat(cat, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderProducts(cat);
+/* FILTER */
+function filterCat(cat,btn){
+document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+render(cat);
 }
 
-function addToCart(id) {
-    cart.push(products.find(x => x.id === id));
-    updateCart();
+/* ADD */
+function add(id,btn){
+let item=cart.find(x=>x.id==id);
+
+if(item){
+item.qty++;
+}else{
+let p=products.find(x=>x.id==id);
+cart.push({...p,qty:1});
 }
 
-function updateCart() {
-    document.getElementById('cartBtnText').innerText = `(${cart.length})`;
-    let total = cart.reduce((s, i) => s + i.price, 0);
-    document.getElementById('finalTotal').innerText = total;
-    document.getElementById('cartItems').innerHTML = cart.map(i => `
-        <div style="display:flex; justify-content:space-between; margin:10px 0; font-size:0.85rem;">
-            <span>${i.name}</span>
-            <span style="font-weight:bold;">${i.price} ج.م</span>
-        </div>`).join('');
+btn.innerText="✔";
+setTimeout(()=>btn.innerText="أضف",1000);
+
+updateCart();
 }
 
-function toggleCart() {
-    document.getElementById('cartPanel').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
+/* UPDATE CART */
+function updateCart(){
+document.getElementById("cartCount").innerText=cart.length;
+
+let html="";
+let total=0;
+
+if(cart.length==0){
+html="<p>السلة فارغة</p>";
 }
 
-function processOrder() {
-    let name = document.getElementById('clientName').value;
-    let loc = document.getElementById('clientLocation').value;
-    if(!name || !loc || cart.length === 0) { alert("من فضلك أكمل البيانات وأضف منتجات للسلة"); return; }
-    
-    let total = cart.reduce((s, i) => s + i.price, 0);
-    let itemsList = cart.map(i => `- ${i.name} (${i.price} ج.م)`).join('%0A');
-    
-    let msg = `*طلب جديد - Alazhar City Delivery*%0A%0A` +
-              `*👤 العميل:* ${name}%0A` +
-              `*📍 العنوان:* ${loc}%0A` +
-              `*🛒 الطلبات:*%0A${itemsList}%0A%0A` +
-              `*💰 الإجمالي:* ${total} ج.م`;
-              
-    window.open(`https://wa.me/${myNum}?text=${msg}`);
+cart.forEach(i=>{
+total+=i.price*i.qty;
+html+=`
+<div style="display:flex;justify-content:space-between">
+${i.name} × ${i.qty}
+<span>${i.price*i.qty}</span>
+</div>`;
+});
+
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText=total;
 }
 
-renderProducts();
+/* TOGGLE */
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
+}
+
+/* SEND */
+function sendOrder(){
+let name=document.getElementById("name").value;
+let address=document.getElementById("address").value;
+
+if(!name||!address||cart.length==0){
+alert("اكمل البيانات");
+return;
+}
+
+let items=cart.map(i=>`${i.name} x${i.qty}`).join("%0A");
+let total=document.getElementById("total").innerText;
+
+let msg=`طلب جديد%0A${name}%0A${address}%0A${items}%0Aالإجمالي: ${total}`;
+
+window.open(`https://wa.me/${phone}?text=${msg}`);
+}
+
+render();
 </script>
+
 </body>
 </html>
