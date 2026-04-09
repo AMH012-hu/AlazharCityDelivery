@@ -37,13 +37,29 @@
         }
 
         .logo-container { display: flex; align-items: center; gap: 10px; }
-        .logo { width: 45px; height: 45px; border-radius: 50%; background: white; padding: 2px; }
+        
+        /* إعادة حركة اللوجو (الاحترافية) */
+        .logo { 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            background: white; 
+            padding: 2px;
+            object-fit: contain;
+            animation: floatLogo 2s ease-in-out infinite;
+        }
 
-        header h2 { margin: 0; font-size: 0.9rem; }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        header h2 { margin: 0; font-size: 0.9rem; white-space: nowrap; }
 
         .cart-toggle-btn { 
             background: var(--main-red); color: white; border: none; 
             padding: 8px 12px; border-radius: 20px; font-weight: bold;
+            cursor: pointer;
         }
 
         .category-bar {
@@ -64,7 +80,7 @@
         .card img { width: 100%; height: 100px; object-fit: contain; }
         .price { color: var(--main-red); font-weight: bold; margin: 8px 0; }
 
-        .btn-add { background: var(--main-black); color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: bold; }
+        .btn-add { background: var(--main-black); color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
         #cartPanel { 
             position: fixed; right: -100%; top: 0; width: 85%; max-width: 320px;
@@ -75,11 +91,11 @@
         .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; }
         .cart-overlay.active { display: block; }
 
-        .bill-details { background: #f9f9f9; padding: 10px; border-radius: 10px; margin-top: 10px; border: 1px dashed #ccc; }
+        .bill-details { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px dashed #ccc; }
         .bill-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: 0.9rem; }
-        .total-row { font-weight: bold; color: var(--main-red); font-size: 1.1rem; border-top: 1px solid #ddd; padding-top: 5px; }
+        .total-row { font-weight: bold; color: var(--main-red); font-size: 1.1rem; border-top: 1px solid #ddd; padding-top: 8px; margin-top: 8px; }
 
-        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -106,8 +122,8 @@
 <div class="cart-overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div id="cartPanel">
-    <h3>سلة الطلبات</h3>
-    <div id="cartItems" style="max-height: 200px; overflow-y: auto;"></div>
+    <h3 style="margin-top: 0;">سلة الطلبات</h3>
+    <div id="cartItems" style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
     
     <div class="bill-details">
         <div class="bill-row">
@@ -126,7 +142,7 @@
 
     <input type="text" id="clientName" placeholder="الاسم الكامل">
     <input type="text" id="clientLocation" placeholder="العنوان بالتفصيل">
-    <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer;">
+    <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer; font-size: 1rem;">
         تأكيد وإرسال الطلب (واتساب)
     </button>
 </div>
@@ -173,14 +189,12 @@ function addToCart(id) {
 function updateCart() {
     document.getElementById('cartBtnText').innerText = `(${cart.length})`;
     let itemsSubtotal = cart.reduce((sum, item) => sum + item.price, 0);
-    
     document.getElementById('itemsTotal').innerText = itemsSubtotal;
-    // إذا كانت السلة فارغة لا نحسب توصيل، إذا كان بها منتجات نضيف الـ 10 جنيه
     let totalWithDelivery = itemsSubtotal > 0 ? (itemsSubtotal + deliveryFee) : 0;
     document.getElementById('finalTotal').innerText = totalWithDelivery;
 
     document.getElementById('cartItems').innerHTML = cart.map(i => `
-        <div style="display:flex; justify-content:space-between; margin:8px 0; font-size:0.8rem; border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex; justify-content:space-between; margin:8px 0; font-size:0.8rem; border-bottom:1px solid #f0f0f0; padding-bottom: 5px;">
             <span>${i.name}</span>
             <span>${i.price} ج.م</span>
         </div>`).join('');
@@ -200,7 +214,7 @@ function processOrder() {
     let total = itemsSubtotal + deliveryFee;
     let itemsList = cart.map(i => `- ${i.name} (${i.price} ج.م)`).join('%0A');
     
-    let msg = `*طلب جديد من Alazhar City*%0A%0A` +
+    let msg = `*طلب جديد من Alazhar City Delivery*%0A%0A` +
               `*👤 العميل:* ${name}%0A` +
               `*📍 العنوان:* ${loc}%0A%0A` +
               `*🛒 المنتجات:*%0A${itemsList}%0A%0A` +
