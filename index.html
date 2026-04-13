@@ -7,73 +7,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root {
-            --main-red: #e63946;
-            --main-black: #1a1a1a;
-            --bg-light: #f4f4f7;
-        }
-
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; background-color: var(--bg-light); padding-bottom: 80px;
-        }
-
-        header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            background: var(--main-black); color: white; padding: 10px 4%; 
-            border-bottom: 3px solid var(--main-red); position: sticky; top: 0; z-index: 1000;
-        }
-
-        .logo-container { display: flex; align-items: center; gap: 10px; }
+        :root { --main-red: #e63946; --main-black: #1a1a1a; --bg-light: #f4f4f7; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: var(--bg-light); padding-bottom: 80px; }
+        header { display: flex; justify-content: space-between; align-items: center; background: var(--main-black); color: white; padding: 10px 4%; border-bottom: 3px solid var(--main-red); position: sticky; top: 0; z-index: 1000; }
         .logo { width: 45px; height: 45px; border-radius: 50%; background: white; padding: 2px; object-fit: cover; border: 1px solid var(--main-red); }
-        header h2 { margin: 0; font-size: 0.9rem; }
-
         .cart-toggle-btn { background: var(--main-red); color: white; border: none; padding: 8px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; }
-
         .category-bar { display: flex; gap: 8px; padding: 12px 10px; background: rgba(255, 255, 255, 0.9); overflow-x: auto; border-bottom: 1px solid #ddd; position: sticky; top: 68px; z-index: 999; }
         .cat-btn { background: #eee; padding: 6px 18px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; cursor: pointer; border: none; }
         .cat-btn.active { background: var(--main-red); color: white; }
-
         #mainGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 12px; }
         .card { background: #ffffff; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; height: 240px; }
         .card img { width: 100%; height: 80px; object-fit: contain; }
-        .card h4 { margin: 5px 0; font-size: 0.85rem; height: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .price { color: var(--main-red); font-weight: bold; margin-bottom: 8px; }
         .btn-add { background: var(--main-black); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-
-        /* Floating Buttons Arrangement */
-        .float-btn {
-            position: fixed; bottom: 20px; width: 60px; height: 60px;
-            background: var(--main-black); color: white; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 3000; border: 2px solid var(--main-red);
-        }
-        .float-btn span { font-size: 0.6rem; font-weight: bold; margin-top: 2px; }
-
-        .help-btn { right: 20px; font-size: 24px; font-weight: bold; } /* Help on Right */
-        .special-btn { left: 20px; font-size: 20px; } /* Special Request on Left */
-
-        /* Panel Styling */
-        .panel { position: fixed; bottom: -100%; left: 0; width: 100%; height: 50%; background: #fff; transition: 0.4s; padding: 20px; z-index: 4000; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); border-radius: 20px 20px 0 0; box-sizing: border-box; }
+        .float-btn { position: fixed; bottom: 20px; width: 60px; height: 60px; background: var(--main-black); color: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 3000; border: 2px solid var(--main-red); }
+        .help-btn { right: 20px; font-size: 24px; }
+        .special-btn { left: 20px; font-size: 20px; }
+        .panel { position: fixed; bottom: -100%; left: 0; width: 100%; height: 50%; background: #fff; transition: 0.4s; padding: 20px; z-index: 4000; border-radius: 20px 20px 0 0; box-sizing: border-box; }
         .panel.active { bottom: 0; }
-        
         #cartPanel { position: fixed; right: -100%; top: 0; width: 85%; max-width: 320px; height: 100%; background: #fff; transition: 0.3s; padding: 20px; z-index: 2000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); overflow-y: auto; }
         #cartPanel.active { right: 0; }
-
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; }
         .overlay.active { display: block; }
-
-        textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; font-family: inherit; resize: none; box-sizing: border-box; font-size: 1rem; margin-top: 10px; background: #fff9f9; }
+        textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px; font-family: inherit; resize: none; box-sizing: border-box; margin-top: 10px; background: #fff9f9; }
         .bill-details { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px dashed #ccc; }
         .bill-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: 0.85rem; }
-        .total-row { border-top: 1px solid #ddd; padding-top: 8px; margin-top: 8px; font-weight: bold; color: var(--main-red); font-size: 1rem; }
+        .total-row { border-top: 1px solid #ddd; padding-top: 8px; margin-top: 8px; font-weight: bold; color: var(--main-red); }
         input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
+        
+        /* Style for the special items inside the ordinary cart list */
+        .special-item-line { color: #555; font-style: italic; border-right: 3px solid var(--main-red); padding-right: 8px; margin: 5px 0; font-size: 0.8rem; background: #fff5f5; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-container">
+    <div style="display:flex; align-items:center; gap:10px;">
         <img src="https://raw.githubusercontent.com/amh012-hu/MarMarket/main/5958747406847380999(1).jpg" alt="Logo" class="logo">
         <h2>ALAZHAR <span style="color:var(--main-red);">CITY</span></h2>
     </div>
@@ -92,10 +61,9 @@
 <div id="mainGrid"></div>
 
 <div class="float-btn help-btn" onclick="showHelp()">؟</div>
-
 <div class="float-btn special-btn" onclick="toggleSpecial()">
     <i class="fas fa-pen-fancy"></i>
-    <span>طلب خاص</span>
+    <span style="font-size: 0.6rem; font-weight: bold;">طلب خاص</span>
 </div>
 
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
@@ -105,9 +73,8 @@
         <h3 style="margin:0; color:var(--main-red);">سلة الطلبات الخاصة</h3>
         <button onclick="toggleSpecial()" style="border:none; background:none; font-size:1.5rem;">&times;</button>
     </div>
-    <p style="font-size:0.8rem; color:#666; margin: 5px 0;">اكتب أي شيء تحتاجه وغير متاح في القائمة وسنقوم بإحضاره لك.</p>
-    <textarea id="specialRequestText" rows="4" placeholder="مثال: عيش فينو، 1 كيلو سكر، بيبسي لتر..."></textarea>
-    <button onclick="toggleSpecial()" style="width:100%; background:var(--main-black); color:white; border:none; padding:12px; border-radius:10px; margin-top:10px; font-weight:bold;">حفظ الطلب الخاص</button>
+    <textarea id="specialRequestText" rows="4" placeholder="اكتب هنا ما تريد وسنتصل بك لتحديد السعر..."></textarea>
+    <button onclick="saveSpecialToCart()" style="width:100%; background:var(--main-black); color:white; border:none; padding:12px; border-radius:10px; margin-top:10px; font-weight:bold;">نقل للسلة العادية</button>
 </div>
 
 <div id="cartPanel">
@@ -115,12 +82,16 @@
         <button onclick="toggleCart()" style="background:none; border:none; color:var(--main-red); font-weight:bold;"><i class="fas fa-arrow-right"></i> رجوع</button>
         <h3 style="margin: 0;">سلة الطلبات</h3>
     </div>
-    <div id="cartItems"></div>
+    
+    <div id="cartItemsList" style="margin-top:15px;"></div>
+    
     <div class="bill-details">
         <div class="bill-row"><span>ثمن المنتجات:</span><span><span id="itemsTotal">0</span> ج.م</span></div>
-        <div class="bill-row"><span>خدمة التوصيل:</span><span>10 ج.م</span></div>
+        <div class="bill-row"><span>توصيل:</span><span>10 ج.م</span></div>
         <div class="bill-row total-row"><span>الإجمالي:</span><span><span id="finalTotal">0</span> ج.م</span></div>
+        <p style="font-size:0.7rem; color:#666; margin-top:10px; text-align:center;">* الطلبات الخاصة لا تظهر في السعر حالياً (سيتم الاتصال بك)</p>
     </div>
+
     <input type="text" id="clientName" placeholder="الاسم الكامل">
     <input type="text" id="clientLocation" placeholder="العنوان بالتفصيل">
     <button onclick="processOrder()" style="width:100%; background:var(--main-red); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer;">إرسال الطلب واتساب</button>
@@ -136,6 +107,7 @@ const products = [
 ];
 
 let cart = [];
+let savedSpecialRequest = "";
 
 function renderProducts(filter = 'all') {
     const grid = document.getElementById('mainGrid');
@@ -146,47 +118,58 @@ function renderProducts(filter = 'all') {
     });
 }
 
-function filterCat(cat, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderProducts(cat);
-}
-
 function addToCart(id) {
     cart.push(products.find(x => x.id === id));
-    document.getElementById('cartBtnText').innerText = `(${cart.length})`;
-    updateCart();
+    updateCartDisplay();
 }
 
-function updateCart() {
+function saveSpecialToCart() {
+    savedSpecialRequest = document.getElementById('specialRequestText').value;
+    if(savedSpecialRequest.trim() !== "") {
+        alert("تم إضافة طلبك الخاص إلى السلة الرئيسية!");
+        closeAll();
+        updateCartDisplay();
+    }
+}
+
+function updateCartDisplay() {
+    document.getElementById('cartBtnText').innerText = `(${cart.length})`;
+    let listArea = document.getElementById('cartItemsList');
+    listArea.innerHTML = "";
+
+    // 1. Show regular items
+    cart.forEach(item => {
+        listArea.innerHTML += `<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; font-size:0.85rem;"><span>${item.name}</span><span>${item.price} ج.م</span></div>`;
+    });
+
+    // 2. Show special items (If any) WITHOUT price
+    if(savedSpecialRequest) {
+        listArea.innerHTML += `<div class="special-item-line"><strong>طلب خاص:</strong> ${savedSpecialRequest} <span style="float:left;">(السعر عند الاتصال)</span></div>`;
+    }
+
+    // 3. Update Totals
     let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
     document.getElementById('itemsTotal').innerText = subtotal;
-    document.getElementById('finalTotal').innerText = subtotal > 0 ? subtotal + 10 : 0;
-    document.getElementById('cartItems').innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; font-size:0.8rem;"><span>${i.name}</span><span>${i.price} ج.م</span></div>`).join('');
+    document.getElementById('finalTotal').innerText = (subtotal > 0 || savedSpecialRequest) ? subtotal + 10 : 0;
 }
 
 function toggleCart() { document.getElementById('cartPanel').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 function toggleSpecial() { document.getElementById('specialPanel').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 function closeAll() { document.getElementById('cartPanel').classList.remove('active'); document.getElementById('specialPanel').classList.remove('active'); document.getElementById('overlay').classList.remove('active'); }
-
-function showHelp() {
-    alert("كيف تطلب؟\n1. اختر المنتجات التي تريدها.\n2. إذا كنت تريد شيئاً غير معروض، اضغط زر 'طلب خاص' على اليسار واكتبه.\n3. افتح السلة بالأعلى، ادخل بياناتك وارسل لنا واتساب.");
-}
+function filterCat(cat, btn) { document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderProducts(cat); }
 
 function processOrder() {
     let name = document.getElementById('clientName').value;
     let loc = document.getElementById('clientLocation').value;
-    let special = document.getElementById('specialRequestText').value;
-    if(!name || !loc || (cart.length === 0 && !special)) { alert("برجاء إكمال البيانات"); return; }
+    if(!name || !loc || (cart.length === 0 && !savedSpecialRequest)) { alert("برجاء إكمال البيانات"); return; }
     
     let itemsList = cart.map(i => `- ${i.name}`).join('%0A');
     let subtotal = cart.reduce((sum, i) => sum + i.price, 0);
-    let total = subtotal + 10;
     
     let msg = `*طلب جديد*%0A👤 العميل: ${name}%0A📍 العنوان: ${loc}%0A%0A`;
-    if(cart.length > 0) msg += `🛒 *المنتجات المطلوبة:*%0A${itemsList}%0A%0A`;
-    if(special) msg += `📝 *طلبات خاصة من السلة الخاصة:*%0A${special}%0A%0A`;
-    msg += `--------------------------%0A💰 *ثمن المنتجات:* ${subtotal} ج.م%0A🛵 *توصيل:* 10 ج.م%0A✅ *الإجمالي:* ${total} ج.م`;
+    if(cart.length > 0) msg += `🛒 *المنتجات:*%0A${itemsList}%0A%0A`;
+    if(savedSpecialRequest) msg += `📝 *طلبات خاصة (سعر مكالمة):*%0A${savedSpecialRequest}%0A%0A`;
+    msg += `💰 *الإجمالي:* ${subtotal + 10} ج.م`;
     
     window.open(`https://wa.me/${myNum}?text=${msg}`);
 }
