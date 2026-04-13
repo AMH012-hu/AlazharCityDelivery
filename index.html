@@ -24,7 +24,6 @@
             animation: pulse 2s infinite ease-in-out; 
         }
 
-        /* --- NEW NOTIFICATION STYLES --- */
         .cart-wrapper { position: relative; }
         .special-badge {
             position: absolute;
@@ -37,12 +36,11 @@
             border-radius: 10px;
             border: 2px solid var(--main-red);
             font-weight: bold;
-            display: none; /* Hidden by default */
+            display: none;
             z-index: 10;
             animation: bounce 0.5s infinite alternate;
         }
         @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-3px); } }
-        /* ------------------------------- */
 
         .btn-add { 
             background: var(--main-black); color: white; border: 2px solid var(--main-red); 
@@ -97,7 +95,7 @@
 
 <div class="category-bar">
     <button class="cat-btn active" onclick="filterCat('all', this)">الكل</button>
-    <button class="cat-btn" onclick="filterCat('snacks', this)">سناكس</button>
+    <button class="cat-btn" onclick="filterCat('grocery', this)">بقالة</button>
     <button class="cat-btn" onclick="filterCat('drinks', this)">مشروبات</button>
     <button class="cat-btn" onclick="filterCat('dairy', this)">ألبان</button>
 </div>
@@ -140,19 +138,18 @@
 <script>
 const myNum = "201277423376";
 
-// Exact names and prices based on your images
 const products = [
-    { id: 1, name: 'مكرونة الملكة اسباجيتي - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-01-46.png' },
-    { id: 2, name: 'مكرونة الملكة خواتم - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-28.png' },
-    { id: 3, name: 'مكرونة الملكة قلم - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-35.png' },
-    { id: 4, name: 'مكرونة الملكة مرمرية - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-39.png' },
-    { id: 5, name: 'مكرونة الملكة هلالية - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-44.png' },
-    { id: 6, name: 'مكرونة الملكة لسان عصفور - 400 جرام', price: 22, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-48.png' },
-    { id: 7, name: 'شيبسي عائلي - طماطم', price: 15, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-04.png' },
-    { id: 8, name: 'شيبسي - ملح وخـل', price: 10, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-21.png' },
-    { id: 9, name: 'شيبسي - شطة وليمون', price: 10, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-23.png' },
-    { id: 10, name: 'كرانشي - جبنة متبلة', price: 10, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-05-29.png' },
-    { id: 11, name: 'بسكويت أوريو - 6 قطع', price: 7, cat: 'snacks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-12-06.png' },
+    { id: 1, name: 'مكرونة الملكة اسباجيتي - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-01-46.png' },
+    { id: 2, name: 'مكرونة الملكة خواتم - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-28.png' },
+    { id: 3, name: 'مكرونة الملكة قلم - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-35.png' },
+    { id: 4, name: 'مكرونة الملكة مرمرية - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-39.png' },
+    { id: 5, name: 'مكرونة الملكة هلالية - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-44.png' },
+    { id: 6, name: 'مكرونة الملكة لسان عصفور - 400 جرام', price: 22, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-02-48.png' },
+    { id: 7, name: 'شيبسي عائلي - طماطم', price: 15, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-04.png' },
+    { id: 8, name: 'شيبسي - ملح وخـل', price: 10, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-21.png' },
+    { id: 9, name: 'شيبسي - شطة وليمون', price: 10, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-04-23.png' },
+    { id: 10, name: 'كرانشي - جبنة متبلة', price: 10, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-05-29.png' },
+    { id: 11, name: 'بسكويت أوريو - 6 قطع', price: 7, cat: 'grocery', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-12-06.png' },
     { id: 12, name: 'في كولا - كولا كلاسيك', price: 15, cat: 'drinks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-14-33.png' },
     { id: 13, name: 'في كولا - تفاح أخضر', price: 15, cat: 'drinks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-14-37.png' },
     { id: 14, name: 'في كولا - أناناس', price: 15, cat: 'drinks', img: 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/Screenshot%20from%202026-04-10%2011-14-40.png' },
@@ -188,7 +185,6 @@ function addToCart(id) {
 function saveSpecialToCart() {
     savedSpecialRequest = document.getElementById('specialRequestText').value;
     if(savedSpecialRequest.trim() !== "") {
-        // SHOW BADGE
         document.getElementById('notifyBadge').style.display = 'block';
         closeAll();
         updateCartDisplay();
