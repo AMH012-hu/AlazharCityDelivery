@@ -46,6 +46,7 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 
 /* ---------- Header ---------- */
 .top{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 0 var(--line)}
+.flagbar{height:5px;background:linear-gradient(90deg,#000 0 25%,#e9e9ee 25% 50%,#149954 50% 75%,#e4312b 75%)}
 .bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
 .logo{width:44px;height:44px;border-radius:12px;object-fit:cover;background:var(--brand-l);flex:none}
 .loc{flex:1;min-width:0;line-height:1.25}
@@ -207,6 +208,20 @@ textarea{resize:none}
 @keyframes sk{to{background-position:-200% 0}}
 
 
+
+/* ---------- Palestine banner (top of page) ---------- */
+.pal{margin-top:14px;display:block;text-decoration:none;color:#fff;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 8px 22px rgba(0,0,0,.22);min-height:92px;background:linear-gradient(180deg,#0d0d0d 0 33.4%,#f2f2f2 33.4% 66.7%,#149954 66.7%)}
+.pal::before{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(0,0,0,.82),rgba(0,0,0,.55) 55%,rgba(0,0,0,.15))}
+.pal::after{content:"";position:absolute;left:0;top:0;bottom:0;width:24%;background:#e4312b;clip-path:polygon(0 0,100% 50%,0 100%)}
+.pal .t{position:relative;z-index:1;padding:16px 18px;line-height:1.45;display:flex;align-items:center;gap:12px}
+.pal .fl{font-size:2.4rem;line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.pal b{display:block;font-size:1.25rem;font-weight:900;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.pal small{font-weight:700;font-size:.8rem;opacity:.95;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.pal .go{margin-inline-start:auto;background:#fff;color:#0b6b3a;border-radius:18px;padding:5px 14px;font-weight:800;font-size:.8rem;white-space:nowrap;position:relative;z-index:1}
+@media (prefers-reduced-motion:no-preference){.pal .fl{animation:wave 3s ease-in-out infinite;transform-origin:70% 90%}@keyframes wave{50%{transform:rotate(-6deg)}}}
+.palchip{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #149954;display:grid;place-items:center;font-size:1.35rem;text-decoration:none;flex:none}
+@media(max-width:380px){.pal .go{display:none}}
+
 /* ---------- Pledge ---------- */
 .pledge{margin-top:12px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;background:linear-gradient(120deg,#101614,#1d2b26);border-radius:18px;padding:13px 14px;border:1px solid #2b3d36;box-shadow:var(--sh)}
 .pledge .em{font-size:1.8rem}
@@ -234,6 +249,7 @@ textarea{resize:none}
 <body>
 
 <div class="top">
+  <div class="flagbar" aria-hidden="true"></div>
   <div class="wrap">
     <div class="bar">
       <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="44" height="44">
@@ -242,6 +258,7 @@ textarea{resize:none}
         <b><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaName"></span></b>
       </div>
       <span class="status" id="status"></span>
+      <a class="palchip" href="./palestine.html" aria-label="مع فلسطين" title="مع فلسطين">🇵🇸</a>
       <button class="icon-btn" id="openCart" aria-label="فتح السلة">
         <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cnt" id="cartCount">0</span>
@@ -262,6 +279,14 @@ textarea{resize:none}
 </div>
 
 <main class="wrap" id="main">
+  <a class="pal" id="palBanner" href="./palestine.html">
+    <div class="t">
+      <span class="fl" aria-hidden="true">🇵🇸</span>
+      <div><b>مع فلسطين</b><small>ملتزمون بالمقاطعة — موقفنا بأفعال مش شعارات</small></div>
+      <span class="go">اعرف أكتر ‹</span>
+    </div>
+  </a>
+
   <section class="hero" id="hero" aria-label="عروض">
     <div class="slides" id="slides"></div>
     <div class="dots" id="dots"></div>
@@ -282,7 +307,7 @@ textarea{resize:none}
 
   <a class="pledge" href="./boycott.html">
     <span class="em">🕊️</span>
-    <div><b>ملتزمون بالمقاطعة</b><small>مش بنبيع ومش بنوصّل منتجات الشركات المقاطعة — اعرف القائمة والمصادر</small></div>
+    <div><b>مش بنبيع ومش بنوصّل منتجات مقاطعة</b><small>شوف قائمة الشركات ومصادرها</small></div>
     <span class="arr">‹</span>
   </a>
 
@@ -303,7 +328,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
   </footer>
 </main>
 
@@ -377,6 +402,7 @@ textarea{resize:none}
 <noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
 
 <script src="./config.js?v=20260920-4"></script>
+<script src="./images/products/list.js" onerror="void 0"></script>
 <script>
 'use strict';
 
@@ -438,7 +464,8 @@ function renderStatus(){
 /* ================== الصور والمنتجات ================== */
 function picHTML(p){
   const c = catMap.get(p.cat);
-  const src = p.img || (CONFIG.autoImages ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
+  const have = !window.IMAGE_IDS || window.IMAGE_IDS.includes(p.id);   // list.js بيحدد الصور الموجودة فعلًا (يمنع 404)
+  const src = p.img || (CONFIG.autoImages && have ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
   const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
   let badge = '';
   if (p.oldPrice && p.oldPrice > p.price) badge = `<span class="badge${isPharma(p)?' pharma':''}">-${Math.round((1 - p.price/p.oldPrice)*100)}%</span>`;
@@ -481,7 +508,7 @@ function section(title, list, opts={}){
 function renderContent(){
   const q = normalize(state.query.trim());
   $('#searchBox').classList.toggle('has', !!state.query);
-  $('#hero').style.display = $('.usp').style.display = $('#catSec').style.display = (q ? 'none' : '');
+  $('#palBanner').style.display = $('#hero').style.display = $('.usp').style.display = $('#catSec').style.display = (q ? 'none' : '');
   let html = '';
 
   if (q){
@@ -539,6 +566,7 @@ function startSlides(){
 }
 function goBanner(i){
   const g = BANNERS[i].go || {};
+  if (g.href){ location.href = g.href; return; }
   if (g.group) setGroup(g.group);
   if (g.cat){ setGroup('all'); setCat(g.cat); }
   if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#deals')); }
