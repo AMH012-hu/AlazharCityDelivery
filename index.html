@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#1a1a1a">
+    <base href="./">
     <title>Alazhar City Delivery | توصيل بقالة ومشروبات وألبان</title>
     <meta name="description" content="اطلب بقالة ومشروبات وألبان من مدينة الأزهر واستلمها لحد باب البيت. الطلب سريع عن طريق واتساب.">
+
     <meta property="og:title" content="Alazhar City Delivery">
     <meta property="og:description" content="اطلب بقالة ومشروبات وألبان واستلمها لحد باب البيت.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_EG">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🛒%3C/text%3E%3C/svg%3E">
+    <meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,11 +54,11 @@
 
         /* ---------- Header ---------- */
         .top { position: sticky; top: 0; z-index: 100; background: var(--black); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); }
-        header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: calc(10px + env(safe-area-inset-top, 0px)) 4% 10px; color: #fff; border-bottom: 3px solid var(--red); }
+        header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: calc(8px + env(safe-area-inset-top, 0px)) 4% 8px; color: #fff; border-bottom: 3px solid var(--red); }
         .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
         .brand h1 { margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing: .3px; white-space: nowrap; }
         .brand h1 span { color: var(--red); }
-        .logo { width: 44px; height: 44px; border-radius: 50%; background: #fff; padding: 2px; object-fit: cover; border: 2px solid var(--red); }
+        .logo { width: 52px; height: 52px; border-radius: 50%; background: #fff; object-fit: cover; border: 2px solid var(--red); }
         @media (prefers-reduced-motion: no-preference) {
             .logo { animation: pulse 2.4s infinite ease-in-out; }
             @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); box-shadow: 0 0 10px var(--red); } }
@@ -77,13 +84,16 @@
         main { max-width: 1100px; margin: 0 auto; }
         #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 12px; padding: 12px; }
         .card { background: var(--card); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px; text-align: center; }
-        .card-img { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #fafafa; border-radius: 12px; overflow: hidden; }
+        .card.sold { opacity: .6; }
+        .card-img { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
         .card-img img { width: 100%; height: 100%; object-fit: contain; }
         .card-title { margin: 0; font-size: .9rem; font-weight: 600; line-height: 1.5; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .card-foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
         .price { color: var(--red); font-weight: 800; font-size: 1.05rem; }
+        .price.ask { color: var(--muted); font-size: .8rem; font-weight: 700; line-height: 1.9; }
         .btn-add { width: 100%; background: var(--black); color: #fff; border: 2px solid var(--red); padding: 9px; border-radius: 10px; font-weight: 700; transition: background .2s; }
         .btn-add:active { background: var(--red); }
+        .btn-add:disabled { background: #d9d9e0; border-color: #d9d9e0; color: #777; cursor: not-allowed; }
         .empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 48px 16px; }
 
         .stepper { display: flex; align-items: center; justify-content: space-between; background: var(--black); border: 2px solid var(--red); border-radius: 10px; overflow: hidden; }
@@ -114,9 +124,11 @@
         .line { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .88rem; }
         .line-name { font-weight: 600; }
         .line-total { font-weight: 800; color: var(--red); white-space: nowrap; }
+        .line-total.ask { color: var(--muted); font-size: .78rem; }
         .line-ctrl { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; }
         .line .stepper { width: 116px; }
         .line .stepper button { height: 32px; width: 36px; }
+        .unit { color: var(--muted); font-size: .78rem; }
         .link-btn { background: none; border: 0; color: var(--muted); font-size: .8rem; text-decoration: underline; padding: 4px; }
         .link-btn.danger { color: var(--red); }
         .special-line { margin: 12px 0; padding: 10px 12px; background: #fff5f5; border-right: 3px solid var(--red); border-radius: 8px; font-size: .84rem; color: #444; }
@@ -126,7 +138,7 @@
         .bill { background: #fafafa; border: 1px dashed #ccc; border-radius: 12px; padding: 12px; margin: 12px 0; }
         .bill-row { display: flex; justify-content: space-between; margin: 5px 0; font-size: .86rem; }
         .bill-row.total { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; font-weight: 800; font-size: .95rem; color: var(--red); }
-        .bill-note { font-size: .74rem; color: var(--muted); margin: 6px 0 0; }
+        .bill-note { font-size: .74rem; color: var(--muted); margin: 6px 0 0; line-height: 1.6; }
 
         label.field { display: block; font-size: .8rem; font-weight: 600; margin-top: 8px; }
         input[type="text"], input[type="tel"], textarea { width: 100%; padding: 11px 12px; margin-top: 4px; border: 1px solid #d8d8e0; border-radius: 10px; background: #fff; }
@@ -151,7 +163,7 @@
 <div class="top">
     <header>
         <div class="brand">
-            <img class="logo" src="https://raw.githubusercontent.com/amh012-hu/MarMarket/main/5958747406847380999(1).jpg" alt="شعار Alazhar City" width="44" height="44">
+            <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="52" height="52">
             <h1>ALAZHAR <span>CITY</span></h1>
         </div>
         <button class="cart-btn" id="openCart" aria-label="فتح السلة">
@@ -195,7 +207,7 @@
             <div class="bill-row"><span>ثمن المنتجات</span><span><b id="itemsTotal">0</b> ج.م</span></div>
             <div class="bill-row"><span>التوصيل</span><span><b id="deliveryFee">0</b> ج.م</span></div>
             <div class="bill-row total"><span>الإجمالي</span><span><b id="finalTotal">0</b> ج.م</span></div>
-            <p class="bill-note" id="billNote" hidden>سعر الطلب الخاص هيتحدد بالمكالمة وبيتضاف على الإجمالي.</p>
+            <p class="bill-note" id="billNote" hidden>الأصناف اللي سعرها بالتأكيد (الطلب الخاص أو منتج بدون سعر) هتتضاف على الإجمالي بعد ما نكلمك.</p>
         </div>
         <label class="field">الاسم بالكامل
             <input type="text" id="clientName" autocomplete="name" maxlength="60">
@@ -241,53 +253,45 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- Alazhar City Delivery / GitHub Pages fixed build 2026-09-20 -->
+<!-- المنتجات والإعدادات كلها في config.js -->
+<script src="./config.js?v=20260920-2"></script>
 <script>
 'use strict';
 
-/* ================== الإعدادات (عدّل من هنا بس) ================== */
-const CONFIG = {
-    whatsapp: '201277423376',   // رقم واتساب بالصيغة الدولية بدون +
-    deliveryFee: 10,            // مصاريف التوصيل
-    minOrder: 0,                // أقل قيمة للطلب (0 = بدون حد أدنى)
-    storageKey: 'alazhar-city-v2'
-};
-
-const IMG_BASE = 'https://raw.githubusercontent.com/AMH012-hu/AlazharCityDelivery/main/AlazharCityDelivery/';
-const shot = ts => IMG_BASE + encodeURIComponent('Screenshot from ' + ts + '.png');
 const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f0f0f3"/><text x="50" y="62" font-size="40" text-anchor="middle">🛒</text></svg>'
 );
 
-const CATEGORIES = [
-    ['all', 'الكل'], ['grocery', 'بقالة'], ['drinks', 'مشروبات'], ['dairy', 'ألبان']
-];
+/*
+ * GitHub Pages image resolver
+ * config.js currently stores paths like:
+ *   images/malka-spaghetti.webp
+ * This function converts them to a URL relative to the deployed project:
+ *   ./images/malka-spaghetti.webp
+ */
+const IMAGE_VERSION = '20260920-2';
+const IMAGE_ROOT = new URL('./images/', document.baseURI);
 
-const PRODUCTS = [
-    { id: 1,  name: 'مكرونة الملكة اسباجيتي - 400 جرام',   price: 22, cat: 'grocery', img: shot('2026-04-10 11-01-46') },
-    { id: 2,  name: 'مكرونة الملكة خواتم - 400 جرام',      price: 22, cat: 'grocery', img: shot('2026-04-10 11-02-28') },
-    { id: 3,  name: 'مكرونة الملكة قلم - 400 جرام',        price: 22, cat: 'grocery', img: shot('2026-04-10 11-02-35') },
-    { id: 4,  name: 'مكرونة الملكة مرمرية - 400 جرام',     price: 22, cat: 'grocery', img: shot('2026-04-10 11-02-39') },
-    { id: 5,  name: 'مكرونة الملكة هلالية - 400 جرام',     price: 22, cat: 'grocery', img: shot('2026-04-10 11-02-44') },
-    { id: 6,  name: 'مكرونة الملكة لسان عصفور - 400 جرام', price: 22, cat: 'grocery', img: shot('2026-04-10 11-02-48') },
-    { id: 7,  name: 'شيبسي عائلي - طماطم',                  price: 15, cat: 'grocery', img: shot('2026-04-10 11-04-04') },
-    { id: 8,  name: 'شيبسي - ملح وخل',                      price: 10, cat: 'grocery', img: shot('2026-04-10 11-04-21') },
-    { id: 9,  name: 'شيبسي - شطة وليمون',                   price: 10, cat: 'grocery', img: shot('2026-04-10 11-04-23') },
-    { id: 10, name: 'كرانشي - جبنة متبلة',                  price: 10, cat: 'grocery', img: shot('2026-04-10 11-05-29') },
-    { id: 11, name: 'بسكويت أوريو - 6 قطع',                 price: 7,  cat: 'grocery', img: shot('2026-04-10 11-12-06') },
-    { id: 12, name: 'في كولا - كولا كلاسيك',                price: 15, cat: 'drinks',  img: shot('2026-04-10 11-14-33') },
-    { id: 13, name: 'في كولا - تفاح أخضر',                  price: 15, cat: 'drinks',  img: shot('2026-04-10 11-14-37') },
-    { id: 14, name: 'في كولا - أناناس',                     price: 15, cat: 'drinks',  img: shot('2026-04-10 11-14-40') },
-    { id: 15, name: 'في كولا - ليمون صودا',                 price: 15, cat: 'drinks',  img: shot('2026-04-10 11-14-45') },
-    { id: 16, name: 'عصير بيتي - برتقال',                   price: 12, cat: 'drinks',  img: shot('2026-04-10 11-17-09') },
-    { id: 17, name: 'عصير بيتي - مانجو',                    price: 12, cat: 'drinks',  img: shot('2026-04-10 11-17-37') },
-    { id: 18, name: 'جبنة عبور لاند - فيتا',                price: 38, cat: 'dairy',   img: shot('2026-04-11 07-57-38') },
-    { id: 19, name: 'جبنة عبور لاند - شيدر',                price: 38, cat: 'dairy',   img: shot('2026-04-11 07-57-41') },
-    { id: 20, name: 'جبنة عبور لاند - رومي',                price: 38, cat: 'dairy',   img: shot('2026-04-11 07-57-44') },
-    { id: 21, name: 'جبنة عبور لاند - اسطنبولي',            price: 38, cat: 'dairy',   img: shot('2026-04-11 07-57-46') },
-    { id: 22, name: 'لبن جهينة - كامل الدسم',               price: 42, cat: 'dairy',   img: shot('2026-04-11 07-58-35') },
-    { id: 23, name: 'لبن جهينة - خالي الدسم',               price: 42, cat: 'dairy',   img: shot('2026-04-11 07-58-37') },
-    { id: 24, name: 'لبن جهينة - نصف دسم',                  price: 42, cat: 'dairy',   img: shot('2026-04-11 07-58-39') }
-];
+function imageUrl(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return PLACEHOLDER;
+
+    // Keep external image URLs working if one is ever added to config.js.
+    if (/^(https?:|data:|blob:)/i.test(raw)) return raw;
+
+    // Accept both "images/file.webp" and "file.webp".
+    const filename = raw
+        .replace(/^\.?\//, '')
+        .replace(/^images\//i, '');
+
+    const url = new URL(filename, IMAGE_ROOT);
+
+    // Cache-bust only local GitHub Pages images.
+    url.searchParams.set('v', IMAGE_VERSION);
+    return url.href;
+}
+
 
 /* ================== الحالة + التخزين ================== */
 const state = {
@@ -299,6 +303,7 @@ const state = {
 };
 
 const byId = new Map(PRODUCTS.map(p => [p.id, p]));
+const hasPrice = p => typeof p.price === 'number' && p.price > 0;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -308,7 +313,8 @@ function loadState() {
         if (saved.cart && typeof saved.cart === 'object') {
             for (const [id, qty] of Object.entries(saved.cart)) {
                 const q = Math.min(99, parseInt(qty, 10));
-                if (byId.has(+id) && q > 0) state.cart[id] = q;
+                const p = byId.get(id);
+                if (p && !p.soldOut && q > 0) state.cart[id] = q;
             }
         }
         if (typeof saved.special === 'string') state.special = saved.special.slice(0, 300);
@@ -335,12 +341,15 @@ const normalize = s => s.toLowerCase()
 const toLatinDigits = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 
 function subtotal() {
-    return Object.entries(state.cart).reduce((sum, [id, q]) => sum + byId.get(+id).price * q, 0);
+    return Object.entries(state.cart).reduce((sum, [id, q]) => {
+        const p = byId.get(id);
+        return sum + (hasPrice(p) ? p.price * q : 0);
+    }, 0);
 }
-function itemCount() {
-    return Object.values(state.cart).reduce((a, b) => a + b, 0);
-}
+function itemCount() { return Object.values(state.cart).reduce((a, b) => a + b, 0); }
+function unpricedCount() { return Object.keys(state.cart).filter(id => !hasPrice(byId.get(id))).length; }
 function hasOrder() { return itemCount() > 0 || state.special.trim() !== ''; }
+function needsConfirm() { return unpricedCount() > 0 || state.special.trim() !== ''; }
 
 let toastTimer;
 function toast(msg) {
@@ -353,27 +362,31 @@ function toast(msg) {
 
 /* ================== المنتجات ================== */
 function actionHTML(id) {
+    const p = byId.get(id);
+    if (p.soldOut) return '<button class="btn-add" disabled>غير متاح</button>';
     const q = state.cart[id] || 0;
-    if (!q) return `<button class="btn-add" data-act="inc" data-id="${id}">أضف للسلة</button>`;
+    if (!q) return `<button class="btn-add" data-act="inc" data-id="${esc(id)}">أضف للسلة</button>`;
     return `<div class="stepper">
-        <button data-act="inc" data-id="${id}" aria-label="زيادة الكمية">+</button>
+        <button data-act="inc" data-id="${esc(id)}" aria-label="زيادة الكمية">+</button>
         <output aria-live="polite">${q}</output>
-        <button data-act="dec" data-id="${id}" aria-label="تقليل الكمية">−</button>
+        <button data-act="dec" data-id="${esc(id)}" aria-label="تقليل الكمية">−</button>
     </div>`;
 }
 
 function renderGrid() {
     const q = normalize(state.query.trim());
     const list = PRODUCTS.filter(p =>
-        (state.cat === 'all' || p.cat === state.cat) && (!q || normalize(p.name).includes(q))
+        (state.cat === 'all' || p.cat === state.cat) &&
+        (!CONFIG.hideUnpriced || hasPrice(p)) &&
+        (!q || normalize(p.name).includes(q))
     );
     $('#grid').innerHTML = list.length ? list.map(p => `
-        <article class="card">
-            <div class="card-img"><img src="${esc(p.img)}" alt="${esc(p.name)}" width="200" height="200" loading="lazy" decoding="async"></div>
+        <article class="card${p.soldOut ? ' sold' : ''}">
+            <div class="card-img"><img src="${esc(imageUrl(p.img))}" alt="${esc(p.name)}" width="200" height="200" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
             <h3 class="card-title">${esc(p.name)}</h3>
             <div class="card-foot">
-                <div class="price">${p.price} ج.م</div>
-                <div class="card-action" data-id="${p.id}">${actionHTML(p.id)}</div>
+                <div class="price${hasPrice(p) ? '' : ' ask'}">${hasPrice(p) ? p.price + ' ج.م' : 'السعر عند التأكيد'}</div>
+                <div class="card-action" data-id="${esc(p.id)}">${actionHTML(p.id)}</div>
             </div>
         </article>`).join('')
         : '<p class="empty">مفيش منتجات مطابقة. جرّب كلمة تانية أو اطلب «طلب خاص».</p>';
@@ -381,7 +394,7 @@ function renderGrid() {
 
 function renderCats() {
     $('#cats').innerHTML = CATEGORIES.map(([key, label]) =>
-        `<button class="cat" data-cat="${key}" aria-pressed="${state.cat === key}">${label}</button>`
+        `<button class="cat" data-cat="${esc(key)}" aria-pressed="${state.cat === key}">${esc(label)}</button>`
     ).join('');
 }
 
@@ -390,7 +403,7 @@ function setQty(id, qty) {
     qty = Math.max(0, Math.min(99, qty));
     if (qty) state.cart[id] = qty; else delete state.cart[id];
     saveState();
-    const holder = document.querySelector(`.card-action[data-id="${id}"]`);
+    const holder = document.querySelector(`.card-action[data-id="${CSS.escape(id)}"]`);
     if (holder) holder.innerHTML = actionHTML(id);
     renderCart();
 }
@@ -398,18 +411,18 @@ function setQty(id, qty) {
 function renderCart() {
     const ids = Object.keys(state.cart);
     let html = ids.map(id => {
-        const p = byId.get(+id), q = state.cart[id];
+        const p = byId.get(id), q = state.cart[id];
         return `<div class="line">
             <span class="line-name">${esc(p.name)}</span>
-            <span class="line-total">${fmt(p.price * q)} ج.م</span>
+            <span class="line-total${hasPrice(p) ? '' : ' ask'}">${hasPrice(p) ? fmt(p.price * q) + ' ج.م' : 'السعر بالتأكيد'}</span>
             <div class="line-ctrl">
                 <div class="stepper">
-                    <button data-act="inc" data-id="${id}" aria-label="زيادة">+</button>
+                    <button data-act="inc" data-id="${esc(id)}" aria-label="زيادة">+</button>
                     <output>${q}</output>
-                    <button data-act="dec" data-id="${id}" aria-label="تقليل">−</button>
+                    <button data-act="dec" data-id="${esc(id)}" aria-label="تقليل">−</button>
                 </div>
-                <span style="color:var(--muted);font-size:.78rem">${p.price} ج.م للقطعة</span>
-                <button class="link-btn danger" data-act="remove" data-id="${id}">حذف</button>
+                <span class="unit">${hasPrice(p) ? p.price + ' ج.م للقطعة' : ''}</span>
+                <button class="link-btn danger" data-act="remove" data-id="${esc(id)}">حذف</button>
             </div>
         </div>`;
     }).join('');
@@ -428,7 +441,7 @@ function renderCart() {
     $('#itemsTotal').textContent = fmt(sub);
     $('#deliveryFee').textContent = fmt(fee);
     $('#finalTotal').textContent = fmt(sub + fee);
-    $('#billNote').hidden = !state.special.trim();
+    $('#billNote').hidden = !needsConfirm();
     $('#cartCount').textContent = itemCount();
     $('#specialBadge').classList.toggle('show', !!state.special.trim());
     $('#sendOrder').disabled = !hasOrder();
@@ -457,20 +470,8 @@ function closeAll(keepFocus) {
 /* ================== إرسال الطلب ================== */
 function showError(msg) { $('#formError').textContent = msg; }
 
-function sendOrder() {
-    showError('');
-    const name = $('#clientName').value.trim();
-    const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g, '');
-    const address = $('#clientLocation').value.trim();
+function buildMessage(name, phone, address) {
     const sub = subtotal();
-
-    if (!hasOrder()) return showError('السلة فاضية.');
-    if (name.length < 3) return showError('اكتب الاسم بالكامل.');
-    if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone)) return showError('رقم الموبايل غير صحيح. مثال: 01012345678');
-    if (address.length < 8) return showError('اكتب العنوان بالتفصيل عشان المندوب يوصلك.');
-    if (CONFIG.minOrder && sub < CONFIG.minOrder && !state.special.trim())
-        return showError(`أقل قيمة للطلب ${CONFIG.minOrder} ج.م.`);
-
     const total = sub + CONFIG.deliveryFee;
     const lines = [
         '*طلب جديد - ALAZHAR CITY*',
@@ -484,8 +485,10 @@ function sendOrder() {
     if (ids.length) {
         lines.push('🛒 *المنتجات:*');
         ids.forEach(id => {
-            const p = byId.get(+id), q = state.cart[id];
-            lines.push(`- ${p.name} × ${q} = ${p.price * q} ج.م`);
+            const p = byId.get(id), q = state.cart[id];
+            lines.push(hasPrice(p)
+                ? `- ${p.name} × ${q} = ${p.price * q} ج.م`
+                : `- ${p.name} × ${q} (السعر بالتأكيد)`);
         });
         lines.push('');
     }
@@ -493,23 +496,40 @@ function sendOrder() {
     lines.push(
         `🧾 ثمن المنتجات: ${sub} ج.م`,
         `🚚 التوصيل: ${CONFIG.deliveryFee} ج.م`,
-        `💰 *الإجمالي:* ${total} ج.م` + (state.special.trim() ? ' (+ سعر الطلب الخاص)' : '')
+        `💰 *الإجمالي:* ${total} ج.م` + (needsConfirm() ? ' (+ أصناف سعرها بالتأكيد)' : '')
     );
+    return lines.join('\n');
+}
 
-    const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
-    window.open(url, '_blank', 'noopener');
+function sendOrder() {
+    showError('');
+    const name = $('#clientName').value.trim();
+    const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g, '');
+    const address = $('#clientLocation').value.trim();
+
+    if (!hasOrder()) return showError('السلة فاضية.');
+    if (name.length < 3) return showError('اكتب الاسم بالكامل.');
+    if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone)) return showError('رقم الموبايل غير صحيح. مثال: 01012345678');
+    if (address.length < 8) return showError('اكتب العنوان بالتفصيل عشان المندوب يوصلك.');
+    if (CONFIG.minOrder && subtotal() < CONFIG.minOrder && !needsConfirm())
+        return showError(`أقل قيمة للطلب ${CONFIG.minOrder} ج.م.`);
+
+    state.customer = { name, phone, address }; saveState();   // نفتكر بيانات العميل للطلب الجاي
+    const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(name, phone, address))}`;
+    const w = window.open(url, '_blank');
+    if (w) w.opener = null; else location.href = url;   // لو المتصفح منع النافذة الجديدة
 }
 
 /* ================== الأحداث ================== */
 document.addEventListener('click', e => {
     const actEl = e.target.closest('[data-act]');
     if (actEl) {
-        const id = +actEl.dataset.id;
+        const id = actEl.dataset.id;
         switch (actEl.dataset.act) {
             case 'inc': setQty(id, (state.cart[id] || 0) + 1); break;
             case 'dec': setQty(id, (state.cart[id] || 0) - 1); break;
             case 'remove': setQty(id, 0); break;
-            case 'edit-special': openPanel('specialPanel'); break;
+            case 'edit-special': $('#specialText').value = state.special; updateSpecialCount(); openPanel('specialPanel'); break;
             case 'clear-special':
                 state.special = ''; $('#specialText').value = '';
                 saveState(); renderCart(); break;
@@ -553,7 +573,10 @@ $('#search').addEventListener('input', e => {
 
 // صورة بديلة لو الصورة فشلت (الخطأ لا يعمل bubble فنستخدم capture)
 $('#grid').addEventListener('error', e => {
-    if (e.target.tagName === 'IMG' && e.target.src !== PLACEHOLDER) e.target.src = PLACEHOLDER;
+    if (e.target.tagName !== 'IMG') return;
+    if (e.target.dataset.fallback === '1') return;
+    e.target.dataset.fallback = '1';
+    e.target.src = PLACEHOLDER;
 }, true);
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
