@@ -46,6 +46,7 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 
 /* ---------- Header ---------- */
 .top{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 0 var(--line)}
+.flagbar{height:5px;background:linear-gradient(90deg,#000 0 25%,#e9e9ee 25% 50%,#149954 50% 75%,#e4312b 75%)}
 .bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
 .logo{width:44px;height:44px;border-radius:12px;object-fit:cover;background:var(--brand-l);flex:none}
 .loc{flex:1;min-width:0;line-height:1.25}
@@ -206,6 +207,18 @@ textarea{resize:none}
 .skeleton{height:200px;border-radius:16px;background:linear-gradient(90deg,#eee 25%,#f7f7f7 50%,#eee 75%);background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
 
+
+/* ---------- Pledge ---------- */
+.pledge{margin-top:12px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;background:linear-gradient(120deg,#101614,#1d2b26);border-radius:18px;padding:13px 14px;border:1px solid #2b3d36;box-shadow:var(--sh)}
+.pledge .em{font-size:1.8rem}
+.pledge div{flex:1;line-height:1.45}
+.pledge b{display:block;font-size:.95rem}
+.pledge small{opacity:.85;font-weight:600;font-size:.78rem}
+.pledge .arr{font-size:1.4rem;opacity:.7}
+.bmsg{margin-top:16px;background:#101614;color:#fff;border-radius:16px;padding:14px;line-height:1.7;font-size:.88rem;font-weight:600}
+.bmsg b{color:#7fe3b5}
+.bmsg a{color:#7fe3b5}
+
 /* ---------- Install ---------- */
 .install{margin-top:12px;border-radius:18px;padding:14px;display:none;align-items:center;gap:12px;background:linear-gradient(120deg,#fff1ea,#ffe0d2);border:1px solid #ffd2bd}
 .install.show{display:flex;animation:up .3s}
@@ -222,6 +235,7 @@ textarea{resize:none}
 <body>
 
 <div class="top">
+  <div class="flagbar" aria-hidden="true"></div>
   <div class="wrap">
     <div class="bar">
       <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="44" height="44">
@@ -268,6 +282,12 @@ textarea{resize:none}
     <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
   </div>
 
+  <a class="pledge" href="./palestine.html">
+    <span class="em">🇵🇸</span>
+    <div><b>مع فلسطين — ملتزمون بالمقاطعة</b><small>مش بنبيع ومش بنوصّل منتجات الشركات المقاطعة — اعرف موقفنا وإزاي تساهم</small></div>
+    <span class="arr">‹</span>
+  </a>
+
   <section class="sec" id="catSec">
     <div class="sec-head"><h2>🗂️ الأقسام</h2></div>
     <div class="tiles" id="tiles"></div>
@@ -285,7 +305,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
   </footer>
 </main>
 
@@ -331,6 +351,8 @@ textarea{resize:none}
   <label class="sr-only" for="specialText">اكتب طلبك</label>
   <textarea id="specialText" rows="4" maxlength="300" placeholder="اكتب هنا اللي محتاجه وهنتصل بيك نحدد السعر..."></textarea>
   <div class="counter"><span id="specialCount">0</span> / 300</div>
+  <p class="err" id="specialErr" role="alert"></p>
+  <p style="font-size:.75rem;color:var(--muted);margin:4px 0 0">🕊️ مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة — <a href="./boycott.html">القائمة</a></p>
   <button class="btn d" id="saveSpecial">حفظ في السلة</button>
 </section>
 
@@ -342,6 +364,7 @@ textarea{resize:none}
     <li>عايز حاجة مش موجودة؟ استخدم «طلب خاص».</li>
     <li>افتح السلة، اكتب بياناتك، وابعت الطلب على واتساب.</li>
     <li>المندوب بيوصلك والدفع كاش عند الاستلام.</li>
+    <li>🕊️ مش بنبيع ولا بنوصّل منتجات الشركات المقاطعة.</li>
   </ol>
 </section>
 
@@ -355,7 +378,7 @@ textarea{resize:none}
 
 <noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
 
-<script src="./config.js?v=20260920-3"></script>
+<script src="./config.js?v=20260920-4"></script>
 <script>
 'use strict';
 
@@ -465,7 +488,9 @@ function renderContent(){
 
   if (q){
     const list = PRODUCTS.filter(p => visible(p) && (normalize(p.name).includes(q) || normalize(catMap.get(p.cat).label).includes(q)));
-    html = `<div class="sec"><div class="sec-head"><h2>🔎 نتائج «${esc(state.query)}» (${list.length})</h2></div><div class="grid">${list.length ? list.map(cardHTML).join('') : '<p class="empty"><span>🔍</span>مفيش منتجات مطابقة.<br>جرّب كلمة تانية أو اطلب «طلب خاص».</p>'}</div></div>`;
+    const bm = boycottMatch(state.query);
+    const bnote = bm ? `<div class="bmsg">🕊️ <b>«${esc(state.query)}»</b> من علامات <b>${esc(bm.group)}</b> المشمولة بالمقاطعة — مش بنبيعها ومش بنوصّلها. جرّب البدائل المتاحة تحت، أو <a href="./boycott.html">اعرف القائمة والمصادر</a>.</div>` : '';
+    html = bnote + `<div class="sec"><div class="sec-head"><h2>🔎 نتائج «${esc(state.query)}» (${list.length})</h2></div><div class="grid">${list.length ? list.map(cardHTML).join('') : '<p class="empty"><span>🔍</span>مفيش منتجات مطابقة.<br>جرّب كلمة تانية أو اطلب «طلب خاص».</p>'}</div></div>`;
   } else if (state.cat !== 'all'){
     const c = catMap.get(state.cat);
     html = `<div class="crumb"><button class="chip" data-cat="all">✕ ${c.emoji} ${esc(c.label)}</button></div>` +
@@ -516,6 +541,7 @@ function startSlides(){
 }
 function goBanner(i){
   const g = BANNERS[i].go || {};
+  if (g.href){ location.href = g.href; return; }
   if (g.group) setGroup(g.group);
   if (g.cat){ setGroup('all'); setCat(g.cat); }
   if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#deals')); }
@@ -606,7 +632,7 @@ function closeAll(keep){
   $('#overlay').classList.remove('open'); document.body.classList.remove('lock');
   if (!keep && lastFocus){ lastFocus.focus(); lastFocus = null; }
 }
-function openSpecial(){ $('#specialText').value = state.special; updateSpecialCount(); openPanel('specialPanel'); }
+function openSpecial(){ $('#specialErr').textContent = ''; $('#specialText').value = state.special; updateSpecialCount(); openPanel('specialPanel'); }
 function updateSpecialCount(){ $('#specialCount').textContent = $('#specialText').value.length; }
 
 /* ================== إرسال الطلب ================== */
@@ -638,6 +664,8 @@ function sendOrder(){
   const address = $('#clientLocation').value.trim();
   const note = $('#clientNote').value.trim();
   if (!hasOrder()) return showError('السلة فاضية.');
+  const bm = boycottMatch(state.special) || boycottMatch(note);
+  if (bm) return showError(`🕊️ الطلب فيه «${bm.group}» — مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة. عدّل الطلب الخاص/الملاحظات.`);
   if (name.length < 3) return showError('اكتب الاسم بالكامل.');
   if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone)) return showError('رقم الموبايل غير صحيح. مثال: 01012345678');
   if (address.length < 8) return showError('اكتب العنوان بالتفصيل عشان المندوب يوصلك.');
@@ -683,7 +711,11 @@ $('#clearCart').addEventListener('click', () => {
   saveState(); ids.forEach(refreshCards); renderCart();
 });
 $('#saveSpecial').addEventListener('click', () => {
-  state.special = $('#specialText').value.trim(); saveState(); renderCart(); closeAll();
+  const txt = $('#specialText').value.trim();
+  const bm = boycottMatch(txt);
+  if (bm){ $('#specialErr').textContent = `🕊️ آسفين، «${bm.group}» من الشركات المقاطعة ومش بنوفّرها ولا بنوصّلها. شيلها من الطلب أو اطلب بديل.`; return; }
+  $('#specialErr').textContent = '';
+  state.special = txt; saveState(); renderCart(); closeAll();
   toast(state.special ? 'تم حفظ الطلب الخاص في السلة' : 'تم حذف الطلب الخاص');
 });
 $('#specialText').addEventListener('input', updateSpecialCount);
