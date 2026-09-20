@@ -46,7 +46,6 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 
 /* ---------- Header ---------- */
 .top{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 0 var(--line)}
-.flagbar{height:5px;background:linear-gradient(90deg,#000 0 25%,#e9e9ee 25% 50%,#149954 50% 75%,#e4312b 75%)}
 .bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
 .logo{width:44px;height:44px;border-radius:12px;object-fit:cover;background:var(--brand-l);flex:none}
 .loc{flex:1;min-width:0;line-height:1.25}
@@ -235,7 +234,6 @@ textarea{resize:none}
 <body>
 
 <div class="top">
-  <div class="flagbar" aria-hidden="true"></div>
   <div class="wrap">
     <div class="bar">
       <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="44" height="44">
@@ -282,9 +280,9 @@ textarea{resize:none}
     <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
   </div>
 
-  <a class="pledge" href="./palestine.html">
-    <span class="em">🇵🇸</span>
-    <div><b>مع فلسطين — ملتزمون بالمقاطعة</b><small>مش بنبيع ومش بنوصّل منتجات الشركات المقاطعة — اعرف موقفنا وإزاي تساهم</small></div>
+  <a class="pledge" href="./boycott.html">
+    <span class="em">🕊️</span>
+    <div><b>ملتزمون بالمقاطعة</b><small>مش بنبيع ومش بنوصّل منتجات الشركات المقاطعة — اعرف القائمة والمصادر</small></div>
     <span class="arr">‹</span>
   </a>
 
@@ -305,7 +303,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
   </footer>
 </main>
 
@@ -541,7 +539,6 @@ function startSlides(){
 }
 function goBanner(i){
   const g = BANNERS[i].go || {};
-  if (g.href){ location.href = g.href; return; }
   if (g.group) setGroup(g.group);
   if (g.cat){ setGroup('all'); setCat(g.cat); }
   if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#deals')); }
