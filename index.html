@@ -16,6 +16,10 @@
 <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Alazhar City">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -201,6 +205,17 @@ textarea{resize:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .skeleton{height:200px;border-radius:16px;background:linear-gradient(90deg,#eee 25%,#f7f7f7 50%,#eee 75%);background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
+
+/* ---------- Install ---------- */
+.install{margin-top:12px;border-radius:18px;padding:14px;display:none;align-items:center;gap:12px;background:linear-gradient(120deg,#fff1ea,#ffe0d2);border:1px solid #ffd2bd}
+.install.show{display:flex;animation:up .3s}
+.install img{width:48px;height:48px;border-radius:12px;flex:none}
+.install div{flex:1;line-height:1.4;min-width:0}
+.install b{display:block;font-size:.95rem}
+.install small{color:var(--muted);font-weight:600}
+.install .go{border:0;background:var(--brand);color:#fff;font-weight:800;border-radius:20px;padding:9px 16px;white-space:nowrap}
+.install .x{border:0;background:none;color:var(--muted);font-size:1.4rem;line-height:1;padding:4px 6px}
+.ios-steps li{margin-bottom:6px}
 @media(min-width:720px){.slide{min-height:220px;padding:34px}.slide h2{font-size:2.1rem}.slide .art{font-size:8rem}.hrow .card{min-width:170px;max-width:170px}}
 </style>
 </head>
@@ -246,6 +261,13 @@ textarea{resize:none}
     <div><span>🎓</span>أسعار تناسب الطلبة</div>
   </div>
 
+  <div class="install" id="installBox" role="region" aria-label="تثبيت التطبيق">
+    <img src="icons/icon-192.png" alt="" width="48" height="48">
+    <div><b>حمّل التطبيق على موبايلك</b><small>اطلب أسرع من غير ما تفتح المتصفح · <a href="./install.html" style="color:var(--brand-d);font-weight:700">الخطوات</a></small></div>
+    <button class="go" id="installBtn">تحميل</button>
+    <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
+  </div>
+
   <section class="sec" id="catSec">
     <div class="sec-head"><h2>🗂️ الأقسام</h2></div>
     <div class="tiles" id="tiles"></div>
@@ -263,7 +285,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a></div>
   </footer>
 </main>
 
@@ -321,6 +343,12 @@ textarea{resize:none}
     <li>افتح السلة، اكتب بياناتك، وابعت الطلب على واتساب.</li>
     <li>المندوب بيوصلك والدفع كاش عند الاستلام.</li>
   </ol>
+</section>
+
+<!-- Install (iOS / manual) -->
+<section class="sheet" id="installPanel" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+  <div class="ph"><h2 id="installTitle">📲 تثبيت التطبيق</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <ol class="ios-steps" id="installSteps"></ol>
 </section>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -389,7 +417,8 @@ function renderStatus(){
 /* ================== الصور والمنتجات ================== */
 function picHTML(p){
   const c = catMap.get(p.cat);
-  const img = p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
+  const src = p.img || (CONFIG.autoImages ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
+  const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
   let badge = '';
   if (p.oldPrice && p.oldPrice > p.price) badge = `<span class="badge${isPharma(p)?' pharma':''}">-${Math.round((1 - p.price/p.oldPrice)*100)}%</span>`;
   else if (p.badge) badge = `<span class="badge${isPharma(p)?' pharma':''}">${esc(p.badge)}</span>`;
@@ -565,7 +594,7 @@ function renderCart(){
 }
 
 /* ================== اللوحات ================== */
-const panels = ['cartPanel','specialPanel','helpPanel'];
+const panels = ['cartPanel','specialPanel','helpPanel','installPanel'];
 let lastFocus = null;
 function openPanel(id){
   closeAll(true); lastFocus = document.activeElement;
@@ -674,6 +703,45 @@ $('#clearSearch').addEventListener('click', () => { $('#search').value=''; state
 
 document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.pic')) e.target.remove(); }, true);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+
+/* ================== تثبيت التطبيق (PWA) ================== */
+let deferredPrompt = null;
+const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const installDismissed = () => { try { return Date.now() - Number(localStorage.getItem(CONFIG.storageKey + '-install-x') || 0) < 7*864e5; } catch(e){ return false; } };
+
+function showInstall(){
+  if (isStandalone() || installDismissed()) return;
+  $('#installBox').classList.add('show');
+}
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; showInstall(); });
+window.addEventListener('appinstalled', () => { deferredPrompt = null; $('#installBox').classList.remove('show'); toast('تم تثبيت التطبيق ✅'); });
+
+$('#installBtn').addEventListener('click', async () => {
+  if (deferredPrompt){
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    if (outcome === 'accepted') $('#installBox').classList.remove('show');
+    return;
+  }
+  // iOS أو متصفح مفيهوش زرار تثبيت تلقائي
+  $('#installSteps').innerHTML = isIOS()
+    ? '<li>افتح الموقع في <b>Safari</b>.</li><li>دوس على زرار المشاركة <b>⬆️</b> تحت.</li><li>اختار <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>دوس <b>إضافة</b> وهتلاقي الأيقونة على موبايلك.</li>'
+    : '<li>افتح قائمة المتصفح <b>⋮</b>.</li><li>اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>أكّد التثبيت.</li>';
+  openPanel('installPanel');
+});
+$('#installClose').addEventListener('click', () => {
+  $('#installBox').classList.remove('show');
+  try { localStorage.setItem(CONFIG.storageKey + '-install-x', String(Date.now())); } catch(e){}
+});
+// iOS مفيهوش beforeinstallprompt، فنعرض البانر يدويًا (مرة كل أسبوع)
+if (isIOS()) showInstall();
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
 
 /* ================== تشغيل ================== */
 loadState();

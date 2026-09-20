@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff5722">
+<base href="./">
+<title>خطوات تنزيل التطبيق | Alazhar City Delivery</title>
+<meta name="description" content="إزاي تنزّل تطبيق Alazhar City Delivery على موبايلك أو الكمبيوتر خطوة بخطوة — أندرويد، أيفون، وكمبيوتر.">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#ff5722;--brand-d:#e64a19;--brand-l:#fff1ea;--green:#0e9f6e;--green-l:#e6f8f0;--ink:#1b1b1f;--muted:#6f6f7b;--line:#ececf1;--bg:#f6f6f9;--sh:0 2px 10px rgba(20,20,40,.06);--safe-b:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;padding-bottom:calc(30px + var(--safe-b));-webkit-tap-highlight-color:transparent;line-height:1.7}
+button{font:inherit;cursor:pointer}
+a{color:var(--brand-d);font-weight:700}
+:focus-visible{outline:3px solid rgba(255,87,34,.5);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+header{background:#fff;box-shadow:0 1px 0 var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px}
+.bar img{width:40px;height:40px;border-radius:10px;object-fit:cover}
+.bar b{flex:1;font-weight:900}
+.back{border:0;background:var(--brand);color:#fff;font-weight:800;border-radius:20px;padding:8px 16px;text-decoration:none;font-size:.85rem}
+
+.hero{margin-top:16px;border-radius:22px;padding:26px 22px;color:#fff;background:linear-gradient(120deg,#ff5722,#ff8a3d);position:relative;overflow:hidden;box-shadow:0 8px 24px rgba(255,87,34,.3)}
+.hero::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.12);left:-70px;bottom:-100px}
+.hero h1{margin:0 0 6px;font-size:1.6rem;font-weight:900;line-height:1.35;position:relative}
+.hero p{margin:0 0 16px;font-weight:600;opacity:.95;position:relative}
+.hero .ph{position:absolute;left:18px;top:14px;font-size:4.6rem;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));z-index:1}
+.cta{border:0;background:#fff;color:var(--ink);font-weight:900;border-radius:26px;padding:12px 26px;font-size:1rem;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.cta:disabled{opacity:.7;cursor:default}
+.hint{display:block;margin-top:10px;font-size:.78rem;opacity:.9;position:relative}
+
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.perks div{background:#fff;border-radius:14px;padding:10px 6px;text-align:center;font-size:.76rem;font-weight:700;box-shadow:var(--sh);line-height:1.45}
+.perks span{display:block;font-size:1.5rem}
+
+h2{font-size:1.15rem;font-weight:900;margin:26px 0 10px}
+.tabs{display:flex;gap:6px;position:sticky;top:61px;z-index:5;background:var(--bg);padding:6px 0}
+.tab{flex:1;border:2px solid var(--line);background:#fff;border-radius:14px;padding:9px 4px;font-weight:800;font-size:.86rem}
+.tab[aria-selected="true"]{border-color:var(--brand);background:var(--brand-l);color:var(--brand-d)}
+.panel{display:none}
+.panel.on{display:block;animation:in .25s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.steps{list-style:none;margin:10px 0 0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;background:#fff;border-radius:16px;box-shadow:var(--sh);padding:14px 14px 14px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font-weight:900;display:grid;place-items:center}
+.steps b{display:block;font-size:.98rem}
+.steps small{color:var(--muted);font-weight:600;font-size:.84rem}
+.ic{display:inline-flex;vertical-align:middle;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-weight:800;margin:0 2px}
+.ic svg{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tip{background:var(--green-l);border:1px solid #b8ead2;color:#0b6b4a;border-radius:14px;padding:10px 14px;font-size:.84rem;font-weight:600;margin-top:4px}
+.warn{background:#fff7e6;border:1px solid #ffe0a3;color:#8a5a00;border-radius:14px;padding:10px 14px;font-size:.84rem;font-weight:600;margin-top:10px}
+details{background:#fff;border-radius:14px;box-shadow:var(--sh);margin-bottom:8px;padding:2px 14px}
+summary{cursor:pointer;font-weight:800;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--brand)}
+details[open] summary::after{content:"－"}
+details p{margin:0 0 12px;color:#444;font-size:.9rem}
+.done{display:none;background:var(--green-l);color:#0b6b4a;border-radius:16px;padding:14px;font-weight:800;text-align:center;margin-top:14px}
+.done.show{display:block}
+footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
+@media(min-width:720px){.hero{padding:34px}.hero h1{font-size:2rem}.hero .ph{font-size:6.5rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <img src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="40" height="40">
+    <b>ALAZHAR CITY</b>
+    <a class="back" href="./index.html">‹ ارجع للمتجر</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="ph" aria-hidden="true">📲</span>
+    <h1>نزّل التطبيق على موبايلك<br>في أقل من نص دقيقة</h1>
+    <p>من غير متجر تطبيقات ومن غير مساحة كبيرة — أيقونة على شاشتك وتطلب بضغطة.</p>
+    <button class="cta" id="installNow">📲 نزّل التطبيق دلوقتي</button>
+    <span class="hint" id="hint"></span>
+  </section>
+
+  <div class="done" id="done">✅ التطبيق متثبت عندك بالفعل. افتحه من أيقونة الشاشة الرئيسية.</div>
+
+  <div class="perks">
+    <div><span>⚡</span>أسرع في الفتح</div>
+    <div><span>🖥️</span>ملء الشاشة</div>
+    <div><span>🆓</span>مجاني وخفيف</div>
+  </div>
+
+  <h2>اختار جهازك</h2>
+  <div class="tabs" role="tablist" aria-label="نوع الجهاز">
+    <button class="tab" role="tab" data-tab="android" aria-selected="false">🤖 أندرويد</button>
+    <button class="tab" role="tab" data-tab="ios" aria-selected="false">🍎 أيفون</button>
+    <button class="tab" role="tab" data-tab="desktop" aria-selected="false">💻 كمبيوتر</button>
+  </div>
+
+  <!-- Android -->
+  <section class="panel" id="p-android" role="tabpanel">
+    <ol class="steps">
+      <li><div><b>افتح الموقع في متصفح Chrome</b><small>لازم تفتحه من كروم مش من جوه تطبيق تاني (زي فيسبوك أو واتساب).</small></div></li>
+      <li><div><b>دوس على زرار «نزّل التطبيق دلوقتي» فوق</b><small>لو ظهرت لك رسالة «تثبيت» دوس <span class="ic">تثبيت</span>.</small></div></li>
+      <li><div><b>لو الزرار ما اشتغلش: افتح قائمة المتصفح</b><small>دوس على النقط التلاتة <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/></svg></span> فوق على الشمال أو اليمين.</small></div></li>
+      <li><div><b>اختار «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية»</b><small>ممكن يظهر الاسم بأي من الصيغتين حسب نسخة المتصفح.</small></div></li>
+      <li><div><b>أكّد بالضغط على «تثبيت»</b><small>هتلاقي أيقونة <b style="display:inline">ALAZHAR CITY</b> على الشاشة الرئيسية. افتحها واطلب. 🎉</small></div></li>
+    </ol>
+    <p class="tip">💡 على متصفح سامسونج (Samsung Internet): دوس على أيقونة القائمة ☰ ثم «إضافة الصفحة إلى» ثم «الشاشة الرئيسية».</p>
+  </section>
+
+  <!-- iOS -->
+  <section class="panel" id="p-ios" role="tabpanel">
+    <ol class="steps">
+      <li><div><b>افتح الموقع في متصفح Safari</b><small>الأيفون بيسمح بالتثبيت من سفاري بس، مش من كروم أو من جوه تطبيقات تانية.</small></div></li>
+      <li><div><b>دوس على زرار المشاركة</b><small>هو المربع اللي فيه سهم لفوق <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m8 7 4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></span> في شريط تحت الشاشة.</small></div></li>
+      <li><div><b>انزل لتحت واختار «إضافة إلى الشاشة الرئيسية»</b><small>ممكن تحتاج تسحب القائمة لفوق عشان تلاقيها. الاسم بالإنجليزي: <span class="ic">Add to Home Screen</span></small></div></li>
+      <li><div><b>دوس «إضافة» فوق على اليمين</b><small>تقدر تغيّر اسم الأيقونة لو حبيت.</small></div></li>
+      <li><div><b>افتح الأيقونة من الشاشة الرئيسية</b><small>هيفتح التطبيق ملء الشاشة بدون شريط المتصفح. 🎉</small></div></li>
+    </ol>
+    <p class="warn">⚠️ لو زرار المشاركة مش ظاهر: اسحب الشاشة لتحت شوية عشان يظهر الشريط السفلي، أو تأكد إنك في Safari مش في وضع القراءة.</p>
+  </section>
+
+  <!-- Desktop -->
+  <section class="panel" id="p-desktop" role="tabpanel">
+    <ol class="steps">
+      <li><div><b>افتح الموقع في Chrome أو Edge</b><small>المتصفحات دي بتدعم تثبيت المواقع كبرامج.</small></div></li>
+      <li><div><b>دوس على أيقونة التثبيت في شريط العنوان</b><small>شكلها شاشة صغيرة عليها سهم <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 8v5"/><path d="m9.5 11 2.5 2.5 2.5-2.5"/><path d="M8 20h8"/></svg></span> على أقصى الشمال من الشريط.</small></div></li>
+      <li><div><b>أو من القائمة</b><small>كروم: النقط التلاتة ← «حفظ وتشارك» ← «تثبيت الصفحة كتطبيق». إيدج: القائمة ← «التطبيقات» ← «تثبيت هذا الموقع كتطبيق».</small></div></li>
+      <li><div><b>أكّد «تثبيت»</b><small>هيفتح في نافذة لوحده وتلاقي اختصار على سطح المكتب وقائمة ابدأ. 🎉</small></div></li>
+    </ol>
+    <p class="tip">💡 فايرفوكس على الكمبيوتر مبيدعمش تثبيت المواقع، استخدم كروم أو إيدج.</p>
+  </section>
+
+  <h2>أسئلة شائعة</h2>
+  <details>
+    <summary>مفيش زرار أو خيار للتثبيت عندي، ليه؟</summary>
+    <p>غالبًا بسبب: فتحت الموقع من جوه تطبيق تاني (فيسبوك/واتساب/ماسنجر)، أو بتستخدم متصفح قديم، أو أنت في وضع التصفح الخفي. افتح الرابط في Chrome (أندرويد) أو Safari (أيفون) من الصفحة العادية وجرّب تاني.</p>
+  </details>
+  <details>
+    <summary>هل التطبيق بياخد مساحة كبيرة؟</summary>
+    <p>لأ، هو نفس الموقع بشكل تطبيق، فبياخد مساحة صغيرة جدًا مقارنة بالتطبيقات العادية.</p>
+  </details>
+  <details>
+    <summary>هل هتوصلني الأسعار والعروض الجديدة؟</summary>
+    <p>أيوه، التطبيق بيحمّل آخر الأسعار والمنتجات كل ما تفتحه ومعاك نت. ولو النت ضعيف بيفتح بآخر نسخة اتحملت عندك.</p>
+  </details>
+  <details>
+    <summary>إزاي أمسح التطبيق؟</summary>
+    <p>زي أي أيقونة: على أندرويد اضغط مطوّلًا على الأيقونة واختار «إلغاء التثبيت»، وعلى الأيفون اضغط مطوّلًا واختار «إزالة التطبيق».</p>
+  </details>
+  <details>
+    <summary>هل بيطلب صلاحيات أو بيوصل لبياناتي؟</summary>
+    <p>لأ. التطبيق بيحفظ سلتك وبيانات التوصيل اللي كتبتها على جهازك بس عشان متكتبهاش كل مرة، والطلب بيتبعت على واتساب لما أنت تدوس إرسال.</p>
+  </details>
+
+  <footer>
+    <a href="./index.html">‹ الرجوع للمتجر</a><br>
+    ALAZHAR CITY — الحي السادس، مدينة نصر
+  </footer>
+</main>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const ua = navigator.userAgent;
+const isIOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isAndroid = /android/i.test(ua);
+const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+
+/* التبويبات */
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.tab === name));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === 'p-' + name));
+}
+document.querySelector('.tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) showTab(t.dataset.tab); });
+showTab(isIOS ? 'ios' : isAndroid ? 'android' : 'desktop');
+
+/* زرار التثبيت */
+let deferred = null;
+const btn = $('#installNow'), hint = $('#hint');
+
+if (standalone){
+  $('#done').classList.add('show');
+  btn.style.display = 'none';
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); deferred = e;
+  hint.textContent = '';
+});
+window.addEventListener('appinstalled', () => {
+  deferred = null; btn.style.display = 'none'; $('#done').classList.add('show');
+});
+
+btn.addEventListener('click', async () => {
+  if (deferred){
+    deferred.prompt();
+    await deferred.userChoice;
+    deferred = null;
+    return;
+  }
+  // مفيش تثبيت تلقائي متاح (أيفون أو متصفح مش داعم): نوجّه للخطوات
+  hint.textContent = isIOS
+    ? 'على الأيفون التثبيت يدوي — اتبع الخطوات تحت 👇'
+    : 'اتبع الخطوات تحت لتثبيت التطبيق 👇';
+  document.querySelector('.tabs').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>

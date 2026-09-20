@@ -6,7 +6,7 @@
 
 const CONFIG = {
     brand: 'ALAZHAR CITY',
-    whatsapp: '20XXXXXXXXXX',        // ← حط رقمك بصيغة دولية بدون + (مثال: 201012345678)
+    whatsapp: '01277423376',        // ← حط رقمك بصيغة دولية بدون + (مثال: 201012345678)
     storageKey: 'alazhar-city-v3',
     area: 'الحي السادس — مدينة نصر',
     audience: 'شباب جامعة الأزهر',
