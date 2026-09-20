@@ -1,297 +1,61 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0b0d">
-<meta name="description" content="Alazhar City Delivery — بقالة ومشروبات وألبان وتوصيل سريع.">
-<meta property="og:title" content="Alazhar City Delivery">
-<meta property="og:description" content="اطلب احتياجاتك من مدينة الأزهر واستلمها لحد باب البيت.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://amh012-hu.github.io/AlazharCityDelivery/">
-<meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
-<link rel="manifest" href="./manifest.json">
-<link rel="icon" href="./icons/favicon-64.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<title>ALAZHAR CITY — Delivery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Alazhar City Delivery | توصيل بقالة ومشروبات وألبان</title>
+    <meta name="description" content="اطلب بقالة ومشروبات وألبان من مدينة الأزهر واستلمها لحد باب البيت. الطلب سريع عن طريق واتساب.">
 
-<style>
-:root{
-  --red:#ef3340;--red2:#ff5964;--dark:#0b0b0d;--dark2:#121216;--card:#17171c;
-  --text:#f7f7f8;--muted:#a5a5ad;--line:#292930;--white:#fff;
-  --radius:20px;--shadow:0 18px 55px rgba(0,0,0,.28);
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:
- radial-gradient(circle at 10% 0%,rgba(239,51,64,.10),transparent 28rem),
- radial-gradient(circle at 90% 10%,rgba(239,51,64,.07),transparent 25rem),
- var(--dark);color:var(--text);font-family:Cairo,Segoe UI,sans-serif;padding-bottom:96px}
-body.lock{overflow:hidden}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-img{max-width:100%;display:block}
-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
+    <meta property="og:title" content="Alazhar City Delivery">
+    <meta property="og:description" content="اطلب بقالة ومشروبات وألبان واستلمها لحد باب البيت.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_EG">
+    <meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
+    <meta name="twitter:card" content="summary_large_image">
 
-.top{position:sticky;top:0;z-index:100;background:rgba(11,11,13,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .35s var(--ease),box-shadow .35s}
-.top.scrolled{box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.header{max-width:1180px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0}
-.logo{width:48px;height:48px;border-radius:15px;object-fit:cover;border:1px solid rgba(239,51,64,.7);background:#fff;transition:.35s var(--ease)}
-.logo:hover{transform:rotate(-4deg) scale(1.07);box-shadow:0 0 25px rgba(239,51,64,.35)}
-.brand-title{margin:0;font-size:1.05rem;font-weight:900;white-space:nowrap;letter-spacing:.3px}
-.brand-title span{color:var(--red2)}
-.brand-sub{font-size:.67rem;color:var(--muted);margin-top:-3px}
+    <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
-.cart{position:relative;border:1px solid rgba(239,51,64,.5);background:var(--red);color:#fff;border-radius:14px;padding:10px 14px;font-weight:800;display:flex;align-items:center;gap:7px;box-shadow:0 7px 25px rgba(239,51,64,.18);transition:.2s var(--ease)}
-.cart:hover{transform:translateY(-2px);background:var(--red2)}
-.cart:active{transform:scale(.96)}
-.cart-count{min-width:23px;height:23px;padding:0 6px;border-radius:99px;background:#fff;color:var(--red);display:grid;place-items:center;font-size:.75rem}
-.cart-count.bump{animation:bump .35s var(--ease)}
-@keyframes bump{50%{transform:scale(1.35)}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-.tools{max-width:1180px;margin:auto;padding:9px 18px 10px;display:grid;grid-template-columns:1fr auto;gap:9px}
-.search{min-width:0;display:flex;align-items:center;gap:9px;background:#17171c;border:1px solid var(--line);border-radius:14px;padding:0 13px;transition:.25s}
-.search:focus-within{border-color:rgba(239,51,64,.7);box-shadow:0 0 0 4px rgba(239,51,64,.08);transform:translateY(-1px)}
-.search input{width:100%;border:0;outline:0;background:transparent;color:#fff;padding:12px 0}
-.search input::placeholder{color:#777780}
-.special{border:1px solid #38383f;background:#17171c;color:#fff;border-radius:14px;padding:0 15px;font-weight:800;transition:.2s}
-.special:hover{border-color:var(--red);color:var(--red2);transform:translateY(-1px)}
+    <style>
+        :root {
+            --red: #e63946;
+            --red-dark: #c62f3b;
+            --black: #1a1a1a;
+            --bg: #f4f4f7;
+            --card: #ffffff;
+            --muted: #6b6b76;
+            --line: #e7e7ee;
+            --radius: 16px;
+            --shadow: 0 4px 14px rgba(0, 0, 0, .07);
+            --safe-b: env(safe-area-inset-bottom, 0px);
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0; background: var(--bg); color: var(--black);
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            padding-bottom: calc(96px + var(--safe-b));
+            -webkit-tap-highlight-color: transparent;
+        }
+        body.lock { overflow: hidden; }
+        button, input, textarea { font: inherit; }
+        button { cursor: pointer; }
+        img { max-width: 100%; }
+        :focus-visible { outline: 3px solid rgba(230, 57, 70, .55); outline-offset: 2px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        svg.i { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 
-.cats{max-width:1180px;margin:auto;padding:0 18px 12px;display:flex;gap:8px;overflow:auto;scrollbar-width:none}
-.cats::-webkit-scrollbar{display:none}
-.cat{border:1px solid var(--line);background:#15151a;color:#bbbcc3;border-radius:99px;padding:7px 15px;white-space:nowrap;font-weight:700;transition:.2s var(--ease)}
-.cat:hover{transform:translateY(-2px);border-color:#55555d;color:#fff}
-.cat.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 7px 22px rgba(239,51,64,.18)}
-
-main{max-width:1180px;margin:auto;padding:8px 18px}
-.hero{position:relative;overflow:hidden;margin:8px 0 16px;border:1px solid #2b2b32;border-radius:25px;padding:23px;background:
-linear-gradient(115deg,rgba(239,51,64,.18),transparent 55%),#15151a;box-shadow:var(--shadow)}
-.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(239,51,64,.08);left:-90px;top:-120px;filter:blur(8px);animation:orb 5s ease-in-out infinite}
-@keyframes orb{50%{transform:translate(45px,35px) scale(1.12)}}
-.hero h2{margin:0 0 4px;font-size:clamp(1.25rem,4vw,2rem);font-weight:900}
-.hero p{margin:0;color:#aaaab2;font-size:.88rem}
-.status{display:inline-flex;align-items:center;gap:7px;margin-top:13px;color:#ddd;font-size:.75rem;font-weight:700}
-.status i{width:8px;height:8px;background:#42d77d;border-radius:50%;box-shadow:0 0 12px #42d77d;animation:live 1.7s infinite}
-@keyframes live{50%{opacity:.35;transform:scale(.75)}}
-
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px}
-.card{position:relative;background:linear-gradient(180deg,#19191e,#141419);border:1px solid #292930;border-radius:var(--radius);padding:11px;display:flex;flex-direction:column;gap:9px;min-width:0;opacity:0;transform:translateY(18px);animation:cardIn .5s var(--ease) forwards;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
-.card:hover{transform:translateY(-6px);border-color:rgba(239,51,64,.35);box-shadow:0 18px 38px rgba(0,0,0,.28)}
-@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
-.card-img{aspect-ratio:1;background:#fff;border-radius:15px;overflow:hidden;display:grid;place-items:center}
-.card-img img{width:100%;height:100%;object-fit:contain;transition:transform .4s var(--ease)}
-.card:hover .card-img img{transform:scale(1.06)}
-.card-title{margin:0;font-size:.88rem;line-height:1.55;min-height:2.7em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-bottom{margin-top:auto}
-.price{color:#fff;font-size:1rem;font-weight:900;margin-bottom:8px}
-.price b{color:var(--red2)}
-.ask{font-size:.76rem;color:#999;margin-bottom:8px}
-.add{width:100%;border:1px solid #38383f;background:#222229;color:#fff;border-radius:12px;padding:9px;font-weight:800;transition:.2s var(--ease)}
-.add:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px)}
-.stepper{display:flex;align-items:center;justify-content:space-between;background:#101014;border:1px solid rgba(239,51,64,.7);border-radius:12px;overflow:hidden}
-.stepper button{width:42px;height:39px;border:0;background:transparent;color:#fff;font-size:1.2rem;font-weight:900;transition:.15s}
-.stepper button:hover{background:var(--red)}
-.stepper output{font-weight:900}
-
-.empty{grid-column:1/-1;text-align:center;padding:55px 15px;color:#999}
-
-.fab{position:fixed;z-index:80;bottom:22px;width:56px;height:56px;border-radius:18px;border:1px solid #38383f;background:#17171c;color:#fff;box-shadow:var(--shadow);display:grid;place-items:center;font-weight:900;transition:.2s var(--ease)}
-.fab:hover{transform:translateY(-5px);border-color:var(--red);color:var(--red2)}
-.fab.help{right:18px}.fab.special-fab{left:18px}
-.fab small{font-size:.5rem;margin-top:-8px}
-
-.overlay{position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.68);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:.25s}
-.overlay.open{opacity:1;visibility:visible}
-.panel{position:fixed;z-index:150;background:#15151a;border:1px solid #303038;box-shadow:0 25px 80px rgba(0,0,0,.5);visibility:hidden;transition:transform .35s var(--ease),visibility .35s}
-.drawer{top:0;right:0;width:min(94%,430px);height:100%;transform:translateX(105%);display:flex;flex-direction:column}
-.sheet{left:50%;bottom:0;width:min(94%,600px);max-height:90vh;transform:translate(-50%,105%);border-radius:24px 24px 0 0;padding:18px;overflow:auto}
-.panel.open{visibility:visible}
-.drawer.open{transform:translateX(0)}
-.sheet.open{transform:translate(-50%,0)}
-.panel-head{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;border-bottom:1px solid var(--line)}
-.panel-head h2{margin:0;font-size:1.05rem}
-.close{border:0;background:transparent;color:#aaa;font-size:1.8rem;transition:.2s}
-.close:hover{color:var(--red);transform:rotate(90deg)}
-.drawer-body{flex:1;overflow:auto;padding:8px 16px}
-.drawer-foot{padding:12px 16px 18px;border-top:1px solid var(--line)}
-.line{padding:13px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px}
-.line-name{font-weight:700}.line-total{font-weight:900;color:var(--red2)}
-.line-ctrl{grid-column:1/-1;display:flex;align-items:center;gap:10px}
-.line .stepper{width:120px}.line .stepper button{height:33px;width:36px}
-.unit{color:#888;font-size:.72rem}
-.link{border:0;background:transparent;color:#999;text-decoration:underline;font-size:.76rem}.danger{color:var(--red2)}
-.bill{margin:13px 0;padding:13px;border:1px dashed #3b3b43;border-radius:14px;background:#111116}
-.bill-row{display:flex;justify-content:space-between;margin:5px 0;font-size:.84rem}
-.bill-row.total{border-top:1px solid var(--line);padding-top:9px;color:var(--red2);font-weight:900}
-.field{display:block;font-size:.78rem;font-weight:700;margin:9px 0}
-.field input,.field textarea{width:100%;margin-top:5px;background:#101014;color:#fff;border:1px solid #33333b;border-radius:11px;padding:11px 12px;outline:0}
-.field input:focus,.field textarea:focus{border-color:var(--red)}
-.btn{width:100%;border:0;border-radius:12px;padding:12px;font-weight:900;transition:.2s var(--ease)}
-.primary{background:var(--red);color:#fff}.primary:hover{background:var(--red2);transform:translateY(-2px)}
-.darkbtn{background:#222229;color:#fff;border:1px solid var(--red);margin-top:8px}
-.ghost{background:transparent;color:#999;margin-top:6px}
-.form-error{color:var(--red2);font-size:.78rem;min-height:1.2em}
-.special-line{padding:12px;background:#20171a;border-right:3px solid var(--red);border-radius:10px;margin:10px 0}
-.special-line p{white-space:pre-wrap;margin:4px 0;font-size:.82rem}
-.toast{position:fixed;z-index:300;left:50%;bottom:92px;transform:translate(-50%,18px) scale(.96);opacity:0;pointer-events:none;background:#f7f7f8;color:#101014;padding:10px 18px;border-radius:99px;font-size:.82rem;font-weight:800;transition:.3s var(--ease);box-shadow:var(--shadow)}
-.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
-
-.ripple{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.28);transform:scale(0);animation:ripple .55s ease-out}
-@keyframes ripple{to{transform:scale(3);opacity:0}}
-.skeleton{background:linear-gradient(90deg,#19191e 25%,#25252c 37%,#19191e 63%);background-size:400% 100%;animation:shimmer 1.15s linear infinite}
-@keyframes shimmer{to{background-position:-400% 0}}
-
-@media(max-width:650px){
- .header{padding:9px 12px}.tools{padding:8px 12px}.cats{padding:0 12px 10px}main{padding:6px 10px}
- .tools{grid-template-columns:1fr}.special{padding:9px}
- #grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:8px;border-radius:16px}.card:hover{transform:none;box-shadow:none}
- .hero{border-radius:19px;padding:18px;margin-top:6px}.brand-sub{display:none}.brand-title{font-size:.92rem}
-}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-}
-</style>
-</head>
-
-<body>
-<header class="top" id="top">
-  <div class="header">
-    <div class="brand">
-      <img class="logo" src="./images/logo.webp" alt="Alazhar City" width="48" height="48">
-      <div><h1 class="brand-title">ALAZHAR <span>CITY</span></h1><div class="brand-sub">Delivery • مدينة الأزهر</div></div>
-    </div>
-    <button class="cart" id="openCart" type="button" aria-label="فتح السلة">🛒 <span>السلة</span><span class="cart-count" id="cartCount">0</span></button>
-  </div>
-  <div class="tools">
-    <label class="search"><span>⌕</span><input id="search" type="search" placeholder="دور على منتج..." autocomplete="off"></label>
-    <button class="special" id="openSpecial" type="button">✎ طلب خاص</button>
-  </div>
-  <nav class="cats" id="cats" aria-label="الأقسام"></nav>
-</header>
-
-<main>
-  <section class="hero">
-    <h2>طلباتك عندك أسرع 🚚</h2>
-    <p>اختار اللي محتاجه، ضيفه للسلة وابعت الطلب على واتساب.</p>
-    <div class="status"><i></i> الخدمة متاحة للطلبات</div>
-  </section>
-  <section id="grid" aria-live="polite">
-    <div class="card skeleton" style="height:300px"></div><div class="card skeleton" style="height:300px"></div>
-    <div class="card skeleton" style="height:300px"></div><div class="card skeleton" style="height:300px"></div>
-  </section>
-</main>
-
-<button class="fab help" id="openHelp" type="button" aria-label="طريقة الطلب">؟<small>المساعدة</small></button>
-<button class="fab special-fab" id="openSpecial2" type="button" aria-label="طلب خاص">✎<small>طلب خاص</small></button>
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="panel drawer" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
- <div class="panel-head"><h2 id="cartTitle">سلة الطلبات</h2><button class="close" data-close type="button">×</button></div>
- <div class="drawer-body">
-  <div id="cartItems"></div>
-  <div class="bill">
-   <div class="bill-row"><span>ثمن المنتجات</span><b id="itemsTotal">0</b></div>
-   <div class="bill-row"><span>التوصيل</span><b id="deliveryFee">0</b></div>
-   <div class="bill-row total"><span>الإجمالي</span><b id="finalTotal">0</b></div>
-   <p id="billNote" style="font-size:.7rem;color:#888" hidden>بعض الأصناف سعرها يتحدد عند التأكيد.</p>
-  </div>
-  <label class="field">الاسم بالكامل<input id="clientName" maxlength="60" autocomplete="name"></label>
-  <label class="field">رقم الموبايل<input id="clientPhone" maxlength="15" inputmode="tel" placeholder="01012345678" dir="ltr"></label>
-  <label class="field">العنوان بالتفصيل<input id="clientLocation" maxlength="150" autocomplete="street-address"></label>
-  <div class="form-error" id="formError"></div>
- </div>
- <div class="drawer-foot"><button class="btn primary" id="sendOrder">إرسال الطلب على واتساب</button><button class="btn ghost" id="clearCart">تفريغ السلة</button></div>
-</aside>
-
-<section class="panel sheet" id="specialPanel" role="dialog" aria-modal="true">
- <div class="panel-head"><h2 style="color:var(--red2)">طلب خاص</h2><button class="close" data-close type="button">×</button></div>
- <textarea id="specialText" rows="5" maxlength="300" placeholder="اكتب الحاجة اللي مش موجودة..."></textarea>
- <div style="text-align:left;color:#888;font-size:.7rem"><span id="specialCount">0</span>/300</div>
- <button class="btn darkbtn" id="saveSpecial">حفظ في السلة</button>
-</section>
-
-<section class="panel sheet" id="helpPanel" role="dialog" aria-modal="true">
- <div class="panel-head"><h2>إزاي تطلب؟</h2><button class="close" data-close type="button">×</button></div>
- <ol style="line-height:2.1;padding-right:22px;color:#bbb">
-  <li>اختار القسم أو ابحث عن المنتج.</li><li>زوّد الكمية من الزر.</li><li>افتح السلة واكتب بياناتك.</li><li>اضغط إرسال الطلب على واتساب.</li>
- </ol>
-</section>
-
-<div class="toast" id="toast"></div>
-
-<script src="./config.js"></script>
-<script>
-'use strict';
-
-const CONFIG_SAFE = window.CONFIG || {};
-const PRODUCTS_SAFE = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
-const CATEGORIES_SAFE = Array.isArray(window.CATEGORIES) ? window.CATEGORIES : [['all','الكل']];
-const IMAGE_BASE = CONFIG_SAFE.imageBaseUrl || './images/';
-const state={cart:{},special:'',customer:{name:'',phone:'',address:''},cat:'all',query:''};
-const byId=new Map(PRODUCTS_SAFE.map(p=>[p.id,p]));
-const $=s=>document.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const imgUrl=p=>String(p.img||'').startsWith('http')?p.img:(IMAGE_BASE + String(p.img||'').replace(/^\.?\/*images\//,''));
-const hasPrice=p=>typeof p?.price==='number'&&p.price>0;
-const fmt=n=>Number(n||0).toLocaleString('en-US');
-const normalize=s=>String(s||'').toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
-const latin=s=>String(s).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-function load(){try{const x=JSON.parse(localStorage.getItem(CONFIG_SAFE.storageKey||'alazhar-city-v4')||'{}');if(x.cart)Object.entries(x.cart).forEach(([id,q])=>{if(byId.has(id)&&!byId.get(id).soldOut)state.cart[id]=Math.min(99,Math.max(1,+q||1))});state.special=typeof x.special==='string'?x.special.slice(0,300):'';if(x.customer)Object.assign(state.customer,x.customer)}catch{}}
-function save(){try{localStorage.setItem(CONFIG_SAFE.storageKey||'alazhar-city-v4',JSON.stringify({cart:state.cart,special:state.special,customer:state.customer}))}catch{}}
-function count(){return Object.values(state.cart).reduce((a,b)=>a+b,0)}
-function subtotal(){return Object.entries(state.cart).reduce((s,[id,q])=>{const p=byId.get(id);return s+(hasPrice(p)?p.price*q:0)},0)}
-function needsConfirm(){return Object.keys(state.cart).some(id=>!hasPrice(byId.get(id)))||!!state.special.trim()}
-function hasOrder(){return count()>0||!!state.special.trim()}
-let toastTimer;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)}
-function action(id){const p=byId.get(id);if(p.soldOut)return '<button class="add" disabled>غير متاح</button>';const q=state.cart[id]||0;if(!q)return `<button class="add" data-act="inc" data-id="${esc(id)}">أضف للسلة</button>`;return `<div class="stepper"><button data-act="inc" data-id="${esc(id)}">+</button><output>${q}</output><button data-act="dec" data-id="${esc(id)}">−</button></div>`}
-function renderCats(){$('#cats').innerHTML=CATEGORIES_SAFE.map(([k,l])=>`<button class="cat ${state.cat===k?'active':''}" data-cat="${esc(k)}">${esc(l)}</button>`).join('')}
-function renderGrid(){
- const q=normalize(state.query.trim());
- const list=PRODUCTS_SAFE.filter(p=>(state.cat==='all'||p.cat===state.cat)&&(!CONFIG_SAFE.hideUnpriced||hasPrice(p))&&(!q||normalize(p.name).includes(q)));
- $('#grid').innerHTML=list.length?list.map((p,i)=>`<article class="card ${p.soldOut?'sold':''}" style="animation-delay:${Math.min(450,i*25)}ms">
-   <div class="card-img"><img src="${esc(imgUrl(p))}" alt="${esc(p.name)}" width="240" height="240" loading="${i<6?'eager':'lazy'}" decoding="async"></div>
-   <h3 class="card-title">${esc(p.name)}</h3>
-   <div class="card-bottom"><div class="${hasPrice(p)?'price':'ask'}">${hasPrice(p)?'<b>'+fmt(p.price)+'</b> ج.م':'السعر عند التأكيد'}</div><div data-holder="${esc(p.id)}">${action(p.id)}</div></div>
- </article>`).join(''):'<p class="empty">مفيش منتجات مطابقة. جرّب بحث تاني أو استخدم «طلب خاص».</p>';
-}
-function renderCart(){
- let html=Object.entries(state.cart).map(([id,q])=>{const p=byId.get(id);return `<div class="line"><span class="line-name">${esc(p.name)}</span><span class="line-total">${hasPrice(p)?fmt(p.price*q)+' ج.م':'السعر بالتأكيد'}</span><div class="line-ctrl"><div class="stepper"><button data-act="inc" data-id="${esc(id)}">+</button><output>${q}</output><button data-act="dec" data-id="${esc(id)}">−</button></div><span class="unit">${hasPrice(p)?fmt(p.price)+' ج.م/قطعة':''}</span><button class="link danger" data-act="remove" data-id="${esc(id)}">حذف</button></div></div>`}).join('');
- if(state.special.trim())html+=`<div class="special-line"><b>طلب خاص</b><p>${esc(state.special)}</p><button class="link" data-act="edit-special">تعديل</button> <button class="link danger" data-act="clear-special">حذف</button></div>`;
- $('#cartItems').innerHTML=html||'<p style="text-align:center;color:#888;padding:35px 5px">السلة فاضية 🛒</p>';
- const sub=subtotal(),fee=hasOrder()?(CONFIG_SAFE.deliveryFee??10):0;
- $('#itemsTotal').textContent=fmt(sub)+' ج.م';$('#deliveryFee').textContent=fmt(fee)+' ج.م';$('#finalTotal').textContent=fmt(sub+fee)+' ج.م';$('#billNote').hidden=!needsConfirm();$('#cartCount').textContent=count();$('#sendOrder').disabled=!hasOrder();
-}
-const panels=['cartPanel','specialPanel','helpPanel'];let lastFocus;
-function openPanel(id){closeAll(true);lastFocus=document.activeElement;$('#'+id).classList.add('open');$('#overlay').classList.add('open');document.body.classList.add('lock')}
-function closeAll(){panels.forEach(id=>$('#'+id).classList.remove('open'));$('#overlay').classList.remove('open');document.body.classList.remove('lock');if(lastFocus){try{lastFocus.focus()}catch{}lastFocus=null}}
-function setQty(id,q){q=Math.max(0,Math.min(99,q));if(q)state.cart[id]=q;else delete state.cart[id];save();const h=document.querySelector(`[data-holder="${CSS.escape(id)}"]`);if(h)h.innerHTML=action(id);renderCart();const c=$('#cartCount');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump')}
-function buildMessage(name,phone,address){const lines=['*طلب جديد - ALAZHAR CITY*','',`👤 العميل: ${name}`,`📞 الموبايل: ${phone}`,`📍 العنوان: ${address}`,'','🛒 *المنتجات:*'];Object.entries(state.cart).forEach(([id,q])=>{const p=byId.get(id);lines.push(hasPrice(p)?`- ${p.name} × ${q} = ${p.price*q} ج.م`:`- ${p.name} × ${q} (السعر بالتأكيد)`)});if(state.special.trim())lines.push('','📝 *طلب خاص:*',state.special.trim());lines.push('',`🧾 المنتجات: ${subtotal()} ج.م`,`🚚 التوصيل: ${CONFIG_SAFE.deliveryFee??10} ج.م`,`💰 *الإجمالي: ${subtotal()+(CONFIG_SAFE.deliveryFee??10)} ج.م*`+(needsConfirm()?' (+ أصناف سعرها بالتأكيد)':''));return lines.join('\n')}
-function sendOrder(){const name=$('#clientName').value.trim(),phone=latin($('#clientPhone').value).replace(/[\s-]/g,''),address=$('#clientLocation').value.trim();$('#formError').textContent='';if(!hasOrder())return $('#formError').textContent='السلة فاضية.';if(name.length<3)return $('#formError').textContent='اكتب الاسم بالكامل.';if(!/^(\+?20|0)?1[0125]\d{8}$/.test(phone))return $('#formError').textContent='رقم الموبايل غير صحيح.';if(address.length<8)return $('#formError').textContent='اكتب العنوان بالتفصيل.';state.customer={name,phone,address};save();const url=`https://wa.me/${CONFIG_SAFE.whatsapp}?text=${encodeURIComponent(buildMessage(name,phone,address))}`;location.href=url}
-document.addEventListener('click',e=>{
- const act=e.target.closest('[data-act]');if(act){const id=act.dataset.id;switch(act.dataset.act){case'inc':setQty(id,(state.cart[id]||0)+1);break;case'dec':setQty(id,(state.cart[id]||0)-1);break;case'remove':setQty(id,0);break;case'edit-special':$('#specialText').value=state.special;$('#specialCount').textContent=state.special.length;openPanel('specialPanel');break;case'clear-special':state.special='';save();renderCart();toast('تم حذف الطلب الخاص')}return}
- const cat=e.target.closest('[data-cat]');if(cat){state.cat=cat.dataset.cat;renderCats();renderGrid();return}
- if(e.target.closest('[data-close]')||e.target.id==='overlay')closeAll();
-});
-$('#openCart').onclick=()=>openPanel('cartPanel');
-$('#openHelp').onclick=()=>openPanel('helpPanel');
-$('#openSpecial').onclick=()=>openPanel('specialPanel');
-$('#openSpecial2').onclick=()=>openPanel('specialPanel');
-$('#sendOrder').onclick=sendOrder;
-$('#clearCart').onclick=()=>{if(hasOrder()&&confirm('تفريغ السلة بالكامل؟')){state.cart={};state.special='';save();renderGrid();renderCart();toast('تم تفريغ السلة')}}
-$('#saveSpecial').onclick=()=>{state.special=$('#specialText').value.trim();save();renderCart();closeAll();toast(state.special?'تم حفظ الطلب الخاص':'تم حذف الطلب الخاص')};
-$('#specialText').oninput=e=>$('#specialCount').textContent=e.target.value.length;
-let searchTimer;$('#search').oninput=e=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{state.query=e.target.value;renderGrid()},100)};
-[['#clientName','name'],['#clientPhone','phone'],['#clientLocation','address']].forEach(([s,k])=>$(s).oninput=e=>{state.customer[k]=e.target.value;save()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled||matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=document.createElement('span'),x=b.getBoundingClientRect(),size=Math.max(x.width,x.height)*.55;r.className='ripple';r.style.width=r.style.height=size+'px';r.style.left=(e.clientX-x.left-size/2)+'px';r.style.top=(e.clientY-x.top-size/2)+'px';if(getComputedStyle(b).position==='static')b.style.position='relative';b.style.overflow='hidden';b.appendChild(r);setTimeout(()=>r.remove(),600)},{passive:true});
-let lastY=scrollY,scrollBusy=false;addEventListener('scroll',()=>{if(scrollBusy)return;scrollBusy=true;requestAnimationFrame(()=>{const y=scrollY,t=$('#top');t.classList.toggle('scrolled',y>8);if(innerWidth<700){if(y>lastY+8&&y>100)t.style.transform='translateY(-100%)';else if(y<lastY-8)t.style.transform='translateY(0)'}lastY=y;scrollBusy=false})},{passive:true});
-load();$('#clientName').value=state.customer.name||'';$('#clientPhone').value=state.customer.phone||'';$('#clientLocation').value=state.customer.address||'';renderCats();renderGrid();renderCart();
-</script>
-</body>
-</html>
+        /* ---------- Header ---------- */
+        .top { position: sticky; top: 0; z-index: 100; background: var(--black); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); }
+        header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: calc(8px + env(safe-area-inset-top, 0px)) 4% 8px; color: #fff; border-bottom: 3px solid var(--red); }
+        .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .brand h1 { margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing: .3px; white-space: nowrap; }
+        .brand h1 span { color: var(--red); }
+        .logo { width: 52px; height: 52px; border-radius: 50%; background: #fff; object-fit: cover; border: 2px solid var(--red); }
+        @media (prefers-reduced-motion: no-preference) {
