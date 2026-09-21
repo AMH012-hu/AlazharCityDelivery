@@ -9,7 +9,7 @@
   "id": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ff5722",
+  "theme_color": "#14231d",
   "icons": [
     {
       "src": "icons/icon-192.png",

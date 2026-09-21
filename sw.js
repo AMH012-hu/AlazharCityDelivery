@@ -1,6 +1,6 @@
 /* Service Worker — Alazhar City Delivery
    غيّر VERSION كل ما تنشر تحديث كبير عشان الكاش القديم يتمسح. */
-const VERSION = 'v4-2026-09-20';
+const VERSION = 'v5-2026-09-21';
 const SHELL = `shell-${VERSION}`;
 const IMGS = `imgs-${VERSION}`;
 const SHELL_FILES = ['./', './index.html', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];

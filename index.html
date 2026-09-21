@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ff5722">
+<meta name="theme-color" content="#14231d">
 <base href="./">
 <title>Alazhar City Delivery | سوبرماركت وصيدلية — الحي السادس مدينة نصر</title>
 <meta name="description" content="سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس بمدينة نصر. اطلب واستلم لحد باب سكنك في 30–45 دقيقة.">
@@ -26,10 +26,10 @@
 
 <style>
 :root{
-  --brand:#ff5722; --brand-d:#e64a19; --brand-l:#fff1ea;
-  --green:#0e9f6e; --green-l:#e6f8f0;
-  --ink:#1b1b1f; --muted:#6f6f7b; --line:#ececf1; --bg:#f6f6f9; --card:#fff;
-  --r:16px; --sh:0 2px 10px rgba(20,20,40,.06); --sh2:0 8px 24px rgba(20,20,40,.14);
+  --brand:#e94b3c; --brand-d:#bd3027; --brand-l:#fff0ed;
+  --green:#0a8150; --green-l:#e5f6ee;
+  --ink:#14231d; --muted:#69736e; --line:#e7ebe8; --bg:#f6f7f4; --card:#fff;
+  --r:18px; --sh:0 3px 14px rgba(20,35,29,.07); --sh2:0 14px 32px rgba(20,35,29,.14);
   --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box}
@@ -45,10 +45,10 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .wrap{max-width:1100px;margin:0 auto;padding:0 14px}
 
 /* ---------- Header ---------- */
-.top{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 0 var(--line)}
-.flagbar{height:5px;background:linear-gradient(90deg,#000 0 25%,#e9e9ee 25% 50%,#149954 50% 75%,#e4312b 75%)}
+.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.flagbar{height:4px;background:linear-gradient(90deg,var(--brand),var(--brand) 48%,#0a8150 48%,#0a8150)}
 .bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
-.logo{width:44px;height:44px;border-radius:12px;object-fit:cover;background:var(--brand-l);flex:none}
+.logo{width:46px;height:46px;border-radius:14px;object-fit:cover;background:var(--ink);flex:none;box-shadow:0 5px 12px rgba(20,35,29,.18)}
 .loc{flex:1;min-width:0;line-height:1.25}
 .loc small{display:block;color:var(--muted);font-size:.7rem;font-weight:600}
 .loc b{display:flex;align-items:center;gap:4px;font-size:.92rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -58,7 +58,7 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .status.closed{background:#fdeaea;color:#d62828}
 .status.open::before{animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.25}}
-.icon-btn{position:relative;width:44px;height:44px;border-radius:50%;border:0;background:var(--brand);color:#fff;display:grid;place-items:center;flex:none}
+.icon-btn{position:relative;width:44px;height:44px;border-radius:14px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;box-shadow:0 5px 12px rgba(20,35,29,.16)}
 .icon-btn .cnt{position:absolute;top:-4px;left:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ink);color:#fff;font-size:.72rem;font-weight:800;display:none;place-items:center}
 .icon-btn .cnt.show{display:grid}
 .icon-btn.bump{animation:bump .35s}
@@ -75,9 +75,9 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .tab[data-group="pharmacy"][aria-pressed="true"]{border-color:var(--green);background:var(--green-l);color:var(--green)}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;margin-top:14px;border-radius:20px;overflow:hidden;box-shadow:var(--sh2)}
+.hero{position:relative;margin-top:14px;border-radius:24px;overflow:hidden;box-shadow:var(--sh2);border:1px solid rgba(255,255,255,.3)}
 .slides{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.slide{min-width:100%;padding:24px 22px;min-height:170px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;overflow:hidden}
+.slide{min-width:100%;padding:26px 24px;min-height:178px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;overflow:hidden}
 .slide::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.1);left:-70px;bottom:-110px}
 .slide h2{margin:0 0 6px;font-size:1.5rem;font-weight:900;line-height:1.3}
 .slide p{margin:0 0 14px;font-size:.92rem;opacity:.95;font-weight:600}
@@ -90,7 +90,7 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 
 /* ---------- USP ---------- */
 .usp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.usp div{background:#fff;border-radius:14px;padding:10px 6px;text-align:center;font-size:.74rem;font-weight:700;box-shadow:var(--sh);line-height:1.4}
+.usp div{background:#fff;border-radius:16px;padding:12px 6px;text-align:center;font-size:.74rem;font-weight:700;box-shadow:var(--sh);line-height:1.4;border:1px solid var(--line)}
 .usp span{display:block;font-size:1.4rem;margin-bottom:2px}
 
 /* ---------- Sections ---------- */
@@ -116,7 +116,7 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .chip{border:0;background:var(--brand);color:#fff;border-radius:20px;padding:6px 14px;font-weight:800;font-size:.82rem}
 
 /* ---------- Product card ---------- */
-.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:8px 8px 10px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:8px 8px 10px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;border:1px solid rgba(20,35,29,.05)}
 .card.sold{opacity:.55}
 .pic{position:relative;aspect-ratio:1/1;border-radius:12px;display:grid;place-items:center;font-size:3.6rem;overflow:hidden}
 .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
@@ -252,7 +252,7 @@ textarea{resize:none}
   <div class="flagbar" aria-hidden="true"></div>
   <div class="wrap">
     <div class="bar">
-      <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="44" height="44">
+      <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="46" height="46">
       <div class="loc">
         <small id="audience">التوصيل إلى</small>
         <b><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaName"></span></b>
@@ -328,7 +328,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./portal.html" style="color:var(--brand-d);font-weight:700">بوابة الشركاء</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
   </footer>
 </main>
 
@@ -402,6 +402,8 @@ textarea{resize:none}
 <noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
 
 <script src="./config.js?v=20260920-4"></script>
+<script src="./platform-store.js"></script>
+<script type="module" src="./firebase-client.js"></script>
 <script src="./images/products/list.js" onerror="void 0"></script>
 <script>
 'use strict';
@@ -682,7 +684,7 @@ function buildMessage(name, phone, address, note){
   return L.join('\n');
 }
 
-function sendOrder(){
+async function sendOrder(){
   showError('');
   const name = $('#clientName').value.trim();
   const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g,'');
@@ -696,7 +698,12 @@ function sendOrder(){
   if (address.length < 8) return showError('اكتب العنوان بالتفصيل عشان المندوب يوصلك.');
   if (CONFIG.minOrder && subtotal() < CONFIG.minOrder && !hasSpecial()) return showError(`أقل قيمة للطلب ${CONFIG.minOrder} ج.م.`);
   if (/^20X+$/i.test(CONFIG.whatsapp)) return showError('رقم الواتساب لسه مش متظبط في config.js.');
+  if (!window.ACDCloud) return showError('جاري تجهيز الاتصال، جرّب مرة ثانية بعد لحظات.');
+  if (!ACDCloud.user()) try { await ACDCloud.signIn(); } catch (_) { return showError('سجّل دخولك بحساب Google لتأكيد الطلب ومتابعته.'); }
   state.customer = {name, phone, address, note}; saveState();
+  try { await ACDCloud.createOrder({ customer:{name,phone,address,note}, items:Object.entries(state.cart).map(([id,quantity])=>({id,name:byId.get(id).name,quantity,price:byId.get(id).price})), subtotal:subtotal(), deliveryFee:deliveryFee(), total:subtotal()+deliveryFee(), special:state.special, hasPharma:hasPharma() }); }
+  catch (_) { return showError('تعذر حفظ الطلب الآن. تأكد من الاتصال وحاول ثانية.'); }
+  toast('تم تسجيل الطلب — جاري فتح واتساب');
   const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(name, phone, address, note))}`;
   const w = window.open(url, '_blank');
   if (w) w.opener = null; else location.href = url;

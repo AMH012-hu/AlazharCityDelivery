@@ -24,8 +24,8 @@ const CONFIG = {
 
 /* شرايح البانر الرئيسي */
 const BANNERS = [
-    { title: '🇵🇸 مع فلسطين', sub: 'ملتزمون بالمقاطعة — اعرف موقفنا وإزاي تساهم', cta: 'اعرف أكتر', go: { href: './palestine.html' }, emoji: '🕊️', bg: 'linear-gradient(120deg,#0d0d0d,#0b6b3a)' },
-    { title: 'توصيل لحد باب سكنك', sub: 'لطلبة الأزهر في الحي السادس — في ' + CONFIG.eta, cta: 'اطلب دلوقتي', go: { group: 'all' }, emoji: '🛵', bg: 'linear-gradient(120deg,#ff5722,#ff8a3d)' },
+    { title: 'توصيل لحد باب سكنك', sub: 'لطلبة الأزهر في الحي السادس — في ' + CONFIG.eta, cta: 'اطلب دلوقتي', go: { group: 'all' }, emoji: '🛵', bg: 'linear-gradient(120deg,#14231d,#0a8150)' },
+    { title: '🇵🇸 مع فلسطين', sub: 'ملتزمون بالمقاطعة — اعرف موقفنا وإزاي تساهم', cta: 'اعرف أكتر', go: { href: './palestine.html' }, emoji: '🕊️', bg: 'linear-gradient(120deg,#14231d,#0b6b3a)' },
     { title: 'صيدلية على بابك', sub: 'مسكنات، برد، فيتامينات وإسعافات أولية', cta: 'شوف الصيدلية', go: { group: 'pharmacy' }, emoji: '💊', bg: 'linear-gradient(120deg,#0e9f6e,#34d399)' },
     { title: 'عروض الطلبة', sub: 'خصومات يومية على الأكل والمشروبات', cta: 'شوف العروض', go: { deals: true }, emoji: '🔥', bg: 'linear-gradient(120deg,#7c3aed,#c026d3)' },
     { title: 'سهرة مذاكرة؟', sub: 'قهوة، نودلز، سناكس ومشروبات طاقة', cta: 'جهّز السهرة', go: { cat: 'study' }, emoji: '📚', bg: 'linear-gradient(120deg,#111827,#374151)' }
