@@ -135,7 +135,9 @@ function readableAuthError(error) {
     'IMAGE_REQUIRED': 'اختار صورة للمنتج.',
     'IMAGE_TYPE': 'اختار ملف صورة صالح.',
     'IMAGE_TOO_LARGE': 'الصورة كبيرة جدًا. الحد الأقصى 5 ميجابايت.',
-    'EMAIL_NOT_VERIFIED': 'فعّل بريدك الإلكتروني أولاً. أرسلنا لك رابط تفعيل ويمكنك إعادة إرساله من الحساب.'
+    'EMAIL_NOT_VERIFIED': 'فعّل بريدك الإلكتروني أولاً. أرسلنا لك رابط تفعيل ويمكنك إعادة إرساله من الحساب.',
+    'RATING_AFTER_DELIVERY_ONLY': 'التقييم متاح بعد استلام الطلب.',
+    'ALREADY_RATED': 'تم تقييم هذا الطلب بالفعل.'
   };
   return map[code] || error?.message || 'حدث خطأ غير متوقع. حاول مرة أخرى.';
 }
@@ -607,16 +609,29 @@ async function updateOrder(id, patch) {
 
 async function rateOrder(id, ratingData) {
   if (!currentUser || currentProfile?.role !== ROLE_CUSTOMER) throw new Error('FORBIDDEN');
+
+  const ref = doc(db, 'orders', id);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) throw new Error('FORBIDDEN');
+
+  const order = snap.data();
+
+  if (order.customerId !== currentUser.uid) throw new Error('FORBIDDEN');
+  if (order.status !== 'delivered') throw new Error('RATING_AFTER_DELIVERY_ONLY');
+  if (order.rating) throw new Error('ALREADY_RATED');
+
   const stars = Math.max(1, Math.min(5, Number(ratingData?.stars || 5)));
   const comment = String(ratingData?.comment || '').trim().slice(0, 300);
-  const tags = Array.isArray(ratingData?.tags) ? ratingData.tags.map(x => String(x).slice(0, 80)).slice(0, 10) : [];
-  await updateDoc(doc(db, 'orders', id), {
+  const tags = Array.isArray(ratingData?.tags)
+    ? ratingData.tags.map(x => String(x).slice(0, 80)).slice(0, 10)
+    : [];
+
+  await updateDoc(ref, {
     rating: { stars, comment, tags },
     ratedAt: serverTimestamp(),
     updatedAt: serverTimestamp()
   });
 }
-
 async function signOutUser() {
   stopAllOrderListeners();
   await signOut(auth);

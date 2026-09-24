@@ -92,18 +92,25 @@ service cloud.firestore {
         && request.resource.data.customer is map;
 
       // Authorization for order state transitions is deliberately narrow.
-      allow update: if isAdmin()
+      allow update: if
         || (
           isCustomer()
           && resource.data.customerId == request.auth.uid
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rating', 'ratedAt', 'updatedAt'])
+           && resource.data.status == 'delivered'
+           && request.resource.data.status == resource.data.status
+           && resource.data.rating == null
+           && request.resource.data.rating is map
+           && request.resource.data.rating.stars is number
+           && request.resource.data.rating.stars >= 1
+           && request.resource.data.rating.stars <= 5
         )
         || (
           isStore()
           && resource.data.storeId == request.auth.token.storeId
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
           && (
-            (resource.data.status == 'new' && request.resource.data.status in ['accepted', 'cancelled'])
+            (resource.data.status == 'new' && request.resource.data.status in ['accepted', 'preparing', 'cancelled'])
             || (resource.data.status == 'accepted' && request.resource.data.status in ['preparing', 'cancelled'])
             || (resource.data.status == 'preparing' && request.resource.data.status in ['ready', 'cancelled'])
             || (resource.data.status == 'ready' && request.resource.data.status == 'cancelled')

@@ -21,7 +21,7 @@
   function adminView(orders) {
     const adminTools = typeof window.adminCatalogView === "function" ? window.adminCatalogView() : "";
     const counts = ['new','accepted','preparing','ready','delivering','delivered'].reduce((a,s)=>{a[s]=orders.filter(o=>o.status===s).length;return a;},{});
-    return adminTools + `<div class="metrics">${[['كل الطلبات',orders.length],['جديد',counts.new],['تجهيز',counts.preparing],['في الطريق',counts.delivering]].map(([l,v])=>`<div class="metric"><small>${l}</small><b>${v}</b></div>`).join('')}</div><section class="panel"><h2>آخر الطلبات</h2>${table(orders.slice(0,30), o => orderRow(o, `<button class="action" data-set="preparing" data-id="${esc(o.id)}">تجهيز</button>`))}</section>`;
+    return adminTools + `<div class="metrics">${[['كل الطلبات',orders.length],['جديد',counts.new],['تجهيز',counts.preparing],['في الطريق',counts.delivering]].map(([l,v])=>`<div class="metric"><small>${l}</small><b>${v}</b></div>`).join('')}</div><section class="panel"><h2>آخر الطلبات</h2>${table(orders.slice(0,30), o => orderRow(o, '—'))}</section>`;
   }
 
   function storeView(orders) {

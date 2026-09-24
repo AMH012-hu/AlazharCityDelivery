@@ -1035,7 +1035,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
 
   // Open Receipt Print Preview
   function openReceipt(id) {
-    const o = ACDPlatform.getOrder(id);
+    const o = (Array.isArray(cloudOrders) ? cloudOrders.find(x => x.id === id) : null) || ACDPlatform.getOrder(id);
     if (!o) return;
 
     // Cross-store prevention check
@@ -1123,7 +1123,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const id = btn.dataset.id;
 
     if (action === 'status') {
-      const o = ACDPlatform.getOrder(id);
+      const o = (Array.isArray(cloudOrders) ? cloudOrders.find(x => x.id === id) : null) || ACDPlatform.getOrder(id);
       if (!o) return;
 
       // Cross-store update security check
