@@ -1,10 +1,10 @@
 {
-  "name": "Alazhar City — تطبيق المندوب",
-  "short_name": "المندوب الأزهر",
+  "name": "Alazhar City Rider",
+  "short_name": "Alazhar Rider",
   "description": "تطبيق مندوب التوصيل لطلبات جامعة الأزهر بالحي السادس",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./rider.html?source=pwa",
+  "start_url": "./rider.html",
   "scope": "./",
   "id": "./rider.html",
   "display": "standalone",

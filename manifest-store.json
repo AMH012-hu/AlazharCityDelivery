@@ -1,10 +1,10 @@
 {
-  "name": "Alazhar City — بوابة التاجر والمتجر",
-  "short_name": "التاجر الأزهر",
+  "name": "Alazhar City Store",
+  "short_name": "Alazhar Store",
   "description": "تطبيق إدارة الطلبات والمخزون لشركاء وتجار وسوبرماركت الأزهر بالحي السادس",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./store.html?source=pwa",
+  "start_url": "./store.html",
   "scope": "./",
   "id": "./store.html",
   "display": "standalone",

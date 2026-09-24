@@ -1,8 +1,8 @@
 {
-  "name": "Alazhar City — تطبيق الإدارة",
+  "name": "Alazhar Admin",
   "short_name": "Alazhar Admin",
   "description": "لوحة إدارة Alazhar City للطلبات والمنتجات والعروض والحسابات.",
-  "start_url": "./portal.html?source=pwa",
+  "start_url": "./portal.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f7f5",
@@ -26,5 +26,6 @@
   "display_override": [
     "fullscreen",
     "standalone"
-  ]
+  ],
+  "id": "./portal.html"
 }
