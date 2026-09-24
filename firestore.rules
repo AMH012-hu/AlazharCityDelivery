@@ -1,0 +1,126 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isCustomer() {
+      return signedIn()
+        && (!request.auth.token.keys().hasAny(['role']) || request.auth.token.role == 'customer');
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.role == 'admin' && request.auth.token.email_verified == true;
+    }
+
+    function isStore() {
+      return signedIn() && request.auth.token.role == 'store' && request.auth.token.email_verified == true && request.auth.token.storeId is string;
+    }
+
+    function isRider() {
+      return signedIn() && request.auth.token.role == 'rider' && request.auth.token.email_verified == true;
+    }
+
+    function ownUser(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function customerProfileCreate() {
+      return isCustomer()
+        && request.resource.data.role == 'customer'
+        && request.resource.data.name is string
+        && request.resource.data.email == request.auth.token.email;
+    }
+
+    match /users/{userId} {
+      // Users can only read their own profile. Admins may read profiles for operations.
+      allow read: if ownUser(userId) || isAdmin();
+
+      // A browser can create only a customer profile. Privileged staff profiles
+      // must be provisioned by the Admin SDK / setup script.
+      allow create: if ownUser(userId) && customerProfileCreate();
+
+      // Users may edit safe profile fields, but never authorization fields.
+      allow update: if ownUser(userId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'name', 'email', 'phone', 'photoURL', 'savedAddresses', 'updatedAt'
+        ])
+        && request.resource.data.role == resource.data.role;
+
+      allow delete: if isAdmin();
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /offers/{offerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /settings/{settingId} {
+      allow read: if settingId == 'site';
+      allow write: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      // Customers can only read their own orders.
+      // Stores can only read orders belonging to their store.
+      // Riders can read their assigned orders and ready orders available for pickup.
+      // Admins can read all orders.
+      allow read: if isAdmin()
+        || (isCustomer() && resource.data.customerId == request.auth.uid)
+        || (isStore() && resource.data.storeId == request.auth.token.storeId)
+        || (isRider() && (
+          resource.data.riderId == request.auth.uid
+          || (resource.data.status == 'ready' && resource.data.riderId == null)
+        ));
+
+      // Only an authenticated customer creates a new order for themselves.
+      allow create: if isCustomer()
+        && request.auth.token.email_verified == true
+        && request.resource.data.customerId == request.auth.uid
+        && request.resource.data.status == 'new'
+        && request.resource.data.riderId == null
+        && request.resource.data.reference is string
+        && request.resource.data.storeId is string
+        && request.resource.data.total is number
+        && request.resource.data.customer is map;
+
+      // Authorization for order state transitions is deliberately narrow.
+      allow update: if isAdmin()
+        || (
+          isCustomer()
+          && resource.data.customerId == request.auth.uid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rating', 'ratedAt', 'updatedAt'])
+        )
+        || (
+          isStore()
+          && resource.data.storeId == request.auth.token.storeId
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+          && (
+            (resource.data.status == 'new' && request.resource.data.status in ['accepted', 'cancelled'])
+            || (resource.data.status == 'accepted' && request.resource.data.status in ['preparing', 'cancelled'])
+            || (resource.data.status == 'preparing' && request.resource.data.status in ['ready', 'cancelled'])
+            || (resource.data.status == 'ready' && request.resource.data.status == 'cancelled')
+          )
+        )
+        || (
+          isRider()
+          && (
+            resource.data.riderId == request.auth.uid
+            || (resource.data.status == 'ready' && resource.data.riderId == null)
+          )
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'riderId', 'updatedAt'])
+          && request.resource.data.riderId == request.auth.uid
+          && request.resource.data.status in ['delivering', 'delivered']
+        );
+
+      allow delete: if isAdmin();
+    }
+  }
+}

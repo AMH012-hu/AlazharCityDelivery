@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#14231d">
 <base href="./">
 <title>Alazhar City Delivery | سوبرماركت وصيدلية — الحي السادس مدينة نصر</title>
-<meta name="description" content="سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس بمدينة نصر. اطلب واستلم لحد باب سكنك في 30–45 دقيقة.">
+<meta name="description" content="سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس. اختار اللي محتاجه، ابعت طلبك، وخليه يوصل لحد بابك بسهولة.">
 <meta property="og:title" content="Alazhar City Delivery">
-<meta property="og:description" content="سوبرماركت وصيدلية لطلبة الأزهر — توصيل سريع في الحي السادس.">
+<meta property="og:description" content="طلبات السوبرماركت والصيدلية لطلبة الأزهر — بسيطة من أول الاختيار لحد الاستلام.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
@@ -58,7 +58,23 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .status.closed{background:#fdeaea;color:#d62828}
 .status.open::before{animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.25}}
-.icon-btn{position:relative;width:44px;height:44px;border-radius:14px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;box-shadow:0 5px 12px rgba(20,35,29,.16)}
+.icon-btn{position:relative;width:44px;height:44px;border-radius:14px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;box-shadow:0 5px 12px rgba(20,35,29,.16);transition:transform .15s,background .15s,box-shadow .15s}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn.download-btn{background:var(--brand);color:#fff;box-shadow:0 5px 14px rgba(233,75,60,.32)}
+.icon-btn.download-btn:hover{background:var(--brand-d);transform:translateY(-1px);box-shadow:0 7px 18px rgba(233,75,60,.45)}
+.icon-btn.download-btn:active{transform:scale(.94)}
+.icon-btn.download-btn svg{width:1.35em;height:1.35em}
+@media(max-width:440px){
+  .bar{gap:6px}
+  .loc small{display:none}
+  .loc b{font-size:.84rem}
+  .status{padding:4px 8px;font-size:.68rem}
+  .palchip{width:38px;height:38px;font-size:1.15rem}
+  .icon-btn{width:38px;height:38px}
+}
+@media(max-width:350px){
+  .status{display:none}
+}
 .icon-btn .cnt{position:absolute;top:-4px;left:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ink);color:#fff;font-size:.72rem;font-weight:800;display:none;place-items:center}
 .icon-btn .cnt.show{display:grid}
 .icon-btn.bump{animation:bump .35s}
@@ -118,8 +134,9 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 /* ---------- Product card ---------- */
 .card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:8px 8px 10px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;border:1px solid rgba(20,35,29,.05)}
 .card.sold{opacity:.55}
-.pic{position:relative;aspect-ratio:1/1;border-radius:12px;display:grid;place-items:center;font-size:3.6rem;overflow:hidden}
-.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.pic{position:relative;aspect-ratio:1/1;border-radius:12px;display:grid;place-items:center;font-size:3.6rem;overflow:hidden;background:#f8f9fa}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;border-radius:12px;transition:transform .2s ease}
+.card:hover .pic img{transform:scale(1.03)}
 .badge{position:absolute;top:8px;right:8px;background:var(--brand);color:#fff;font-size:.66rem;font-weight:800;border-radius:8px;padding:2px 8px;z-index:2}
 .badge.pharma{background:var(--green)}
 .card h3{margin:0;font-size:.85rem;font-weight:700;line-height:1.45;min-height:2.9em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -171,7 +188,8 @@ footer{margin-top:30px;padding:20px 0 6px;text-align:center;color:var(--muted);f
 .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#ffb347);border-radius:6px;transition:width .4s}
 .free.done .meter i{background:var(--green)}
 .line{display:grid;grid-template-columns:52px 1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
-.line .th{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:1.8rem}
+.line .th{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:1.8rem;overflow:hidden;position:relative}
+.line .th img{width:100%;height:100%;object-fit:contain;background:#fff}
 .line .nm{font-weight:700;font-size:.85rem;line-height:1.4}
 .line .tt{font-weight:900;font-size:.92rem;white-space:nowrap}
 .line .ctrl{grid-column:2/-1;display:flex;align-items:center;gap:10px;font-size:.75rem;color:var(--muted)}
@@ -244,7 +262,40 @@ textarea{resize:none}
 .install .x{border:0;background:none;color:var(--muted);font-size:1.4rem;line-height:1;padding:4px 6px}
 .ios-steps li{margin-bottom:6px}
 @media(min-width:720px){.slide{min-height:220px;padding:34px}.slide h2{font-size:2.1rem}.slide .art{font-size:8rem}.hrow .card{min-width:170px;max-width:170px}}
+
+/* ---------- Customer Account, GPS & Notifications Modal & Widgets ---------- */
+.auth-chip-btn{background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:6px 12px;font-size:0.8rem;font-weight:800;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all .15s}
+.auth-chip-btn:hover{border-color:var(--brand);background:var(--brand-l)}
+.bell-dot{position:absolute;top:2px;right:2px;width:9px;height:9px;border-radius:50%;background:#ef4444;border:2px solid #fff}
+.gps-box{background:#f0fdf4;border:1.5px dashed #86efac;border-radius:14px;padding:12px;margin:12px 0 10px;display:flex;flex-direction:column;gap:8px}
+.gps-btn{width:100%;background:#15803d;color:#fff;border:0;border-radius:10px;padding:9px 12px;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background .2s}
+.gps-btn:hover{background:#166534}
+.gps-btn:disabled{background:#9ca3af;cursor:not-allowed}
+.gps-status{font-size:0.75rem;font-weight:700;color:#166534;line-height:1.4}
+.addr-tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.addr-chip{background:#fff;border:1px solid #d1d5db;border-radius:16px;padding:4px 10px;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all .15s}
+.addr-chip.selected{background:var(--ink);color:#fff;border-color:var(--ink)}
+.saved-addr-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.saved-addr-card{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color .15s}
+.saved-addr-card:hover{border-color:var(--brand)}
+.auth-tabs{display:flex;gap:8px;border-bottom:2px solid var(--line);margin-bottom:14px}
+.auth-tab{flex:1;background:none;border:none;border-bottom:3px solid transparent;padding:10px;font-size:0.9rem;font-weight:800;color:var(--muted);cursor:pointer}
+.auth-tab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.offer-card{background:#fff;border:1px solid #fed7aa;border-right:5px solid var(--brand);border-radius:12px;padding:12px 14px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.offer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.offer-badge{background:#ffedd5;color:#c2410c;font-size:0.72rem;font-weight:800;border-radius:6px;padding:2px 8px}
+.offer-title{font-size:0.88rem;font-weight:800;color:var(--ink);margin:0}
+.offer-desc{font-size:0.78rem;color:var(--muted);margin:4px 0 0;line-height:1.4}
+
+/* ---------- Professional Firebase Account UI ---------- */
+.auth-security-note{background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:9px 11px;margin:12px 0;font-size:.76rem;color:#334155;line-height:1.55}
+.password-hint{background:#f8faf9;border-radius:10px;padding:8px 10px;margin:-3px 0 10px;color:var(--muted);font-size:.72rem;font-weight:700;line-height:1.5}
+.auth-submit-wide{width:100%;display:flex;justify-content:center;align-items:center;min-height:44px}
+.btn:disabled,.auth-submit-wide:disabled{opacity:.65;cursor:not-allowed}
 </style>
+<link rel="stylesheet" href="./src/pro-theme.css">
+<style>
+.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}.intro-overlay{position:fixed;inset:0;z-index:600;background:rgba(8,18,14,.72);backdrop-filter:blur(12px);display:none;padding:18px;align-items:center;justify-content:center}.intro-overlay.open{display:flex}.intro-card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28)}.intro-progress{display:flex;gap:6px;padding:14px 18px 0}.intro-progress i{height:4px;flex:1;border-radius:99px;background:#e5ebe7}.intro-progress i.active{background:var(--brand)}.intro-page{display:none;padding:26px 22px 20px;min-height:360px}.intro-page.active{display:flex;flex-direction:column;justify-content:center}.intro-emoji{font-size:4.2rem;text-align:center;margin-bottom:14px}.intro-page h2{margin:0 0 10px;text-align:center;font-size:1.45rem;font-weight:900}.intro-page p{margin:0 auto;color:var(--muted);line-height:1.8;text-align:center;max-width:440px;font-size:.92rem}.intro-points{display:grid;gap:8px;margin:18px 0}.intro-point{background:#f8faf8;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.82rem;font-weight:700}.intro-pager{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}.intro-btn{border:0;border-radius:14px;padding:11px 18px;font-weight:900}.intro-btn.primary{background:var(--brand);color:#fff}.intro-btn.secondary{background:#f1f5f2;color:var(--ink)}.intro-skip{border:0;background:none;color:var(--muted);font-weight:700;text-align:right}.intro-note{font-size:.73rem!important;margin-top:12px!important}@media(max-width:520px){.intro-page{min-height:390px}.intro-page h2{font-size:1.25rem}.intro-pager{grid-template-columns:1fr auto auto;padding-inline:14px}}</style>
 </head>
 <body>
 
@@ -259,6 +310,17 @@ textarea{resize:none}
       </div>
       <span class="status" id="status"></span>
       <a class="palchip" href="./palestine.html" aria-label="مع فلسطين" title="مع فلسطين">🇵🇸</a>
+      <button class="icon-btn" id="openNotificationsBtn" aria-label="العروض والإشعارات اليومية" title="العروض والإشعارات اليومية" style="position:relative">
+        <span style="font-size:1.15rem">🔔</span>
+        <span class="bell-dot" id="notifBadge" style="display:block"></span>
+      </button>
+      <button class="icon-btn" id="openAccountBtn" aria-label="حساب العميل وتحديد الموقع" title="حسابي وعناويني" style="position:relative">
+        <span style="font-size:1.15rem" id="userIcon">👤</span>
+      </button>
+      <a class="icon-btn" href="./track.html" aria-label="تتبع الطلب وتقييم الخدمة" title="تتبع طلباتك وسجل الطلبات" style="text-decoration:none;display:grid;place-items:center;font-size:1.1rem">📍</a>
+      <button class="icon-btn download-btn" id="topInstallBtn" aria-label="تنزيل التطبيق" title="تنزيل التطبيق (أندرويد / آيفون)">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
       <button class="icon-btn" id="openCart" aria-label="فتح السلة">
         <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cnt" id="cartCount">0</span>
@@ -267,7 +329,7 @@ textarea{resize:none}
     <label class="search" id="searchBox">
       <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <span class="sr-only">ابحث عن منتج</span>
-      <input type="search" id="search" placeholder="ابحث عن منتج، دوا، أو مشروب..." autocomplete="off" enterkeyhint="search">
+      <input type="search" id="search" placeholder="بتدور على إيه؟ اكتب اسم المنتج أو الدوا أو المشروب..." autocomplete="off" enterkeyhint="search">
       <button type="button" id="clearSearch" aria-label="مسح البحث">&times;</button>
     </label>
     <div class="tabs" role="group" aria-label="نوع المتجر">
@@ -279,6 +341,13 @@ textarea{resize:none}
 </div>
 
 <main class="wrap" id="main">
+  <div class="install" id="installBox" role="region" aria-label="تثبيت التطبيق">
+    <img src="icons/icon-192.png" alt="" width="48" height="48">
+    <div><b>خلي الطلب أسرع على موبايلك</b><small>خلي الموقع قريب منك من غير ما تفتح المتصفح كل مرة · <a href="./install.html" style="color:var(--brand-d);font-weight:700">الخطوات</a></small></div>
+    <button class="go" id="installBtn">تحميل</button>
+    <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
+  </div>
+
   <a class="pal" id="palBanner" href="./palestine.html">
     <div class="t">
       <span class="fl" aria-hidden="true">🇵🇸</span>
@@ -287,22 +356,25 @@ textarea{resize:none}
     </div>
   </a>
 
+  <section class="sec featured-offers-top" id="featuredOffers" aria-label="عروض اليوم">
+    <div class="sec-head">
+      <div><h2>🔥 عروض اليوم</h2><p class="section-kicker">خصومات بننزلها أول بأول علشان تلاقي الحاجة الحلوة من غير لف كتير.</p></div>
+      <button class="more" id="featuredOffersMore" type="button">شوف الكل ‹</button>
+    </div>
+    <div class="hrow" id="featuredOffersRow"><div class="empty">بنجهّز لك العروض…</div></div>
+  </section>
+
   <section class="hero" id="hero" aria-label="عروض">
     <div class="slides" id="slides"></div>
     <div class="dots" id="dots"></div>
   </section>
 
+
+
   <div class="usp">
     <div><span>⚡</span>توصيل في <span id="eta" style="display:inline;font-size:inherit"></span></div>
     <div><span>💵</span>الدفع عند الاستلام</div>
     <div><span>🎓</span>أسعار تناسب الطلبة</div>
-  </div>
-
-  <div class="install" id="installBox" role="region" aria-label="تثبيت التطبيق">
-    <img src="icons/icon-192.png" alt="" width="48" height="48">
-    <div><b>حمّل التطبيق على موبايلك</b><small>اطلب أسرع من غير ما تفتح المتصفح · <a href="./install.html" style="color:var(--brand-d);font-weight:700">الخطوات</a></small></div>
-    <button class="go" id="installBtn">تحميل</button>
-    <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
   </div>
 
   <a class="pledge" href="./boycott.html">
@@ -311,8 +383,10 @@ textarea{resize:none}
     <span class="arr">‹</span>
   </a>
 
+  <section class="home-intro" aria-label="عن الخدمة"><div><span>لطلبة الأزهر في الحي السادس</span><h1>طلبك من مكان واحد، لحد باب سكنك.</h1><p>سوبرماركت وصيدلية، أسعار واضحة، وتوصيل بسيط من أول الطلب لحد الاستلام.</p></div><div class="home-intro-actions"><a href="#catSec">ابدأ اختيارك</a><a class="secondary" href="./track.html">تابع طلبك</a></div></section>
+
   <section class="sec" id="catSec">
-    <div class="sec-head"><h2>🗂️ الأقسام</h2></div>
+    <div class="sec-head"><div><h2>🛍️ اختار اللي محتاجه</h2><p class="section-kicker">كل حاجة متقسمة علشان توصل للي بتدور عليه أسرع.</p></div></div>
     <div class="tiles" id="tiles"></div>
   </section>
 
@@ -328,7 +402,7 @@ textarea{resize:none}
 
   <footer>
     <div><b id="brandName"></b> — <span id="footArea"></span></div>
-    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 خطوات تنزيل التطبيق</a> · <a href="./portal.html" style="color:var(--brand-d);font-weight:700">بوابة الشركاء</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./track.html" style="color:var(--brand-d);font-weight:700">📍 متابعة طلبي</a> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
   </footer>
 </main>
 
@@ -338,6 +412,16 @@ textarea{resize:none}
   <span id="barTotal">0 ج.م</span>
 </button>
 
+<div class="intro-overlay" id="firstLaunchIntro" aria-modal="true" role="dialog" aria-label="جولة البداية">
+  <div class="intro-card">
+    <div class="intro-progress" id="introProgress"><i class="active"></i><i></i><i></i><i></i></div>
+    <section class="intro-page active"><div class="intro-emoji">🎓</div><h2>اتعمل مخصوص لطلاب الأزهر</h2><p>كل اللي تحتاجه في الحي السادس بمدينة نصر من مكان واحد — أسعار واضحة وتوصيل لحد باب السكن.</p><div class="intro-points"><div class="intro-point">📍 تركيزنا على مساكن طلبة الأزهر واللي حواليها</div><div class="intro-point">🛒 سوبرماركت + 💊 صيدلية في نفس التجربة</div><div class="intro-point">⚡ طلب بسيط وتوصيل مباشر</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🧭</div><h2>اطلبها في كام خطوة وخلاص</h2><p>اختار اللي محتاجه، راجع السلة، حدد مكانك، وإحنا نتابع الطلب معاك لحد ما يوصلك.</p><div class="intro-points"><div class="intro-point">1️⃣ اختار المنتجات أو اطلب طلب خاص</div><div class="intro-point">2️⃣ حدد عنوان السكن أو GPS</div><div class="intro-point">3️⃣ تابع حالة الطلب لحظة بلحظة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🇵🇸</div><h2>مع فلسطين</h2><p>عندنا صفحة مخصصة تشرح سياسة الدعم والمقاطعة والمصادر اللي تعتمد عليها المنصة.</p><div class="intro-points"><div class="intro-point">🕊️ علم فلسطين هيفضل ظاهر فوق</div><div class="intro-point">📖 اضغط عليه في أي وقت لقراءة التفاصيل</div><div class="intro-point">↗️ صفحة فلسطين + سياسة المقاطعة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">📲</div><h2>نزّل التطبيق المناسب ليك</h2><p>كل دور له تطبيق مستقل، والرابط اللي فتحته هو اللي بيحدد التطبيق:</p><div class="intro-points"><div class="intro-point">🛍️ العميل → Alazhar City</div><div class="intro-point">🛵 المندوب → Alazhar City Rider</div><div class="intro-point">🏪 المتجر → Alazhar City Store</div><div class="intro-point">🧭 الإدارة → Alazhar Admin</div></div><p class="intro-note">بعد التثبيت مش هنعيد الجولة دي عليك.</p></section>
+    <div class="intro-pager"><button class="intro-skip" id="introSkip" type="button">مش دلوقتي</button><button class="intro-btn secondary" id="introPrev" type="button" hidden>رجوع</button><button class="intro-btn primary" id="introNext" type="button">التالي</button></div>
+  </div>
+</div>
 <div class="overlay" id="overlay"></div>
 
 <!-- Cart -->
@@ -355,15 +439,60 @@ textarea{resize:none}
       <p class="bn" id="billNote" hidden>الأصناف اللي سعرها بالتأكيد (الطلب الخاص) هتتضاف على الإجمالي بعد ما نكلمك.</p>
     </div>
     <div class="fixed-area"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaFixed"></span></div>
-    <label class="f">الاسم بالكامل<input type="text" id="clientName" autocomplete="name" maxlength="60"></label>
+    
+    <!-- GPS Location Fast Detect Box -->
+    <div class="gps-box" style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:14px;padding:12px;margin:12px 0 10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <b style="font-size:0.85rem;color:#166534">📍 تحديد موقع التوصيل بـ GPS وقت الطلب</b>
+        <span id="savedAddressBadge" style="font-size:0.7rem;background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:10px;font-weight:800">نفس سيستم طلبات</span>
+      </div>
+      <p style="font-size:0.76rem;color:#166534;margin:4px 0 8px;line-height:1.4">
+        هنحدد موقع سكنك تلقائياً بالقمر الصناعي (GPS) وقت إرسال الطلب وهيتسجل في حسابك باسم <b>السكن</b> بدون ما تحتاج تكتب عنوان!
+      </p>
+
+      <!-- Location Mode Toggle -->
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <label id="lblGpsOption" style="flex:1;display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #16a34a;border-radius:10px;padding:8px;font-size:0.78rem;font-weight:800;color:#166534;cursor:pointer">
+          <input type="radio" name="orderLocType" id="locTypeGps" value="gps" checked style="accent-color:#16a34a">
+          <span>🎯 تحديد موقعي بـ GPS وقت الطلب</span>
+        </label>
+        <label id="lblManualOption" style="flex:1;display:flex;align-items:center;gap:6px;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:10px;padding:8px;font-size:0.78rem;font-weight:700;color:var(--muted);cursor:pointer">
+          <input type="radio" name="orderLocType" id="locTypeManual" value="manual" style="accent-color:#16a34a">
+          <span>✍️ كتابة يدوية</span>
+        </label>
+      </div>
+
+      <!-- Quick Address Label Select (السكن، الكلية، المكتب) -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+        <span style="font-size:0.75rem;font-weight:700;color:#166534">تسجيل الموقع في حسابك باسم:</span>
+        <span id="cartCurrentLabelDisplay" style="font-size:0.75rem;font-weight:800;color:#15803d">🏠 السكن</span>
+      </div>
+      <div class="addr-tags" id="cartAddrTags">
+        <button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button>
+        <button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button>
+        <button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button>
+        <button type="button" class="addr-chip" data-label="العمل">������ العمل</button>
+      </div>
+
+      <div class="gps-status" id="cartGpsStatus" style="font-size:0.78rem;font-weight:700;color:#15803d;margin-top:6px;background:#dcfce7;padding:6px 10px;border-radius:8px">
+        ⚡ جاهز: اضغط زر «إرسال الطلب» تحت، وهيلتقط موقع السكن بـ GPS فوراً ويبعت لوكيشن الخريطة للدليفري!
+      </div>
+    </div>
+
+    <label class="f">الاسم بالكامل<input type="text" id="clientName" autocomplete="name" maxlength="60" placeholder="اسمك"></label>
     <label class="f">رقم الموبايل<input type="tel" id="clientPhone" inputmode="tel" autocomplete="tel" maxlength="15" placeholder="01xxxxxxxxx" dir="ltr" style="text-align:right"></label>
-    <label class="f">العنوان بالتفصيل (العمارة / الشارع / علامة مميزة)<input type="text" id="clientLocation" autocomplete="street-address" maxlength="150"></label>
-    <label class="f">ملاحظات للمندوب (اختياري)<input type="text" id="clientNote" maxlength="100" placeholder="مثال: الدور الرابع، شقة 12"></label>
+    <div id="manualAddressWrapper" style="display:none">
+      <label class="f">العنوان بالتفصيل (العمارة / الشارع / علامة مميزة)<input type="text" id="clientLocation" autocomplete="street-address" maxlength="150" placeholder="مثال: الحي السادس، شارع الطيران عمارة 5"></label>
+    </div>
+    <label class="f">ملاحظات للمندوب (رقم الشقة / الدور - اختياري)<input type="text" id="clientNote" maxlength="100" placeholder="مثال: الدور الرابع، شقة 12، رن الجرس"></label>
     <div class="pay">💵 الدفع كاش عند الاستلام</div>
     <p class="err" id="formError" role="alert"></p>
   </div>
   <div class="dfoot">
-    <button class="btn p" id="sendOrder">إرسال الطلب على واتساب</button>
+    <button class="btn p" id="sendOrder" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.96rem;padding:14px">
+      <span id="sendOrderBtnIcon">🛵</span>
+      <span id="sendOrderBtnText">تحديد موقعي (GPS) وإرسال الطلب الآن</span>
+    </button>
     <button class="btn g" id="clearCart">تفريغ السلة</button>
   </div>
 </aside>
@@ -391,20 +520,58 @@ textarea{resize:none}
   </ol>
 </section>
 
+<!-- Account & GPS Sheet -->
+<section class="sheet account-sheet" id="accountPanel" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+  <div class="ph account-ph"><div><span class="eyebrow">ALAZHAR CITY · ACCOUNT</span><h2 id="accountTitle">حسابك في مكان واحد</h2><p class="account-subtitle">بياناتك، عناوينك، وطلباتك محفوظة علشان كل مرة تطلب فيها تبقى أسهل.</p></div><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div id="accountLoggedIn" style="display:none">
+    <div class="account-profile-card"><div class="account-avatar-wrap"><img id="custProfilePhoto" class="account-avatar" alt="صورة الحساب" style="display:none"><div id="custProfileAvatar" class="account-avatar-fallback">A</div></div><div class="account-profile-main"><div class="account-name-row"><b id="custProfileName">اسم العميل</b><span id="custRoleBadge" class="account-role-badge">عميل</span></div><div id="custProfileEmail" class="account-email"></div><div id="custProfilePhone" class="account-phone"></div></div><button type="button" id="btnCustLogout" class="ghost-danger">تسجيل الخروج</button></div>
+    <div id="emailVerificationBox" class="verification-box" style="display:none"><div class="verification-icon">✉️</div><div class="verification-copy"><b>باقي خطوة صغيرة</b><span>فعّل بريدك الإلكتروني علشان نحافظ على حسابك وطلباتك بأمان.</span></div><button type="button" id="btnResendVerification" class="text-action">إعادة إرسال الرسالة</button></div>
+    <div class="account-section-title"><b>بيانات الحساب</b><span>عدّل بياناتك من هنا</span></div>
+    <div class="profile-edit-card"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="accountNameEdit" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="accountPhoneEdit" maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><p class="err" id="accountProfileError" role="alert"></p><button type="button" class="btn p auth-submit-wide" id="btnSaveAccountProfile">حفظ بيانات الحساب</button></div>
+    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><a href="./portal.html" class="account-action-card" id="portalShortcut" style="display:none"><span>🧭</span><b>لوحة التشغيل</b><small>للحسابات المعتمدة</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
+    <div class="account-section-title"><b>عناوين التوصيل</b><span>احفظ عنوانك مرة واستخدمه وقت الطلب</span></div>
+    <div class="gps-box account-gps-box"><div class="gps-box-head"><div><b>📍 العنوان المفضل</b><small>حدد موقعك من GPS، واكتب وصفًا بسيطًا يساعد المندوب.</small></div><span class="mini-secure">خاص بحسابك</span></div><button type="button" class="gps-btn" id="btnProfileDetectGps">تحديد موقعي الآن</button><div class="gps-status" id="profileGpsStatus">لم نحدد موقعًا جديدًا بعد.</div><div class="addr-tags" id="profileAddrTags"><button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button><button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button><button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button><button type="button" class="addr-chip" data-label="العمل">💼 العمل</button></div><input type="text" id="profileDetailedAddr" placeholder="مثال: عمارة 12، الدور 4، شقة 7" maxlength="250"><button type="button" class="btn p" id="btnSaveAddressToProfile">حفظ العنوان</button></div>
+    <div class="saved-title"><b>العناوين المحفوظة</b><span>اختار أي عنوان وقت الطلب</span></div><div class="saved-addr-list" id="savedAddressesList"></div>
+  </div>
+  <div id="accountLoggedOut">
+    <div class="auth-hero"><div class="auth-hero-mark">👋</div><div><b>أهلًا بيك في Alazhar City</b><p>اعمل حساب مرة واحدة، وبعدها بياناتك وعناوينك وطلباتك هتكون أقرب لك.</p></div></div>
+    <div class="auth-tabs" role="tablist" aria-label="الحساب"><button class="auth-tab active" id="tabCustomerLogin" type="button" role="tab" aria-selected="true">تسجيل الدخول</button><button class="auth-tab" id="tabCustomerRegister" type="button" role="tab" aria-selected="false">إنشاء حساب</button></div>
+    <div class="auth-security-note"><span>🔐</span><div><b>بياناتك مؤمّنة</b><p>كلمة السر مش بتتخزن عندنا كبيانات عادية؛ خدمة تسجيل الدخول بتتحقق منها بشكل آمن.</p></div></div>
+    <button type="button" class="google-auth-btn" id="btnGoogleAuth"><span class="google-logo">G</span><span><b>المتابعة باستخدام Google</b><small>من غير كلمة مرور جديدة</small></span><span class="auth-arrow">←</span></button><div class="auth-divider"><span>أو باستخدام البريد الإلكتروني</span></div>
+    <form id="custLoginForm"><label class="f pro-field">البريد الإلكتروني<input type="email" id="loginEmail" required autocomplete="email" placeholder="name@example.com" dir="ltr"></label><label class="f pro-field password-field">كلمة المرور<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="loginPassword">إظهار</button></label><div class="auth-inline-row"><button type="button" id="btnResetPassword" class="link n">نسيت كلمة المرور؟</button><span>هنبعت لك رابط إعادة التعيين على بريدك.</span></div><p class="err" id="loginError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnLoginSubmit">تسجيل الدخول</button></form>
+    <form id="custRegisterForm" style="display:none"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="regName" required minlength="3" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="regPhone" required maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><label class="f pro-field">البريد الإلكتروني<input type="email" id="regEmail" required maxlength="120" autocomplete="email" placeholder="name@example.com" dir="ltr"></label><div class="form-grid-2"><label class="f pro-field password-field">كلمة المرور<input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="8 خانات على الأقل"><button type="button" class="password-toggle" data-toggle-password="regPassword">إظهار</button></label><label class="f pro-field password-field">تأكيد كلمة المرور<input type="password" id="regPasswordConfirm" required minlength="8" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="regPasswordConfirm">إظهار</button></label></div><div class="password-meter" id="passwordMeter"><span></span><span></span><span></span><span></span></div><div class="password-hint" id="passwordHint">اختار كلمة مرور مختلفة عن كلمات المرور اللي بتستخدمها في مواقع تانية.</div><details class="optional-address"><summary>📍 ضيف عنوانك دلوقتي <small>اختياري</small></summary><div class="gps-box account-gps-box compact"><div class="gps-box-head"><div><b>عنوان التوصيل</b><small>ممكن تضيفه الآن أو بعدين من حسابك.</small></div></div><button type="button" class="gps-btn" id="btnRegDetectGps">تحديد الموقع بـ GPS</button><div class="gps-status" id="regGpsStatus">لم نحدد موقعًا بعد.</div></div><label class="f pro-field">العنوان بالتفصيل<input type="text" id="regAddress" maxlength="250" autocomplete="street-address" placeholder="مثال: الحي السادس، عمارة 4، شقة 2"></label></details><p class="err" id="regError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnRegisterSubmit">إنشاء الحساب</button><p class="auth-footnote">بعد التسجيل هنبعت رسالة تفعيل على بريدك الإلكتروني. وبعد التفعيل تقدر تطلب وتتابع طلباتك بشكل طبيعي.</p></form>
+  </div>
+</section>
+
+<!-- Daily Offers & Notifications Sheet -->
+<section class="sheet" id="notificationsPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle">
+  <div class="ph"><h2 id="notifTitle">🔔 العروض والإشعارات اليومية</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <p style="font-size:0.82rem;color:var(--muted);margin:8px 0 14px">أحدث العروض اليومية، كوبونات التوصيل المجاني، وإشعارات السوبرماركت والصيدلية لطلبة الأزهر:</p>
+  <div id="dailyOffersContainer"></div>
+</section>
+
 <!-- Install (iOS / manual) -->
 <section class="sheet" id="installPanel" role="dialog" aria-modal="true" aria-labelledby="installTitle">
-  <div class="ph"><h2 id="installTitle">📲 تثبيت التطبيق</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div class="ph"><h2 id="installTitle">📲 تثبيت التطبيق على جهازك</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div style="display:flex;align-items:center;gap:12px;margin:14px 0;background:var(--brand-l);padding:12px 14px;border-radius:14px;border:1px solid #ffd8cf">
+    <img src="icons/icon-192.png" alt="" width="46" height="46" style="border-radius:12px;flex:none">
+    <div style="line-height:1.4">
+      <b style="display:block;font-size:.95rem">تطبيق Alazhar City Delivery</b>
+      <small style="color:var(--muted);font-weight:600">اطلب في ثوانٍ بدون الحاجة لفتح المتصفح في كل مرة</small>
+    </div>
+  </div>
   <ol class="ios-steps" id="installSteps"></ol>
+  <a href="./install.html" class="btn d" style="display:block;text-align:center;text-decoration:none;margin-top:14px;padding:12px;border-radius:14px">📖 الدليل المصور لخطوات التثبيت (أندرويد / آيفون)</a>
 </section>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
 
-<script src="./config.js?v=20260920-4"></script>
+<script src="./config.js?v=20260924-11"></script>
 <script src="./platform-store.js"></script>
 <script type="module" src="./firebase-client.js"></script>
-<script src="./images/products/list.js" onerror="void 0"></script>
+<script src="./images/products/list.js?v=20260924-11" onerror="void 0"></script>
 <script>
 'use strict';
 
@@ -416,7 +583,8 @@ const fmt = n => Number(n).toLocaleString('en-US');
 const normalize = s => String(s).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
 const toLatinDigits = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 
-const byId = new Map(PRODUCTS.map(p => [p.id, p]));
+let remoteOffers = [];
+let byId = new Map(PRODUCTS.map(p => [p.id, p]));
 const catMap = new Map(CATEGORIES.map(c => [c[0], { key:c[0], label:c[1], emoji:c[2], group:c[3], color:c[4] }]));
 const hasPrice = p => typeof p.price === 'number' && p.price > 0;
 const isPharma = p => catMap.get(p.cat)?.group === 'pharmacy';
@@ -468,7 +636,7 @@ function picHTML(p){
   const c = catMap.get(p.cat);
   const have = !window.IMAGE_IDS || window.IMAGE_IDS.includes(p.id);   // list.js بيحدد الصور الموجودة فعلًا (يمنع 404)
   const src = p.img || (CONFIG.autoImages && have ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
-  const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
+  const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
   let badge = '';
   if (p.oldPrice && p.oldPrice > p.price) badge = `<span class="badge${isPharma(p)?' pharma':''}">-${Math.round((1 - p.price/p.oldPrice)*100)}%</span>`;
   else if (p.badge) badge = `<span class="badge${isPharma(p)?' pharma':''}">${esc(p.badge)}</span>`;
@@ -517,7 +685,7 @@ function renderContent(){
     const list = PRODUCTS.filter(p => visible(p) && (normalize(p.name).includes(q) || normalize(catMap.get(p.cat).label).includes(q)));
     const bm = boycottMatch(state.query);
     const bnote = bm ? `<div class="bmsg">🕊️ <b>«${esc(state.query)}»</b> من علامات <b>${esc(bm.group)}</b> المشمولة بالمقاطعة — مش بنبيعها ومش بنوصّلها. جرّب البدائل المتاحة تحت، أو <a href="./boycott.html">اعرف القائمة والمصادر</a>.</div>` : '';
-    html = bnote + `<div class="sec"><div class="sec-head"><h2>🔎 نتائج «${esc(state.query)}» (${list.length})</h2></div><div class="grid">${list.length ? list.map(cardHTML).join('') : '<p class="empty"><span>🔍</span>مفيش منتجات مطابقة.<br>جرّب كلمة تانية أو اطلب «طلب خاص».</p>'}</div></div>`;
+    html = bnote + `<div class="sec"><div class="sec-head"><h2>🔎 نتائج «${esc(state.query)}» (${list.length})</h2></div><div class="grid">${list.length ? list.map(cardHTML).join('') : '<p class="empty"><span>🔍</span>مش لاقيين نفس الاسم دلوقتي.<br>جرّب كلمة تانية أو ابعت لنا «طلب خاص».</p>'}</div></div>`;
   } else if (state.cat !== 'all'){
     const c = catMap.get(state.cat);
     html = `<div class="crumb"><button class="chip" data-cat="all">✕ ${c.emoji} ${esc(c.label)}</button></div>` +
@@ -525,8 +693,8 @@ function renderContent(){
   } else {
     const deals = PRODUCTS.filter(p => visible(p) && p.oldPrice > p.price);
     const best = PRODUCTS.filter(p => visible(p) && p.badge === 'الأكثر طلبًا');
-    html += section('🔥 عروض اليوم', deals, {row:true, timer:true, id:'deals'});
-    html += section('⭐ الأكثر طلبًا', best, {row:true});
+    // العروض ظهرت فوق الصفحة داخل #featuredOffers بدل تكرارها هنا.
+    html += section('⭐ الناس بتطلب إيه؟', best, {row:true});
     CATEGORIES.filter(c => state.group === 'all' || c[3] === state.group).forEach(c => {
       html += section(`${c[2]} ${esc(c[1])}`, PRODUCTS.filter(p => p.cat === c[0] && visible(p)), {row:true, cat:c[0]});
     });
@@ -571,7 +739,7 @@ function goBanner(i){
   if (g.href){ location.href = g.href; return; }
   if (g.group) setGroup(g.group);
   if (g.cat){ setGroup('all'); setCat(g.cat); }
-  if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#deals')); }
+  if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#featuredOffers')); }
   if (g.group || g.cat) scrollTo($('#content'));
 }
 function scrollTo(el){ if (el) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
@@ -605,8 +773,9 @@ function renderCart(){
   const ids = Object.keys(state.cart);
   let html = ids.map(id => {
     const p = byId.get(id), q = state.cart[id], c = catMap.get(p.cat);
+    const thContent = p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}">` : (p.emoji || c.emoji);
     return `<div class="line">
-      <div class="th" style="background:${c.color}">${p.emoji || c.emoji}</div>
+      <div class="th" style="background:${c.color}">${thContent}</div>
       <span class="nm">${esc(p.name)}</span>
       <span class="tt">${hasPrice(p) ? fmt(p.price*q) + ' ج.م' : 'بالتأكيد'}</span>
       <div class="ctrl">
@@ -647,7 +816,7 @@ function renderCart(){
 }
 
 /* ================== اللوحات ================== */
-const panels = ['cartPanel','specialPanel','helpPanel','installPanel'];
+const panels = ['cartPanel','specialPanel','helpPanel','installPanel','accountPanel','notificationsPanel'];
 let lastFocus = null;
 function openPanel(id){
   closeAll(true); lastFocus = document.activeElement;
@@ -664,22 +833,90 @@ function updateSpecialCount(){ $('#specialCount').textContent = $('#specialText'
 
 /* ================== إرسال الطلب ================== */
 const showError = m => $('#formError').textContent = m;
+let currentGpsCoords = null;
+let currentAddressLabel = 'السكن';
 
-function buildMessage(name, phone, address, note){
+// Reverse Geocode or humanize GPS location
+async function reverseGeocodeCairo(lat, lng) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ar`, { headers: { 'User-Agent': 'AlazharDelivery/2.0' } });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.display_name) {
+        return data.display_name.split(',').slice(0, 3).join(' - ');
+      }
+    }
+  } catch (_) {}
+  return `موقع GPS (${lat.toFixed(4)}, ${lng.toFixed(4)}) - الحي السادس، مدينة نصر`;
+}
+
+function getDeviceGpsCoords() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      return reject(new Error('خاصية تحديد الموقع الجغرافي (GPS) غير مدعومة في متصفحك.'));
+    }
+    navigator.geolocation.getCurrentPosition(
+      async pos => {
+        try {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+          currentGpsCoords = { lat, lng };
+          const address = await reverseGeocodeCairo(lat, lng);
+          resolve({ lat, lng, address });
+        } catch (e) {
+          resolve({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            address: `موقع GPS (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}) - الحي السادس، مدينة نصر`
+          });
+        }
+      },
+      err => {
+        let msg = 'تعذر الحصول على الموقع';
+        if (err.code === 1) msg = 'يرجى السماح بصلاحية الموقع (GPS) في المتصفح لتحديد موقع السكن فوراً وقت الطلب.';
+        else if (err.code === 2) msg = 'تعذر التقاط إشارة الأقمار الصناعية GPS.';
+        else if (err.code === 3) msg = 'انتهت مهلة البحث عن الموقع.';
+        reject(new Error(msg));
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+    );
+  });
+}
+
+function buildMessage(name, phone, address, note, lat, lng, addressLabel){
   const sub = subtotal(), fee = deliveryFee(), total = sub + fee;
-  const L = [`*طلب جديد - ${CONFIG.brand}*`, '', `👤 العميل: ${name}`, `📞 الموبايل: ${phone}`, `📍 المنطقة: ${CONFIG.area}`, `🏠 العنوان: ${address}`];
+  const labelText = addressLabel ? ` (${addressLabel})` : ' (السكن)';
+  const L = [
+    `*طلب جديد - ${CONFIG.brand}*`,
+    '',
+    `👤 العميل: ${name}`,
+    `📞 الموبايل: ${phone}`,
+    `📍 المنطقة: ${CONFIG.area}`,
+    `🏠 العنوان: ${address}${labelText}`
+  ];
+  if (lat && lng) {
+    L.push(`🗺️ لوكيشن GPS مباشر للمندوب: https://maps.google.com/?q=${lat},${lng}`);
+  }
   if (note) L.push(`💬 ملاحظات: ${note}`);
   L.push('');
-  const groups = [['market','🛒 *سوبرماركت:*'],['pharmacy','💊 *صيدلية:*']];
+  const groups = [['market','🛒 سوبرماركت:'],['pharmacy','💊 صيدلية:']];
   groups.forEach(([g,title]) => {
     const ids = Object.keys(state.cart).filter(id => catMap.get(byId.get(id).cat).group === g);
     if (!ids.length) return;
     L.push(title);
-    ids.forEach(id => { const p = byId.get(id), q = state.cart[id]; L.push(hasPrice(p) ? `- ${p.name} × ${q} = ${p.price*q} ج.م` : `- ${p.name} × ${q} (السعر بالتأكيد)`); });
+    ids.forEach(id => {
+      const p = byId.get(id), q = state.cart[id];
+      L.push(hasPrice(p) ? `• ${p.name} × ${q} = ${p.price*q} ج.م` : `• ${p.name} × ${q} (السعر بالتأكيد)`);
+    });
     L.push('');
   });
-  if (hasSpecial()) L.push('📝 *طلب خاص:*', state.special.trim(), '');
-  L.push(`🧾 ثمن المنتجات: ${sub} ج.م`, `🚚 التوصيل: ${fee ? fee + ' ج.م' : 'مجاني'}`, `💰 *الإجمالي:* ${total} ج.م` + (hasSpecial() ? ' (+ الطلب الخاص)' : ''), '💵 الدفع: كاش عند الاستلام');
+  if (hasSpecial()) L.push('📝 طلب خاص:', state.special.trim(), '');
+  L.push(
+    `🧾 ثمن المنتجات: ${sub} ج.م`,
+    `🚚 التوصيل: ${fee ? fee + ' ج.م' : 'مجاني'}`,
+    `💰 الإجمالي: ${total} ج.م` + (hasSpecial() ? ' (+ الطلب الخاص)' : ''),
+    '💵 الدفع: كاش عند الاستلام'
+  );
   if (hasPharma()) L.push('', '⚕️ الطلب فيه منتجات صيدلانية — برجاء تأكيد الصيدلي.');
   return L.join('\n');
 }
@@ -688,26 +925,543 @@ async function sendOrder(){
   showError('');
   const name = $('#clientName').value.trim();
   const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g,'');
-  const address = $('#clientLocation').value.trim();
+  let address = $('#clientLocation').value.trim();
   const note = $('#clientNote').value.trim();
+  const isGpsSelected = $('#locTypeGps') ? $('#locTypeGps').checked : true;
+  const sendBtn = $('#sendOrder');
+  const btnTextEl = $('#sendOrderBtnText');
+  const btnIconEl = $('#sendOrderBtnIcon');
+
   if (!hasOrder()) return showError('السلة فاضية.');
   const bm = boycottMatch(state.special) || boycottMatch(note);
   if (bm) return showError(`🕊️ الطلب فيه «${bm.group}» — مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة. عدّل الطلب الخاص/الملاحظات.`);
   if (name.length < 3) return showError('اكتب الاسم بالكامل.');
   if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone)) return showError('رقم الموبايل غير صحيح. مثال: 01012345678');
-  if (address.length < 8) return showError('اكتب العنوان بالتفصيل عشان المندوب يوصلك.');
   if (CONFIG.minOrder && subtotal() < CONFIG.minOrder && !hasSpecial()) return showError(`أقل قيمة للطلب ${CONFIG.minOrder} ج.م.`);
-  if (/^20X+$/i.test(CONFIG.whatsapp)) return showError('رقم الواتساب لسه مش متظبط في config.js.');
-  if (!window.ACDCloud) return showError('جاري تجهيز الاتصال، جرّب مرة ثانية بعد لحظات.');
-  if (!ACDCloud.user()) try { await ACDCloud.signIn(); } catch (_) { return showError('سجّل دخولك بحساب Google لتأكيد الطلب ومتابعته.'); }
-  state.customer = {name, phone, address, note}; saveState();
-  try { await ACDCloud.createOrder({ customer:{name,phone,address,note}, items:Object.entries(state.cart).map(([id,quantity])=>({id,name:byId.get(id).name,quantity,price:byId.get(id).price})), subtotal:subtotal(), deliveryFee:deliveryFee(), total:subtotal()+deliveryFee(), special:state.special, hasPharma:hasPharma() }); }
-  catch (_) { return showError('تعذر حفظ الطلب الآن. تأكد من الاتصال وحاول ثانية.'); }
-  toast('تم تسجيل الطلب — جاري فتح واتساب');
-  const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage(name, phone, address, note))}`;
+
+  let lat = state.customer?.lat || currentGpsCoords?.lat || null;
+  let lng = state.customer?.lng || currentGpsCoords?.lng || null;
+  let label = currentAddressLabel || 'السكن';
+
+  // تحديد الموقع وقت الطلب تلقائياً إذا كان خيار GPS مفعلاً أو إذا لم يكتب العميل عنوان
+  if (isGpsSelected || !address || address.length < 3) {
+    if (btnTextEl) btnTextEl.textContent = 'جاري تحديد موقعك بالـ GPS وقت الطلب...';
+    if (btnIconEl) btnIconEl.textContent = '⏳';
+    sendBtn.disabled = true;
+    $('#cartGpsStatus').textContent = '🛰️ جاري التقاط إحداثيات السكن بالقمر الصناعي الآن...';
+
+    try {
+      const gpsRes = await getDeviceGpsCoords();
+      lat = gpsRes.lat;
+      lng = gpsRes.lng;
+      address = gpsRes.address;
+      $('#clientLocation').value = address;
+      $('#cartGpsStatus').textContent = `✅ تم التقاط موقع ${label}: ${address}`;
+    } catch (err) {
+      if (btnTextEl) btnTextEl.textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+      if (btnIconEl) btnIconEl.textContent = '🛵';
+      sendBtn.disabled = false;
+      if (!address || address.length < 3) {
+        return showError(err.message || 'تعذر تحديد الموقع تلقائياً، يرجى كتابة العنوان أو تفعيل الـ GPS في هاتفك.');
+      }
+    } finally {
+      if (btnTextEl) btnTextEl.textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+      if (btnIconEl) btnIconEl.textContent = '🛵';
+      sendBtn.disabled = false;
+    }
+  }
+
+  if (!address || address.length < 3) {
+    return showError('يرجى تحديد موقع السكن بالـ GPS أو كتابة العنوان بالتفصيل.');
+  }
+
+  // حفظ الموقع في بيانات العميل المسجلة باسم السكن
+  state.customer = { name, phone, address, note, lat, lng, addressLabel: label };
+  saveState();
+
+  if (window.ACDPlatform) {
+    ACDPlatform.auth.addCustomerSavedAddress({
+      label: label || 'السكن',
+      address,
+      lat,
+      lng
+    });
+  }
+
+  if (window.ACDCloud && ACDCloud.user()) {
+    try {
+      ACDCloud.saveCustomerAddress({
+        label: label || 'السكن',
+        address,
+        lat,
+        lng,
+        phone
+      }).catch(() => {});
+    } catch (_) {}
+  }
+
+  const waNum = (CONFIG.whatsapp || '201501805674').replace(/\D/g, '');
+  const url = `https://wa.me/${waNum}?text=${encodeURIComponent(buildMessage(name, phone, address, note, lat, lng, label))}`;
+
+  const orderInput = {
+    customer: { name, phone, address, note, lat, lng, addressLabel: label },
+    items: Object.entries(state.cart).map(([id,quantity])=>({id,name:byId.get(id).name,quantity,price:byId.get(id).price})),
+    subtotal: subtotal(),
+    deliveryFee: deliveryFee(),
+    total: subtotal() + deliveryFee(),
+    special: state.special,
+    hasPharma: hasPharma()
+  };
+
+  let createdOrder = null;
+  const cloudUser = window.ACDCloud?.user?.();
+  if (cloudUser) {
+    if (!cloudUser.emailVerified) {
+      return showError('فعّل بريدك الإلكتروني أولاً من رابط التفعيل، ثم أرسل الطلب مرة أخرى. يمكنك إعادة إرسال الرابط من «حسابي».');
+    }
+    try {
+      createdOrder = await ACDCloud.createOrder(orderInput);
+    } catch (err) {
+      return showError(ACDCloud.authError(err));
+    }
+  } else {
+    // Guest checkout is intentionally WhatsApp-only. Production tracking/order history requires a verified account.
+  }
+
+  const orderMsg = createdOrder ? `تم تسجيل طلبك (${createdOrder.reference || createdOrder.id}) وحفظ موقع ${label} بنجاح!` : 'تم تجهيز الطلب وتحديد الموقع';
+  toast(orderMsg + ' — لوكيشن الخريطة مرفق للمندوب 📍');
   const w = window.open(url, '_blank');
-  if (w) w.opener = null; else location.href = url;
+  if (!w || w.closed || typeof w.closed === 'undefined') {
+    window.location.href = url;
+  }
 }
+
+/* ================== منطق حساب العميل وتحديد الموقع بالـ GPS والإشعارات ================== */
+function detectDeviceLocation(onSuccess, onError) {
+  getDeviceGpsCoords()
+    .then(res => onSuccess(res))
+    .catch(err => onError(err.message || 'تعذر الحصول على الموقع'));
+}
+
+// Bind address chips
+function initAddrChips(containerSelector, onSelect) {
+  const container = $(containerSelector);
+  if (!container) return;
+  container.addEventListener('click', e => {
+    const chip = e.target.closest('.addr-chip');
+    if (!chip) return;
+    container.querySelectorAll('.addr-chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    const label = chip.dataset.label;
+    if (onSelect) onSelect(label);
+  });
+}
+
+initAddrChips('#cartAddrTags', lbl => {
+  currentAddressLabel = lbl;
+  const labelDisplay = $('#cartCurrentLabelDisplay');
+  if (labelDisplay) {
+    const icon = lbl === 'السكن' ? '🏠 ' : (lbl === 'العمل' ? '💼 ' : '🎓 ');
+    labelDisplay.textContent = icon + lbl;
+  }
+  const statusEl = $('#cartGpsStatus');
+  if (statusEl && !currentGpsCoords) {
+    statusEl.textContent = `⚡ جاهز: هيتم التقاط موقعك وتحديده كـ «${lbl}» أول ما تضغط على زر الطلب تحت!`;
+  }
+});
+initAddrChips('#profileAddrTags', lbl => { currentAddressLabel = lbl; });
+
+// Location Mode Toggle Event (GPS at order time vs Manual)
+const locGpsRadio = $('#locTypeGps');
+const locManualRadio = $('#locTypeManual');
+const manualAddrWrap = $('#manualAddressWrapper');
+const lblGpsOpt = $('#lblGpsOption');
+const lblManualOpt = $('#lblManualOption');
+
+if (locGpsRadio && locManualRadio) {
+  locGpsRadio.addEventListener('change', () => {
+    if (locGpsRadio.checked) {
+      if (manualAddrWrap) manualAddrWrap.style.display = 'none';
+      if (lblGpsOpt) { lblGpsOpt.style.borderColor = '#16a34a'; lblGpsOpt.style.color = '#166534'; lblGpsOpt.style.background = '#fff'; }
+      if (lblManualOpt) { lblManualOpt.style.borderColor = '#d1d5db'; lblManualOpt.style.color = 'var(--muted)'; lblManualOpt.style.background = '#f9fafb'; }
+      $('#cartGpsStatus').textContent = `⚡ جاهز: هيتم التقاط موقعك وتحديده كـ «${currentAddressLabel}» أول ما تضغط على زر الطلب تحت!`;
+      if ($('#sendOrderBtnText')) $('#sendOrderBtnText').textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+    }
+  });
+
+  locManualRadio.addEventListener('change', () => {
+    if (locManualRadio.checked) {
+      if (manualAddrWrap) manualAddrWrap.style.display = 'block';
+      if (lblManualOpt) { lblManualOpt.style.borderColor = '#16a34a'; lblManualOpt.style.color = '#166534'; lblManualOpt.style.background = '#fff'; }
+      if (lblGpsOpt) { lblGpsOpt.style.borderColor = '#d1d5db'; lblGpsOpt.style.color = 'var(--muted)'; lblGpsOpt.style.background = '#f9fafb'; }
+      $('#cartGpsStatus').textContent = '✍️ يمكنك كتابة تفاصيل الشارع والعمارة يدوياً في الخانة أدناه.';
+      if ($('#sendOrderBtnText')) $('#sendOrderBtnText').textContent = 'إرسال الطلب على واتساب';
+    }
+  });
+}
+
+// Cart GPS Button
+const btnCartGps = $('#btnCartDetectGps');
+if (btnCartGps) {
+  btnCartGps.addEventListener('click', () => {
+    btnCartGps.disabled = true;
+    $('#cartGpsStatus').textContent = '⏳ جاري تحديد موقعك بالقمر الصناعي...';
+    detectDeviceLocation(
+      res => {
+        btnCartGps.disabled = false;
+        $('#cartGpsStatus').textContent = `✅ تم التقاط الموقع بنجاح: ${res.address}`;
+        $('#clientLocation').value = res.address;
+        state.customer.address = res.address;
+        state.customer.lat = res.lat;
+        state.customer.lng = res.lng;
+        state.customer.addressLabel = currentAddressLabel;
+        saveState();
+        toast(`📍 تم تحديد موقعك (${currentAddressLabel}) بدقة عبر GPS`);
+
+        // If user logged in, save to profile
+        if (window.ACDPlatform) {
+          ACDPlatform.auth.addCustomerSavedAddress({
+            label: currentAddressLabel,
+            address: res.address,
+            lat: res.lat,
+            lng: res.lng
+          });
+        }
+      },
+      err => {
+        btnCartGps.disabled = false;
+        $('#cartGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Profile GPS Button
+const btnProfileGps = $('#btnProfileDetectGps');
+if (btnProfileGps) {
+  btnProfileGps.addEventListener('click', () => {
+    btnProfileGps.disabled = true;
+    $('#profileGpsStatus').textContent = '⏳ جاري تحديد موقعك بالقمر الصناعي...';
+    detectDeviceLocation(
+      res => {
+        btnProfileGps.disabled = false;
+        $('#profileGpsStatus').textContent = `✅ تم التقاط الموقع: ${res.address}`;
+        $('#profileDetailedAddr').value = res.address;
+      },
+      err => {
+        btnProfileGps.disabled = false;
+        $('#profileGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Reg GPS Button
+const btnRegGps = $('#btnRegDetectGps');
+if (btnRegGps) {
+  btnRegGps.addEventListener('click', () => {
+    btnRegGps.disabled = true;
+    $('#regGpsStatus').textContent = '⏳ جاري تحديد موقعك بالـ GPS...';
+    detectDeviceLocation(
+      res => {
+        btnRegGps.disabled = false;
+        $('#regGpsStatus').textContent = `✅ تم التقاط موقع السكن: ${res.address}`;
+        $('#regAddress').value = res.address;
+      },
+      err => {
+        btnRegGps.disabled = false;
+        $('#regGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Save Address to Profile
+const btnSaveAddr = $('#btnSaveAddressToProfile');
+if (btnSaveAddr) {
+  btnSaveAddr.addEventListener('click', async () => {
+    const val = $('#profileDetailedAddr').value.trim();
+    if (val.length < 3) return toast('يرجى كتابة أو تحديد العنوان أولاً');
+    if (window.ACDCloud?.saveCustomerAddress) {
+      try {
+        await ACDCloud.saveCustomerAddress({
+          label: currentAddressLabel,
+          address: val,
+          lat: currentGpsCoords?.lat || null,
+          lng: currentGpsCoords?.lng || null
+        });
+        toast(`✅ تم حفظ «${currentAddressLabel}» في حسابك بنجاح!`);
+        renderCustomerAuthUI();
+      } catch (err) {
+        toast(ACDCloud.authError(err));
+      }
+    }
+  });
+}
+
+// Render Customer Auth UI (Firebase is the only production account authority)
+function authUserView() {
+  const fbUser = window.ACDCloud?.user?.();
+  const profile = window.ACDCloud?.profile?.();
+  if (!fbUser || !profile) return null;
+  return { user: fbUser, profile };
+}
+
+function renderCustomerAuthUI() {
+  const account = authUserView();
+  const loggedInBox = $('#accountLoggedIn');
+  const loggedOutBox = $('#accountLoggedOut');
+  const userIcon = $('#userIcon');
+
+  if (account) {
+    const { user, profile } = account;
+    loggedInBox.style.display = 'block';
+    loggedOutBox.style.display = 'none';
+    $('#custProfileName').textContent = profile.name || user.displayName || 'عميل الأزهر';
+    $('#custProfileEmail').textContent = profile.email || user.email || '';
+    $('#custProfilePhone').textContent = profile.phone || 'لم تتم إضافة رقم موبايل';
+    if (userIcon) userIcon.textContent = profile.emailVerified ? '🟢' : '🟡';
+
+    const verifyBox = $('#emailVerificationBox');
+    if (verifyBox) verifyBox.style.display = user.emailVerified ? 'none' : 'block';
+
+    if (!$('#clientName').value && profile.name) $('#clientName').value = profile.name;
+    if (!$('#clientPhone').value && profile.phone) $('#clientPhone').value = profile.phone;
+    const nameEdit = $('#accountNameEdit'); const phoneEdit = $('#accountPhoneEdit');
+    if (nameEdit) nameEdit.value = profile.name || user.displayName || '';
+    if (phoneEdit) phoneEdit.value = profile.phone || user.phoneNumber || '';
+    const roleLabel = profile.role === 'admin' ? 'إدارة' : profile.role === 'store' ? 'متجر' : profile.role === 'rider' ? 'مندوب' : 'عميل';
+    if ($('#custRoleBadge')) $('#custRoleBadge').textContent = roleLabel;
+    const displayName = profile.name || user.displayName || 'عميل الأزهر';
+    if ($('#custProfileAvatar')) $('#custProfileAvatar').textContent = (displayName.trim().charAt(0) || 'A').toUpperCase();
+    const photo = $('#custProfilePhoto'); const avatar = $('#custProfileAvatar');
+    if (photo) { if (profile.photoURL) { photo.src = profile.photoURL; photo.style.display='block'; if (avatar) avatar.style.display='none'; } else { photo.style.display='none'; if (avatar) avatar.style.display='grid'; } }
+    const providers = Array.isArray(user.providerData) ? user.providerData.map(p => p.providerId) : [];
+    if ($('#btnLinkGoogle')) $('#btnLinkGoogle').style.display = providers.includes('google.com') ? 'none' : 'flex';
+    if ($('#portalShortcut')) $('#portalShortcut').style.display = ['admin','store','rider'].includes(profile.role) ? 'flex' : 'none';
+
+    const addresses = Array.isArray(profile.savedAddresses) ? profile.savedAddresses : [];
+    const listEl = $('#savedAddressesList');
+    if (listEl) {
+      if (!addresses.length) {
+        listEl.innerHTML = '<div style="font-size:0.8rem;color:var(--muted);padding:8px">لا توجد عناوين محفوظة بعد.</div>';
+      } else {
+        listEl.innerHTML = addresses.map(a => `
+          <div class="saved-addr-card" data-addr="${esc(a.address || '')}" data-label="${esc(a.label || 'السكن')}">
+            <div>
+              <b style="color:var(--brand-d)">${a.label === 'السكن' ? '🏠' : (a.label === 'العمل' ? '💼' : '🎓')} ${esc(a.label || 'السكن')}</b>
+              <div style="font-size:0.75rem;color:var(--muted);margin-top:2px">${esc(a.address || 'موقع GPS محفوظ')}</div>
+            </div>
+            <button type="button" class="btn-act" style="background:var(--brand);color:#fff;border:0;border-radius:8px;padding:5px 10px;font-size:0.75rem;font-weight:700">اختيار</button>
+          </div>
+        `).join('');
+      }
+    }
+  } else {
+    loggedInBox.style.display = 'none';
+    loggedOutBox.style.display = 'block';
+    if (userIcon) userIcon.textContent = '👤';
+  }
+}
+
+// Select saved address from card
+document.addEventListener('click', e => {
+  const card = e.target.closest('.saved-addr-card');
+  if (!card) return;
+  const addr = card.dataset.addr || '';
+  const label = card.dataset.label || 'السكن';
+  $('#clientLocation').value = addr;
+  state.customer.address = addr;
+  state.customer.addressLabel = label;
+  saveState();
+  toast(`تم تطبيق عنوان «${label}» في سلة الشراء بنجاح!`);
+  closeAll();
+});
+
+function setAuthBusy(formId, busy, label) {
+  const form = document.getElementById(formId);
+  const btn = form?.querySelector('button[type="submit"]');
+  if (!btn) return;
+  btn.disabled = busy;
+  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+  btn.textContent = busy ? label : btn.dataset.label;
+}
+
+// Auth Tabs switch
+$('#tabCustomerRegister').addEventListener('click', () => {
+  $('#tabCustomerRegister').classList.add('active'); $('#tabCustomerRegister').setAttribute('aria-selected','true');
+  $('#tabCustomerLogin').setAttribute('aria-selected','false');
+  $('#tabCustomerLogin').classList.remove('active');
+  $('#custRegisterForm').style.display = 'block';
+  $('#custLoginForm').style.display = 'none';
+});
+$('#tabCustomerLogin').addEventListener('click', () => {
+  $('#tabCustomerLogin').classList.add('active'); $('#tabCustomerLogin').setAttribute('aria-selected','true');
+  $('#tabCustomerRegister').setAttribute('aria-selected','false');
+  $('#tabCustomerRegister').classList.remove('active');
+  $('#custLoginForm').style.display = 'block';
+  $('#custRegisterForm').style.display = 'none';
+});
+
+// Account form UX
+document.querySelectorAll('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => { const input = document.getElementById(btn.dataset.togglePassword); if (!input) return; const visible = input.type === 'text'; input.type = visible ? 'password' : 'text'; btn.textContent = visible ? 'إظهار' : 'إخفاء'; }));
+function updatePasswordStrength(password){ const meter=$('#passwordMeter'); if(!meter) return; const score=[password.length>=8,/[A-Za-z]/.test(password),/\d/.test(password),/[^A-Za-z\d]/.test(password)].filter(Boolean).length; [...meter.children].forEach((el,i)=>el.classList.toggle('on',i<score)); const h=$('#passwordHint'); if(h) h.textContent=score<=1?'ضعيفة — استخدم 8 خانات على الأقل مع حروف وأرقام.':score===2?'مقبولة — إضافة رقم ورمز تخليها أقوى.':score===3?'جيدة — باقي خطوة صغيرة.':'قوية — ممتاز.'; }
+$('#regPassword')?.addEventListener('input', e => updatePasswordStrength(e.target.value));
+
+// Customer Registration
+$('#custRegisterForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = $('#regName').value.trim();
+  const email = $('#regEmail').value.trim().toLowerCase();
+  const phone = $('#regPhone').value.trim();
+  const password = $('#regPassword').value;
+  const confirmPassword = $('#regPasswordConfirm').value;
+  const address = $('#regAddress').value.trim();
+  const errEl = $('#regError');
+  errEl.textContent = '';
+
+  if (name.length < 3) return errEl.textContent = 'يرجى كتابة الاسم بالكامل.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return errEl.textContent = 'اكتب بريدًا إلكترونيًا صحيحًا.';
+  const normalizedPhone = phone.replace(/[\s-]/g, '').replace(/\D/g, '');
+  if (!/^01[0125]\d{8}$/.test(normalizedPhone)) return errEl.textContent = 'رقم الموبايل غير صحيح (مثال: 01012345678).';
+  if (password.length < 8) return errEl.textContent = 'كلمة المرور يجب أن تكون 8 خانات على الأقل.';
+  if (password !== confirmPassword) return errEl.textContent = 'تأكيد كلمة المرور غير مطابق.';
+
+  if (!window.ACDCloud?.signUpWithEmail) {
+    errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة وحاول مرة أخرى.';
+    return;
+  }
+
+  setAuthBusy('custRegisterForm', true, 'جارٍ إنشاء الحساب...');
+  try {
+    const res = await ACDCloud.signUpWithEmail(email, password, name, normalizedPhone, {
+      label: currentAddressLabel || 'السكن',
+      address,
+      lat: currentGpsCoords?.lat,
+      lng: currentGpsCoords?.lng
+    });
+    toast(`مرحباً بك يا ${name}! تم إنشاء الحساب. راجع بريدك الإلكتروني لتفعيل الحساب ✉️`);
+    renderCustomerAuthUI();
+  } catch (err) {
+    errEl.textContent = ACDCloud.authError(err);
+  } finally {
+    setAuthBusy('custRegisterForm', false);
+  }
+});
+
+// Customer Login
+$('#custLoginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = $('#loginEmail').value.trim().toLowerCase();
+  const password = $('#loginPassword').value;
+  const errEl = $('#loginError');
+  errEl.textContent = '';
+  if (!window.ACDCloud?.signInWithEmail) return errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة.';
+
+  setAuthBusy('custLoginForm', true, 'جارٍ تسجيل الدخول...');
+  try {
+    const res = await ACDCloud.signInWithEmail(email, password);
+    toast(`أهلاً بعودتك يا ${res.profile?.name || 'عميل الأزهر'}! 👋`);
+    renderCustomerAuthUI();
+  } catch (err) {
+    errEl.textContent = ACDCloud.authError(err);
+  } finally {
+    setAuthBusy('custLoginForm', false);
+  }
+});
+
+// Password reset
+$('#btnResetPassword').addEventListener('click', async () => {
+  const email = $('#loginEmail').value.trim().toLowerCase();
+  const errEl = $('#loginError');
+  if (!email) {
+    errEl.textContent = 'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟».';
+    return;
+  }
+  try {
+    await ACDCloud.resetPassword(email);
+    errEl.style.color = '#166534';
+    errEl.textContent = 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.';
+  } catch (err) {
+    errEl.style.color = '';
+    errEl.textContent = ACDCloud.authError(err);
+  }
+});
+
+// Resend verification email
+$('#btnResendVerification').addEventListener('click', async () => {
+  try {
+    await ACDCloud.resendVerification();
+    toast('تم إرسال رسالة تفعيل جديدة إلى بريدك الإلكتروني ✉️');
+  } catch (err) {
+    toast(ACDCloud.authError(err));
+  }
+});
+
+// Customer Logout
+$('#btnCustLogout').addEventListener('click', async () => {
+  try {
+    await ACDCloud.signOut();
+    toast('تم تسجيل الخروج بنجاح.');
+    renderCustomerAuthUI();
+  } catch (err) {
+    toast(ACDCloud.authError(err));
+  }
+});
+
+// Account profile actions
+$('#btnSaveAccountProfile')?.addEventListener('click', async () => { const errEl=$('#accountProfileError'); if(errEl) errEl.textContent=''; const name=$('#accountNameEdit')?.value.trim()||''; const phone=$('#accountPhoneEdit')?.value.trim()||''; if(name.length<3){ if(errEl) errEl.textContent='اكتب الاسم بالكامل علشان نستخدمه في الطلبات.'; return; } const btn=$('#btnSaveAccountProfile'); const old=btn?.textContent; if(btn){btn.disabled=true;btn.textContent='جارٍ حفظ البيانات...';} try{await ACDCloud.saveCustomerProfile({name,phone}); renderCustomerAuthUI(); toast('تم حفظ بيانات حسابك ✅');}catch(err){if(errEl) errEl.textContent=ACDCloud.authError(err);}finally{if(btn){btn.disabled=false;btn.textContent=old||'حفظ بيانات الحساب';}} });
+$('#btnAccountRefreshClaims')?.addEventListener('click', async()=>{try{await ACDCloud.refreshClaims();renderCustomerAuthUI();toast('تم تحديث الجلسة والصلاحيات ✅')}catch(err){toast(ACDCloud.authError(err))}});
+$('#btnLinkGoogle')?.addEventListener('click', async()=>{const btn=$('#btnLinkGoogle');try{if(btn)btn.disabled=true;const res=await ACDCloud.linkGoogleAccount();if(res?.redirecting)return;renderCustomerAuthUI();toast('تم ربط حساب Google بحسابك ✅')}catch(err){toast(ACDCloud.authError(err))}finally{if(btn)btn.disabled=false}});
+
+// Google Login
+$('#btnGoogleAuth').addEventListener('click', async () => {
+  if (!window.ACDCloud?.signIn) return toast('جاري تجهيز تسجيل الدخول، جرّب بعد ثواني.');
+  const btn=$('#btnGoogleAuth'); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="google-logo">G</span><span><b>جارٍ فتح Google…</b><small>ثواني ونرجعك للموقع</small></span><span class="auth-spinner"></span>';
+  try { const res=await ACDCloud.signIn(); if(res?.redirecting) return; toast(`أهلاً بيك${res.user?.displayName ? ` يا ${res.user.displayName.split(' ')[0]}` : ''} 👋`); renderCustomerAuthUI(); } catch(err){ toast(ACDCloud.authError(err)); btn.disabled=false; btn.innerHTML=old; }
+});
+window.addEventListener('acd-auth-google-complete', () => { renderCustomerAuthUI(); toast('أهلاً بيك 👋 تم تسجيل الدخول بحساب Google.'); });
+window.addEventListener('acd-auth-google-linked', () => { renderCustomerAuthUI(); toast('تم ربط حساب Google بحسابك بنجاح ✅'); });
+
+window.addEventListener('acd-auth-change', () => renderCustomerAuthUI());
+window.addEventListener('acd-auth-profile', () => renderCustomerAuthUI());
+
+// Open Account Panel
+$('#openAccountBtn').addEventListener('click', () => {
+  renderCustomerAuthUI();
+  openPanel('accountPanel');
+});
+
+// Daily Offers & Notifications
+function renderDailyOffers() {
+  const container = $('#dailyOffersContainer');
+  if (!container || !window.ACDPlatform) return;
+  const list = remoteOffers.length ? remoteOffers : ACDPlatform.getOffers();
+  container.innerHTML = list.map(o => `
+    <div class="offer-card">
+      <div class="offer-head">
+        <span class="offer-badge">${esc(o.tag)}</span>
+        <span style="font-size:0.75rem;color:var(--muted)">${esc(o.date)}</span>
+      </div>
+      <h3 class="offer-title">${esc(o.title)}</h3>
+      <p class="offer-desc">${esc(o.desc)}</p>
+    </div>
+  `).join('');
+}
+
+$('#openNotificationsBtn').addEventListener('click', () => {
+  renderDailyOffers();
+  $('#notifBadge').style.display = 'none';
+  openPanel('notificationsPanel');
+});
+
+window.addEventListener('acd-customer-auth', () => {
+  renderCustomerAuthUI();
+});
+
+window.addEventListener('acd-cloud-ready', () => {
+  renderCustomerAuthUI();
+});
 
 /* ================== الأحداث ================== */
 document.addEventListener('click', e => {
@@ -769,6 +1523,66 @@ document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.ta
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
 
+
+/* ================== كتالوج وإعدادات Firebase ================== */
+function renderFeaturedOffers(){
+  const row = $('#featuredOffersRow');
+  if(!row) return;
+  const deals = PRODUCTS.filter(p => visible(p) && p.oldPrice && p.oldPrice > p.price);
+  const productCards = deals.slice(0,10).map(cardHTML).join('');
+  const infoCards = remoteOffers.map(o => `<article class="card offer-card"><div class="offer-head"><span class="offer-badge">${esc(o.tag||'عرض اليوم')}</span></div><h3 class="offer-title">${esc(o.title||'')}</h3><p class="offer-desc">${esc(o.desc||'')}</p></article>`).join('');
+  row.innerHTML = (productCards + infoCards) || `<div class="empty">العروض بتتحدث أول بأول. ارجع بعد شوية وهتلاقي الجديد.</div>`;
+}
+
+async function loadRemoteSiteData(){
+  if(!window.ACDCloud) return;
+  try{
+    const settings = await ACDCloud.getSiteSettings();
+    if(settings && Object.keys(settings).length){
+      CONFIG = {...CONFIG, ...settings};
+      $('#areaName').textContent = CONFIG.area;
+      $('#areaFixed').textContent = 'التوصيل إلى: ' + CONFIG.area;
+      $('#footArea').textContent = CONFIG.area;
+      $('#eta').textContent = CONFIG.eta;
+      $('#audience').textContent = 'توصيل ' + CONFIG.audience + ' إلى';
+      $('#hours').textContent = hh(CONFIG.openHour) + ' – ' + hh(CONFIG.closeHour);
+      renderStatus();
+    }
+    const remote = await ACDCloud.getPublicCatalog();
+    if(Array.isArray(remote) && remote.length){
+      const merged = new Map(PRODUCTS.map(p=>[String(p.id), p]));
+      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ merged.set(id,{...p,id,price:Number(p.price||0),emoji:p.emoji||'🛍️'}); }});
+      PRODUCTS = Array.from(merged.values());
+      byId = new Map(PRODUCTS.map(p=>[p.id,p]));
+      renderTiles(); renderContent(); renderCart();
+    }
+    remoteOffers = await ACDCloud.getPublicOffers();
+    renderFeaturedOffers();
+  }catch(err){
+    console.warn('Remote catalog unavailable; local catalog remains active.', err?.code || err);
+    renderFeaturedOffers();
+  }
+}
+window.addEventListener('acd-cloud-ready', loadRemoteSiteData);
+
+/* ================== جولة أول تشغيل ================== */
+const INTRO_KEY = CONFIG.storageKey + '-first-launch-v2';
+const PWA_INSTALLED_KEY = CONFIG.storageKey + '-pwa-installed-v2';
+let introIndex = 0;
+const introPages = () => $$('.intro-page');
+function isPwaInstalled(){ try{return isStandalone() || localStorage.getItem(PWA_INSTALLED_KEY)==='1';}catch(_){return isStandalone();} }
+function markPwaInstalled(){try{localStorage.setItem(PWA_INSTALLED_KEY,'1');localStorage.setItem(INTRO_KEY,'1');}catch(_){}}
+function applyInstalledState(){if(!isPwaInstalled())return;$('#installBox')?.classList.remove('show');$('#topInstallBtn')?.setAttribute('hidden','hidden');$('#palBanner')?.setAttribute('hidden','hidden');}
+window.addEventListener('appinstalled',()=>{markPwaInstalled();applyInstalledState();closeIntro(true);});
+function renderIntro(){const pages=introPages();pages.forEach((p,i)=>p.classList.toggle('active',i===introIndex));$$('#introProgress i').forEach((d,i)=>d.classList.toggle('active',i===introIndex));$('#introPrev').hidden=introIndex===0;$('#introNext').textContent=introIndex===pages.length-1?'نزّل التطبيق':'التالي';}
+function openIntro(){if(isPwaInstalled())return;try{if(localStorage.getItem(INTRO_KEY)==='1')return;}catch(_){}introIndex=0;renderIntro();$('#firstLaunchIntro').classList.add('open');document.body.classList.add('lock');}
+function closeIntro(markDone=false){if(markDone){try{localStorage.setItem(INTRO_KEY,'1')}catch(_){}}$('#firstLaunchIntro').classList.remove('open');document.body.classList.remove('lock');}
+$('#introPrev')?.addEventListener('click',()=>{if(introIndex>0){introIndex--;renderIntro();}});
+$('#introNext')?.addEventListener('click',async()=>{if(introIndex<introPages().length-1){introIndex++;renderIntro();return;}try{closeIntro(false);await handleInstallAction();}catch(_){}});
+$('#introSkip')?.addEventListener('click',()=>closeIntro(true));
+$('#firstLaunchIntro')?.addEventListener('click',e=>{if(e.target.id==='firstLaunchIntro')closeIntro(true);});
+let introX0=null;$('#firstLaunchIntro')?.addEventListener('touchstart',e=>{introX0=e.touches[0].clientX},{passive:true});$('#firstLaunchIntro')?.addEventListener('touchend',e=>{if(introX0===null)return;const dx=e.changedTouches[0].clientX-introX0;introX0=null;if(Math.abs(dx)<45)return;if(dx<0&&introIndex<introPages().length-1){introIndex++;renderIntro();}else if(dx>0&&introIndex>0){introIndex--;renderIntro();}});
+
 /* ================== تثبيت التطبيق (PWA) ================== */
 let deferredPrompt = null;
 const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -776,32 +1590,41 @@ const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.
 const installDismissed = () => { try { return Date.now() - Number(localStorage.getItem(CONFIG.storageKey + '-install-x') || 0) < 7*864e5; } catch(e){ return false; } };
 
 function showInstall(){
-  if (isStandalone() || installDismissed()) return;
+  if (isPwaInstalled() || installDismissed()) return;
   $('#installBox').classList.add('show');
 }
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; showInstall(); });
-window.addEventListener('appinstalled', () => { deferredPrompt = null; $('#installBox').classList.remove('show'); toast('تم تثبيت التطبيق ✅'); });
+window.addEventListener('appinstalled', () => { deferredPrompt = null; markPwaInstalled(); $('#installBox').classList.remove('show'); $('#topInstallBtn')?.setAttribute('hidden','hidden'); closeIntro(true); toast('تم تثبيت التطبيق ✅'); });
 
-$('#installBtn').addEventListener('click', async () => {
+async function handleInstallAction(){
   if (deferredPrompt){
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     deferredPrompt = null;
-    if (outcome === 'accepted') $('#installBox').classList.remove('show');
+    if (outcome === 'accepted'){
+      $('#installBox').classList.remove('show');
+      toast('تم تثبيت التطبيق بنجاح ✅');
+    }
     return;
   }
-  // iOS أو متصفح مفيهوش زرار تثبيت تلقائي
+  // خطوات التثبيت اليدوي (أندرويد / آيفون / كمبيوتر)
   $('#installSteps').innerHTML = isIOS()
-    ? '<li>افتح الموقع في <b>Safari</b>.</li><li>دوس على زرار المشاركة <b>⬆️</b> تحت.</li><li>اختار <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>دوس <b>إضافة</b> وهتلاقي الأيقونة على موبايلك.</li>'
-    : '<li>افتح قائمة المتصفح <b>⋮</b>.</li><li>اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>أكّد التثبيت.</li>';
+    ? '<li>افتح الموقع في متصفح <b>Safari</b>.</li><li>اضغط على زرار المشاركة <b>⬆️</b> أسفل الشاشة.</li><li>اختر <b>«إضافة إلى الشاشة الرئيسية» (Add to Home Screen)</b>.</li><li>اضغط <b>إضافة</b> وستظهر أيقونة التطبيق على شاشة موبايلك.</li>'
+    : '<li>اضغط على قائمة المتصفح (الثلاث نقاط <b>⋮</b> أعلى اليسار/اليمين).</li><li>اختر <b>«تثبيت التطبيق» (Install app)</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>أكّد التثبيت وستنزل أيقونة التطبيق على جهازك فورًا كأي تطبيق أندرويد.</li>';
   openPanel('installPanel');
-});
+}
+
+$('#installBtn').addEventListener('click', handleInstallAction);
+const topBtn = $('#topInstallBtn');
+if (topBtn) topBtn.addEventListener('click', handleInstallAction);
 $('#installClose').addEventListener('click', () => {
   $('#installBox').classList.remove('show');
   try { localStorage.setItem(CONFIG.storageKey + '-install-x', String(Date.now())); } catch(e){}
 });
-// iOS مفيهوش beforeinstallprompt، فنعرض البانر يدويًا (مرة كل أسبوع)
-if (isIOS()) showInstall();
+// عرض بانر التثبيت إذا لم يكن مثبتاً بالفعل
+showInstall();
+if (isPwaInstalled()) $('#topInstallBtn')?.setAttribute('hidden','hidden');
+setTimeout(openIntro, 250);
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
@@ -821,7 +1644,7 @@ $('#clientPhone').value = state.customer.phone;
 $('#clientLocation').value = state.customer.address;
 $('#clientNote').value = state.customer.note;
 renderStatus(); setInterval(renderStatus, 60000);
-renderHero(); renderTiles(); renderContent(); renderCart();
+renderHero(); renderTiles(); renderContent(); renderCart(); renderFeaturedOffers();
 </script>
 </body>
 </html>

@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14231d">
+  <title>إدارة المتجر والطلبات | Alazhar City Store</title>
+  <link rel="icon" type="image/png" href="icons/favicon-64.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest-store.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14231d;
+      --red: #e94b3c;
+      --green: #0a8150;
+      --gold: #f59e0b;
+      --blue: #2563eb;
+      --bg: #f4f7f5;
+      --surface: #ffffff;
+      --line: #e3e9e5;
+      --muted: #627269;
+      --r: 16px;
+      --sh: 0 4px 18px rgba(20,35,29,0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    button, input, select { font: inherit; }
+    .shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 16px 60px;
+    }
+
+    /* PWA Install Banner */
+    .pwa-install-banner {
+      background: linear-gradient(135deg, #1e362d, #14231d);
+      color: #fff;
+      border-radius: var(--r);
+      padding: 12px 18px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid #2d5244;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    .pwa-install-banner .info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pwa-install-banner .info span {
+      font-size: 1.8rem;
+    }
+    .pwa-install-banner b {
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    .pwa-install-banner small {
+      color: #9cb3a8;
+      font-size: 0.76rem;
+    }
+    .pwa-btn {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Login Guard Modal / Screen */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,35,29,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .auth-overlay.hidden { display: none; }
+    .auth-card {
+      background: #fff;
+      border-radius: 22px;
+      max-width: 440px;
+      width: 100%;
+      padding: 26px 22px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      text-align: center;
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .auth-icon {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+    .auth-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+    .auth-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0 0 18px;
+      line-height: 1.6;
+    }
+    .auth-privacy-badge {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-align: right;
+    }
+    .auth-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      background: #fafbfa;
+      text-align: center;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--red);
+      background: #fff;
+    }
+    .auth-submit-btn {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .auth-submit-btn:hover { background: #d03d2f; }
+    .google-login-btn {
+      width: 100%;
+      background: #fff;
+      color: #374151;
+      border: 2px solid var(--line);
+      padding: 11px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .auth-error {
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-top: 6px;
+      display: none;
+    }
+
+    /* Top Navigation / Store Header */
+    .top-head {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--r);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .head-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .head-brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .head-brand h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .head-brand p {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    .head-controls {
+      margin-inline-start: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chime-btn {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .chime-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .nav-link-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .btn-logout {
+      background: rgba(233,75,60,0.25);
+      border: 1px solid var(--red);
+      color: #fff;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Isolated Store Banner & Store Switcher */
+    .store-badge-banner {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r);
+      padding: 12px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--sh);
+    }
+    .store-badge-banner.market {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+    .store-badge-banner.pharmacy {
+      border-color: #fbcfe8;
+      background: #fdf2f8;
+    }
+    .store-badge-banner .badge-icon {
+      font-size: 2rem;
+    }
+    .store-badge-banner .badge-title {
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .store-badge-banner .badge-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .store-badge-banner .badge-pill {
+      margin-inline-start: auto;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .store-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .store-tab-btn {
+      border: 2px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .store-tab-btn.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    /* Live Metrics Cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 16px;
+      box-shadow: var(--sh);
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--line);
+    }
+    .metric-card.red::before { background: var(--red); }
+    .metric-card.gold::before { background: var(--gold); }
+    .metric-card.green::before { background: var(--green); }
+    .metric-card small {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .metric-card b {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-top: 4px;
+      color: var(--ink);
+    }
+
+    /* Filter & Search Bar */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 220px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+    }
+    .status-filter-select {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    /* Orders Grid */
+    .orders-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 16px;
+    }
+    .store-order-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 18px;
+      box-shadow: var(--sh);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .store-order-card.new {
+      border-color: #fca5a5;
+      background: #fffdfd;
+    }
+    .store-order-card.preparing {
+      border-color: #fde68a;
+      background: #fffdf5;
+    }
+    .order-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .order-ref {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--red);
+    }
+    .order-type-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+    .order-type-badge.market { background: #dbeafe; color: #1e40af; }
+    .order-type-badge.pharmacy { background: #fce7f3; color: #9d174d; }
+
+    .cust-info {
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .cust-name {
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .cust-addr {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+    .cust-note {
+      background: #fffbeb;
+      border-right: 3px solid var(--gold);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      color: #92400e;
+      margin-top: 4px;
+    }
+
+    /* Items List */
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+    .items-table td {
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .items-table td.qty {
+      font-weight: 900;
+      color: var(--red);
+      width: 32px;
+    }
+    .items-table td.price {
+      text-align: left;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .order-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .order-price {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 6px;
+    }
+    .btn-act {
+      border: none;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-act.accept {
+      background: var(--red);
+      color: #fff;
+    }
+    .btn-act.accept:hover { background: #d03d2f; }
+    .btn-act.ready {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-act.ready:hover { background: #087045; }
+    .btn-act.print {
+      background: #f1f5f3;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    /* Thermal Receipt Modal */
+    .print-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+    .print-modal.open { display: flex; }
+    .receipt-paper {
+      background: #fff;
+      width: 100%;
+      max-width: 360px;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #receiptSection, #receiptSection * { visibility: visible; }
+      #receiptSection { position: absolute; left: 0; top: 0; width: 100%; }
+    }
+
+    @media (max-width: 768px) {
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .orders-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+<style>/* ALAZHAR CITY professional app polish */
+body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#14231d}.shell{position:relative}button,a{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}.head,.rider-header,.top-head{box-shadow:0 10px 26px rgba(17,34,27,.08)!important;border-bottom:1px solid rgba(17,34,27,.08)!important}.nav-btn,.back,.action,.auth-submit-btn{border-radius:13px!important}.panel,.auth-box,.summary,.order-card,.status-box,.store-card{box-shadow:0 10px 28px rgba(17,34,27,.07)!important;border-color:#dfe8e2!important;border-radius:20px!important}.auth-privacy-badge{border-radius:14px!important;line-height:1.65!important}.auth-submit-btn{box-shadow:0 9px 22px rgba(239,75,58,.16)!important}.table{border-radius:14px;overflow:hidden}.table th{background:#f4f8f5!important}
+</style>
+<link rel="stylesheet" href="./src/app-polish.css">
+<style>.app-install-role{position:fixed;left:14px;right:14px;bottom:14px;z-index:250;background:#fff;border:1px solid #e3e9e5;box-shadow:0 12px 34px rgba(20,35,29,.18);border-radius:18px;padding:12px;display:flex;align-items:center;gap:10px;font-family:Cairo,system-ui}.app-install-role b{display:block;font-size:.84rem}.app-install-role small{display:block;color:#69736e;font-size:.7rem}.app-install-role button{margin-inline-start:auto;border:0;background:#e94b3c;color:#fff;border-radius:12px;padding:8px 12px;font-weight:900}.app-install-role[hidden]{display:none}</style></head>
+<body>
+
+<!-- Login Guard Overlay -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-card">
+    <div class="auth-icon">🏪</div>
+    <h2 class="auth-title">دخول بوابة المتجر</h2>
+    <p class="auth-desc">هذه البوابة تعمل بحساب Firebase مع صلاحية <b>store</b> مرتبطة بمتجر محدد. لا توجد أكواد PIN مشتركة داخل الموقع.</p>
+    <div class="auth-privacy-badge">🔒 <b>عزل المتجر:</b> صلاحية الحساب تحدد المتجر الذي يمكنه رؤية طلباته. لا يمكن اختيار متجر آخر من الواجهة.</div>
+    <form id="storeLoginForm">
+      <input type="email" class="auth-input" id="storeEmail" placeholder="البريد الإلكتروني المهني" autocomplete="email" required dir="ltr" style="text-align:left">
+      <input type="password" class="auth-input" id="storePassword" placeholder="كلمة المرور" autocomplete="current-password" required>
+      <button type="submit" class="auth-submit-btn" id="storeLoginSubmit">تسجيل الدخول للوحة التحكم 🏪</button>
+    </form>
+    <button type="button" class="google-login-btn" id="btnFirebaseLogin">🌐 الدخول باستخدام Google</button>
+    <button type="button" id="btnStoreReset" style="background:none;border:0;color:var(--blue);font-size:.78rem;font-weight:800;cursor:pointer;margin-top:4px">نسيت كلمة المرور؟</button>
+    <div class="auth-error" id="authError"></div>
+    <div style="margin-top:14px;font-size:0.72rem;color:var(--muted)">مطلوب تفعيل البريد وصلاحية store. تواصل مع إدارة المنصة لتفعيل حساب الموظف.</div>
+  </div>
+</div>
+
+<main class="shell" id="mainApp" style="display:none">
+  <!-- PWA Install Banner inside Store App -->
+  <div class="pwa-install-banner" id="pwaStoreBanner">
+    <div class="info">
+      <span>📲</span>
+      <div>
+        <b>تثبيت تطبيق التاجر (App) على جهاز الكاشير أو الهاتف</b>
+        <small>أيقونة سريعة ملء الشاشة تعمل فورياً وبدون متصفح مع جرس تنبيه صوتي</small>
+      </div>
+    </div>
+    <button type="button" class="pwa-btn" id="btnInstallStore">
+      ⬇️ تنزيل الـ APP
+    </button>
+  </div>
+
+  <!-- Top Store Header -->
+  <header class="top-head">
+    <div class="head-brand">
+      <img src="images/logo.webp" alt="Alazhar City">
+      <div>
+        <h1 id="storeTitle">بوابة إدارة السوبرماركت والصيدلية</h1>
+        <p id="storeSubtitle">استقبال وتجهيز الطلبات الحية — الحي السادس</p>
+      </div>
+    </div>
+    <div class="head-controls">
+      <button type="button" class="chime-btn active" id="chimeBtn">🔔 جرس التنبيه (مفعل)</button>
+      <a class="nav-link-btn" href="./track.html">📍 تتبع الطلبات</a>
+      <a class="nav-link-btn" href="./index.html">🛒 المتجر</a>
+      <button type="button" class="btn-logout" id="btnLogoutStore">خروج</button>
+    </div>
+  </header>
+
+  <!-- Isolated Store Identity Banner (shown for Supermarket or Pharmacy) -->
+  <div class="store-badge-banner" id="storeIsolationBanner" style="display:none">
+    <div class="badge-icon" id="storeBadgeIcon">🏪</div>
+    <div class="badge-details">
+      <div class="badge-title" id="storeBadgeTitle">لوحة المتجر</div>
+      <div class="badge-subtitle" id="storeBadgeSubtitle">نظام معزول ومحمي — يتم متابعة طلبات ومبيعات قسمك فقط ولا يمكن لأي متجر آخر الاطلاع عليها.</div>
+    </div>
+    <span class="badge-pill" id="storeBadgePill">🔒 وصول معزول ومحمي</span>
+  </div>
+
+  <!-- Store Filter Tabs (Only shown if Super Admin) -->
+  <nav class="store-tabs" id="storeTabsNav" aria-label="اختيار المتجر" style="display:none">
+    <button type="button" class="store-tab-btn active" data-store-filter="all">
+      <span>🌐 جميع الأقسام (إشراف عام)</span>
+    </button>
+    <button type="button" class="store-tab-btn" data-store-filter="market">
+      <span>🛒 سوبرماركت البركة</span>
+    </button>
+    <button type="button" class="store-tab-btn" data-store-filter="pharmacy">
+      <span>💊 صيدلية الشفاء ود. مصطفى</span>
+    </button>
+  </nav>
+
+  <!-- Metrics Grid -->
+  <section class="metrics-grid">
+    <div class="metric-card red">
+      <small>طلبات واردة جديدة</small>
+      <b id="countNew">0</b>
+    </div>
+    <div class="metric-card gold">
+      <small>قيد التجهيز بالمحل</small>
+      <b id="countPreparing">0</b>
+    </div>
+    <div class="metric-card">
+      <small>جاهزة / مع المندوب</small>
+      <b id="countDelivering">0</b>
+    </div>
+    <div class="metric-card green">
+      <small>إجمالي مبيعات اليوم</small>
+      <b id="todayRevenue">0 ج.م</b>
+    </div>
+  </section>
+
+  <!-- Filter & Search Bar -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="searchInput" placeholder="بحث برقم الطلب (AZ-...) أو اسم العميل أو الهاتف...">
+    <select class="status-filter-select" id="statusFilter">
+      <option value="all">كل الحالات</option>
+      <option value="new">طلبات جديدة</option>
+      <option value="preparing">قيد التجهيز</option>
+      <option value="ready">جاهزة للاستلام</option>
+      <option value="delivering">مع المندوب</option>
+      <option value="delivered">تم التسليم</option>
+    </select>
+  </div>
+
+  <!-- Orders Grid -->
+  <section class="orders-layout" id="ordersGrid"></section>
+</main>
+
+<!-- Printable Thermal Receipt Modal -->
+<div class="print-modal" id="receiptModal">
+  <div class="receipt-paper" id="receiptSection">
+    <div style="text-align:center;border-bottom:2px dashed #000;padding-bottom:12px;margin-bottom:12px">
+      <h2 style="margin:0;font-size:1.2rem">ALAZHAR CITY DELIVERY</h2>
+      <p style="margin:4px 0 0;font-size:0.8rem">بون تجهيز وتسليم — الحي السادس</p>
+      <div id="recStoreName" style="font-weight:bold;margin-top:4px">سوبرماركت البركة</div>
+    </div>
+    <div id="receiptContent"></div>
+    <div style="text-align:center;border-top:2px dashed #000;padding-top:12px;margin-top:14px">
+      <p style="margin:0 0 10px;font-size:0.75rem">شكراً لتسوقكم مع Alazhar City Delivery</p>
+      <button type="button" class="btn-act accept" onclick="window.print()" style="margin-left:6px">🖨️ طباعة</button>
+      <button type="button" class="btn-act print" onclick="document.getElementById('receiptModal').classList.remove('open')">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<script src="./platform-store.js"></script>
+<script type="module" src="./firebase-client.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const grid = $('#ordersGrid');
+  const authOverlay = $('#authOverlay');
+  const mainApp = $('#mainApp');
+  const authError = $('#authError');
+
+  let activeStoreFilter = 'all'; // 'all' | 'market' | 'pharmacy'
+  let activeStatusFilter = 'all';
+  let searchQuery = '';
+  let chimeEnabled = true;
+  let audioCtx = null;
+  let deferredPrompt = null;
+  let activeStore = null;
+  let cloudOrders = null;
+
+  // Web Audio Chime generator
+  function playOrderChime() {
+    if (!chimeEnabled) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+      osc.frequency.exponentialRampToValueAtTime(880.00, audioCtx.currentTime + 0.15); // A5
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.5);
+    } catch (_) {}
+  }
+
+  // Check PWA Install event for Store app
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = $('#btnInstallStore');
+    if (btn) btn.style.display = 'flex';
+  });
+
+  $('#btnInstallStore').addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      if (choice.outcome === 'accepted') {
+        $('#pwaStoreBanner').style.display = 'none';
+      }
+      deferredPrompt = null;
+    } else {
+      window.location.href = './install.html';
+    }
+  });
+
+  // Firebase Authorization Check
+  function showAuthError(message) {
+    authError.textContent = message;
+    authError.style.display = 'block';
+  }
+  function setStoreLoginBusy(busy) {
+    const btn = $('#storeLoginSubmit');
+    if (!btn) return;
+    btn.disabled = busy;
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.textContent = busy ? 'جارٍ التحقق...' : btn.dataset.label;
+  }
+
+  function checkAuth() {
+    const fbUser = window.ACDCloud?.user?.();
+    const fbProfile = window.ACDCloud?.profile?.();
+    if (fbUser && fbProfile?.role === 'store' && fbProfile?.storeId) {
+      activeStore = {
+        id: fbProfile.storeId,
+        name: fbProfile.name || fbUser.displayName || 'متجر الأزهر',
+        type: fbProfile.storeType || 'market'
+      };
+      authError.style.display = 'none';
+      grantAccess();
+      return true;
+    }
+    if (fbUser && fbProfile && fbProfile.role !== 'store') {
+      showAuthError('هذا الحساب غير معتمد لإدارة متجر. صلاحية store يجب أن تمنحها الإدارة.');
+    }
+    authOverlay.classList.remove('hidden');
+    mainApp.style.display = 'none';
+    return false;
+  }
+
+  function grantAccess() {
+    authOverlay.classList.add('hidden');
+    mainApp.style.display = 'block';
+    const isMarket = activeStore.type === 'market';
+    const isPharmacy = activeStore.type === 'pharmacy';
+    activeStoreFilter = isMarket ? 'market' : isPharmacy ? 'pharmacy' : 'all';
+
+    const banner = $('#storeIsolationBanner');
+    const tabsNav = $('#storeTabsNav');
+    if (isMarket) {
+      $('#storeTitle').textContent = activeStore.name || 'إدارة السوبرماركت';
+      $('#storeSubtitle').textContent = 'طلبات متجرك فقط — لوحة معزولة ومحمية';
+      if (banner) {
+        banner.style.display = 'flex';
+        banner.className = 'store-badge-banner market';
+        $('#storeBadgeIcon').textContent = '🛒';
+        $('#storeBadgeTitle').textContent = activeStore.name;
+        $('#storeBadgeSubtitle').textContent = '🔒 هذه الجلسة معزولة عن الصيدلية وجميع المتاجر الأخرى.';
+        $('#storeBadgePill').innerHTML = '🔒 متجر محدد';
+      }
+      if (tabsNav) tabsNav.style.display = 'none';
+    } else if (isPharmacy) {
+      $('#storeTitle').textContent = activeStore.name || 'إدارة الصيدلية';
+      $('#storeSubtitle').textContent = 'طلبات الصيدلية فقط — لوحة معزولة ومحمية';
+      if (banner) {
+        banner.style.display = 'flex';
+        banner.className = 'store-badge-banner pharmacy';
+        $('#storeBadgeIcon').textContent = '💊';
+        $('#storeBadgeTitle').textContent = activeStore.name;
+        $('#storeBadgeSubtitle').textContent = '🔒 هذه الجلسة معزولة عن السوبرماركت وجميع المتاجر الأخرى.';
+        $('#storeBadgePill').innerHTML = '🔒 صيدلية محددة';
+      }
+      if (tabsNav) tabsNav.style.display = 'none';
+    }
+    render();
+    if (window.ACDCloud?.watchOrders) {
+      ACDCloud.watchOrders(list => { cloudOrders = list; render(); });
+    }
+  }
+
+  // Firebase email/password login
+  $('#storeLoginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = $('#storeEmail').value.trim().toLowerCase();
+    const password = $('#storePassword').value;
+    if (!window.ACDCloud?.signInWithEmail) return showAuthError('خدمة Firebase غير جاهزة. أعد تحميل الصفحة.');
+    setStoreLoginBusy(true);
+    try {
+      await ACDCloud.signInWithEmail(email, password);
+      if (!checkAuth()) showAuthError('تم تسجيل الدخول، لكن الحساب لا يملك صلاحية store معتمدة.');
+    } catch (err) { showAuthError(ACDCloud.authError(err)); }
+    finally { setStoreLoginBusy(false); }
+  });
+
+  $('#btnFirebaseLogin').addEventListener('click', async () => {
+    if (!window.ACDCloud?.signIn) return showAuthError('خدمة Firebase غير جاهزة. أعد تحميل الصفحة.');
+    try { await ACDCloud.signIn(); checkAuth(); }
+    catch (err) { showAuthError(ACDCloud.authError(err)); }
+  });
+
+  $('#btnStoreReset').addEventListener('click', async () => {
+    const email = $('#storeEmail').value.trim().toLowerCase();
+    if (!email) return showAuthError('اكتب بريدك الإلكتروني أولاً.');
+    try { await ACDCloud.resetPassword(email); showAuthError('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.'); }
+    catch (err) { showAuthError(ACDCloud.authError(err)); }
+  });
+
+  $('#btnLogoutStore').addEventListener('click', async () => {
+    try { await ACDCloud.signOut(); } catch (_) {}
+    activeStore = null;
+    cloudOrders = null;
+    authOverlay.classList.remove('hidden');
+    mainApp.style.display = 'none';
+  });
+
+  window.addEventListener('acd-auth-change', checkAuth);
+  window.addEventListener('acd-auth-profile', checkAuth);
+
+  function render() {
+    if (!activeStore) return;
+    const data = ACDPlatform.read();
+    let orders = Array.isArray(cloudOrders) ? cloudOrders : [];
+
+    // CRITICAL RBAC STORE ISOLATION:
+    // A supermarket manager MUST ONLY see supermarket orders.
+    // A pharmacy manager MUST ONLY see pharmacy orders.
+    if (activeStore.type === 'market') {
+      orders = orders.filter(o => !o.hasPharma);
+    } else if (activeStore.type === 'pharmacy') {
+      orders = orders.filter(o => !!o.hasPharma);
+    } else if (activeStoreFilter === 'market') {
+      orders = orders.filter(o => !o.hasPharma);
+    } else if (activeStoreFilter === 'pharmacy') {
+      orders = orders.filter(o => !!o.hasPharma);
+    }
+
+    // Update Metrics (strictly computed for this store only)
+    const newCount = orders.filter(o => o.status === 'new').length;
+    const preparingCount = orders.filter(o => o.status === 'accepted' || o.status === 'preparing').length;
+    const deliveringCount = orders.filter(o => o.status === 'ready' || o.status === 'delivering').length;
+    const todayTotal = orders.filter(o => o.status === 'delivered').reduce((sum, o) => sum + o.subtotal, 0);
+
+    $('#countNew').textContent = newCount;
+    $('#countPreparing').textContent = preparingCount;
+    $('#countDelivering').textContent = deliveringCount;
+    $('#todayRevenue').textContent = todayTotal + ' ج.م';
+
+    // Status filter
+    if (activeStatusFilter !== 'all') {
+      orders = orders.filter(o => o.status === activeStatusFilter);
+    }
+
+    // Search filter
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      orders = orders.filter(o =>
+        (o.reference && o.reference.toLowerCase().includes(q)) ||
+        (o.customer?.name && o.customer.name.toLowerCase().includes(q)) ||
+        (o.customer?.phone && o.customer.phone.includes(q))
+      );
+    }
+
+    if (!orders.length) {
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align:center; padding: 40px 20px; background:#fff; border-radius:16px; border:1px dashed var(--line); color:var(--muted)">
+          <div style="font-size:2.5rem;margin-bottom:8px">📦</div>
+          <b>لا توجد طلبات مطابقة للفلتر المختار حالياً.</b>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = orders.map(o => renderOrderCard(o)).join('');
+  }
+
+  function renderOrderCard(o) {
+    const isNew = o.status === 'new';
+    const isAccepted = o.status === 'accepted';
+    const isPreparing = o.status === 'preparing';
+    const isReady = o.status === 'ready';
+    const isDelivering = o.status === 'delivering';
+    const isDelivered = o.status === 'delivered';
+
+    const storeTypeLabel = o.hasPharma ? '💊 صيدلية' : '🛒 سوبرماركت';
+    const storeClass = o.hasPharma ? 'pharmacy' : 'market';
+
+    return `
+      <article class="store-order-card ${isNew ? 'new' : isPreparing ? 'preparing' : ''}" id="card-${o.id}">
+        <div>
+          <div class="order-top">
+            <div>
+              <span class="order-ref">${o.reference}</span>
+              <div style="font-size:0.75rem;color:var(--muted)">
+                ${new Date(o.createdAt).toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'})}
+              </div>
+            </div>
+            <span class="order-type-badge ${storeClass}">${storeTypeLabel}</span>
+          </div>
+
+          <div class="cust-info">
+            <div class="cust-name">👤 ${escapeHtml(o.customer?.name || 'عميل الأزهر')} — <a href="tel:${o.customer?.phone}" style="color:var(--green);text-decoration:none">${o.customer?.phone}</a></div>
+            <div class="cust-addr">📍 ${escapeHtml(o.customer?.address || 'غير محدد')}</div>
+            ${o.customer?.note ? `<div class="cust-note">⚠️ ${escapeHtml(o.customer.note)}</div>` : ''}
+          </div>
+
+          <!-- Items Table -->
+          <table class="items-table">
+            <tbody>
+              ${(o.items || []).map(it => `
+                <tr>
+                  <td class="qty">${it.quantity}×</td>
+                  <td>${escapeHtml(it.name)}</td>
+                  <td class="price">${it.price * it.quantity} ج.م</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+
+          ${o.special ? `
+            <div style="background:#fee2e2;border:1px solid #fecaca;padding:6px 10px;border-radius:8px;font-size:0.75rem;color:var(--red);margin-bottom:10px">
+              <b>طلب مخصص:</b> ${escapeHtml(o.special)}
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="order-footer">
+          <div>
+            <span style="font-size:0.75rem;color:var(--muted)">الإجمالي المطلوب:</span>
+            <div class="order-price">${o.total} ج.م</div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn-act print" data-act="print" data-id="${o.id}">🖨️ بون</button>
+            ${isNew ? `
+              <button type="button" class="btn-act accept" data-act="status" data-status="preparing" data-id="${o.id}">
+                تأكيد وبدء التجهيز
+              </button>
+            ` : isAccepted || isPreparing ? `
+              <button type="button" class="btn-act ready" data-act="status" data-status="ready" data-id="${o.id}">
+                جاهز واستدعاء مندوب 🛵
+              </button>
+            ` : isReady ? `
+              <span style="font-size:0.78rem;font-weight:700;color:var(--muted);align-self:center">في انتظار المندوب...</span>
+            ` : isDelivering ? `
+              <span style="font-size:0.78rem;font-weight:800;color:var(--blue);align-self:center">في الطريق للعميل 🚀</span>
+            ` : `
+              <span style="font-size:0.78rem;font-weight:800;color:var(--green);align-self:center">طلب مكتمل ✅</span>
+            `}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  }
+
+  // Open Receipt Print Preview
+  function openReceipt(id) {
+    const o = ACDPlatform.getOrder(id);
+    if (!o) return;
+
+    // Cross-store prevention check
+    if (activeStore && activeStore.type === 'market' && o.hasPharma) {
+      alert('غير مصرح لك بعرض أو طباعة بونات الصيدلية!');
+      return;
+    }
+    if (activeStore && activeStore.type === 'pharmacy' && !o.hasPharma) {
+      alert('غير مصرح لك بعرض أو طباعة بونات السوبرماركت!');
+      return;
+    }
+
+    $('#recStoreName').textContent = o.hasPharma ? 'صيدلية الشفاء ود. مصطفى' : 'سوبرماركت البركة والخير';
+    $('#receiptContent').innerHTML = `
+      <div style="margin-bottom:8px">
+        <div><b>رقم الطلب:</b> ${o.reference}</div>
+        <div><b>التاريخ:</b> ${new Date(o.createdAt).toLocaleString('ar-EG')}</div>
+        <div><b>العميل:</b> ${escapeHtml(o.customer?.name || '')}</div>
+        <div><b>الموبايل:</b> ${escapeHtml(o.customer?.phone || '')}</div>
+        <div><b>العنوان:</b> ${escapeHtml(o.customer?.address || '')}</div>
+      </div>
+      <div style="border-top:1px dashed #000;border-bottom:1px dashed #000;padding:8px 0;margin-bottom:8px">
+        ${(o.items || []).map(it => `
+          <div style="display:flex;justify-content:space-between">
+            <span>${it.quantity}x ${escapeHtml(it.name)}</span>
+            <span>${it.price * it.quantity} ج.م</span>
+          </div>
+        `).join('')}
+      </div>
+      <div style="display:flex;justify-content:space-between;font-weight:bold">
+        <span>ثمن الأصناف:</span>
+        <span>${o.subtotal} ج.م</span>
+      </div>
+      <div style="display:flex;justify-content:space-between">
+        <span>رسوم التوصيل:</span>
+        <span>${o.deliveryFee} ج.م</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:1.1rem;font-weight:bold;margin-top:6px">
+        <span>الإجمالي كاش:</span>
+        <span>${o.total} ج.م</span>
+      </div>
+    `;
+    $('#receiptModal').classList.add('open');
+  }
+
+  // Store Tabs (Strictly restricted to multi-store superadmins only)
+  document.querySelectorAll('.store-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (activeStore && activeStore.type !== 'all') {
+        // Prevent store owners from switching to other stores
+        return;
+      }
+      document.querySelectorAll('.store-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeStoreFilter = btn.dataset.storeFilter;
+      render();
+    });
+  });
+
+  // Filters
+  $('#statusFilter').addEventListener('change', e => {
+    activeStatusFilter = e.target.value;
+    render();
+  });
+
+  $('#searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    render();
+  });
+
+  // Chime Toggle
+  $('#chimeBtn').addEventListener('click', () => {
+    chimeEnabled = !chimeEnabled;
+    $('#chimeBtn').classList.toggle('active', chimeEnabled);
+    $('#chimeBtn').textContent = chimeEnabled ? '🔔 جرس التنبيه (مفعل)' : '🔕 جرس التنبيه (صامت)';
+    if (chimeEnabled) playOrderChime();
+  });
+
+  // Action clicks
+  document.addEventListener('click', async e => {
+    const btn = e.target.closest('[data-act]');
+    if (!btn) return;
+
+    const action = btn.dataset.act;
+    const id = btn.dataset.id;
+
+    if (action === 'status') {
+      const o = ACDPlatform.getOrder(id);
+      if (!o) return;
+
+      // Cross-store update security check
+      if (activeStore && activeStore.type === 'market' && o.hasPharma) {
+        alert('غير مصرح لك بتحديث أو استلام طلبات قسم الصيدلية!');
+        return;
+      }
+      if (activeStore && activeStore.type === 'pharmacy' && !o.hasPharma) {
+        alert('غير مصرح لك بتحديث أو استلام طلبات قسم السوبرماركت!');
+        return;
+      }
+
+      const nextStatus = btn.dataset.status;
+      ACDPlatform.updateOrder(id, { status: nextStatus });
+      if (window.ACDCloud && typeof ACDCloud.updateOrder === 'function') {
+        try { await ACDCloud.updateOrder(id, { status: nextStatus }); } catch (_) {}
+      }
+      render();
+    } else if (action === 'print') {
+      openReceipt(id);
+    }
+  });
+
+  window.addEventListener('acd-platform-change', () => {
+    if (activeStore) {
+      const data = ACDPlatform.read();
+      const latestOrder = (data.orders || [])[0];
+      if (latestOrder && latestOrder.status === 'new') {
+        // Only chime if the new order belongs to this store
+        if (activeStore.type === 'market' && !latestOrder.hasPharma) {
+          playOrderChime();
+        } else if (activeStore.type === 'pharmacy' && latestOrder.hasPharma) {
+          playOrderChime();
+        } else if (activeStore.type === 'all') {
+          playOrderChime();
+        }
+      }
+    }
+    render();
+  });
+
+  window.addEventListener('acd-auth-change', checkAuth);
+  window.addEventListener('acd-auth-profile', checkAuth);
+
+  // Initialize
+  checkAuth();
+})();
+</script>
+<div class="app-install-role" id="roleInstallBox" hidden><div><b>📲 نزّل تطبيق المتجر</b><small>Alazhar City Store — نفس الحساب والصلاحيات، بس أسرع على الموبايل.</small></div><button id="roleInstallBtn" type="button">تثبيت</button></div><script>let roleDeferredPrompt=null;const roleStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();roleDeferredPrompt=e;document.querySelector('#roleInstallBox')?.removeAttribute('hidden')});window.addEventListener('appinstalled',()=>document.querySelector('#roleInstallBox')?.setAttribute('hidden',''));document.querySelector('#roleInstallBtn')?.addEventListener('click',async()=>{if(roleDeferredPrompt){roleDeferredPrompt.prompt();await roleDeferredPrompt.userChoice;roleDeferredPrompt=null;return}location.href='./install.html'});if(roleStandalone())document.querySelector('#roleInstallBox')?.setAttribute('hidden','');</script></body>
+</html>

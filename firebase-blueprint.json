@@ -1,0 +1,246 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with role, contact info, and saved addresses",
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "customer",
+            "store",
+            "rider",
+            "admin"
+          ],
+          "description": "User role controlling access"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full display name"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Primary mobile number"
+        },
+        "storeId": {
+          "type": "string",
+          "description": "Associated store identifier for store owners"
+        },
+        "riderId": {
+          "type": "string",
+          "description": "Associated rider identifier for delivery captains"
+        },
+        "savedAddresses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              },
+              "isDefault": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Profile/avatar URL from Firebase Authentication"
+        },
+        "storeType": {
+          "type": "string",
+          "enum": [
+            "market",
+            "pharmacy"
+          ],
+          "description": "Store type for store-role users"
+        },
+        "vehicle": {
+          "type": "string",
+          "description": "Approved rider vehicle description"
+        },
+        "emailVerified": {
+          "type": "boolean",
+          "description": "Firebase email verification state"
+        }
+      },
+      "required": [
+        "role",
+        "name"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer delivery order",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "customer": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            },
+            "lat": {
+              "type": "number"
+            },
+            "lng": {
+              "type": "number"
+            },
+            "addressLabel": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "phone",
+            "address"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "number"
+              },
+              "price": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "subtotal": {
+          "type": "number"
+        },
+        "deliveryFee": {
+          "type": "number"
+        },
+        "total": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "new",
+            "accepted",
+            "preparing",
+            "ready",
+            "delivering",
+            "delivered",
+            "cancelled"
+          ]
+        },
+        "storeId": {
+          "type": "string"
+        },
+        "riderId": {
+          "type": "string"
+        },
+        "hasPharma": {
+          "type": "boolean"
+        },
+        "special": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "object",
+          "properties": {
+            "stars": {
+              "type": "number"
+            },
+            "comment": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "reference",
+        "status",
+        "total"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User documents keyed by Firebase Auth UID"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Delivery orders managed by customers, stores, and riders"
+    }
+  },
+  "security": {
+    "authentication": "Firebase Authentication",
+    "authorization": "Firebase custom claims + Firestore Security Rules",
+    "privilegedRoles": [
+      "admin",
+      "store",
+      "rider"
+    ],
+    "customerRoleDefault": "customer when no privileged role claim exists"
+  }
+}

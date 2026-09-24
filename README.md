@@ -27,3 +27,8 @@
 ## تجربة الموقع على جهازك
 
 افتح `index.html` بالدبل كليك، أو شغّل `python -m http.server` وافتح `http://localhost:8000`.
+
+
+## Production authentication
+
+See [`README_PRODUCTION_AUTH.md`](./README_PRODUCTION_AUTH.md) for the Firebase Authentication, email verification, password reset, role provisioning, and Firestore security setup.

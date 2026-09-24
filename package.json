@@ -1,0 +1,17 @@
+{
+  "name": "alazhar-city-delivery",
+  "version": "1.2.0",
+  "description": "سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس بمدينة نصر",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e 'console.log(\"Build complete\")'",
+    "auth:set-role": "node --env-file-if-exists=.env scripts/set-role.mjs",
+    "catalog:seed": "node --env-file-if-exists=.env scripts/seed-catalog.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0"
+  }
+}

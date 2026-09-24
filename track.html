@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14231d">
+  <title>متابعة طلبك وتقييم التجربة | Alazhar City Delivery</title>
+  <link rel="icon" type="image/png" href="icons/favicon-64.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14231d;
+      --red: #e94b3c;
+      --green: #0a8150;
+      --gold: #f59e0b;
+      --bg: #f5f7f6;
+      --surface: #ffffff;
+      --line: #e2e8e4;
+      --muted: #64746b;
+      --r: 18px;
+      --sh: 0 4px 18px rgba(20,35,29,0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    button, input, textarea { font: inherit; }
+    .shell {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px 14px 60px;
+    }
+    /* Header */
+    .head {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--r);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .head img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .head h1 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .head p {
+      margin: 2px 0 0;
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+    .nav-links {
+      margin-inline-start: auto;
+      display: flex;
+      gap: 8px;
+    }
+    .nav-btn {
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: background 0.15s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* Order selector / bar */
+    .order-picker {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: var(--sh);
+      flex-wrap: wrap;
+    }
+    .order-picker select {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-weight: 700;
+      color: var(--ink);
+      outline: none;
+    }
+
+    /* Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--sh);
+    }
+    .card-title {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Live Progress Tracker */
+    .tracker-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 24px 0 20px;
+    }
+    .tracker-steps::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 20px;
+      right: 20px;
+      height: 4px;
+      background: var(--line);
+      z-index: 1;
+    }
+    .tracker-progress-bar {
+      position: absolute;
+      top: 22px;
+      right: 20px;
+      height: 4px;
+      background: var(--green);
+      z-index: 2;
+      transition: width 0.4s ease;
+    }
+    .step {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+      text-align: center;
+    }
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      transition: all 0.25s ease;
+    }
+    .step.active .step-circle {
+      border-color: var(--green);
+      background: #e6f7ef;
+      box-shadow: 0 0 0 4px rgba(10,129,80,0.15);
+    }
+    .step.completed .step-circle {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .step-label {
+      margin-top: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .step.active .step-label,
+    .step.completed .step-label {
+      color: var(--ink);
+    }
+
+    /* Status Alert Banner */
+    .status-alert {
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .status-alert.new { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    .status-alert.preparing { background: #fefce8; color: #854d0e; border: 1px solid #fef08a; }
+    .status-alert.ready { background: #fdf4ff; color: #86198f; border: 1px solid #f5d0fe; }
+    .status-alert.delivering { background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; }
+    .status-alert.delivered { background: #eefdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+    /* Rider details widget */
+    .rider-widget {
+      background: #f8faf9;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .rider-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e2f0ea;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+    }
+    .rider-call-btn {
+      margin-inline-start: auto;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Rating Box */
+    .rating-box {
+      border: 2px dashed #fcd34d;
+      background: #fffdf5;
+      border-radius: var(--r);
+      padding: 22px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .rating-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #78350f;
+      margin: 0 0 6px;
+    }
+    .rating-subtitle {
+      font-size: 0.82rem;
+      color: #92400e;
+      margin: 0 0 16px;
+    }
+    .stars-row {
+      display: inline-flex;
+      gap: 10px;
+      direction: ltr; /* keep left-to-right or right-to-left predictable */
+      margin-bottom: 14px;
+    }
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 2.2rem;
+      cursor: pointer;
+      color: #d1d5db;
+      padding: 0 4px;
+      transition: transform 0.15s, color 0.15s;
+    }
+    .star-btn:hover { transform: scale(1.2); }
+    .star-btn.active { color: var(--gold); }
+    .rating-score-label {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #78350f;
+      min-height: 1.5em;
+    }
+    .rating-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .tag-chip {
+      background: #fff;
+      border: 1px solid #fde68a;
+      color: #78350f;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tag-chip.selected {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+    .rating-box textarea {
+      width: 100%;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      resize: vertical;
+      min-height: 70px;
+      background: #fff;
+      margin-bottom: 14px;
+      outline: none;
+    }
+    .rating-submit-btn {
+      background: var(--ink);
+      color: #fff;
+      border: 0;
+      border-radius: 12px;
+      padding: 10px 24px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .rating-submit-btn:hover { background: var(--green); }
+
+    /* Already Rated Card */
+    .rated-summary {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: right;
+    }
+
+    /* Items summary */
+    .order-items-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .order-item-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 0.85rem;
+    }
+    .order-item-row:last-child { border-bottom: 0; }
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0 0;
+      font-size: 1rem;
+      font-weight: 900;
+      border-top: 2px solid var(--line);
+      margin-top: 8px;
+    }
+
+    /* Quick simulation actions */
+    .sim-bar {
+      background: #f1f5f3;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .sim-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .sim-btn:hover { border-color: var(--ink); }
+  </style>
+<style>/* ALAZHAR CITY professional app polish */
+body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#14231d}.shell{position:relative}button,a{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}.head,.rider-header,.top-head{box-shadow:0 10px 26px rgba(17,34,27,.08)!important;border-bottom:1px solid rgba(17,34,27,.08)!important}.nav-btn,.back,.action,.auth-submit-btn{border-radius:13px!important}.panel,.auth-box,.summary,.order-card,.status-box,.store-card{box-shadow:0 10px 28px rgba(17,34,27,.07)!important;border-color:#dfe8e2!important;border-radius:20px!important}.auth-privacy-badge{border-radius:14px!important;line-height:1.65!important}.auth-submit-btn{box-shadow:0 9px 22px rgba(239,75,58,.16)!important}.table{border-radius:14px;overflow:hidden}.table th{background:#f4f8f5!important}
+</style>
+<link rel="stylesheet" href="./src/app-polish.css">
+<link rel="manifest" href="./manifest.json">
+</head>
+<body>
+
+<main class="shell">
+  <header class="head">
+    <img src="images/logo.webp" alt="Alazhar City">
+    <div>
+      <h1>متابعة الطلب والتقييم</h1>
+      <p>خدمة توصيل طلبة جامعة الأزهر — الحي السادس</p>
+    </div>
+    <nav class="nav-links">
+      <a class="nav-btn" href="./index.html">🛒 العودة للمتجر</a>
+    </nav>
+  </header>
+
+  <section class="order-picker">
+    <div>
+      <span style="font-weight:700;font-size:0.85rem;color:var(--muted)">اختر طلبك للمتابعة:</span>
+    </div>
+    <div>
+      <select id="orderSelect" aria-label="اختر الطلب"></select>
+    </div>
+  </section>
+
+  <div id="contentArea"></div>
+</main>
+
+<script src="./platform-store.js"></script>
+<script type="module" src="./firebase-client.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const select = $('#orderSelect');
+  const content = $('#contentArea');
+
+  const statusLabels = {
+    new: { title: 'تم إرسال الطلب بنجاح 📝', desc: 'وصل إشعار بالطلب إلى المتجر وجاري مراجعته الآن.', alert: 'new', step: 1 },
+    accepted: { title: 'تم قبول الطلب ✅', desc: 'وافق المتجر على طلبك وبدأ في التجهيز.', alert: 'preparing', step: 2 },
+    preparing: { title: 'جاري التجهيز والتعليب 🛒', desc: 'يتم تجهيز المنتجات ومراجعة الصلاحية بدقة.', alert: 'preparing', step: 2 },
+    ready: { title: 'جاهز للاستلام 🛵', desc: 'الطلب مغلف في انتظار وصول المندوب لاستلامه.', alert: 'ready', step: 3 },
+    delivering: { title: 'المندوب في الطريق إليك 🚀', desc: 'الطلب مع كابتن التوصيل الآن وسيتصل بك فور وصوله.', alert: 'delivering', step: 3 },
+    delivered: { title: 'تم التسليم بنجاح 🎉', desc: 'نتمنى لك تجربة ممتعة! نرجو تقييم الخدمة بالأسفل.', alert: 'delivered', step: 4 },
+    cancelled: { title: 'تم إلغاء الطلب ❌', desc: 'تم إلغاء هذا الطلب.', alert: 'new', step: 0 }
+  };
+
+  const ratingDescriptions = {
+    1: 'تجربة سيئة للغاية 😞',
+    2: 'تجربة دون المتوقع 😕',
+    3: 'تجربة مقبولة / جيدة 😐',
+    4: 'تجربة ممتازة جداً 😊',
+    5: 'تجربة رائعة وفائقة السرعة! 🌟'
+  };
+
+  const availableTags = [
+    '⚡ توصيل فائق السرعة',
+    '🤝 مندوب خلوق ومحترم',
+    '📦 تغليف سليم ونظيف',
+    '🥬 منتجات طازجة وممتازة',
+    '💰 أسعار مطابقة وعادلة',
+    '⏱️ التزام تام بالموعد'
+  ];
+
+  let currentOrderId = '';
+  let activeRatingStars = 5;
+  let selectedTags = new Set(['⚡ توصيل فائق السرعة', '🤝 مندوب خلوق ومحترم']);
+
+  function getQueryParam(name) {
+    const p = new URLSearchParams(window.location.search);
+    return p.get(name);
+  }
+
+  let activeOrders = [];
+
+  function getCustomerSession() {
+    const user = window.ACDCloud?.user?.();
+    const profile = window.ACDCloud?.profile?.();
+    if (!user || !profile || profile.role !== 'customer') return null;
+    return {
+      id: user.uid,
+      name: profile.name || user.displayName || 'عميل الأزهر',
+      email: user.email || '',
+      phone: profile.phone || '',
+      emailVerified: !!user.emailVerified
+    };
+  }
+
+  async function getOrders() {
+    const session = getCustomerSession();
+    if (!session) return [];
+    if (!window.ACDCloud?.getMyOrders) return [];
+    return await ACDCloud.getMyOrders();
+  }
+
+  async function init() {
+    const custSession = getCustomerSession();
+    const orders = await getOrders();
+    activeOrders = orders;
+    select.innerHTML = '';
+
+    const existingBadge = document.getElementById('custTrackBadge');
+    if (existingBadge) existingBadge.remove();
+
+    if (!custSession) {
+      content.innerHTML = `
+        <div class="card" style="text-align:center;padding:40px 20px">
+          <div style="font-size:3rem;margin-bottom:12px">🔐</div>
+          <h2 style="margin:0 0 8px">سجّل الدخول لعرض طلباتك</h2>
+          <p style="color:var(--muted);font-size:0.85rem">تفاصيل الطلبات وعناوين التوصيل خاصة بالحساب ولا يتم عرضها للزوار.</p>
+          <a href="./index.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">فتح المتجر وتسجيل الدخول</a>
+        </div>`;
+      return;
+    }
+
+    if (!custSession.emailVerified) {
+      content.innerHTML = `
+        <div class="card" style="text-align:center;padding:40px 20px">
+          <div style="font-size:3rem;margin-bottom:12px">✉️</div>
+          <h2 style="margin:0 0 8px">فعّل بريدك الإلكتروني</h2>
+          <p style="color:var(--muted);font-size:0.85rem">فعّل الحساب من الرسالة المرسلة إلى <b>${escapeHtml(custSession.email)}</b> ثم عد إلى صفحة التتبع.</p>
+          <a href="./index.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">العودة إلى حسابي</a>
+        </div>`;
+      return;
+    }
+
+    const badge = document.createElement('div');
+    badge.id = 'custTrackBadge';
+    badge.style.cssText = 'background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:8px 14px;margin-bottom:12px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;';
+    badge.innerHTML = `<span>👤 الحساب: <b>${escapeHtml(custSession.name)}</b> (${escapeHtml(custSession.email)})</span><a href="./index.html" style="color:#15803d;font-weight:700;text-decoration:none">حسابي</a>`;
+    const picker = document.querySelector('.order-picker');
+    if (picker) picker.parentNode.insertBefore(badge, picker);
+
+    if (!orders.length) {
+      content.innerHTML = `<div class="card" style="text-align:center;padding:40px 20px"><div style="font-size:3rem;margin-bottom:12px">📦</div><h2 style="margin:0 0 8px">لا توجد طلبات مسجلة حتى الآن</h2><p style="color:var(--muted);font-size:0.85rem">سيظهر هنا تاريخ طلباتك السحابية.</p><a href="./index.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">اطلب الآن من المتجر</a></div>`;
+      return;
+    }
+
+    const requestedId = getQueryParam('id');
+    let targetId = requestedId;
+    if (!orders.some(o => o.id === targetId || o.reference === targetId)) targetId = orders[0].id;
+    currentOrderId = targetId;
+
+    orders.forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o.id;
+      opt.textContent = `${o.reference} — ${o.customer?.name || 'طلب'} (${o.total} ج.م)`;
+      if (o.id === targetId || o.reference === targetId) opt.selected = true;
+      select.appendChild(opt);
+    });
+
+    renderCurrentOrder();
+  }
+
+  function renderCurrentOrder() {
+    const order = activeOrders.find(o => o.id === currentOrderId || o.reference === currentOrderId);
+    if (!order) return;
+
+    const info = statusLabels[order.status] || statusLabels.new;
+    const progressWidth = info.step === 1 ? '10%' : info.step === 2 ? '40%' : info.step === 3 ? '75%' : info.step === 4 ? '100%' : '0%';
+
+    const isDelivered = order.status === 'delivered';
+    const isDelivering = order.status === 'delivering';
+
+    // Rider info if assigned
+    const riderHtml = (isDelivering || isDelivered) ? `
+      <div class="rider-widget">
+        <div class="rider-avatar">🛵</div>
+        <div>
+          <b style="font-size:0.9rem;display:block">كابتن أحمد محمود</b>
+          <small style="color:var(--muted);display:block">موتوسيكل دايون أحمر • تقييم 4.9 ⭐</small>
+        </div>
+        <a class="rider-call-btn" href="tel:01025896314">📞 اتصال بالمندوب</a>
+      </div>
+    ` : '';
+
+    // Rating Widget
+    let ratingHtml = '';
+    if (order.rating) {
+      ratingHtml = `
+        <div class="rated-summary">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <b style="color:var(--green);font-size:0.92rem">✅ شكرًا لتقييمك، تم تسجيل رأيك!</b>
+            <span style="font-size:1.1rem;color:var(--gold)">${'⭐'.repeat(order.rating.stars)}</span>
+          </div>
+          ${order.rating.comment ? `<p style="margin:4px 0 8px;font-size:0.85rem;color:var(--ink)">« ${escapeHtml(order.rating.comment)} »</p>` : ''}
+          ${order.rating.tags && order.rating.tags.length ? `
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              ${order.rating.tags.map(t => `<span style="background:#fff;border:1px solid #86efac;border-radius:12px;padding:3px 8px;font-size:0.72rem;font-weight:700">${escapeHtml(t)}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    } else {
+      ratingHtml = `
+        <div class="rating-box" id="ratingCard">
+          <div style="font-size:2.2rem;margin-bottom:4px">⭐</div>
+          <h3 class="rating-title">قيّم تجربة توصيل طلبك (${order.reference})</h3>
+          <p class="rating-subtitle">رأيك يساعدنا على تحسين الخدمة ومكافأة المندوبين المميزين</p>
+
+          <div class="stars-row" id="starsContainer">
+            ${[1, 2, 3, 4, 5].map(i => `
+              <button class="star-btn ${i <= activeRatingStars ? 'active' : ''}" data-star="${i}" type="button" aria-label="${i} نجوم">★</button>
+            `).join('')}
+          </div>
+
+          <div class="rating-score-label" id="ratingLabel">${ratingDescriptions[activeRatingStars]}</div>
+
+          <div class="rating-tags" id="tagsContainer">
+            ${availableTags.map(t => `
+              <button type="button" class="tag-chip ${selectedTags.has(t) ? 'selected' : ''}" data-tag="${escapeHtml(t)}">${escapeHtml(t)}</button>
+            `).join('')}
+          </div>
+
+          <textarea id="ratingComment" placeholder="اكتب كلمة شكر للكابتن أو أي ملاحظات تخص الطلب والتوصيل..." maxlength="300"></textarea>
+
+          <div>
+            <button type="button" class="rating-submit-btn" id="submitRatingBtn">✨ إرسال التقييم وتأكيد الرأي</button>
+          </div>
+        </div>
+      `;
+    }
+
+    content.innerHTML = `
+      <div class="card">
+        <div class="card-title">
+          <span>طلب رقم: <b style="color:var(--red)">${order.reference}</b></span>
+          <span style="font-size:0.8rem;color:var(--muted)">${new Date(order.createdAt).toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'})}</span>
+        </div>
+
+        <div class="status-alert ${info.alert}">
+          <span style="font-size:1.4rem">
+            ${order.status === 'delivering' ? '🛵' : order.status === 'delivered' ? '🎉' : order.status === 'ready' ? '📦' : '⏳'}
+          </span>
+          <div>
+            <div style="font-size:0.95rem;font-weight:800">${info.title}</div>
+            <div style="font-size:0.8rem;opacity:0.9;font-weight:600">${info.desc}</div>
+          </div>
+        </div>
+
+        <!-- Visual 4-step progress -->
+        <div class="tracker-steps">
+          <div class="tracker-progress-bar" style="width: ${progressWidth}"></div>
+
+          <div class="step ${info.step >= 1 ? (info.step === 1 ? 'active' : 'completed') : ''}">
+            <div class="step-circle">${info.step > 1 ? '✓' : '1'}</div>
+            <div class="step-label">تم الطلب</div>
+          </div>
+
+          <div class="step ${info.step >= 2 ? (info.step === 2 ? 'active' : 'completed') : ''}">
+            <div class="step-circle">${info.step > 2 ? '✓' : '2'}</div>
+            <div class="step-label">التجهيز</div>
+          </div>
+
+          <div class="step ${info.step >= 3 ? (info.step === 3 ? 'active' : 'completed') : ''}">
+            <div class="step-circle">${info.step > 3 ? '✓' : '3'}</div>
+            <div class="step-label">في الطريق</div>
+          </div>
+
+          <div class="step ${info.step >= 4 ? 'completed' : ''}">
+            <div class="step-circle">${info.step >= 4 ? '✓' : '4'}</div>
+            <div class="step-label">تم التسليم</div>
+          </div>
+        </div>
+
+        ${riderHtml}
+
+      </div>
+
+      <!-- Rating Section -->
+      <div class="card">
+        <h3 class="card-title">تقييم الخدمة ورأي العميل ⭐</h3>
+        ${ratingHtml}
+      </div>
+
+      <!-- Order Details -->
+      <div class="card">
+        <h3 class="card-title">تفاصيل المشتريات</h3>
+        <ul class="order-items-list">
+          ${(order.items || []).map(it => `
+            <li class="order-item-row">
+              <span><b>${it.quantity}×</b> ${escapeHtml(it.name)}</span>
+              <span>${it.price * it.quantity} ج.م</span>
+            </li>
+          `).join('')}
+          ${order.special ? `
+            <li class="order-item-row" style="color:var(--red)">
+              <span><b>طلب خاص:</b> ${escapeHtml(order.special)}</span>
+              <span>—</span>
+            </li>
+          ` : ''}
+        </ul>
+
+        <div class="order-total-row">
+          <span>المبلغ المطلوب عند الاستلام (شامل التوصيل):</span>
+          <span style="color:var(--green)">${order.total} ج.م</span>
+        </div>
+
+        <div style="margin-top:14px;background:#f8faf9;border-radius:12px;padding:12px;font-size:0.8rem">
+          <div><b>العنوان:</b> ${escapeHtml(order.customer?.address || 'غير محدد')}</div>
+          <div><b>رقم الموبايل:</b> ${escapeHtml(order.customer?.phone || '')}</div>
+          ${order.customer?.note ? `<div><b>ملاحظة:</b> ${escapeHtml(order.customer.note)}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  }
+
+  // Event handlers
+  select.addEventListener('change', () => {
+    currentOrderId = select.value;
+    renderCurrentOrder();
+  });
+
+  document.addEventListener('click', async e => {
+    // Star clicks
+    const starBtn = e.target.closest('.star-btn');
+    if (starBtn) {
+      activeRatingStars = Number(starBtn.dataset.star || 5);
+      document.querySelectorAll('.star-btn').forEach(btn => {
+        const s = Number(btn.dataset.star);
+        btn.classList.toggle('active', s <= activeRatingStars);
+      });
+      const lbl = $('#ratingLabel');
+      if (lbl) lbl.textContent = ratingDescriptions[activeRatingStars];
+      return;
+    }
+
+    // Tag chip clicks
+    const tagChip = e.target.closest('.tag-chip');
+    if (tagChip) {
+      const tag = tagChip.dataset.tag;
+      if (selectedTags.has(tag)) {
+        selectedTags.delete(tag);
+        tagChip.classList.remove('selected');
+      } else {
+        selectedTags.add(tag);
+        tagChip.classList.add('selected');
+      }
+      return;
+    }
+
+    // Submit rating
+    if (e.target.id === 'submitRatingBtn') {
+      const commentInput = $('#ratingComment');
+      const comment = commentInput ? commentInput.value.trim() : '';
+
+      const ratingPayload = {
+        stars: activeRatingStars,
+        comment,
+        tags: Array.from(selectedTags)
+      };
+
+      if (window.ACDCloud && typeof ACDCloud.rateOrder === 'function') {
+        try { await ACDCloud.rateOrder(currentOrderId, ratingPayload); } catch (err) { content.innerHTML = `<div class=\"card\" style=\"padding:24px;color:#991b1b\">تعذر حفظ التقييم: ${escapeHtml(ACDCloud.authError(err))}</div>`; return; }
+      }
+      await init();
+      return;
+    }
+
+  });
+
+  window.addEventListener('acd-orders-change', () => { init(); });
+  window.addEventListener('acd-auth-change', () => { init(); });
+  init();
+})();
+</script>
+</body>
+</html>

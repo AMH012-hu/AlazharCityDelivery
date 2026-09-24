@@ -1,0 +1,33 @@
+{
+  "name": "Alazhar City — تطبيق المندوب",
+  "short_name": "المندوب الأزهر",
+  "description": "تطبيق مندوب التوصيل لطلبات جامعة الأزهر بالحي السادس",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./rider.html?source=pwa",
+  "scope": "./",
+  "id": "./rider.html",
+  "display": "standalone",
+  "background_color": "#111e19",
+  "theme_color": "#111e19",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
