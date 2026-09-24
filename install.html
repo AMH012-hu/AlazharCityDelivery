@@ -246,5 +246,16 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
 </script>
+
+<script>
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('#installNow');
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  location.href = './downloads/client/AlazharCity.apk';
+}, true);
+</script>
+
 </body>
 </html>
