@@ -295,7 +295,189 @@ textarea{resize:none}
 </style>
 <link rel="stylesheet" href="./src/pro-theme.css">
 <style>
-.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}.intro-overlay{position:fixed;inset:0;z-index:600;background:rgba(8,18,14,.72);backdrop-filter:blur(12px);display:none;padding:18px;align-items:center;justify-content:center}.intro-overlay.open{display:flex}.intro-card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28)}.intro-progress{display:flex;gap:6px;padding:14px 18px 0}.intro-progress i{height:4px;flex:1;border-radius:99px;background:#e5ebe7}.intro-progress i.active{background:var(--brand)}.intro-page{display:none;padding:26px 22px 20px;min-height:360px}.intro-page.active{display:flex;flex-direction:column;justify-content:center}.intro-emoji{font-size:4.2rem;text-align:center;margin-bottom:14px}.intro-page h2{margin:0 0 10px;text-align:center;font-size:1.45rem;font-weight:900}.intro-page p{margin:0 auto;color:var(--muted);line-height:1.8;text-align:center;max-width:440px;font-size:.92rem}.intro-points{display:grid;gap:8px;margin:18px 0}.intro-point{background:#f8faf8;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.82rem;font-weight:700}.intro-pager{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}.intro-btn{border:0;border-radius:14px;padding:11px 18px;font-weight:900}.intro-btn.primary{background:var(--brand);color:#fff}.intro-btn.secondary{background:#f1f5f2;color:var(--ink)}.intro-skip{border:0;background:none;color:var(--muted);font-weight:700;text-align:right}.intro-note{font-size:.73rem!important;margin-top:12px!important}@media(max-width:520px){.intro-page{min-height:390px}.intro-page h2{font-size:1.25rem}.intro-pager{grid-template-columns:1fr auto auto;padding-inline:14px}}</style>
+.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}.intro-overlay{position:fixed;inset:0;z-index:600;background:rgba(8,18,14,.72);padding:18px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;backdrop-filter:blur(0px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear .38s}.intro-overlay.open{opacity:1;visibility:visible;backdrop-filter:blur(12px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear 0s}.intro-card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28);transform:scale(.9) translateY(18px);opacity:0;transition:transform .42s cubic-bezier(.22,.8,.32,1.1),opacity .3s ease}.intro-overlay.open .intro-card{transform:scale(1) translateY(0);opacity:1}.intro-progress{display:flex;gap:6px;padding:14px 18px 0}.intro-progress i{height:4px;flex:1;border-radius:99px;background:#e5ebe7;transition:background .35s ease,transform .25s ease}.intro-progress i.active{background:var(--brand)}.intro-progress i.current{transform:scaleY(1.6)}.intro-page{display:none;padding:26px 22px 20px;min-height:360px;overflow:hidden}.intro-page.active{display:flex;flex-direction:column;justify-content:center}.intro-page.active[data-dir="fwd"]{animation:introFwd .48s cubic-bezier(.22,.75,.32,1) both}.intro-page.active[data-dir="back"]{animation:introBack .48s cubic-bezier(.22,.75,.32,1) both}@keyframes introFwd{from{opacity:0;transform:translateX(-26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}@keyframes introBack{from{opacity:0;transform:translateX(26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}.intro-emoji{font-size:4.2rem;text-align:center;margin-bottom:14px;display:inline-block}.intro-page.active .intro-emoji{animation:introPop .55s cubic-bezier(.34,1.56,.64,1) both}@keyframes introPop{0%{opacity:0;transform:scale(.35) rotate(-10deg)}55%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}.intro-page h2{margin:0 0 10px;text-align:center;font-size:1.45rem;font-weight:900}.intro-page.active h2{animation:introFadeUp .4s ease both;animation-delay:.08s}.intro-page p{margin:0 auto;color:var(--muted);line-height:1.8;text-align:center;max-width:440px;font-size:.92rem}.intro-page.active>p{animation:introFadeUp .4s ease both;animation-delay:.14s}@keyframes introFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.intro-points{display:grid;gap:8px;margin:18px 0}.intro-point{background:#f8faf8;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.82rem;font-weight:700;opacity:0}.intro-page.active .intro-point{animation:introFadeUp .4s ease both}.intro-page.active .intro-point:nth-child(1){animation-delay:.2s}.intro-page.active .intro-point:nth-child(2){animation-delay:.27s}.intro-page.active .intro-point:nth-child(3){animation-delay:.34s}.intro-page.active .intro-point:nth-child(4){animation-delay:.41s}.intro-page.active .intro-note{opacity:0;animation:introFadeUp .4s ease both;animation-delay:.48s}.intro-pager{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}.intro-btn{border:0;border-radius:14px;padding:11px 18px;font-weight:900;transition:transform .15s ease,box-shadow .15s ease}.intro-btn:active{transform:scale(.94)}.intro-btn.primary{background:var(--brand);color:#fff;box-shadow:0 8px 18px rgba(233,75,60,.32)}.intro-btn.secondary{background:#f1f5f2;color:var(--ink)}.intro-skip{border:0;background:none;color:var(--muted);font-weight:700;text-align:right;transition:opacity .15s}.intro-skip:active{opacity:.6}.intro-note{font-size:.73rem!important;margin-top:12px!important}@media(max-width:520px){.intro-page{min-height:390px}.intro-page h2{font-size:1.25rem}.intro-pager{grid-template-columns:1fr auto auto;padding-inline:14px}}@media (prefers-reduced-motion:reduce){.intro-overlay,.intro-card,.intro-page.active,.intro-page.active *{animation:none!important;transition:none!important}}</style>
+
+<style id="scrollTourCSS">
+/* ================== Dynamic Scroll Tour ================== */
+.scroll-tour{
+  position:fixed;
+  inset:0;
+  z-index:580;
+  pointer-events:none;
+  display:none;
+}
+.scroll-tour.active{display:block}
+
+.scroll-tour-dim{
+  position:fixed;
+  inset:0;
+  background:rgba(4,12,9,.34);
+  backdrop-filter:blur(1.5px);
+  transition:opacity .25s ease;
+}
+
+.scroll-tour-card{
+  position:fixed;
+  z-index:3;
+  width:min(330px,calc(100vw - 28px));
+  background:#fff;
+  border:1px solid rgba(20,35,29,.08);
+  border-radius:20px;
+  padding:14px 15px;
+  box-shadow:0 18px 55px rgba(0,0,0,.24);
+  direction:rtl;
+  pointer-events:auto;
+  transform:translateY(10px) scale(.96);
+  opacity:0;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    opacity .25s ease,
+    left .3s ease,
+    top .3s ease;
+}
+
+.scroll-tour-card.show{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+
+.scroll-tour-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:6px;
+}
+
+.scroll-tour-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#fff4f2;
+  font-size:20px;
+  flex:none;
+}
+
+.scroll-tour-title{
+  margin:0;
+  font-size:.92rem;
+  font-weight:900;
+  color:var(--ink);
+}
+
+.scroll-tour-text{
+  margin:0;
+  color:var(--muted);
+  font-size:.77rem;
+  line-height:1.65;
+}
+
+.scroll-tour-progress{
+  display:flex;
+  gap:4px;
+  margin-top:11px;
+}
+
+.scroll-tour-progress i{
+  height:3px;
+  flex:1;
+  border-radius:99px;
+  background:#e5ebe7;
+  transition:.3s;
+}
+
+.scroll-tour-progress i.active{
+  background:var(--brand);
+}
+
+.scroll-tour-close{
+  position:absolute;
+  top:8px;
+  left:9px;
+  border:0;
+  background:transparent;
+  color:#87938d;
+  font-size:19px;
+  cursor:pointer;
+  line-height:1;
+}
+
+.scroll-tour-arrow{
+  position:fixed;
+  z-index:4;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fff;
+  color:var(--brand);
+  font-size:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+  opacity:0;
+  transform:scale(.65);
+  transition:
+    opacity .25s ease,
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    left .3s ease,
+    top .3s ease;
+}
+
+.scroll-tour-arrow.show{
+  opacity:1;
+  transform:scale(1);
+  animation:tourArrowFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes tourArrowFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 7px}
+}
+
+/* العنصر اللي الجولة بتشرحه */
+.scroll-tour-target{
+  position:relative!important;
+  z-index:581!important;
+  border-radius:16px!important;
+  box-shadow:
+    0 0 0 4px rgba(233,75,60,.25),
+    0 0 0 9999px rgba(4,12,9,.22),
+    0 12px 35px rgba(0,0,0,.16)!important;
+  transition:box-shadow .3s ease!important;
+}
+
+/* لو الهدف زر في الهيدر */
+.scroll-tour-target.icon-btn{
+  border-radius:14px!important;
+}
+
+@media(max-width:520px){
+  .scroll-tour-card{
+    bottom:18px;
+    left:14px!important;
+    right:14px;
+    width:auto;
+  }
+
+  .scroll-tour-arrow{
+    width:43px;
+    height:43px;
+    font-size:22px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .scroll-tour-card,
+  .scroll-tour-arrow{
+    transition:none;
+  }
+  .scroll-tour-arrow.show{
+    animation:none;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -422,6 +604,31 @@ textarea{resize:none}
     <div class="intro-pager"><button class="intro-skip" id="introSkip" type="button">مش دلوقتي</button><button class="intro-btn secondary" id="introPrev" type="button" hidden>رجوع</button><button class="intro-btn primary" id="introNext" type="button">التالي</button></div>
   </div>
 </div>
+
+<!-- ================== Dynamic Scroll Tour ================== -->
+<div class="scroll-tour" id="scrollTour" aria-hidden="true">
+  <div class="scroll-tour-dim"></div>
+
+  <div class="scroll-tour-arrow" id="scrollTourArrow">
+    ↓
+  </div>
+
+  <div class="scroll-tour-card" id="scrollTourCard">
+    <button class="scroll-tour-close" id="scrollTourClose" type="button" aria-label="إغلاق الجولة">&times;</button>
+
+    <div class="scroll-tour-head">
+      <div class="scroll-tour-icon" id="scrollTourIcon">👋</div>
+      <h3 class="scroll-tour-title" id="scrollTourTitle">أهلاً بيك</h3>
+    </div>
+
+    <p class="scroll-tour-text" id="scrollTourText"></p>
+
+    <div class="scroll-tour-progress" id="scrollTourProgress">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+</div>
+
 <div class="overlay" id="overlay"></div>
 
 <!-- Cart -->
@@ -471,7 +678,7 @@ textarea{resize:none}
         <button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button>
         <button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button>
         <button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button>
-        <button type="button" class="addr-chip" data-label="العمل">������ العمل</button>
+        <button type="button" class="addr-chip" data-label="العمل"> العمل</button>
       </div>
 
       <div class="gps-status" id="cartGpsStatus" style="font-size:0.78rem;font-weight:700;color:#15803d;margin-top:6px;background:#dcfce7;padding:6px 10px;border-radius:8px">
@@ -1574,14 +1781,353 @@ function isPwaInstalled(){ try{return isStandalone() || localStorage.getItem(PWA
 function markPwaInstalled(){try{localStorage.setItem(PWA_INSTALLED_KEY,'1');localStorage.setItem(INTRO_KEY,'1');}catch(_){}}
 function applyInstalledState(){if(!isPwaInstalled())return;$('#installBox')?.classList.remove('show');$('#topInstallBtn')?.setAttribute('hidden','hidden');$('#palBanner')?.setAttribute('hidden','hidden');}
 window.addEventListener('appinstalled',()=>{markPwaInstalled();applyInstalledState();closeIntro(true);});
-function renderIntro(){const pages=introPages();pages.forEach((p,i)=>p.classList.toggle('active',i===introIndex));$$('#introProgress i').forEach((d,i)=>d.classList.toggle('active',i===introIndex));$('#introPrev').hidden=introIndex===0;$('#introNext').textContent=introIndex===pages.length-1?'نزّل التطبيق':'التالي';}
-function openIntro(){if(isPwaInstalled())return;try{if(localStorage.getItem(INTRO_KEY)==='1')return;}catch(_){}introIndex=0;renderIntro();$('#firstLaunchIntro').classList.add('open');document.body.classList.add('lock');}
+function renderIntro(dir){const pages=introPages();pages.forEach((p,i)=>{if(i===introIndex){p.dataset.dir=dir||'fwd';p.classList.remove('active');void p.offsetWidth;p.classList.add('active');}else{p.classList.remove('active');delete p.dataset.dir;}});$$('#introProgress i').forEach((d,i)=>{d.classList.toggle('active',i<=introIndex);d.classList.toggle('current',i===introIndex);});$('#introPrev').hidden=introIndex===0;$('#introNext').textContent=introIndex===pages.length-1?'نزّل التطبيق':'التالي';}
+function openIntro(){if(isPwaInstalled())return;try{if(localStorage.getItem(INTRO_KEY)==='1')return;}catch(_){}introIndex=0;renderIntro('fwd');$('#firstLaunchIntro').classList.add('open');document.body.classList.add('lock');}
 function closeIntro(markDone=false){if(markDone){try{localStorage.setItem(INTRO_KEY,'1')}catch(_){}}$('#firstLaunchIntro').classList.remove('open');document.body.classList.remove('lock');}
-$('#introPrev')?.addEventListener('click',()=>{if(introIndex>0){introIndex--;renderIntro();}});
-$('#introNext')?.addEventListener('click',async()=>{if(introIndex<introPages().length-1){introIndex++;renderIntro();return;}try{closeIntro(false);await handleInstallAction();}catch(_){}});
+$('#introPrev')?.addEventListener('click',()=>{if(introIndex>0){introIndex--;renderIntro('back');}});
+$('#introNext')?.addEventListener('click',async()=>{if(introIndex<introPages().length-1){introIndex++;renderIntro('fwd');return;}try{closeIntro(false);await handleInstallAction();}catch(_){}});
 $('#introSkip')?.addEventListener('click',()=>closeIntro(true));
 $('#firstLaunchIntro')?.addEventListener('click',e=>{if(e.target.id==='firstLaunchIntro')closeIntro(true);});
-let introX0=null;$('#firstLaunchIntro')?.addEventListener('touchstart',e=>{introX0=e.touches[0].clientX},{passive:true});$('#firstLaunchIntro')?.addEventListener('touchend',e=>{if(introX0===null)return;const dx=e.changedTouches[0].clientX-introX0;introX0=null;if(Math.abs(dx)<45)return;if(dx<0&&introIndex<introPages().length-1){introIndex++;renderIntro();}else if(dx>0&&introIndex>0){introIndex--;renderIntro();}});
+let introX0=null;$('#firstLaunchIntro')?.addEventListener('touchstart',e=>{introX0=e.touches[0].clientX},{passive:true});$('#firstLaunchIntro')?.addEventListener('touchend',e=>{if(introX0===null)return;const dx=e.changedTouches[0].clientX-introX0;introX0=null;if(Math.abs(dx)<45)return;if(dx<0&&introIndex<introPages().length-1){introIndex++;renderIntro('fwd');}else if(dx>0&&introIndex>0){introIndex--;renderIntro('back');}});
+
+
+/* ================== Dynamic Scroll Tour ================== */
+(function initDynamicScrollTour(){
+
+  const TOUR_KEY = CONFIG.storageKey + '-scroll-tour-v1';
+
+  const tour = document.getElementById('scrollTour');
+  const card = document.getElementById('scrollTourCard');
+  const arrow = document.getElementById('scrollTourArrow');
+  const icon = document.getElementById('scrollTourIcon');
+  const title = document.getElementById('scrollTourTitle');
+  const text = document.getElementById('scrollTourText');
+  const progress = document.getElementById('scrollTourProgress');
+  const close = document.getElementById('scrollTourClose');
+
+  if(!tour || !card || !arrow) return;
+
+  /*
+   * كل مرحلة مرتبطة بجزء حقيقي موجود في الموقع.
+   * المرحلة تظهر أثناء الـ scroll وتوجه المستخدم للعنصر.
+   */
+  const steps = [
+    {
+      target:'#openAccountBtn',
+      icon:'👤',
+      title:'1 — اعمل حسابك',
+      text:'من هنا تقدر تعمل حسابك، تضيف بياناتك وعناوينك، وتخلي الطلبات الجاية أسرع.',
+      minScroll:80,
+      arrow:'↑'
+    },
+    {
+      target:'#catSec',
+      icon:'🛍️',
+      title:'2 — اختار اللي محتاجه',
+      text:'انزل هنا واختار القسم اللي محتاجه، وبعدها اختار المنتجات وأضفها للسلة.',
+      minScroll:260,
+      arrow:'↓'
+    },
+    {
+      target:'#openCart',
+      icon:'🛒',
+      title:'3 — راجع السلة',
+      text:'بعد ما تخلص اختيارك افتح السلة من هنا، راجع المنتجات والكميات والإجمالي قبل إتمام الطلب.',
+      minScroll:700,
+      arrow:'↑'
+    },
+    {
+      target:'#openAccountBtn',
+      icon:'📍',
+      title:'4 — حدد مكان التوصيل',
+      text:'من حسابك تقدر تضيف عنوان السكن أو تستخدم تحديد الموقع GPS علشان المندوب يعرف مكان التسليم.',
+      minScroll:1000,
+      arrow:'↑'
+    },
+    {
+      target:'a[href="./track.html"]',
+      icon:'📦',
+      title:'5 — تابع طلبك',
+      text:'بعد الطلب، استخدم متابعة الطلب علشان تعرف حالة طلبك وتفاصيله لحد الاستلام.',
+      minScroll:1300,
+      arrow:'↓'
+    }
+  ];
+
+  let currentStep = -1;
+  let running = false;
+  let scrollTimer = null;
+
+  function alreadySeen(){
+    try{
+      return localStorage.getItem(TOUR_KEY) === '1';
+    }catch(_){
+      return false;
+    }
+  }
+
+  function markSeen(){
+    try{
+      localStorage.setItem(TOUR_KEY,'1');
+    }catch(_){}
+  }
+
+  function clearTarget(){
+    document.querySelectorAll('.scroll-tour-target').forEach(el=>{
+      el.classList.remove('scroll-tour-target');
+    });
+  }
+
+  function getTarget(step){
+    if(!step) return null;
+
+    /*
+     * track.html ممكن يكون موجود أكتر من مرة في الصفحة.
+     * نختار أول عنصر ظاهر.
+     */
+    const all = document.querySelectorAll(step.target);
+
+    for(const el of all){
+      const r = el.getBoundingClientRect();
+      if(r.width && r.height) return el;
+    }
+
+    return all[0] || null;
+  }
+
+  function positionArrow(target, step){
+    if(!target){
+      arrow.classList.remove('show');
+      return;
+    }
+
+    const r = target.getBoundingClientRect();
+
+    let x = r.left + r.width / 2 - 24;
+    let y;
+
+    if(step.arrow === '↑'){
+      y = Math.max(12, r.top - 62);
+    }else{
+      y = Math.min(window.innerHeight - 58, r.bottom + 14);
+    }
+
+    x = Math.max(10, Math.min(window.innerWidth - 58, x));
+
+    arrow.style.left = x + 'px';
+    arrow.style.top = y + 'px';
+    arrow.textContent = step.arrow;
+
+    requestAnimationFrame(()=>{
+      arrow.classList.add('show');
+    });
+  }
+
+  function positionCard(target){
+    if(window.innerWidth <= 520){
+      card.style.left = '';
+      card.style.top = '';
+      return;
+    }
+
+    const r = target?.getBoundingClientRect();
+
+    if(!r){
+      card.style.left = '50%';
+      card.style.top = '50%';
+      card.style.transform = 'translate(-50%,-50%)';
+      return;
+    }
+
+    card.style.transform = '';
+    
+    let left = r.left + r.width / 2 - 165;
+    let top = r.bottom + 18;
+
+    if(top + 170 > window.innerHeight){
+      top = r.top - 190;
+    }
+
+    left = Math.max(14, Math.min(window.innerWidth - 344, left));
+    top = Math.max(14, Math.min(window.innerHeight - 190, top));
+
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+
+  function renderProgress(index){
+    [...progress.children].forEach((dot,i)=>{
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function showStep(index){
+    if(index < 0 || index >= steps.length) return;
+
+    const step = steps[index];
+    const target = getTarget(step);
+
+    if(!target) return;
+
+    clearTarget();
+
+    currentStep = index;
+    running = true;
+
+    target.classList.add('scroll-tour-target');
+
+    icon.textContent = step.icon;
+    title.textContent = step.title;
+    text.textContent = step.text;
+
+    renderProgress(index);
+
+    tour.classList.add('active');
+    tour.setAttribute('aria-hidden','false');
+
+    positionArrow(target,step);
+    positionCard(target);
+
+    requestAnimationFrame(()=>{
+      card.classList.add('show');
+    });
+  }
+
+  function hideTour(mark=true){
+    clearTarget();
+    card.classList.remove('show');
+    arrow.classList.remove('show');
+    tour.classList.remove('active');
+    tour.setAttribute('aria-hidden','true');
+    running = false;
+
+    if(mark) markSeen();
+  }
+
+  function calculateStep(){
+    const y = window.scrollY || window.pageYOffset || 0;
+
+    /*
+     * نستخدم نقاط scroll تدريجية.
+     * المستخدم مش محتاج يضغط Next؛ الـ scroll نفسه هو الـ navigation.
+     */
+    let index = 0;
+
+    for(let i=0;i<steps.length;i++){
+      if(y >= steps[i].minScroll) index = i;
+    }
+
+    return index;
+  }
+
+  function handleScroll(){
+    if(alreadySeen()) return;
+
+    /*
+     * بداية الجولة أول ما المستخدم يبدأ يتحرك.
+     */
+    if(!running && window.scrollY > 25){
+      showStep(0);
+      return;
+    }
+
+    if(!running) return;
+
+    clearTimeout(scrollTimer);
+
+    scrollTimer = setTimeout(()=>{
+      const next = calculateStep();
+
+      if(next !== currentStep){
+        showStep(next);
+      }else{
+        const step = steps[currentStep];
+        const target = getTarget(step);
+
+        if(target){
+          positionArrow(target,step);
+          positionCard(target);
+        }
+      }
+    },45);
+  }
+
+  close?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لو المستخدم ضغط خارج الكارت، نعتبر إنه مش محتاج الجولة.
+   */
+  document.querySelector('.scroll-tour-dim')?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لما يوصل لآخر خطوة ونزل شوية زيادة:
+   * نختم الجولة.
+   */
+  window.addEventListener('scroll',()=>{
+    handleScroll();
+
+    if(running && currentStep === steps.length-1){
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if(max > 0 && window.scrollY > max - 120){
+        hideTour(true);
+      }
+    }
+  },{passive:true});
+
+  window.addEventListener('resize',()=>{
+    if(!running) return;
+
+    const step = steps[currentStep];
+    const target = getTarget(step);
+
+    if(target){
+      positionArrow(target,step);
+      positionCard(target);
+    }
+  });
+
+  /*
+   * بداية خفيفة:
+   * المستخدم يشوف أول رسالة من غير ما نوقف الصفحة.
+   */
+  setTimeout(()=>{
+    if(!alreadySeen() && window.scrollY < 25){
+      const first = steps[0];
+      const target = getTarget(first);
+
+      if(target){
+        currentStep = 0;
+        running = true;
+
+        target.classList.add('scroll-tour-target');
+
+        icon.textContent = first.icon;
+        title.textContent = first.title;
+        text.textContent = 'ابدأ بالنزول شوية، وأنا هشرحلك الموقع خطوة بخطوة 👇';
+
+        renderProgress(0);
+
+        tour.classList.add('active');
+        tour.setAttribute('aria-hidden','false');
+
+        positionArrow(target,first);
+        positionCard(target);
+
+        requestAnimationFrame(()=>{
+          card.classList.add('show');
+        });
+      }
+    }
+  },1800);
+
+})();
+
 
 /* ================== تثبيت التطبيق (PWA) ================== */
 let deferredPrompt = null;
@@ -1647,5 +2193,22 @@ renderStatus(); setInterval(renderStatus, 60000);
 renderHero(); renderTiles(); renderContent(); renderCart(); renderFeaturedOffers();
 </script>
 <script src="./customer-flow.js?v=20260924"></script>
+
+<!-- دليل تفاعلي منبثق -->
+<div class="guided-tour-overlay" id="guidedTour" style="display: none;">
+  <div class="guided-tour-backdrop" onclick="closeTour()"></div>
+  <div class="guided-tour-tooltip" id="tourTooltip">
+    <div class="tour-arrow" id="tourArrow"></div>
+    <div class="tour-content">
+      <span class="tour-step-badge" id="tourStepBadge">خطوة 1 من 3</span>
+      <h3 id="tourTitle">عنوان الخطوة</h3>
+      <p id="tourDesc">وصف الخطوة للعميل وكيفية الاستخدام.</p>
+      <div class="tour-actions">
+        <button type="button" class="tour-btn secondary" onclick="closeTour()">إغلاق</button>
+        <button type="button" class="tour-btn primary" id="tourNextBtn">التالي ‹</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
