@@ -3,10 +3,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
   linkWithPopup,
-  linkWithRedirect,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
@@ -121,7 +118,7 @@ function readableAuthError(error) {
     'auth/weak-password': 'كلمة المرور ضعيفة. استخدم 8 أحرف/أرقام على الأقل مع تنوع مناسب.',
     'auth/too-many-requests': 'تم إيقاف محاولات الدخول مؤقتاً للحماية. حاول لاحقاً.',
     'auth/popup-closed-by-user': 'تم إغلاق نافذة تسجيل الدخول.',
-    'auth/popup-blocked': 'المتصفح منع نافذة تسجيل الدخول. اسمح بالنوافذ المنبثقة وحاول مرة أخرى.',
+    'auth/popup-blocked': 'المتصفح قفل نافذة Google. افتح الموقع في Chrome الأساسي واسمح بالنوافذ المنبثقة، ثم حاول تاني.',
     'auth/account-exists-with-different-credential': 'الحساب ده موجود بالفعل. سجّل الدخول بالطريقة اللي كنت بتستخدمها، وبعدها من «حسابي» اختار «ربط Google».',
     'auth/unauthorized-domain': 'الرابط الحالي غير مضاف في Firebase Authentication. أضف الدومين من Authorized domains.',
     'auth/cancelled-popup-request': 'في نافذة تسجيل دخول مفتوحة بالفعل. كمّلها أو اقفلها وحاول تاني.',
@@ -217,23 +214,18 @@ async function syncCurrentProfile({createIfMissing = true} = {}) {
   return currentProfile;
 }
 
-function isLikelyMobile() {
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '') || !!window.matchMedia?.('(max-width: 768px)')?.matches;
-}
-
 async function signIn(preferredRole) {
   void preferredRole;
-  await ensurePersistence();
-  sessionStorage.setItem('acd-google-auth-intent','1');
+  // Use the popup from the user's click. This avoids the cross-site redirect
+  // flow between GitHub Pages and Firebase's auth domain, which modern browsers
+  // may treat as a bounce-tracking chain.
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    sessionStorage.removeItem('acd-google-auth-intent');
     currentUser=result.user;
     await currentUser.getIdToken(true);
     await syncCurrentProfile();
     return { user: currentUser, profile: currentProfile };
   } catch (error) {
-    sessionStorage.removeItem('acd-google-auth-intent');
     throw error;
   }
 }
@@ -241,9 +233,11 @@ async function signIn(preferredRole) {
 async function linkGoogleAccount(){
   if(!currentUser) throw new Error('SIGN_IN_REQUIRED');
   await ensurePersistence();
-  if(isLikelyMobile()){ sessionStorage.setItem('acd-google-link-intent','1'); await linkWithRedirect(currentUser,googleProvider); return {redirecting:true}; }
-  try { const result=await linkWithPopup(currentUser,googleProvider); currentUser=result.user; await currentUser.getIdToken(true); await syncCurrentProfile({createIfMissing:false}); return {user:currentUser,profile:currentProfile}; }
-  catch(error){ if(error?.code==='auth/popup-blocked' || error?.code==='auth/cancelled-popup-request'){sessionStorage.setItem('acd-google-link-intent','1');await linkWithRedirect(currentUser,googleProvider);return {redirecting:true};} throw error; }
+  const result=await linkWithPopup(currentUser,googleProvider);
+  currentUser=result.user;
+  await currentUser.getIdToken(true);
+  await syncCurrentProfile({createIfMissing:false});
+  return {user:currentUser,profile:currentProfile};
 }
 
 async function signUpWithEmail(email, password, displayName, phone, addressObj = null) {
@@ -778,20 +772,12 @@ window.ACDCloud = {
   hasRole: role => currentProfile?.role === role,
   isAdmin: () => currentProfile?.role === 'admin',
   isEmailVerified: () => !!currentUser?.emailVerified,
+  isAccountVerified: () => !!currentUser?.emailVerified,
   authError: readableAuthError
 };
 
 (async()=>{
   await ensurePersistence();
-  try {
-    const redirectResult=await getRedirectResult(auth);
-    if(redirectResult?.user){
-      const linkIntent=sessionStorage.getItem('acd-google-link-intent')==='1';
-      sessionStorage.removeItem('acd-google-auth-intent'); sessionStorage.removeItem('acd-google-link-intent');
-      currentUser=redirectResult.user; await currentUser.getIdToken(true); await syncCurrentProfile({createIfMissing:false});
-      window.dispatchEvent(new CustomEvent(linkIntent?'acd-auth-google-linked':'acd-auth-google-complete',{detail:{user:currentUser,profile:currentProfile}}));
-    }
-  } catch(err){ console.error('ACD Google redirect sign-in failed:',err); window.dispatchEvent(new CustomEvent('acd-auth-error',{detail:{code:err?.code||'',message:readableAuthError(err)}})); }
   onAuthStateChanged(auth,async user=>{
     const signupOwnsProfile = Boolean(user && customerSignupInProgress);
     stopAllOrderListeners(); currentUser=user;

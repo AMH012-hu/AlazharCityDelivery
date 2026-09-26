@@ -4,14 +4,11 @@ This revision uses **Firebase Authentication** for identity and **Firebase custo
 
 ## 1. Customer authentication
 
-Customers can use:
+Customers sign in with:
 
-- Email + password
-- Google Sign-In
-- Password reset
-- Email verification
+- Their Google account through Firebase Authentication
 
-Customer passwords are handled by Firebase Authentication and are not stored in `localStorage`.
+The first Google sign-in creates a customer profile automatically. Google sign-in does not send paid SMS messages.
 
 ## 2. Staff roles
 
@@ -52,7 +49,7 @@ ls -l "$GOOGLE_APPLICATION_CREDENTIALS"
 
 ### D. Create/verify the account from the website first
 
-Create the user through the website with Email/Password or Google. For privileged roles, the email must be verified before the role is assigned.
+Create a customer through the website with Google. Create staff/admin accounts using an enabled Firebase provider and verify the staff email before assigning a privileged role.
 
 ### E. Assign admin
 
@@ -129,7 +126,15 @@ Never commit a service-account private key.
 
 
 ## Human UI / account pass
-The customer experience now uses natural Egyptian-Arabic copy, clearer account onboarding, editable profile data, saved delivery addresses, Google account linking, verification state, staff portal shortcut, and mobile-friendly Google redirect fallback.
+The customer experience uses Google sign-in, editable profile data, saved delivery addresses, verified-account order access, staff portal shortcut, and mobile-friendly layouts.
+
+### Google sign-in project setup
+
+Check these settings in Firebase Authentication:
+
+1. Enable **Google** in Authentication → Sign-in method.
+2. Confirm `amh012-hu.github.io` and `localhost` are in Authentication → Settings → Authorized domains.
+3. The app uses Google's popup flow on GitHub Pages to avoid the cross-site redirect storage issue in modern browsers.
 
 
 ## Multi-app PWA setup

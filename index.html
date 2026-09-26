@@ -631,18 +631,15 @@ textarea{resize:none}
     <div id="emailVerificationBox" class="verification-box" style="display:none"><div class="verification-icon">✉️</div><div class="verification-copy"><b>باقي خطوة صغيرة</b><span>فعّل بريدك الإلكتروني علشان نحافظ على حسابك وطلباتك بأمان.</span></div><button type="button" id="btnResendVerification" class="text-action">إعادة إرسال الرسالة</button></div>
     <div class="account-section-title"><b>بيانات الحساب</b><span>عدّل بياناتك من هنا</span></div>
     <div class="profile-edit-card"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="accountNameEdit" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="accountPhoneEdit" maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><p class="err" id="accountProfileError" role="alert"></p><button type="button" class="btn p auth-submit-wide" id="btnSaveAccountProfile">حفظ بيانات الحساب</button></div>
-    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
+    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button></div>
     <div class="account-section-title"><b>عناوين التوصيل</b><span>احفظ عنوانك مرة واستخدمه وقت الطلب</span></div>
     <div class="gps-box account-gps-box"><div class="gps-box-head"><div><b>📍 العنوان المفضل</b><small>حدد موقعك من GPS، واكتب وصفًا بسيطًا يساعد المندوب.</small></div><span class="mini-secure">خاص بحسابك</span></div><button type="button" class="gps-btn" id="btnProfileDetectGps">تحديد موقعي الآن</button><div class="gps-status" id="profileGpsStatus">لم نحدد موقعًا جديدًا بعد.</div><div class="addr-tags" id="profileAddrTags"><button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button><button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button><button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button><button type="button" class="addr-chip" data-label="العمل">💼 العمل</button></div><input type="text" id="profileDetailedAddr" placeholder="مثال: عمارة 12، الدور 4، شقة 7" maxlength="250"><button type="button" class="btn p" id="btnSaveAddressToProfile">حفظ العنوان</button></div>
     <div class="saved-title"><b>العناوين المحفوظة</b><span>اختار أي عنوان وقت الطلب</span></div><div class="saved-addr-list" id="savedAddressesList"></div>
   </div>
   <div id="accountLoggedOut">
-    <div class="auth-hero"><div class="auth-hero-mark">👋</div><div><b>أهلًا بيك في Alazhar City</b><p>اعمل حساب مرة واحدة، وبعدها بياناتك وعناوينك وطلباتك هتكون أقرب لك.</p></div></div>
-    <div class="auth-tabs" role="tablist" aria-label="الحساب"><button class="auth-tab active" id="tabCustomerLogin" type="button" role="tab" aria-selected="true">تسجيل الدخول</button><button class="auth-tab" id="tabCustomerRegister" type="button" role="tab" aria-selected="false">إنشاء حساب</button></div>
-    <div class="auth-security-note"><span>🔐</span><div><b>بياناتك مؤمّنة</b><p>كلمة السر مش بتتخزن عندنا كبيانات عادية؛ خدمة تسجيل الدخول بتتحقق منها بشكل آمن.</p></div></div>
-    <button type="button" class="google-auth-btn" id="btnGoogleAuth"><span class="google-logo">G</span><span><b>المتابعة باستخدام Google</b><small>من غير كلمة مرور جديدة</small></span><span class="auth-arrow">←</span></button><div class="auth-divider"><span>أو باستخدام البريد الإلكتروني</span></div>
-    <form id="custLoginForm"><label class="f pro-field">البريد الإلكتروني<input type="email" id="loginEmail" required autocomplete="email" placeholder="name@example.com" dir="ltr"></label><label class="f pro-field password-field">كلمة المرور<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="loginPassword">إظهار</button></label><div class="auth-inline-row"><button type="button" id="btnResetPassword" class="link n">نسيت كلمة المرور؟</button><span>هنبعت لك رابط إعادة التعيين على بريدك.</span></div><p class="err" id="loginError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnLoginSubmit">تسجيل الدخول</button></form>
-    <form id="custRegisterForm" style="display:none"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="regName" required minlength="3" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="regPhone" required maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><label class="f pro-field">البريد الإلكتروني<input type="email" id="regEmail" required maxlength="120" autocomplete="email" placeholder="name@example.com" dir="ltr"></label><div class="form-grid-2"><label class="f pro-field password-field">كلمة المرور<input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="8 خانات على الأقل"><button type="button" class="password-toggle" data-toggle-password="regPassword">إظهار</button></label><label class="f pro-field password-field">تأكيد كلمة المرور<input type="password" id="regPasswordConfirm" required minlength="8" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="regPasswordConfirm">إظهار</button></label></div><div class="password-meter" id="passwordMeter"><span></span><span></span><span></span><span></span></div><div class="password-hint" id="passwordHint">اختار كلمة مرور مختلفة عن كلمات المرور اللي بتستخدمها في مواقع تانية.</div><details class="optional-address"><summary>ضيف عنوانك دلوقتي <small>اختياري</small></summary><div class="gps-box account-gps-box compact"><div class="gps-box-head"><div><b>عنوان التوصيل</b><small>ممكن تضيفه الآن أو بعدين من حسابك.</small></div></div><button type="button" class="gps-btn" id="btnRegDetectGps">تحديد الموقع بـ GPS</button><div class="gps-status" id="regGpsStatus">لم نحدد موقعًا بعد.</div></div><label class="f pro-field">العنوان بالتفصيل<input type="text" id="regAddress" maxlength="250" autocomplete="street-address" placeholder="مثال: الحي السادس، عمارة 4، شقة 2"></label></details><p class="err" id="regError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnRegisterSubmit">إنشاء الحساب</button><p class="auth-footnote">بعد التسجيل هنبعت رسالة تفعيل على بريدك الإلكتروني. وبعد التفعيل تقدر تطلب وتتابع طلباتك بشكل طبيعي.</p></form>
+    <div class="auth-hero"><div class="auth-hero-mark">👤</div><div><b>حسابك بحساب Google</b><p>ادخل مجانًا وخلي طلباتك وعناوينك محفوظة عندك.</p></div></div>
+    <div class="auth-security-note"><span>🔐</span><div><b>دخول سهل وآمن</b><p>اختار حساب Google من غير كود SMS أو كلمة مرور جديدة.</p></div></div>
+    <a href="./login.html?returnTo=index.html" class="btn p auth-submit-wide" style="display:flex;align-items:center;justify-content:center;text-decoration:none">الدخول أو إنشاء حساب Google</a>
   </div>
 </section>
 
@@ -1186,8 +1183,8 @@ async function sendOrder(){
   let createdOrder = null;
   const cloudUser = window.ACDCloud?.user?.();
   if (cloudUser) {
-    if (!cloudUser.emailVerified) {
-      return showError('فعّل بريدك الإلكتروني أولاً من رابط التفعيل، ثم أرسل الطلب مرة أخرى. يمكنك إعادة إرسال الرابط من «حسابي».');
+    if (!ACDCloud.isAccountVerified()) {
+      return showError('سجّل الدخول بحساب Google موثّق علشان تتابع طلباتك بأمان.');
     }
     try {
       createdOrder = await ACDCloud.createOrder(orderInput);
@@ -1390,25 +1387,23 @@ function renderCustomerAuthUI() {
     $('#custProfileName').textContent = profile.name || user.displayName || 'عميل الأزهر';
     $('#custProfileEmail').textContent = profile.email || user.email || '';
     $('#custProfilePhone').textContent = profile.phone || 'لم تتم إضافة رقم موبايل';
-    if (userIcon) { userIcon.style.color = profile.emailVerified ? 'var(--green)' : 'var(--brand)'; userIcon.setAttribute('aria-label', profile.emailVerified ? 'الحساب مفعل' : 'الحساب يحتاج تفعيل البريد'); }
+    const accountVerified = window.ACDCloud?.isAccountVerified?.() || false;
+    if (userIcon) { userIcon.style.color = accountVerified ? 'var(--green)' : 'var(--brand)'; userIcon.setAttribute('aria-label', accountVerified ? 'الحساب مفعل' : 'الحساب يحتاج تأكيد'); }
 
     const verifyBox = $('#emailVerificationBox');
-    if (verifyBox) verifyBox.style.display = user.emailVerified ? 'none' : 'block';
+    if (verifyBox) verifyBox.style.display = accountVerified ? 'none' : 'block';
 
     if (!$('#clientName').value && profile.name) $('#clientName').value = profile.name;
     if (!$('#clientPhone').value && profile.phone) $('#clientPhone').value = profile.phone;
     const nameEdit = $('#accountNameEdit'); const phoneEdit = $('#accountPhoneEdit');
     if (nameEdit) nameEdit.value = profile.name || user.displayName || '';
-    if (phoneEdit) phoneEdit.value = profile.phone || user.phoneNumber || '';
+    if (phoneEdit) { phoneEdit.value = profile.phone || user.phoneNumber || ''; phoneEdit.disabled = !!user.phoneNumber; phoneEdit.title = user.phoneNumber ? 'رقم الموبايل ده موثّق ومرتبط بتسجيل دخولك.' : ''; }
     const roleLabel = profile.role === 'customer' ? 'عميل' : 'حساب غير متاح هنا';
     if ($('#custRoleBadge')) $('#custRoleBadge').textContent = roleLabel;
     const displayName = profile.name || user.displayName || 'عميل الأزهر';
     if ($('#custProfileAvatar')) $('#custProfileAvatar').textContent = (displayName.trim().charAt(0) || 'A').toUpperCase();
     const photo = $('#custProfilePhoto'); const avatar = $('#custProfileAvatar');
     if (photo) { if (profile.photoURL) { photo.src = profile.photoURL; photo.style.display='block'; if (avatar) avatar.style.display='none'; } else { photo.style.display='none'; if (avatar) avatar.style.display='grid'; } }
-    const providers = Array.isArray(user.providerData) ? user.providerData.map(p => p.providerId) : [];
-    if ($('#btnLinkGoogle')) $('#btnLinkGoogle').style.display = providers.includes('google.com') ? 'none' : 'flex';
-
     const addresses = Array.isArray(profile.savedAddresses) ? profile.savedAddresses : [];
     const listEl = $('#savedAddressesList');
     if (listEl) {
@@ -1447,128 +1442,6 @@ document.addEventListener('click', e => {
   closeAll();
 });
 
-function setAuthBusy(formId, busy, label) {
-  const form = document.getElementById(formId);
-  const btn = form?.querySelector('button[type="submit"]');
-  if (!btn) return;
-  btn.disabled = busy;
-  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
-  btn.textContent = busy ? label : btn.dataset.label;
-}
-
-// Auth Tabs switch
-$('#tabCustomerRegister').addEventListener('click', () => {
-  $('#tabCustomerRegister').classList.add('active'); $('#tabCustomerRegister').setAttribute('aria-selected','true');
-  $('#tabCustomerLogin').setAttribute('aria-selected','false');
-  $('#tabCustomerLogin').classList.remove('active');
-  $('#custRegisterForm').style.display = 'block';
-  $('#custLoginForm').style.display = 'none';
-});
-$('#tabCustomerLogin').addEventListener('click', () => {
-  $('#tabCustomerLogin').classList.add('active'); $('#tabCustomerLogin').setAttribute('aria-selected','true');
-  $('#tabCustomerRegister').setAttribute('aria-selected','false');
-  $('#tabCustomerRegister').classList.remove('active');
-  $('#custLoginForm').style.display = 'block';
-  $('#custRegisterForm').style.display = 'none';
-});
-
-// Account form UX
-document.querySelectorAll('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => { const input = document.getElementById(btn.dataset.togglePassword); if (!input) return; const visible = input.type === 'text'; input.type = visible ? 'password' : 'text'; btn.textContent = visible ? 'إظهار' : 'إخفاء'; }));
-function updatePasswordStrength(password){ const meter=$('#passwordMeter'); if(!meter) return; const score=[password.length>=8,/[A-Za-z]/.test(password),/\d/.test(password),/[^A-Za-z\d]/.test(password)].filter(Boolean).length; [...meter.children].forEach((el,i)=>el.classList.toggle('on',i<score)); const h=$('#passwordHint'); if(h) h.textContent=score<=1?'ضعيفة — استخدم 8 خانات على الأقل مع حروف وأرقام.':score===2?'مقبولة — إضافة رقم ورمز تخليها أقوى.':score===3?'جيدة — باقي خطوة صغيرة.':'قوية — ممتاز.'; }
-$('#regPassword')?.addEventListener('input', e => updatePasswordStrength(e.target.value));
-
-// Customer Registration
-$('#custRegisterForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const name = $('#regName').value.trim();
-  const email = $('#regEmail').value.trim().toLowerCase();
-  const phone = $('#regPhone').value.trim();
-  const password = $('#regPassword').value;
-  const confirmPassword = $('#regPasswordConfirm').value;
-  const address = $('#regAddress').value.trim();
-  const errEl = $('#regError');
-  errEl.textContent = '';
-
-  if (name.length < 3) return errEl.textContent = 'يرجى كتابة الاسم بالكامل.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return errEl.textContent = 'اكتب بريدًا إلكترونيًا صحيحًا.';
-  const normalizedPhone = phone.replace(/[\s-]/g, '').replace(/\D/g, '');
-  if (!/^01[0125]\d{8}$/.test(normalizedPhone)) return errEl.textContent = 'رقم الموبايل غير صحيح (مثال: 01012345678).';
-  if (password.length < 8) return errEl.textContent = 'كلمة المرور يجب أن تكون 8 خانات على الأقل.';
-  if (password !== confirmPassword) return errEl.textContent = 'تأكيد كلمة المرور غير مطابق.';
-
-  if (!window.ACDCloud?.signUpWithEmail) {
-    errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة وحاول مرة أخرى.';
-    return;
-  }
-
-  setAuthBusy('custRegisterForm', true, 'جارٍ إنشاء الحساب...');
-  try {
-    const res = await ACDCloud.signUpWithEmail(email, password, name, normalizedPhone, {
-      label: currentAddressLabel || 'السكن',
-      address,
-      lat: currentGpsCoords?.lat,
-      lng: currentGpsCoords?.lng
-    });
-    toast(res.verificationSent === false
-      ? `أهلًا بيك يا ${name}! الحساب اتعمل، بس رسالة التفعيل ماوصلتش. تقدر تعيد إرسالها من حسابك.`
-      : `مرحباً بك يا ${name}! تم إنشاء الحساب. راجع بريدك الإلكتروني لتفعيل الحساب ✉️`);
-    renderCustomerAuthUI();
-  } catch (err) {
-    errEl.textContent = ACDCloud.authError(err);
-  } finally {
-    setAuthBusy('custRegisterForm', false);
-  }
-});
-
-// Customer Login
-$('#custLoginForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const email = $('#loginEmail').value.trim().toLowerCase();
-  const password = $('#loginPassword').value;
-  const errEl = $('#loginError');
-  errEl.textContent = '';
-  if (!window.ACDCloud?.signInWithEmail) return errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة.';
-
-  setAuthBusy('custLoginForm', true, 'جارٍ تسجيل الدخول...');
-  try {
-    const res = await ACDCloud.signInWithEmail(email, password);
-    toast(`أهلاً بعودتك يا ${res.profile?.name || 'عميل الأزهر'}! 👋`);
-    renderCustomerAuthUI();
-  } catch (err) {
-    errEl.textContent = ACDCloud.authError(err);
-  } finally {
-    setAuthBusy('custLoginForm', false);
-  }
-});
-
-// Password reset
-$('#btnResetPassword').addEventListener('click', async () => {
-  const email = $('#loginEmail').value.trim().toLowerCase();
-  const errEl = $('#loginError');
-  if (!email) {
-    errEl.textContent = 'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟».';
-    return;
-  }
-  try {
-    await ACDCloud.resetPassword(email);
-    errEl.style.color = '#166534';
-    errEl.textContent = 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.';
-  } catch (err) {
-    errEl.style.color = '';
-    errEl.textContent = ACDCloud.authError(err);
-  }
-});
-
-// Resend verification email
-$('#btnResendVerification').addEventListener('click', async () => {
-  try {
-    await ACDCloud.resendVerification();
-    toast('تم إرسال رسالة تفعيل جديدة إلى بريدك الإلكتروني ✉️');
-  } catch (err) {
-    toast(ACDCloud.authError(err));
-  }
-});
-
 // Customer Logout
 $('#btnCustLogout').addEventListener('click', async () => {
   try {
@@ -1583,16 +1456,10 @@ $('#btnCustLogout').addEventListener('click', async () => {
 // Account profile actions
 $('#btnSaveAccountProfile')?.addEventListener('click', async () => { const errEl=$('#accountProfileError'); if(errEl) errEl.textContent=''; const name=$('#accountNameEdit')?.value.trim()||''; const phone=$('#accountPhoneEdit')?.value.trim()||''; if(name.length<3){ if(errEl) errEl.textContent='اكتب الاسم بالكامل علشان نستخدمه في الطلبات.'; return; } const btn=$('#btnSaveAccountProfile'); const old=btn?.textContent; if(btn){btn.disabled=true;btn.textContent='جارٍ حفظ البيانات...';} try{await ACDCloud.saveCustomerProfile({name,phone}); renderCustomerAuthUI(); toast('تم حفظ بيانات حسابك ✅');}catch(err){if(errEl) errEl.textContent=ACDCloud.authError(err);}finally{if(btn){btn.disabled=false;btn.textContent=old||'حفظ بيانات الحساب';}} });
 $('#btnAccountRefreshClaims')?.addEventListener('click', async()=>{try{await ACDCloud.refreshClaims();renderCustomerAuthUI();toast('تم تحديث الجلسة والصلاحيات ✅')}catch(err){toast(ACDCloud.authError(err))}});
-$('#btnLinkGoogle')?.addEventListener('click', async()=>{const btn=$('#btnLinkGoogle');try{if(btn)btn.disabled=true;const res=await ACDCloud.linkGoogleAccount();if(res?.redirecting)return;renderCustomerAuthUI();toast('تم ربط حساب Google بحسابك ✅')}catch(err){toast(ACDCloud.authError(err))}finally{if(btn)btn.disabled=false}});
-
-// Google Login
-$('#btnGoogleAuth').addEventListener('click', async () => {
-  if (!window.ACDCloud?.signIn) return toast('جاري تجهيز تسجيل الدخول، جرّب بعد ثواني.');
-  const btn=$('#btnGoogleAuth'); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="google-logo">G</span><span><b>جارٍ فتح Google…</b><small>ثواني ونرجعك للموقع</small></span><span class="auth-spinner"></span>';
-  try { const res=await ACDCloud.signIn(); if(res?.redirecting) return; toast(`أهلاً بيك${res.user?.displayName ? ` يا ${res.user.displayName.split(' ')[0]}` : ''} 👋`); renderCustomerAuthUI(); } catch(err){ toast(ACDCloud.authError(err)); btn.disabled=false; btn.innerHTML=old; }
+$('#btnResendVerification')?.addEventListener('click', async () => {
+  try { await ACDCloud.resendVerification(); toast('تم إرسال رسالة تفعيل جديدة إلى بريدك الإلكتروني ✉️'); }
+  catch (err) { toast(ACDCloud.authError(err)); }
 });
-window.addEventListener('acd-auth-google-complete', () => { renderCustomerAuthUI(); toast('أهلاً بيك 👋 تم تسجيل الدخول بحساب Google.'); });
-window.addEventListener('acd-auth-google-linked', () => { renderCustomerAuthUI(); toast('تم ربط حساب Google بحسابك بنجاح ✅'); });
 
 window.addEventListener('acd-auth-change', () => renderCustomerAuthUI());
 window.addEventListener('acd-auth-profile', () => renderCustomerAuthUI());

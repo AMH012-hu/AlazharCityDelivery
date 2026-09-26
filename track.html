@@ -476,7 +476,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
       name: profile.name || user.displayName || 'عميل الأزهر',
       email: user.email || '',
       phone: profile.phone || '',
-      emailVerified: !!user.emailVerified
+      accountVerified: window.ACDCloud?.isAccountVerified?.() || !!user.emailVerified
     };
   }
 
@@ -502,18 +502,18 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
           <div style="font-size:3rem;margin-bottom:12px">🔐</div>
           <h2 style="margin:0 0 8px">سجّل الدخول لعرض طلباتك</h2>
           <p style="color:var(--muted);font-size:0.85rem">تفاصيل الطلبات وعناوين التوصيل خاصة بالحساب ولا يتم عرضها للزوار.</p>
-          <a href="./index.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">فتح المتجر وتسجيل الدخول</a>
+          <a href="./login.html?returnTo=track.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">تسجيل الدخول بحساب Google</a>
         </div>`;
       return;
     }
 
-    if (!custSession.emailVerified) {
+    if (!custSession.accountVerified) {
       content.innerHTML = `
         <div class="card" style="text-align:center;padding:40px 20px">
           <div style="font-size:3rem;margin-bottom:12px">✉️</div>
-          <h2 style="margin:0 0 8px">فعّل بريدك الإلكتروني</h2>
-          <p style="color:var(--muted);font-size:0.85rem">فعّل الحساب من الرسالة المرسلة إلى <b>${escapeHtml(custSession.email)}</b> ثم عد إلى صفحة التتبع.</p>
-          <a href="./index.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">العودة إلى حسابي</a>
+          <h2 style="margin:0 0 8px">تأكد من حساب Google</h2>
+          <p style="color:var(--muted);font-size:0.85rem">استخدم حساب Google اللي طلبت بيه علشان تشوف طلباتك هنا.</p>
+          <a href="./login.html?returnTo=track.html" class="nav-btn" style="background:var(--ink);display:inline-block;margin-top:14px;padding:9px 18px">تسجيل الدخول بحساب Google</a>
         </div>`;
       return;
     }
@@ -521,7 +521,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const badge = document.createElement('div');
     badge.id = 'custTrackBadge';
     badge.style.cssText = 'background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:8px 14px;margin-bottom:12px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;';
-    badge.innerHTML = `<span>👤 الحساب: <b>${escapeHtml(custSession.name)}</b> (${escapeHtml(custSession.email)})</span><a href="./index.html" style="color:#15803d;font-weight:700;text-decoration:none">حسابي</a>`;
+    badge.innerHTML = `<span>👤 الحساب: <b>${escapeHtml(custSession.name)}</b> (${escapeHtml(custSession.phone || custSession.email)})</span><a href="./index.html" style="color:#15803d;font-weight:700;text-decoration:none">حسابي</a>`;
     const picker = document.querySelector('.order-picker');
     if (picker) picker.parentNode.insertBefore(badge, picker);
 
