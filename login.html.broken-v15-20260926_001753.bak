@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1210">
+<title>تسجيل الدخول | Alazhar City Delivery</title>
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e63127;--red2:#b91f19;--ink:#0d1210;--muted:#69736e;--line:#e4e9e5;--bg:#f5f7f4;--card:#fff;--green:#0a8150;--shadow:0 22px 70px rgba(13,18,16,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0%,#fff 0,#f5f7f4 42%,#eef2ee 100%);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;min-height:100vh;display:grid;place-items:center;padding:22px;-webkit-tap-highlight-color:transparent}button,input{font:inherit}.page{width:min(980px,100%);display:grid;grid-template-columns:1.05fr .95fr;background:#fff;border:1px solid rgba(13,18,16,.07);border-radius:30px;overflow:hidden;box-shadow:var(--shadow);min-height:640px}.visual{position:relative;background:linear-gradient(145deg,#090d0b,#171e1a 65%,#252d29);color:#fff;padding:42px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.visual:before,.visual:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.visual:before{width:390px;height:390px;left:-230px;bottom:-210px;border:1px solid rgba(255,255,255,.11)}.visual:after{width:420px;height:420px;right:-300px;top:-260px;background:rgba(230,49,39,.12)}.brand{position:relative;z-index:1;display:flex;align-items:center;gap:12px}.brand img{width:54px;height:54px;border-radius:16px;object-fit:cover;background:#000;box-shadow:0 10px 28px rgba(0,0,0,.3)}.brand b{font-size:1rem;font-weight:900}.brand small{display:block;color:rgba(255,255,255,.55);font-size:.7rem;margin-top:2px}.visual-main{position:relative;z-index:1}.eyebrow{color:#ff776e;font-size:.7rem;font-weight:900;letter-spacing:.08em}.visual h1{font-size:2.15rem;line-height:1.35;margin:12px 0 12px;font-weight:900}.visual p{color:rgba(255,255,255,.7);line-height:1.9;margin:0;max-width:420px;font-size:.92rem}.feature-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px}.feature-list li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.86);font-size:.82rem;font-weight:700}.feature-list i{width:30px;height:30px;border:1px solid rgba(255,255,255,.12);border-radius:10px;display:grid;place-items:center;color:#ff6d64;background:rgba(255,255,255,.04)}.feature-list svg,.icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.visual-foot{position:relative;z-index:1;color:rgba(255,255,255,.4);font-size:.68rem}.form-side{padding:42px;display:flex;align-items:center}.form-wrap{width:min(430px,100%);margin:auto}.back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.78rem;text-decoration:none;font-weight:800;margin-bottom:22px}.form-wrap h2{font-size:1.75rem;margin:0 0 5px;font-weight:900}.subtitle{margin:0 0 22px;color:var(--muted);font-size:.82rem;line-height:1.8}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#f0f3f0;border-radius:14px;padding:4px;margin-bottom:18px}.tab{border:0;background:transparent;border-radius:11px;padding:9px;font-weight:800;color:var(--muted);cursor:pointer}.tab.active{background:#fff;color:var(--ink);box-shadow:0 3px 12px rgba(13,18,16,.08)}.google{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px 14px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;cursor:pointer;transition:.2s}.google:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(13,18,16,.08)}.g{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.9rem}.divider{display:flex;align-items:center;gap:10px;color:#9aa49f;font-size:.7rem;margin:17px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.field{display:block;margin-bottom:12px}.field span{display:block;font-size:.76rem;font-weight:800;margin-bottom:6px}.field input{width:100%;height:48px;border:1px solid var(--line);border-radius:13px;background:#fbfcfb;padding:0 13px;outline:none;transition:.2s}.field input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(230,49,39,.09);background:#fff}.password{position:relative}.password input{padding-left:62px}.show{position:absolute;left:8px;bottom:7px;border:0;background:#eef1ee;color:#58645e;border-radius:9px;padding:5px 8px;font-size:.68rem;font-weight:800;cursor:pointer}.submit{width:100%;height:50px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-weight:900;cursor:pointer;box-shadow:0 10px 24px rgba(230,49,39,.22);transition:.2s}.submit:hover{transform:translateY(-1px);box-shadow:0 13px 30px rgba(230,49,39,.3)}.submit:disabled,.google:disabled{opacity:.65;cursor:wait;transform:none}.reset{border:0;background:none;color:var(--red2);font-size:.72rem;font-weight:800;cursor:pointer;padding:0}.message{min-height:23px;margin:8px 0;color:#c92c23;font-size:.73rem;font-weight:700}.message.ok{color:var(--green)}.switch-copy{text-align:center;margin:15px 0 0;color:var(--muted);font-size:.74rem}.switch-copy button{border:0;background:none;color:var(--red2);font-weight:900;cursor:pointer}.register-only{display:none}.register-only.show{display:block}.login-only.hide{display:none}.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-left:7px}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:760px){body{padding:0;display:block;background:var(--bg)}.page{min-height:100vh;border:0;border-radius:0;display:block}.visual{min-height:300px;padding:24px}.visual h1{font-size:1.55rem}.feature-list{grid-template-columns:1fr 1fr;margin-top:18px}.form-side{padding:28px 20px 36px}.visual-foot{display:none}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+<style id="amh-login-v2-fix">
+html,body{width:100%;min-width:0;overflow-x:hidden}
+body{padding:clamp(10px,2.5vw,28px)}
+.page{width:min(1120px,100%);min-height:640px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.visual,.form-side{min-width:0}
+.visual{padding:clamp(28px,4vw,46px)}
+.visual-main,.brand,.visual-foot{min-width:0}
+.visual h1{font-size:clamp(1.65rem,3vw,2.35rem);overflow-wrap:anywhere}
+.form-side{padding:clamp(24px,4vw,46px)}
+.form-wrap{width:min(430px,100%);min-width:0}
+.form-wrap h2,.subtitle{overflow-wrap:anywhere}
+.field,.google,.submit,.tabs{max-width:100%;min-width:0}
+.field input{max-width:100%;min-width:0}
+@media(max-width:900px){
+ body{padding:12px}
+ .page{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:620px}
+ .visual{padding:30px 26px}
+ .form-side{padding:30px 24px}
+ .visual h1{font-size:1.75rem}
+ .visual p{font-size:.82rem}
+ .feature-list li{font-size:.75rem}
+}
+@media(max-width:760px){
+ body{padding:0;display:block;min-height:100vh}
+ .page{width:100%;min-height:100vh;display:flex;flex-direction:column;border-radius:0}
+ .visual{order:1;min-height:0;padding:24px 20px 22px}
+ .visual-main{margin-top:20px}
+ .visual h1{font-size:1.65rem;line-height:1.35}
+ .visual p{font-size:.8rem;line-height:1.8}
+ .feature-list{grid-template-columns:1fr;margin-top:18px;gap:7px}
+ .feature-list li{font-size:.72rem}
+ .feature-list i{width:27px;height:27px;flex:0 0 27px}
+ .visual-foot{display:none}
+ .form-side{order:2;padding:26px 18px 38px;align-items:flex-start}
+ .form-wrap{width:100%;max-width:520px;margin:0 auto}
+ .back{margin-bottom:18px}
+ .form-wrap h2{font-size:1.55rem}
+ .subtitle{font-size:.78rem;margin-bottom:18px}
+}
+@media(max-width:420px){
+ .visual{padding:20px 16px}
+ .brand img{width:48px;height:48px}
+ .brand b{font-size:.9rem}
+ .brand small{font-size:.6rem}
+ .visual h1{font-size:1.45rem}
+ .feature-list li{font-size:.68rem}
+ .form-side{padding:22px 14px 32px}
+ .google{padding:11px 9px;font-size:.78rem}
+ .field input{height:46px}
+ .submit{height:48px}
+}
+<style id="amh-login-motion">
+@keyframes amhCardIn {
+  from { opacity:0; transform:translateY(14px); }
+  to { opacity:1; transform:none; }
+}
+
+.page {
+  animation:amhCardIn .55s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.visual-main {
+  animation:amhCardIn .7s .08s both;
+}
+
+.form-wrap {
+  animation:amhCardIn .7s .14s both;
+}
+
+.brand img {
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease;
+}
+
+.brand:hover img {
+  transform:translateY(-2px) rotate(-2deg);
+  box-shadow:0 14px 34px rgba(230,49,39,.28);
+}
+
+.feature-list li {
+  transition:transform .22s ease,color .22s ease;
+}
+
+.feature-list li:hover {
+  transform:translateX(-4px);
+  color:#fff;
+}
+
+.google,
+.submit,
+.tab {
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+.google:active,
+.submit:active,
+.tab:active {
+  transform:scale(.985);
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .page,
+  .visual-main,
+  .form-wrap {
+    animation:none !important;
+  }
+
+  .brand img,
+  .feature-list li,
+  .google,
+  .submit,
+  .tab {
+    transition:none !important;
+  }
+}
+</style>
+<style id="amh-login-final-layout">
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0!important;box-sizing:border-box!important}
+.page{width:min(1120px,100%)!important;max-width:100%!important;min-width:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;overflow:hidden!important}
+.visual,.form-side,.form-wrap{min-width:0!important;max-width:100%!important}
+.visual{overflow:hidden!important}
+.form-side{overflow:hidden!important}
+.form-wrap{width:min(430px,100%)!important;margin-left:auto!important;margin-right:auto!important}
+.field,.field input,.google,.submit,.tabs{width:100%!important;max-width:100%!important;min-width:0!important}
+.field input{box-sizing:border-box!important}
+@media(max-width:1050px){
+body{padding:16px!important}
+.page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+.visual{padding:30px!important}
+.form-side{padding:30px!important}
+.form-wrap{width:100%!important}
+.visual h1{font-size:clamp(1.55rem,3vw,2rem)!important}
+}
+@media(max-width:760px){
+body{padding:0!important;display:block!important}
+.page{display:flex!important;flex-direction:column!important;width:100%!important;min-height:100vh!important;border-radius:0!important}
+.visual{order:1!important;min-height:300px!important;padding:24px 20px!important}
+.form-side{order:2!important;padding:28px 18px 40px!important;overflow:visible!important}
+.form-wrap{width:100%!important;max-width:520px!important;margin:0 auto!important}
+.visual h1{font-size:1.5rem!important}
+.feature-list{grid-template-columns:1fr!important}
+}
+@media(max-width:430px){
+.visual{padding:20px 16px!important}
+.form-side{padding:24px 14px 36px!important}
+.form-wrap h2{font-size:1.5rem!important}
+.google{font-size:.78rem!important}
+}
+</style>
+<style id="amh-login-motion-final">
+@keyframes amhLoginIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.page{animation:amhLoginIn .55s cubic-bezier(.2,.8,.2,1) both}
+.visual-main{animation:amhLoginIn .65s .08s both}
+.form-wrap{animation:amhLoginIn .65s .14s both}
+.brand img{transition:transform .3s ease,box-shadow .3s ease}
+.brand img:hover{transform:translateY(-3px) rotate(-2deg);box-shadow:0 16px 32px rgba(230,49,39,.25)}
+.feature-list li{transition:transform .2s ease}
+.feature-list li:hover{transform:translateX(-4px)}
+@media(prefers-reduced-motion:reduce){.page,.visual-main,.form-wrap{animation:none!important}.brand img,.feature-list li{transition:none!important}}
+</style>
+</style></head>
+<body>
+<div class="page">
+  <aside class="visual">
+    <div class="brand"><img src="./images/logo.webp" alt="Alazhar City Delivery"><div><b>ALAZHAR CITY</b><small>DELIVERY · STUDENT LOCAL DELIVERY</small></div></div>
+    <div class="visual-main">
+      <span class="eyebrow">YOUR LOCAL DELIVERY HUB</span>
+      <h1>حساب واحد.<br>طلباتك كلها في مكانها.</h1>
+      <p>سجّل دخولك للوصول إلى بياناتك وعناوينك وطلباتك، أو اعمل حساب جديد في أقل من دقيقة.</p>
+      <ul class="feature-list">
+        <li><i><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></i> طلب أسرع ببياناتك المحفوظة</li>
+        <li><i><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i> عناوين توصيل محفوظة</li>
+        <li><i><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v3H8zM8 15h5"/></svg></i> متابعة الطلبات من حسابك</li>
+      </ul>
+    </div>
+    <div class="visual-foot">Alazhar City Delivery · Al Hay Al Sades, Nasr City</div>
+  </aside>
+
+  <main class="form-side">
+    <div class="form-wrap">
+      <a class="back" href="./index.html">‹ الرجوع للمتجر</a>
+      <h2 id="title">تسجيل الدخول</h2>
+      <p class="subtitle" id="subtitle">ادخل بحسابك علشان نرجعلك بياناتك وعناوينك بسرعة.</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" id="loginTab" type="button">تسجيل الدخول</button>
+        <button class="tab" id="registerTab" type="button">إنشاء حساب</button>
+      </div>
+
+      <button class="google" id="googleBtn" type="button"><span class="g">G</span> المتابعة باستخدام Google</button>
+      <div class="divider"><span>أو باستخدام البريد الإلكتروني</span></div>
+
+      <form id="loginForm" class="login-only">
+        <label class="field"><span>البريد الإلكتروني</span><input id="loginEmail" type="email" autocomplete="email" required placeholder="name@example.com" dir="ltr"></label>
+        <label class="field password"><span>كلمة المرور</span><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="كلمة المرور"><button class="show" type="button" data-target="loginPassword">إظهار</button></label>
+        <button class="reset" id="resetBtn" type="button">نسيت كلمة المرور؟</button>
+        <p class="message" id="loginMsg" role="alert"></p>
+        <button class="submit" id="loginBtn" type="submit">تسجيل الدخول</button>
+        <p class="switch-copy">لسه معندكش حساب؟ <button type="button" id="toRegister">إنشاء حساب</button></p>
+      </form>
+
+      <form id="registerForm" class="register-only">
+        <label class="field"><span>الاسم بالكامل</span><input id="regName" type="text" autocomplete="name" minlength="3" maxlength="80" required placeholder="أحمد محمد علي"></label>
+        <label class="field"><span>رقم الموبايل</span><input id="regPhone" type="tel" autocomplete="tel" maxlength="15" required placeholder="01012345678" dir="ltr"></label>
+        <label class="field"><span>البريد الإلكتروني</span><input id="regEmail" type="email" autocomplete="email" maxlength="120" required placeholder="name@example.com" dir="ltr"></label>
+        <label class="field password"><span>كلمة المرور</span><input id="regPassword" type="password" autocomplete="new-password" minlength="8" required placeholder="8 خانات على الأقل"><button class="show" type="button" data-target="regPassword">إظهار</button></label>
+        <label class="field password"><span>تأكيد كلمة المرور</span><input id="regPassword2" type="password" autocomplete="new-password" minlength="8" required placeholder="أعد كتابة كلمة المرور"><button class="show" type="button" data-target="regPassword2">إظهار</button></label>
+        <p class="message" id="registerMsg" role="alert"></p>
+        <button class="submit" id="registerBtn" type="submit">إنشاء الحساب</button>
+        <p class="switch-copy">عندك حساب بالفعل؟ <button type="button" id="toLogin">تسجيل الدخول</button></p>
+      </form>
+    </div>
+  </main>
+</div>
+<script type="module">
+import './firebase-client.js';
+const $=s=>document.querySelector(s);
+const params=new URLSearchParams(location.search);
+const returnTo=params.get('returnTo')||'index.html';
+const safeReturn=/^[a-zA-Z0-9._/-]+\.html$/.test(returnTo)?returnTo:'index.html';
+let redirecting=false;
+function go(){ if(!redirecting){redirecting=true; location.replace(`./${safeReturn}`);} }
+function setMode(register){
+  $('#loginTab').classList.toggle('active',!register); $('#registerTab').classList.toggle('active',register);
+  $('#loginForm').classList.toggle('hide',register); $('#registerForm').classList.toggle('show',register);
+  $('#title').textContent=register?'إنشاء حساب':'تسجيل الدخول';
+  $('#subtitle').textContent=register?'اعمل حسابك مرة واحدة واحفظ بياناتك وعناوينك للطلبات الجاية.':'ادخل بحسابك علشان نرجعلك بياناتك وعناوينك بسرعة.';
+  $('#loginMsg').textContent=''; $('#registerMsg').textContent='';
+}
+function busy(btn,on,label){btn.disabled=on;if(on){btn.dataset.old=btn.textContent;btn.innerHTML=`${label}<span class="spinner"></span>`}else btn.textContent=btn.dataset.old||label}
+function err(e){return window.ACDCloud?.authError?.(e)||'حصلت مشكلة. جرّب مرة تانية.'}
+$('#loginTab').onclick=()=>setMode(false);$('#registerTab').onclick=()=>setMode(true);$('#toRegister').onclick=()=>setMode(true);$('#toLogin').onclick=()=>setMode(false);
+document.querySelectorAll('.show').forEach(b=>b.onclick=()=>{const i=$(`#${b.dataset.target}`);i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'إظهار':'إخفاء'});
+$('#googleBtn').onclick=async()=>{const b=$('#googleBtn');busy(b,true,'جارٍ فتح Google…');try{const r=await ACDCloud.signIn();if(r?.redirecting)return;go()}catch(e){busy(b,false,'المتابعة باستخدام Google');$('#loginMsg').textContent=err(e)}};
+$('#loginForm').onsubmit=async e=>{e.preventDefault();const b=$('#loginBtn');const m=$('#loginMsg');m.textContent='';busy(b,true,'جارٍ تسجيل الدخول');try{await ACDCloud.signInWithEmail($('#loginEmail').value,$('#loginPassword').value);go()}catch(x){m.textContent=err(x);busy(b,false,'تسجيل الدخول')}};
+$('#registerForm').onsubmit=async e=>{e.preventDefault();const m=$('#registerMsg');const b=$('#registerBtn');m.textContent='';if($('#regPassword').value!==$('#regPassword2').value){m.textContent='كلمتا المرور غير متطابقتين.';return}busy(b,true,'جارٍ إنشاء الحساب');try{await ACDCloud.signUpWithEmail($('#regEmail').value,$('#regPassword').value,$('#regName').value,$('#regPhone').value,null);m.className='message ok';m.textContent='تم إنشاء الحساب وإرسال رسالة تفعيل إلى بريدك. جاري فتح المتجر…';setTimeout(go,900)}catch(x){m.className='message';m.textContent=err(x);busy(b,false,'إنشاء الحساب')}};
+$('#resetBtn').onclick=async()=>{const email=$('#loginEmail').value.trim();const m=$('#loginMsg');if(!email){m.textContent='اكتب بريدك الإلكتروني الأول علشان نبعت لك رابط إعادة التعيين.';return}try{await ACDCloud.resetPassword(email);m.className='message ok';m.textContent='تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك.'}catch(x){m.className='message';m.textContent=err(x)}};
+window.addEventListener('acd-auth-google-complete',go);
+window.addEventListener('acd-auth-change',e=>{if(e.detail?.user) go()});
+setTimeout(()=>{if(window.ACDCloud?.user?.())go()},500);
+</script>
+</body>
+</html>

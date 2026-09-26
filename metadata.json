@@ -1,6 +1,6 @@
 {
   "name": "Alazhar City Delivery",
-  "description": "سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس بمدينة نصر. اطلب واستلم لحد باب سكنك في 30–45 دقيقة.",
+  "description": "طلبات البيت والأكل والصيدلية من متاجر الحي السادس في مدينة نصر، لحد بابك بسرعة.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

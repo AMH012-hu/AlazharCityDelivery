@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" role="img" aria-label="مندوب بملابس محتشمة يوصل الطلب على عجلة وعلم فلسطين على كتفه">
+ <defs><linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#d9e9df"/></linearGradient></defs>
+ <ellipse cx="224" cy="221" rx="170" ry="15" fill="#071c15" opacity=".18"/>
+ <path d="M50 214h340" stroke="#f3c95e" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 12" opacity=".8"/>
+ <g fill="none" stroke="#f5fff8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="112" cy="178" r="49" stroke-width="5"/><circle cx="310" cy="178" r="49" stroke-width="5"/>
+  <path d="m112 178 54-87 65 87H112l41-65h95l62 65m-73 0 35-89h38" stroke-width="6"/>
+  <path d="M265 89h39m-149 2h-28" stroke-width="6"/>
+ </g>
+ <g stroke="#102d23" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m174 90 20-28 37 4 27 31-16 17-25-22-14 32-35 10-23-23 19-21z" fill="url(#shirt)"/>
+  <path d="m189 129-37 25 13 15 44-20 17-34m1-7 28 17 34 2-2 11-43 1-29-15" fill="#14231d"/>
+  <path d="m235 70 28 26 17-5-26-39-27-11-17 14z" fill="#14231d"/>
+  <circle cx="210" cy="39" r="22" fill="#d49a70"/>
+  <path d="M187 42q1-32 25-33 25 1 29 31l-16 2-9-17-18 16z" fill="#f8faf8"/>
+  <path d="m177 89 22 1 18 22-13 20-30-6-10-17z" fill="#f9fffb"/>
+  <path d="m209 93 18 9-10 21-17-8z" fill="#fff" stroke-width="2"/>
+  <path d="M203 96h21v5h-21z" fill="#101010" stroke="none"/><path d="M203 101h21v5h-21z" fill="#fff" stroke="none"/><path d="M203 106h21v5h-21z" fill="#07854b" stroke="none"/><path d="m203 101 9-5v16l-9 5z" fill="#e32636" stroke="none"/>
+ </g>
+ <rect x="270" y="48" width="76" height="61" rx="14" fill="#f4c75b" stroke="#143b2c" stroke-width="4" transform="rotate(8 270 48)"/>
+ <path d="M286 68h42v7h-42zm0 10h42v7h-42z" fill="#fff" transform="rotate(8 286 68)"/>
+ <path d="m283 65 17 2-17 15z" fill="#e4483b" transform="rotate(8 283 65)"/>
+</svg>

@@ -591,25 +591,28 @@
 body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#14231d}.shell{position:relative}button,a{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}.head,.rider-header,.top-head{box-shadow:0 10px 26px rgba(17,34,27,.08)!important;border-bottom:1px solid rgba(17,34,27,.08)!important}.nav-btn,.back,.action,.auth-submit-btn{border-radius:13px!important}.panel,.auth-box,.summary,.order-card,.status-box,.store-card{box-shadow:0 10px 28px rgba(17,34,27,.07)!important;border-color:#dfe8e2!important;border-radius:20px!important}.auth-privacy-badge{border-radius:14px!important;line-height:1.65!important}.auth-submit-btn{box-shadow:0 9px 22px rgba(239,75,58,.16)!important}.table{border-radius:14px;overflow:hidden}.table th{background:#f4f8f5!important}
 </style>
 <link rel="stylesheet" href="./src/app-polish.css">
+<link rel="stylesheet" href="./src/auth-polish.css">
 <style>.app-install-role{position:fixed;left:14px;right:14px;bottom:14px;z-index:250;background:#fff;border:1px solid #e3e9e5;box-shadow:0 12px 34px rgba(20,35,29,.18);border-radius:18px;padding:12px;display:flex;align-items:center;gap:10px;font-family:Cairo,system-ui}.app-install-role b{display:block;font-size:.84rem}.app-install-role small{display:block;color:#69736e;font-size:.7rem}.app-install-role button{margin-inline-start:auto;border:0;background:#e94b3c;color:#fff;border-radius:12px;padding:8px 12px;font-weight:900}.app-install-role[hidden]{display:none}</style></head>
-<body>
+<body class="store-app">
 
 <!-- Login Guard Overlay -->
 <div class="auth-overlay" id="authOverlay">
   <div class="auth-card">
     <div class="auth-icon">🏪</div>
     <h2 class="auth-title">دخول بوابة المتجر</h2>
-    <p class="auth-desc">هذه البوابة تعمل بحساب Firebase مع صلاحية <b>store</b> مرتبطة بمتجر محدد. لا توجد أكواد PIN مشتركة داخل الموقع.</p>
-    <div class="auth-privacy-badge">🔒 <b>عزل المتجر:</b> صلاحية الحساب تحدد المتجر الذي يمكنه رؤية طلباته. لا يمكن اختيار متجر آخر من الواجهة.</div>
+    <p class="auth-desc">سجّل بحساب المتجر المعتمد علشان تتابع الطلبات وتحدّث حالتها.</p>
+    <div class="auth-privacy-badge">🔒 <b>حسابك يفتح متجرك بس:</b> بيانات كل متجر منفصلة ومحمية.</div>
     <form id="storeLoginForm">
+      <label class="auth-input-label" for="storeEmail">البريد الإلكتروني المهني</label>
       <input type="email" class="auth-input" id="storeEmail" placeholder="البريد الإلكتروني المهني" autocomplete="email" required dir="ltr" style="text-align:left">
+      <label class="auth-input-label" for="storePassword">كلمة المرور</label>
       <input type="password" class="auth-input" id="storePassword" placeholder="كلمة المرور" autocomplete="current-password" required>
       <button type="submit" class="auth-submit-btn" id="storeLoginSubmit">تسجيل الدخول للوحة التحكم 🏪</button>
     </form>
-    <button type="button" class="google-login-btn" id="btnFirebaseLogin">🌐 الدخول باستخدام Google</button>
+    <button type="button" class="google-login-btn" id="btnFirebaseLogin">المتابعة باستخدام Google</button>
     <button type="button" id="btnStoreReset" style="background:none;border:0;color:var(--blue);font-size:.78rem;font-weight:800;cursor:pointer;margin-top:4px">نسيت كلمة المرور؟</button>
     <div class="auth-error" id="authError"></div>
-    <div style="margin-top:14px;font-size:0.72rem;color:var(--muted)">مطلوب تفعيل البريد وصلاحية store. تواصل مع إدارة المنصة لتفعيل حساب الموظف.</div>
+    <div style="margin-top:14px;font-size:0.72rem;color:var(--muted)">لو حسابك لسه ما اتفعلش، تواصل مع إدارة المنصة.</div>
   </div>
 </div>
 
@@ -633,7 +636,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     <div class="head-brand">
       <img src="images/logo.webp" alt="Alazhar City">
       <div>
-        <h1 id="storeTitle">بوابة إدارة السوبرماركت والصيدلية</h1>
+        <h1 id="storeTitle">بوابة طلبات المتجر</h1>
         <p id="storeSubtitle">استقبال وتجهيز الطلبات الحية — الحي السادس</p>
       </div>
     </div>
@@ -664,7 +667,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
       <span>🛒 سوبرماركت البركة</span>
     </button>
     <button type="button" class="store-tab-btn" data-store-filter="pharmacy">
-      <span>💊 صيدلية الشفاء ود. مصطفى</span>
+      <span>💊 صيدلية الجهيني</span>
     </button>
   </nav>
 
@@ -722,6 +725,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
   </div>
 </div>
 
+<script src="./config.js?v=20260926-15"></script>
 <script src="./platform-store.js"></script>
 <script type="module" src="./firebase-client.js"></script>
 <script>
@@ -799,10 +803,11 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const fbUser = window.ACDCloud?.user?.();
     const fbProfile = window.ACDCloud?.profile?.();
     if (fbUser && fbProfile?.role === 'store' && fbProfile?.storeId) {
+      const directoryEntry = (window.STORE_DIRECTORY || []).find(store => store.id === fbProfile.storeId);
       activeStore = {
         id: fbProfile.storeId,
-        name: fbProfile.name || fbUser.displayName || 'متجر الأزهر',
-        type: fbProfile.storeType || 'market'
+        name: directoryEntry?.name || fbProfile.name || fbUser.displayName || 'متجر الأزهر',
+        type: directoryEntry?.type || fbProfile.storeType || 'market'
       };
       authError.style.display = 'none';
       grantAccess();
@@ -847,6 +852,19 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
         $('#storeBadgeTitle').textContent = activeStore.name;
         $('#storeBadgeSubtitle').textContent = '🔒 هذه الجلسة معزولة عن السوبرماركت وجميع المتاجر الأخرى.';
         $('#storeBadgePill').innerHTML = '🔒 صيدلية محددة';
+      }
+      if (tabsNav) tabsNav.style.display = 'none';
+    } else {
+      const storeIcons = { koshary: '🍲', pizza: '🍕', bakeryShop: '🥖' };
+      $('#storeTitle').textContent = activeStore.name || 'إدارة المتجر';
+      $('#storeSubtitle').textContent = 'طلبات متجرك فقط — لوحة معزولة ومحمية';
+      if (banner) {
+        banner.style.display = 'flex';
+        banner.className = 'store-badge-banner market';
+        $('#storeBadgeIcon').textContent = storeIcons[activeStore.type] || '🏪';
+        $('#storeBadgeTitle').textContent = activeStore.name || 'لوحة المتجر';
+        $('#storeBadgeSubtitle').textContent = '🔒 الطلبات المعروضة مرتبطة بمعرّف متجرك فقط.';
+        $('#storeBadgePill').textContent = '🔒 متجر محدد';
       }
       if (tabsNav) tabsNav.style.display = 'none';
     }
@@ -899,18 +917,8 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const data = ACDPlatform.read();
     let orders = Array.isArray(cloudOrders) ? cloudOrders : [];
 
-    // CRITICAL RBAC STORE ISOLATION:
-    // A supermarket manager MUST ONLY see supermarket orders.
-    // A pharmacy manager MUST ONLY see pharmacy orders.
-    if (activeStore.type === 'market') {
-      orders = orders.filter(o => !o.hasPharma);
-    } else if (activeStore.type === 'pharmacy') {
-      orders = orders.filter(o => !!o.hasPharma);
-    } else if (activeStoreFilter === 'market') {
-      orders = orders.filter(o => !o.hasPharma);
-    } else if (activeStoreFilter === 'pharmacy') {
-      orders = orders.filter(o => !!o.hasPharma);
-    }
+    // Match the authenticated store ID; this also isolates new restaurant and bakery accounts.
+    orders = orders.filter(o => o.storeId === activeStore.id);
 
     // Update Metrics (strictly computed for this store only)
     const newCount = orders.filter(o => o.status === 'new').length;
@@ -959,7 +967,8 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const isDelivering = o.status === 'delivering';
     const isDelivered = o.status === 'delivered';
 
-    const storeTypeLabel = o.hasPharma ? '💊 صيدلية' : '🛒 سوبرماركت';
+    const orderStore = (window.STORE_DIRECTORY || []).find(store => store.id === o.storeId);
+    const storeTypeLabel = `${o.hasPharma ? '💊' : '🛒'} ${escapeHtml(orderStore?.name || (o.hasPharma ? 'صيدلية الجهيني' : 'السوبر ماركت'))}`;
     const storeClass = o.hasPharma ? 'pharmacy' : 'market';
 
     return `
@@ -1038,17 +1047,14 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const o = (Array.isArray(cloudOrders) ? cloudOrders.find(x => x.id === id) : null) || ACDPlatform.getOrder(id);
     if (!o) return;
 
-    // Cross-store prevention check
-    if (activeStore && activeStore.type === 'market' && o.hasPharma) {
-      alert('غير مصرح لك بعرض أو طباعة بونات الصيدلية!');
-      return;
-    }
-    if (activeStore && activeStore.type === 'pharmacy' && !o.hasPharma) {
-      alert('غير مصرح لك بعرض أو طباعة بونات السوبرماركت!');
+    // Enforce the account's exact store identity before opening or printing any receipt.
+    if (activeStore && o.storeId !== activeStore.id) {
+      alert('غير مصرح لك بعرض أو طباعة طلب متجر آخر.');
       return;
     }
 
-    $('#recStoreName').textContent = o.hasPharma ? 'صيدلية الشفاء ود. مصطفى' : 'سوبرماركت البركة والخير';
+    const orderStore = (window.STORE_DIRECTORY || []).find(store => store.id === o.storeId);
+    $('#recStoreName').textContent = orderStore?.name || (o.hasPharma ? 'صيدلية الجهيني' : 'السوبر ماركت');
     $('#receiptContent').innerHTML = `
       <div style="margin-bottom:8px">
         <div><b>رقم الطلب:</b> ${o.reference}</div>
@@ -1126,13 +1132,9 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
       const o = (Array.isArray(cloudOrders) ? cloudOrders.find(x => x.id === id) : null) || ACDPlatform.getOrder(id);
       if (!o) return;
 
-      // Cross-store update security check
-      if (activeStore && activeStore.type === 'market' && o.hasPharma) {
-        alert('غير مصرح لك بتحديث أو استلام طلبات قسم الصيدلية!');
-        return;
-      }
-      if (activeStore && activeStore.type === 'pharmacy' && !o.hasPharma) {
-        alert('غير مصرح لك بتحديث أو استلام طلبات قسم السوبرماركت!');
+      // Enforce the signed-in store ID before any status update.
+      if (activeStore && o.storeId !== activeStore.id) {
+        alert('غير مصرح لك بتحديث طلب متجر آخر.');
         return;
       }
 
@@ -1153,13 +1155,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
       const latestOrder = (data.orders || [])[0];
       if (latestOrder && latestOrder.status === 'new') {
         // Only chime if the new order belongs to this store
-        if (activeStore.type === 'market' && !latestOrder.hasPharma) {
-          playOrderChime();
-        } else if (activeStore.type === 'pharmacy' && latestOrder.hasPharma) {
-          playOrderChime();
-        } else if (activeStore.type === 'all') {
-          playOrderChime();
-        }
+        if (activeStore.type === 'all' || latestOrder.storeId === activeStore.id) playOrderChime();
       }
     }
     render();

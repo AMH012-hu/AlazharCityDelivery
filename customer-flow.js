@@ -279,3 +279,52 @@
   document.addEventListener('DOMContentLoaded', start);
   setTimeout(start, 800);
 })();
+
+/* --- منطق الدليل المنبثق --- */
+const tourSteps = [
+  { target: 'input[placeholder*="بتدور"]', badge: "خطوة 1 من 3", title: "البحث السريع", desc: "اكتب اسم المنتج أو الدواء هنا للتوجيه السريع.", arrow: "top" },
+  { target: '.categories-scroll, [data-category]', badge: "خطوة 2 من 3", title: "الأقسام والعروض", desc: "اختر القسم المطلوب أو تصفح الأقسام المتاحة.", arrow: "top" },
+  { target: '#openCart, .cart-btn-header', badge: "خطوة 3 من 3", title: "السلة والطلب", desc: "بعد اختيار منتجاتك افتح السلة لتأكيد طلبك.", arrow: "top" }
+];
+let currentTourStep = 0;
+
+function startGuidedTour() {
+  currentTourStep = 0;
+  showTourStep(currentTourStep);
+}
+
+function showTourStep(index) {
+  const step = tourSteps[index];
+  const targetEl = document.querySelector(step.target);
+  const tourOverlay = document.getElementById("guidedTour");
+  const tooltip = document.getElementById("tourTooltip");
+  if (!targetEl || !tourOverlay) return;
+
+  document.querySelectorAll(".tour-highlight").forEach(el => el.classList.remove("tour-highlight"));
+  tourOverlay.style.display = "block";
+  targetEl.classList.add("tour-highlight");
+
+  document.getElementById("tourStepBadge").textContent = step.badge;
+  document.getElementById("tourTitle").textContent = step.title;
+  document.getElementById("tourDesc").textContent = step.desc;
+  tooltip.setAttribute("data-arrow", step.arrow);
+
+  const rect = targetEl.getBoundingClientRect();
+  tooltip.style.top = (rect.bottom + window.scrollY + 10) + "px";
+  tooltip.style.left = Math.max(10, Math.min(window.innerWidth - 330, rect.left)) + "px";
+  targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("tourNextBtn")?.addEventListener("click", () => {
+    currentTourStep++;
+    if (currentTourStep < tourSteps.length) showTourStep(currentTourStep);
+    else closeTour();
+  });
+});
+
+function closeTour() {
+  const tourOverlay = document.getElementById("guidedTour");
+  if (tourOverlay) tourOverlay.style.display = "none";
+  document.querySelectorAll(".tour-highlight").forEach(el => el.classList.remove("tour-highlight"));
+}

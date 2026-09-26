@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111713">
+<meta name="description" content="سجّل دخولك إلى حسابك في الأزهر سيتي للتوصيل وتابع طلباتك وعناوينك بسهولة.">
+<title>دخول حسابك | الأزهر سيتي</title>
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--red:#e64235;--red-deep:#c52d24;--ink:#17201b;--muted:#6a756e;--line:#e5eae6;--soft:#f6f8f6;--green:#0a8150;--shadow:0 28px 90px rgba(17,28,21,.16)}
+*{box-sizing:border-box}
+html{min-height:100%;scroll-behavior:smooth}
+body{position:relative;isolation:isolate;min-height:100vh;margin:0;padding:clamp(14px,3vw,36px);display:grid;place-items:center;overflow-x:hidden;background:radial-gradient(ellipse at 10% 90%,rgba(10,129,80,.07),transparent 38%),linear-gradient(145deg,#f6f8f6,#edf1ee);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;-webkit-tap-highlight-color:transparent}
+body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none}
+body:before{width:520px;height:520px;top:-330px;right:-190px;border-radius:50%;background:radial-gradient(circle,rgba(230,66,53,.12),rgba(230,66,53,0) 70%);animation:ambient 13s ease-in-out infinite alternate}
+body:after{inset:0;opacity:.16;background-image:radial-gradient(#8a9a8e .7px,transparent .7px);background-size:24px 24px;mask-image:linear-gradient(135deg,transparent 20%,#000 100%)}
+button,input{font:inherit}
+button{touch-action:manipulation}
+.auth-layout{width:min(1080px,100%);min-height:min(700px,calc(100dvh - 48px));display:grid;grid-template-columns:.98fr 1.02fr;background:#fff;border:1px solid rgba(22,34,26,.08);border-radius:30px;overflow:hidden;box-shadow:var(--shadow);animation:layout-in .55s cubic-bezier(.2,.7,.2,1) both}
+.visual{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;min-height:100%;overflow:hidden;padding:clamp(28px,4.3vw,52px);background:linear-gradient(150deg,#111713 0%,#1b2720 58%,#25352b 100%);color:#fff}
+.visual:before,.visual:after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%}
+.visual:before{width:410px;height:410px;left:-230px;bottom:-210px;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 34px rgba(255,255,255,.018),0 0 0 72px rgba(255,255,255,.014)}
+.visual:after{width:430px;height:430px;right:-310px;top:-285px;background:radial-gradient(circle,rgba(230,66,53,.25),rgba(230,66,53,0) 70%);animation:ambient 11s ease-in-out infinite alternate}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;animation:rise-in .55s .08s both}.brand:hover{color:#fff}.brand:hover .brand-name{opacity:.9}
+.brand img{width:52px;height:52px;border-radius:16px;object-fit:cover;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.24)}
+.brand-name{display:block;font-size:.92rem;font-weight:900;letter-spacing:.035em}
+.brand-caption{display:block;margin-top:2px;color:rgba(255,255,255,.57);font-size:.68rem}
+.visual-main{max-width:445px;margin-block:48px 36px}
+.visual-label{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.06);color:#ffd0cc;font-size:.7rem;font-weight:800;animation:rise-in .55s .16s both}
+.visual-label:before{content:"";width:7px;height:7px;border-radius:50%;background:#f16a5f;box-shadow:0 0 0 4px rgba(241,106,95,.13)}
+.visual h1{margin:18px 0 12px;font-size:clamp(2rem,4vw,3rem);line-height:1.25;font-weight:900;letter-spacing:-.04em;animation:rise-in .55s .22s both}
+.visual-copy{margin:0;color:rgba(255,255,255,.72);font-size:.94rem;line-height:1.9;animation:rise-in .55s .28s both}
+.feature-list{display:grid;gap:11px;margin:25px 0 0;padding:0;list-style:none}
+.feature-list li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.88);font-size:.78rem;font-weight:700;animation:rise-in .45s both}
+.feature-list li:nth-child(1){animation-delay:.32s}.feature-list li:nth-child(2){animation-delay:.39s}.feature-list li:nth-child(3){animation-delay:.46s}
+.feature-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:rgba(255,255,255,.05);color:#ff8b81}
+.feature-icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.delivery-note{display:flex;align-items:center;gap:13px;margin-top:30px;padding:14px;border:1px solid rgba(255,255,255,.1);border-radius:17px;background:rgba(255,255,255,.055);animation:rise-in .5s .5s both}
+.route-mark{position:relative;width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:rgba(230,66,53,.16);color:#ff978e}
+.route-mark svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.delivery-note b{display:block;font-size:.76rem}.delivery-note small{display:block;margin-top:2px;color:rgba(255,255,255,.58);font-size:.67rem}
+.visual-foot{color:rgba(255,255,255,.4);font-size:.67rem}
+.form-panel{display:flex;align-items:center;padding:clamp(26px,5vw,60px)}
+.form-wrap{width:min(420px,100%);margin:auto;animation:rise-in .5s .15s both}
+.back{display:inline-flex;align-items:center;gap:7px;margin-bottom:28px;color:var(--muted);font-size:.76rem;font-weight:800;text-decoration:none;transition:color .18s,transform .18s}
+.back:hover{color:var(--red-deep);transform:translateX(2px)}
+.back svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.account-label{display:flex;align-items:center;gap:8px;margin-bottom:11px;color:var(--red-deep);font-size:.7rem;font-weight:900}
+.account-label:before{content:"";width:22px;height:2px;border-radius:3px;background:currentColor}
+.form-wrap h2{margin:0;font-size:1.8rem;line-height:1.4;font-weight:900;letter-spacing:-.035em}
+.subtitle{min-height:48px;margin:5px 0 22px;color:var(--muted);font-size:.81rem;line-height:1.8}
+.tabs{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:19px;padding:4px;border:1px solid #edf0ed;border-radius:14px;background:#f3f5f3}
+.tab{min-height:43px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:.76rem;font-weight:800;cursor:pointer;transition:color .2s,background .2s,box-shadow .2s,transform .16s}
+.tab:hover{color:var(--ink)}.tab:active{transform:scale(.985)}
+.tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 3px 11px rgba(18,29,22,.08)}
+.google{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font-size:.78rem;font-weight:800;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s,background .18s}
+.google:hover{transform:translateY(-1px);border-color:#ccd5ce;box-shadow:0 8px 22px rgba(18,29,22,.07)}
+.google:active{transform:scale(.99)}.google:disabled{opacity:.65;cursor:wait;transform:none}
+.google-mark{width:21px;height:21px;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:1.05rem;font-weight:900;line-height:1;background:conic-gradient(from -45deg,#4285f4 0 25%,#34a853 25% 50%,#fbbc05 50% 75%,#ea4335 75%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.divider{display:flex;align-items:center;gap:12px;margin:17px 0;color:#96a099;font-size:.67rem}
+.divider:before,.divider:after{content:"";height:1px;flex:1;background:var(--line)}
+.auth-form:not([hidden]){animation:form-in .28s ease both}
+.field{display:block;margin-bottom:12px}
+.field-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:.73rem;font-weight:800}
+.field input{width:100%;height:49px;border:1px solid #dfe6e1;border-radius:12px;outline:0;background:#fbfcfb;padding:0 13px;color:var(--ink);font-size:.82rem;transition:border-color .18s,box-shadow .18s,background .18s}
+.field input::placeholder{color:#a1aaa4;opacity:1}
+.field input:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(230,66,53,.09)}
+.field input[dir="ltr"]{text-align:left}
+.password{position:relative}
+.password input{padding-left:68px}
+.password-toggle{position:absolute;left:7px;bottom:7px;min-height:34px;padding:4px 9px;border:0;border-radius:9px;background:#f0f3f0;color:#606c64;font-size:.66rem;font-weight:800;cursor:pointer;transition:background .18s,color .18s}
+.password-toggle:hover{background:#e8ede9;color:var(--ink)}
+.reset{border:0;padding:0;background:none;color:var(--red-deep);font-size:.69rem;font-weight:800;cursor:pointer}
+.reset:hover{text-decoration:underline}
+.submit{width:100%;min-height:50px;display:flex;align-items:center;justify-content:center;border:0;border-radius:13px;background:linear-gradient(125deg,var(--red),var(--red-deep));color:#fff;font-size:.8rem;font-weight:900;cursor:pointer;box-shadow:0 9px 21px rgba(230,66,53,.2);transition:transform .18s,box-shadow .18s,filter .18s}
+.submit:hover{transform:translateY(-1px);box-shadow:0 13px 27px rgba(230,66,53,.25);filter:saturate(1.08)}
+.submit:active{transform:scale(.99)}.submit:disabled{opacity:.7;cursor:wait;transform:none;box-shadow:none}
+.spinner{width:16px;height:16px;margin-inline-start:8px;border:2px solid rgba(255,255,255,.42);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.message{min-height:21px;margin:8px 0;color:#b52820;font-size:.7rem;font-weight:700;line-height:1.6}
+.message.ok{color:var(--green)}
+.switch-copy{margin:14px 0 0;text-align:center;color:var(--muted);font-size:.72rem}
+.switch-copy button{border:0;padding:0;background:none;color:var(--red-deep);font-weight:900;cursor:pointer}
+.switch-copy button:hover{text-decoration:underline}
+.safe-note{display:flex;align-items:flex-start;gap:9px;margin-top:18px;padding-top:15px;border-top:1px solid #edf0ed;color:#7a857e;font-size:.65rem;line-height:1.7}
+.safe-note svg{width:16px;height:16px;flex:0 0 16px;margin-top:1px;fill:none;stroke:var(--green);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid rgba(230,66,53,.35);outline-offset:3px}
+@keyframes layout-in{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes rise-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes form-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ambient{from{transform:translate3d(0,0,0) scale(.92)}to{transform:translate3d(12px,10px,0) scale(1.04)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:780px){
+ body{display:block;padding:0;background:#f2f5f2}
+ .auth-layout{width:100%;min-height:100vh;min-height:100dvh;grid-template-columns:1fr;border:0;border-radius:0;box-shadow:none}
+ .visual{min-height:auto;padding:22px 22px 24px}
+ .visual-main{margin:25px 0 0}
+ .visual h1{max-width:540px;margin:12px 0 8px;font-size:clamp(1.55rem,7vw,2rem)}
+ .visual-copy{max-width:560px;font-size:.8rem;line-height:1.75}
+ .feature-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:17px}
+ .feature-list li{align-items:flex-start;gap:7px;font-size:.67rem;line-height:1.5}
+ .feature-icon{width:26px;height:26px;flex-basis:26px;border-radius:8px}
+ .feature-icon svg{width:14px;height:14px}
+ .delivery-note,.visual-foot{display:none}
+ .form-panel{padding:26px 22px max(32px,env(safe-area-inset-bottom))}
+ .form-wrap{width:min(460px,100%)}
+ .back{margin-bottom:19px}
+ .subtitle{min-height:0;margin-bottom:19px}
+}
+@media(max-width:430px){
+ .visual{padding:18px 18px 20px}
+ .brand img{width:44px;height:44px;border-radius:13px}
+ .brand-name{font-size:.83rem}.brand-caption{font-size:.61rem}
+ .visual-main{margin-top:20px}
+ .visual h1{font-size:1.55rem}
+ .feature-list{grid-template-columns:1fr 1fr;row-gap:8px}
+ .feature-list li{font-size:.66rem}
+ .form-panel{padding:22px 18px max(30px,env(safe-area-inset-bottom))}
+ .form-wrap h2{font-size:1.55rem}
+ .field input{height:48px}
+}
+@media(max-height:720px) and (min-width:781px){
+ body{place-items:start center;padding-block:16px}
+ .auth-layout{min-height:calc(100vh - 32px)}
+ .visual-main{margin-block:28px 22px}
+ .feature-list{gap:8px;margin-top:19px}
+ .delivery-note{margin-top:18px}
+ .form-panel{padding-block:28px}
+ .back{margin-bottom:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ body:before{animation:none}
+}
+</style>
+</head>
+<body class="customer-auth-page">
+<main class="auth-layout">
+  <aside class="visual" aria-label="مميزات حسابك">
+    <a class="brand" href="./index.html" aria-label="العودة إلى متجر الأزهر سيتي">
+      <img src="./images/rider-bike-logo.svg" alt="">
+      <span><strong class="brand-name">ALAZHAR CITY</strong><small class="brand-caption">توصيلك المحلي في الحي السادس</small></span>
+    </a>
+    <div class="visual-main">
+      <span class="visual-label">كل طلباتك في مكان واحد</span>
+      <h1>حسابك جاهز<br>لطلبك الجاي.</h1>
+      <p class="visual-copy">سجّل دخولك علشان تلاقي عناوينك وطلباتك جاهزة، وتطلب من غير ما تكتب بياناتك كل مرة.</p>
+      <ul class="feature-list">
+        <li><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>بياناتك محفوظة للطلب الجاي</li>
+        <li><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>عناوينك قريبة منك</li>
+        <li><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 8h8v3H8zM8 15h5"/></svg></span>تابع طلباتك أول بأول</li>
+      </ul>
+      <div class="delivery-note">
+        <span class="route-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M9 17.5h5l-3-8H8l-2 5"/><path d="M14 8h3l2 5h-7"/><path d="M15 5h3"/></svg></span>
+        <span><b>من أول الطلب لحد ما يوصلك</b><small>تجربة بسيطة وواضحة على موبايلك</small></span>
+      </div>
+    </div>
+    <div class="visual-foot">الأزهر سيتي · الحي السادس · مدينة نصر</div>
+  </aside>
+
+  <section class="form-panel" aria-labelledby="title">
+    <div class="form-wrap">
+      <a class="back" href="./index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h12"/></svg>الرجوع للمتجر</a>
+      <div class="account-label">حساب العميل</div>
+      <h2 id="title">أهلاً بيك تاني</h2>
+      <p class="subtitle" id="subtitle">ادخل بحسابك علشان نرجعلك بياناتك وعناوينك بسرعة.</p>
+
+      <div class="tabs" role="tablist" aria-label="اختيار الدخول أو إنشاء حساب">
+        <button class="tab" id="loginTab" type="button" role="tab" aria-controls="loginForm" aria-selected="true">تسجيل الدخول</button>
+        <button class="tab" id="registerTab" type="button" role="tab" aria-controls="registerForm" aria-selected="false">حساب جديد</button>
+      </div>
+
+      <button class="google" id="googleBtn" type="button"><span class="google-mark" aria-hidden="true">G</span>المتابعة باستخدام Google</button>
+      <div class="divider"><span>أو بالبريد الإلكتروني</span></div>
+
+      <form id="loginForm" class="auth-form" aria-labelledby="loginTab">
+        <div class="field"><label class="field-label" for="loginEmail">البريد الإلكتروني</label><input id="loginEmail" type="email" autocomplete="email" required maxlength="120" placeholder="name@example.com" dir="ltr"></div>
+        <div class="field password"><label class="field-label" for="loginPassword">كلمة المرور</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="كلمة المرور"><button class="password-toggle" type="button" data-target="loginPassword" aria-label="إظهار كلمة المرور" aria-pressed="false">إظهار</button></div>
+        <button class="reset" id="resetBtn" type="button">نسيت كلمة المرور؟</button>
+        <p class="message" id="loginMsg" role="status" aria-live="polite"></p>
+        <button class="submit" id="loginBtn" type="submit">تسجيل الدخول</button>
+        <p class="switch-copy">لسه معندكش حساب؟ <button type="button" id="toRegister">اعمل حساب جديد</button></p>
+      </form>
+
+      <form id="registerForm" class="auth-form" aria-labelledby="registerTab" hidden>
+        <div class="field"><label class="field-label" for="regName">الاسم بالكامل</label><input id="regName" type="text" autocomplete="name" minlength="3" maxlength="80" required placeholder="أحمد محمد علي"></div>
+        <div class="field"><label class="field-label" for="regPhone">رقم الموبايل</label><input id="regPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="15" required placeholder="01012345678" dir="ltr"></div>
+        <div class="field"><label class="field-label" for="regEmail">البريد الإلكتروني</label><input id="regEmail" type="email" autocomplete="email" maxlength="120" required placeholder="name@example.com" dir="ltr"></div>
+        <div class="field password"><label class="field-label" for="regPassword">كلمة المرور</label><input id="regPassword" type="password" autocomplete="new-password" minlength="8" required placeholder="٨ خانات على الأقل"><button class="password-toggle" type="button" data-target="regPassword" aria-label="إظهار كلمة المرور" aria-pressed="false">إظهار</button></div>
+        <div class="field password"><label class="field-label" for="regPassword2">تأكيد كلمة المرور</label><input id="regPassword2" type="password" autocomplete="new-password" minlength="8" required placeholder="اكتبها مرة تانية"><button class="password-toggle" type="button" data-target="regPassword2" aria-label="إظهار كلمة المرور" aria-pressed="false">إظهار</button></div>
+        <p class="message" id="registerMsg" role="status" aria-live="polite"></p>
+        <button class="submit" id="registerBtn" type="submit">إنشاء الحساب</button>
+        <p class="switch-copy">عندك حساب بالفعل؟ <button type="button" id="toLogin">سجّل دخولك</button></p>
+      </form>
+
+      <div class="safe-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="m9 12 2 2 4-4"/></svg><span>بيانات حسابك محمية، وكلمة المرور بيتحقق منها نظام تسجيل الدخول الآمن.</span></div>
+    </div>
+  </section>
+</main>
+
+<script type="module">
+import './firebase-client.js';
+const $ = selector => document.querySelector(selector);
+const params = new URLSearchParams(location.search);
+const allowedDestinations = ['index.html', 'track.html'];
+const requestedDestination = params.get('returnTo');
+const destination = allowedDestinations.includes(requestedDestination) ? requestedDestination : 'index.html';
+let redirecting = false;
+
+function go(){
+  if (redirecting) return;
+  redirecting = true;
+  location.replace('./' + destination);
+}
+
+function setMode(register){
+  const loginTab = $('#loginTab');
+  const registerTab = $('#registerTab');
+  const loginForm = $('#loginForm');
+  const registerForm = $('#registerForm');
+
+  loginTab.setAttribute('aria-selected', String(!register));
+  registerTab.setAttribute('aria-selected', String(register));
+  loginForm.hidden = register;
+  registerForm.hidden = !register;
+  $('#title').textContent = register ? 'حسابك الجديد يبدأ هنا' : 'أهلاً بيك تاني';
+  $('#subtitle').textContent = register
+    ? 'بيانات بسيطة دلوقتي، وطلباتك الجاية هتبقى أسرع.'
+    : (destination === 'track.html'
+      ? 'سجّل دخولك علشان تتابع طلباتك وعناوينك.'
+      : 'ادخل بحسابك علشان نرجعلك بياناتك وعناوينك بسرعة.');
+  setMessage($('#loginMsg'), '', false);
+  setMessage($('#registerMsg'), '', false);
+}
+
+function setBusy(button, busy, label){
+  if (busy){
+    if (!button.dataset.originalLabel) button.dataset.originalLabel = button.textContent.trim();
+    button.disabled = true;
+    button.innerHTML = label + '<span class="spinner" aria-hidden="true"></span>';
+  } else {
+    button.disabled = false;
+    button.textContent = button.dataset.originalLabel || label;
+  }
+}
+
+function errorText(error){
+  return window.ACDCloud && window.ACDCloud.authError
+    ? window.ACDCloud.authError(error)
+    : 'حصلت مشكلة، جرّب مرة تانية.';
+}
+
+function setMessage(element, message, success){
+  element.classList.toggle('ok', Boolean(success));
+  element.textContent = message;
+}
+
+$('#loginTab').addEventListener('click', () => setMode(false));
+$('#registerTab').addEventListener('click', () => setMode(true));
+$('#toRegister').addEventListener('click', () => setMode(true));
+$('#toLogin').addEventListener('click', () => setMode(false));
+
+document.querySelectorAll('.password-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const input = document.getElementById(button.dataset.target);
+    const visible = input.type === 'password';
+    input.type = visible ? 'text' : 'password';
+    button.textContent = visible ? 'إخفاء' : 'إظهار';
+    button.setAttribute('aria-pressed', String(visible));
+    button.setAttribute('aria-label', visible ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور');
+  });
+});
+
+$('#googleBtn').addEventListener('click', async () => {
+  const button = $('#googleBtn');
+  setBusy(button, true, 'جارٍ فتح Google…');
+  try {
+    const result = await window.ACDCloud.signIn();
+    if (result && result.redirecting) return;
+    go();
+  } catch (error) {
+    setBusy(button, false, 'المتابعة باستخدام Google');
+    setMessage($('#loginMsg'), errorText(error), false);
+  }
+});
+
+$('#loginForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = $('#loginBtn');
+  const message = $('#loginMsg');
+  setMessage(message, '', false);
+  setBusy(button, true, 'جارٍ تسجيل الدخول');
+  try {
+    await window.ACDCloud.signInWithEmail($('#loginEmail').value.trim(), $('#loginPassword').value);
+    go();
+  } catch (error) {
+    setMessage(message, errorText(error), false);
+    setBusy(button, false, 'تسجيل الدخول');
+  }
+});
+
+$('#registerForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  const message = $('#registerMsg');
+  const button = $('#registerBtn');
+  setMessage(message, '', false);
+  if ($('#regPassword').value !== $('#regPassword2').value){
+    setMessage(message, 'كلمتا المرور مش متطابقتين.', false);
+    $('#regPassword2').focus();
+    return;
+  }
+  setBusy(button, true, 'جارٍ إنشاء الحساب');
+  try {
+    await window.ACDCloud.signUpWithEmail(
+      $('#regEmail').value.trim(),
+      $('#regPassword').value,
+      $('#regName').value.trim(),
+      $('#regPhone').value.trim(),
+      null
+    );
+    setMessage(message, 'الحساب اتعمل. فعّل بريدك الإلكتروني، وجاري فتح المتجر…', true);
+    window.setTimeout(go, 900);
+  } catch (error) {
+    setMessage(message, errorText(error), false);
+    setBusy(button, false, 'إنشاء الحساب');
+  }
+});
+
+$('#resetBtn').addEventListener('click', async () => {
+  const email = $('#loginEmail').value.trim();
+  const message = $('#loginMsg');
+  if (!email){
+    setMessage(message, 'اكتب بريدك الإلكتروني الأول علشان نبعت لك رابط إعادة التعيين.', false);
+    $('#loginEmail').focus();
+    return;
+  }
+  try {
+    await window.ACDCloud.resetPassword(email);
+    setMessage(message, 'بعتنالك رابط إعادة تعيين كلمة المرور على بريدك.', true);
+  } catch (error) {
+    setMessage(message, errorText(error), false);
+  }
+});
+
+window.addEventListener('acd-auth-google-complete', go);
+window.addEventListener('acd-auth-change', event => {
+  if (event.detail && event.detail.user) go();
+});
+window.setTimeout(() => {
+  if (window.ACDCloud && window.ACDCloud.user && window.ACDCloud.user()) go();
+}, 500);
+</script>
+</body>
+</html>

@@ -552,25 +552,28 @@
 body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#14231d}.shell{position:relative}button,a{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}.head,.rider-header,.top-head{box-shadow:0 10px 26px rgba(17,34,27,.08)!important;border-bottom:1px solid rgba(17,34,27,.08)!important}.nav-btn,.back,.action,.auth-submit-btn{border-radius:13px!important}.panel,.auth-box,.summary,.order-card,.status-box,.store-card{box-shadow:0 10px 28px rgba(17,34,27,.07)!important;border-color:#dfe8e2!important;border-radius:20px!important}.auth-privacy-badge{border-radius:14px!important;line-height:1.65!important}.auth-submit-btn{box-shadow:0 9px 22px rgba(239,75,58,.16)!important}.table{border-radius:14px;overflow:hidden}.table th{background:#f4f8f5!important}
 </style>
 <link rel="stylesheet" href="./src/app-polish.css">
+<link rel="stylesheet" href="./src/auth-polish.css">
 <style>.app-install-role{position:fixed;left:14px;right:14px;bottom:14px;z-index:250;background:#fff;border:1px solid #e3e9e5;box-shadow:0 12px 34px rgba(20,35,29,.18);border-radius:18px;padding:12px;display:flex;align-items:center;gap:10px;font-family:Cairo,system-ui}.app-install-role b{display:block;font-size:.84rem}.app-install-role small{display:block;color:#69736e;font-size:.7rem}.app-install-role button{margin-inline-start:auto;border:0;background:#e94b3c;color:#fff;border-radius:12px;padding:8px 12px;font-weight:900}.app-install-role[hidden]{display:none}</style></head>
-<body>
+<body class="rider-app">
 
 <!-- Login Guard Overlay -->
 <div class="auth-overlay" id="authOverlay">
   <div class="auth-card">
     <div class="auth-icon">🛵</div>
-    <h2 class="auth-title">دخول تطبيق المندوب — تشغيل الطلبات بسهولة</h2>
-    <p class="auth-desc">الوصول إلى الطلبات والأرباح يتم فقط من خلال حساب Firebase مع صلاحية <b>rider</b> التي تمنحها الإدارة.</p>
-    <div class="auth-privacy-badge">🔒 <b>حماية الصلاحيات:</b> تسجيل الدخول وحده لا يمنح صلاحية المندوب. الحساب يجب أن يكون معتمداً من الإدارة.</div>
+    <h2 class="auth-title">دخول المندوب</h2>
+    <p class="auth-desc">سجّل بحساب المندوب المعتمد علشان تتابع الطلبات وشغلك.</p>
+    <div class="auth-privacy-badge">🔒 <b>الدخول مش كفاية لوحده:</b> لازم حسابك يكون معتمد من الإدارة.</div>
     <form id="riderLoginForm">
+      <label class="auth-input-label" for="riderEmail">البريد الإلكتروني المهني</label>
       <input type="email" class="auth-input" id="riderEmail" placeholder="البريد الإلكتروني المهني" autocomplete="email" required dir="ltr" style="text-align:left">
+      <label class="auth-input-label" for="riderPassword">كلمة المرور</label>
       <input type="password" class="auth-input" id="riderPassword" placeholder="كلمة المرور" autocomplete="current-password" required>
       <button type="submit" class="auth-submit-btn" id="riderLoginSubmit">تسجيل الدخول للتطبيق 🚀</button>
     </form>
-    <button type="button" class="google-login-btn" id="btnFirebaseLogin">🌐 الدخول باستخدام Google</button>
+    <button type="button" class="google-login-btn" id="btnFirebaseLogin">المتابعة باستخدام Google</button>
     <button type="button" id="btnRiderReset" style="background:none;border:0;color:var(--blue);font-size:.78rem;font-weight:800;cursor:pointer;margin-top:4px">نسيت كلمة المرور؟</button>
     <div class="auth-error" id="authError"></div>
-    <div style="margin-top:14px;font-size:0.72rem;color:var(--muted)">مطلوب تفعيل البريد وصلاحية rider. تواصل مع إدارة المنصة لتفعيل الحساب.</div>
+    <div style="margin-top:14px;font-size:0.72rem;color:var(--muted)">لو حسابك لسه ما اتفعلش، تواصل مع إدارة المنصة.</div>
   </div>
 </div>
 
@@ -836,7 +839,7 @@ body{background:linear-gradient(180deg,#f8fbf9 0,#f1f5f3 100%)!important;color:#
     const isDelivering = o.status === 'delivering';
     const isDelivered = o.status === 'delivered';
 
-    const storeName = o.hasPharma ? 'صيدلية الشفاء ود. مصطفى' : 'سوبرماركت البركة والخير';
+    const storeName = o.hasPharma ? 'صيدلية الجهيني' : 'سوبرماركت البركة والخير';
     const storeArea = o.hasPharma ? 'الحي السادس - امتداد شارع الطيران' : 'الحي السادس - خلف بوابة المدينة الجامعية';
     const storePhone = o.hasPharma ? '01123456789' : '01015678901';
 

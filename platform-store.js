@@ -19,7 +19,7 @@
   // Registered Stores
   const registeredStores = [
     { id: 'market-1', code: 'baraka', phone: '01015678901', name: 'سوبرماركت البركة والخير', type: 'market', area: 'الحي السادس - خلف بوابة المدينة الجامعية' },
-    { id: 'pharmacy-1', code: 'shifa', phone: '01123456789', name: 'صيدلية الشفاء ود. مصطفى', type: 'pharmacy', area: 'الحي السادس - امتداد شارع الطيران' }
+    { id: 'pharmacy-1', code: 'shifa', phone: '01123456789', name: 'صيدلية الجهيني', type: 'pharmacy', area: 'الحي السادس - امتداد شارع الطيران' }
   ];
 
   // Default Daily Deals & Notifications (Talabat-like daily promo alerts)
@@ -41,7 +41,7 @@
     {
       id: 'offer-3',
       title: 'خدمة روشتة وطوارئ الصيدلية 24/7 💊',
-      desc: 'صيدلية الشفاء بخدمتك لتأمين مستلزماتك والأدوية بدون تأخير.',
+      desc: 'صيدلية الجهيني بخدمتك لتأمين مستلزماتك والأدوية بدون تأخير.',
       tag: 'صيدلية',
       date: 'أمس'
     }
@@ -60,7 +60,7 @@
   const seed = () => ({
     stores: [
       { id: 'market-1', name: 'سوبرماركت البركة والخير', type: 'market', status: 'active', area: 'الحي السادس - خلف بوابة المدينة الجامعية', phone: '01015678901' },
-      { id: 'pharmacy-1', name: 'صيدلية الشفاء ود. مصطفى', type: 'pharmacy', status: 'active', area: 'الحي السادس - امتداد شارع الطيران', phone: '01123456789' }
+      { id: 'pharmacy-1', name: 'صيدلية الجهيني', type: 'pharmacy', status: 'active', area: 'الحي السادس - امتداد شارع الطيران', phone: '01123456789' }
     ],
     riders: [
       { id: 'rider-1', name: 'أحمد محمود (كابتن الأزهر)', phone: '01025896314', status: 'available', vehicle: 'موتوسيكل بوكسر أحمر', rating: 4.9, completedCount: 14 }

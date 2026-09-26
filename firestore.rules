@@ -50,6 +50,16 @@ service cloud.firestore {
         && request.resource.data.role == resource.data.role;
 
       allow delete: if isAdmin();
+
+      // FCM tokens stay private to the customer. Only the callable Admin SDK function can broadcast them.
+      match /pushTokens/{tokenId} {
+        allow read, delete: if ownUser(userId);
+        allow create, update: if ownUser(userId)
+          && isCustomer()
+          && request.auth.token.email_verified == true
+          && request.resource.data.token is string
+          && request.resource.data.token.size() <= 4096;
+      }
     }
 
     match /products/{productId} {
@@ -93,7 +103,7 @@ service cloud.firestore {
 
       // Authorization for order state transitions is deliberately narrow.
       allow update: if
-        || (
+        (
           isCustomer()
           && resource.data.customerId == request.auth.uid
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rating', 'ratedAt', 'updatedAt'])

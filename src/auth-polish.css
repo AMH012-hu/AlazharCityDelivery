@@ -1,0 +1,125 @@
+/* Lightweight sign-in motion and layout polish shared by the staff apps. */
+.auth-overlay{
+  background:radial-gradient(circle at 50% 10%,rgba(231,75,60,.16),transparent 42%),rgba(13,24,18,.78)!important;
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))!important;
+  animation:auth-overlay-in .22s ease both;
+}
+.auth-card{
+  position:relative;
+  isolation:isolate;
+  overflow:auto;
+  max-height:calc(100vh - 32px);
+  max-height:calc(100dvh - 32px);
+  border:1px solid rgba(255,255,255,.75)!important;
+  border-radius:24px!important;
+  padding:30px clamp(22px,5vw,34px)!important;
+  box-shadow:0 26px 80px rgba(0,0,0,.28)!important;
+  text-align:right!important;
+  animation:auth-card-in .38s cubic-bezier(.2,.75,.25,1) both!important;
+  overscroll-behavior:contain;
+}
+.auth-card:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 0 auto;
+  height:4px;
+  background:linear-gradient(90deg,var(--auth-accent,#e94b3c),rgba(255,255,255,.35),var(--auth-accent,#e94b3c));
+}
+.auth-card>*{position:relative}
+.auth-icon{
+  width:68px;
+  height:68px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 13px!important;
+  border:1px solid rgba(233,75,60,.12);
+  border-radius:21px;
+  background:linear-gradient(145deg,rgba(233,75,60,.12),rgba(10,129,80,.08));
+  font-size:2.15rem!important;
+  animation:auth-icon-in .48s .1s cubic-bezier(.2,.8,.3,1) both;
+}
+.store-app{--auth-accent:#e94b3c}
+.rider-app{--auth-accent:#0a8150}
+.store-app .auth-icon{background:linear-gradient(145deg,rgba(233,75,60,.12),rgba(233,75,60,.04))}
+.rider-app .auth-icon{background:linear-gradient(145deg,rgba(10,129,80,.15),rgba(10,129,80,.04))}
+.auth-title{
+  text-align:center;
+  font-size:1.35rem!important;
+  line-height:1.45;
+}
+.auth-desc{
+  max-width:380px;
+  margin-inline:auto!important;
+  font-size:.83rem!important;
+  line-height:1.8!important;
+  text-align:center;
+}
+.auth-privacy-badge{
+  padding:11px 13px!important;
+  margin-bottom:16px!important;
+  line-height:1.75!important;
+  font-size:.76rem!important;
+}
+.auth-input-label{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.auth-input{
+  min-height:49px;
+  padding:11px 13px!important;
+  border-width:1px!important;
+  border-radius:13px!important;
+  text-align:left!important;
+  transition:border-color .18s,box-shadow .18s,background .18s!important;
+}
+.auth-input:focus{
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--auth-accent,#e94b3c) 13%,transparent)!important;
+}
+.auth-submit-btn,.google-login-btn{
+  min-height:48px;
+  border-radius:13px!important;
+  transition:transform .18s,box-shadow .18s,background .18s,border-color .18s!important;
+}
+.auth-submit-btn:hover,.google-login-btn:hover{transform:translateY(-1px)}
+.auth-submit-btn:active,.google-login-btn:active{transform:scale(.99)}
+.google-login-btn:hover{border-color:#cbd5ce!important;box-shadow:0 8px 20px rgba(17,30,25,.08)}
+.auth-error{line-height:1.7}
+button:focus-visible,input:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--auth-accent,#e94b3c) 36%,transparent);
+  outline-offset:2px;
+}
+@keyframes auth-overlay-in{from{opacity:0}to{opacity:1}}
+@keyframes auth-card-in{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes auth-icon-in{from{opacity:0;transform:translateY(7px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:520px){
+  .auth-overlay{align-items:flex-start!important;overflow-y:auto}
+  .auth-card{
+    width:min(440px,100%)!important;
+    max-height:calc(100vh - 24px);
+    max-height:calc(100dvh - 24px);
+    margin:auto!important;
+    padding:24px 19px!important;
+    border-radius:21px!important;
+  }
+  .auth-title{font-size:1.2rem!important}
+  .auth-desc{font-size:.78rem!important}
+  .auth-icon{width:60px;height:60px;border-radius:18px;font-size:1.9rem!important}
+}
+@media(max-height:650px){
+  .auth-overlay{align-items:flex-start!important;overflow-y:auto}
+  .auth-card{margin:auto!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .auth-overlay,.auth-card,.auth-icon{animation:none!important;transition:none!important}
+  .auth-submit-btn:hover,.google-login-btn:hover{transform:none}
+}

@@ -9,26 +9,26 @@ let CONFIG = {
     whatsapp: '201501805674',        // ← حط رقمك بصيغة دولية بدون + (مثال: 201012345678)
     storageKey: 'alazhar-city-v4',
     area: 'الحي السادس — مدينة نصر',
-    audience: 'شباب جامعة الأزهر',
+    audience: 'أهالي الحي السادس',
     deliveryFee: 15,                 // رسوم التوصيل
     freeDelivery: 300,               // التوصيل ببلاش لو الطلب بيعدي المبلغ ده (0 = تعطيل)
     minOrder: 50,                    // أقل قيمة للطلب
-    eta: '30–45 دقيقة',
-    openHour: 9,                     // بيفتح الساعة 9 ص
-    closeHour: 26,                   // بيقفل 2 ص (26 = 2 بعد نص الليل)
+    eta: 'حوالي 10 دقايق',
+    openHour: 6,                     // بيفتح الساعة 6 ص
+    closeHour: 14,                   // بيقفل الساعة 2 م
     hideUnpriced: false,
     autoImages: true,                // يحمّل صورة كل منتج تلقائيًا من images/products/<كود-المنتج>.webp
     imageDir: 'images/products/',
     imageVersion: '2'                // غيّره (2، 3...) لما تبدّل صور عشان الكاش
 };
 
-/* شرايح البانر الرئيسي */
-const BANNERS = [
-    { title: 'توصيل لحد باب سكنك', sub: 'لطلبة الأزهر في الحي السادس — في ' + CONFIG.eta, cta: 'اطلب دلوقتي', go: { group: 'all' }, emoji: '🛵', bg: 'linear-gradient(120deg,#14231d,#0a8150)' },
-    { title: '🇵🇸 مع فلسطين', sub: 'ملتزمون بالمقاطعة — اعرف موقفنا وإزاي تساهم', cta: 'اعرف أكتر', go: { href: './palestine.html' }, emoji: '🕊️', bg: 'linear-gradient(120deg,#14231d,#0b6b3a)' },
-    { title: 'صيدلية على بابك', sub: 'مسكنات، برد، فيتامينات وإسعافات أولية', cta: 'شوف الصيدلية', go: { group: 'pharmacy' }, emoji: '💊', bg: 'linear-gradient(120deg,#0e9f6e,#34d399)' },
-    { title: 'عروض الطلبة', sub: 'خصومات بننزلها أول بأول — شوف الجديد قبل ما يخلص', cta: 'شوف العروض', go: { deals: true }, emoji: '🔥', bg: 'linear-gradient(120deg,#7c3aed,#c026d3)' },
-    { title: 'سهرة مذاكرة؟', sub: 'قهوة، نودلز، سناكس ومشروبات طاقة', cta: 'جهّز السهرة', go: { cat: 'study' }, emoji: '📚', bg: 'linear-gradient(120deg,#111827,#374151)' }
+/* متاجر الحي السادس — المتاجر الجديدة تظهر للعميل عند إضافة منتجاتها من البوابة. */
+const STORE_DIRECTORY = [
+    { id: 'market-1', name: 'السوبر ماركت', type: 'market', image: 'images/stores/supermarket.svg', description: 'احتياجات البيت والدراسة' },
+    { id: 'koshary-hind', name: 'كشري هند', type: 'koshary', image: 'images/stores/koshary.webp', description: 'كشري وأطباق مصرية' },
+    { id: 'bakery-sixth', name: 'مخبز الجهيني', type: 'bakeryShop', image: 'images/stores/baladi-bread.webp', description: 'عيش ومخبوزات الحي' },
+    { id: 'pizza-rahma', name: 'بيتزا الرحمة', type: 'pizza', image: 'images/stores/pizza.webp', description: 'بيتزا طازة من الحي السادس' },
+    { id: 'pharmacy-1', name: 'صيدلية الجهيني', type: 'pharmacy', image: 'images/stores/pharmacy.svg', description: 'احتياجاتك الصحية' }
 ];
 
 /* [key, الاسم, إيموجي, المجموعة, اللون] */
@@ -58,7 +58,10 @@ const CATEGORIES = [
     ['vitamins', 'فيتامينات ومكملات', '🍊', 'pharmacy', '#ffeccf'],
     ['firstaid', 'إسعافات وأجهزة',    '🩹', 'pharmacy', '#ffe1e1'],
     ['skin',     'بشرة وشعر',         '🧴', 'pharmacy', '#f4e6ff'],
-    ['hygiene',  'نظافة شخصية',       '🧻', 'pharmacy', '#e0f3f1']
+    ['hygiene',  'نظافة شخصية',       '🧻', 'pharmacy', '#e0f3f1'],
+    ['koshary-menu', 'كشري',          '🍲', 'koshary',  '#fff0d8'],
+    ['pizza-menu',   'بيتزا',         '🍕', 'pizza',    '#ffe5df'],
+    ['bakery-shop',  'مخبوزات',       '🥐', 'bakeryShop','#fff1d7']
 ];
 
 /* [التصنيف, الاسم, السعر, إيموجي, السعر قبل الخصم (اختياري), شارة (اختياري)] */
@@ -2527,5 +2530,48 @@ let PRODUCTS = (() => {
         return p;
     }).filter(p => p && !boycottMatch(p.name));           // شبكة أمان: أي منتج باسم علامة مقاطعة بيتشال
 })();
+
+// Menu names below were found on a public listing that names the Al-Azhar University / Sixth District branch.
+// The listing is marked temporarily closed and its listed prices are stale, so these previews must stay
+// unavailable for ordering until an admin confirms today's price in the Portal.
+const ONLINE_MENU_PREVIEWS = [
+    ['koshary-mini', 'علبة كشري ميني', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-small', 'علبة كشري صغيرة', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-medium', 'علبة كشري وسط', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-family', 'علبة كشري عائلية', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-large', 'علبة كشري كبيرة', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-mega', 'علبة كشري ميجا', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-jumbo', 'علبة كشري جامبو', '🍲', 'images/stores/koshary.webp'],
+    ['koshary-salad', 'سلطة خضراء', '🥗', ''],
+    ['koshary-taqliya', 'تقلية', '🧅', ''],
+    ['koshary-hummus', 'حمص', '🫘', ''],
+    ['koshary-lentils', 'عدس', '🫘', ''],
+    ['koshary-sauce', 'صلصة', '🍅', ''],
+    ['koshary-hot-sauce', 'شطة', '🌶️', ''],
+    ['koshary-toast', 'عيش محمص', '🍞', ''],
+    ['koshary-meat-casserole', 'طاجن لحمة', '🥘', ''],
+    ['koshary-liver-casserole', 'طاجن كبدة', '🥘', ''],
+    ['koshary-chicken-casserole', 'طاجن فراخ', '🥘', ''],
+    ['koshary-plain-casserole', 'طاجن سادة', '🥘', ''],
+    ['koshary-mix-meat', 'طاجن ميكس لحوم', '🥘', ''],
+    ['koshary-mix-liver', 'طاجن ميكس كبدة', '🥘', ''],
+    ['koshary-mix-chicken', 'طاجن ميكس فراخ', '🥘', ''],
+    ['koshary-rice-pudding', 'أرز باللبن', '🍮', ''],
+    ['koshary-mahalabia', 'مهلبية', '🍮', ''],
+    ['koshary-jelly', 'جيلي', '🍮', ''],
+    ['koshary-creme-caramel', 'كريم كراميل', '🍮', ''],
+    ['koshary-water-small', 'مياه معدنية صغيرة', '💧', ''],
+    ['koshary-water', 'مياه معدنية', '💧', ''],
+    ['koshary-soda', 'مشروبات غازية كانز', '🥤', '']
+].map(([id, name, emoji, img]) => ({
+    id: `online-${id}`, cat: 'koshary-menu', name, price: 0, emoji,
+    ...(img ? {img} : {}), storeId: 'koshary-hind', comingSoon: true
+}));
+PRODUCTS = [...PRODUCTS, ...ONLINE_MENU_PREVIEWS];
+
+// Expose only public storefront data to the customer and admin portal scripts.
+window.CATEGORIES = CATEGORIES;
+window.STORE_DIRECTORY = STORE_DIRECTORY;
+window.ACDLocalProducts = PRODUCTS;
 
 /* لإضافة صورة حقيقية لمنتج: p.img = 'images/اسم-الملف.webp' (اختياري — لو مفيش صورة بيظهر الإيموجي) */

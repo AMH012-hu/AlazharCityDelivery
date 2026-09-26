@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">مندوب الأزهر على عجلة</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#153b2d"/><stop offset="1" stop-color="#087f4f"/></linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f9fff9"/><stop offset="1" stop-color="#d5e9dc"/></linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <circle cx="64" cy="64" r="53" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+  <g fill="none" stroke="#f3fff7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="35" cy="91" r="19" stroke-width="4"/><circle cx="94" cy="91" r="19" stroke-width="4"/>
+    <path d="m35 91 18-33 18 33H35l14-23h28l17 23M70 91l12-33h10" stroke-width="4"/>
+    <path d="M81 58h14m-38 0h-8" stroke-width="5"/>
+  </g>
+  <g stroke="#12352a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m60 58 7-15 15 5 9 13-10 8-9-11-5 14-13 5-9-9 7-10z" fill="url(#shirt)"/>
+    <path d="m58 76-9 13 10 3 11-13m3-17 10 10 12 2-2 6-16-1-12-8" fill="#14231d"/>
+    <path d="m84 49 8 12 7-2-7-15-11-6-7 5z" fill="#14231d"/>
+    <circle cx="69" cy="32" r="10" fill="#d99d72"/>
+    <path d="M58 34q1-15 14-16 12 1 13 13l-7 2-4-7-9 6z" fill="#f4f7f4"/>
+    <path d="m64 54 10 1 6 9-7 8-13-3-3-8z" fill="#f6fff8"/>
+    <path d="m76 56 8 4-4 9-8-4z" fill="#fff" stroke-width="1.5"/>
+    <path d="M73 58h10v2H73z" fill="#111" stroke="none"/><path d="M73 60h10v2H73z" fill="#fff" stroke="none"/><path d="M73 62h10v2H73z" fill="#07864b" stroke="none"/>
+    <path d="m73 60 4-2v6l-4 2z" fill="#e32636" stroke="none"/>
+  </g>
+  <path d="M17 111h94" stroke="#f3c95e" stroke-width="3" stroke-linecap="round"/>
+</svg>

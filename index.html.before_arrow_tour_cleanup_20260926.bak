@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14231d">
 <base href="./">
-<title>الأزهر على عجلة | اطلب من متاجر الحي السادس</title>
-<meta name="description" content="اطلب احتياجاتك وأكلك من متاجر الحي السادس في مدينة نصر. اختار متجرك وتابع طلبك لحد بابك.">
+<title>Alazhar City Delivery | سوبرماركت وصيدلية — الحي السادس مدينة نصر</title>
+<meta name="description" content="سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس. اختار اللي محتاجه، ابعت طلبك، وخليه يوصل لحد بابك بسهولة.">
 <meta property="og:title" content="Alazhar City Delivery">
-<meta property="og:description" content="اطلب من السوبر ماركت والمطاعم والمخبز والصيدلية في الحي السادس — من أول اختيارك لحد الاستلام.">
+<meta property="og:description" content="طلبات السوبرماركت والصيدلية لطلبة الأزهر — بسيطة من أول الاختيار لحد الاستلام.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
@@ -33,7 +33,7 @@
   --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:150px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;padding-bottom:calc(90px + var(--safe-b));-webkit-tap-highlight-color:transparent}
 body.lock{overflow:hidden}
 button,input,textarea,select{font:inherit;color:inherit}
@@ -45,10 +45,10 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .wrap{max-width:1100px;margin:0 auto;padding:0 14px}
 
 /* ---------- Header ---------- */
-.top{position:relative;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
 .flagbar{height:4px;background:linear-gradient(90deg,var(--brand),var(--brand) 48%,#0a8150 48%,#0a8150)}
 .bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
-.logo{width:58px;height:58px;border-radius:17px;object-fit:cover;background:var(--ink);flex:none;box-shadow:0 7px 16px rgba(20,35,29,.2);padding:2px}
+.logo{width:46px;height:46px;border-radius:14px;object-fit:cover;background:var(--ink);flex:none;box-shadow:0 5px 12px rgba(20,35,29,.18)}
 .loc{flex:1;min-width:0;line-height:1.25}
 .loc small{display:block;color:var(--muted);font-size:.7rem;font-weight:600}
 .loc b{display:flex;align-items:center;gap:4px;font-size:.92rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -85,11 +85,24 @@ svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stro
 .search input{flex:1;min-width:0;border:0;background:transparent;padding:12px 0;outline:none}
 .search button{border:0;background:none;color:var(--muted);font-size:1.3rem;display:none}
 .search.has button{display:block}
-.tabs{display:flex;gap:8px;padding:0 0 10px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;transition:background .18s,border-color .18s,color .18s}
+.tabs{display:flex;gap:6px;padding-bottom:10px}
+.tab{flex:1;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 6px;font-weight:800;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:6px}
 .tab[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-l);color:var(--brand-d)}
-.tab:disabled{opacity:.55;cursor:not-allowed}
+.tab[data-group="pharmacy"][aria-pressed="true"]{border-color:var(--green);background:var(--green-l);color:var(--green)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;margin-top:14px;border-radius:24px;overflow:hidden;box-shadow:var(--sh2);border:1px solid rgba(255,255,255,.3)}
+.slides{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.slide{min-width:100%;padding:26px 24px;min-height:178px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;overflow:hidden}
+.slide::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.1);left:-70px;bottom:-110px}
+.slide h2{margin:0 0 6px;font-size:1.5rem;font-weight:900;line-height:1.3}
+.slide p{margin:0 0 14px;font-size:.92rem;opacity:.95;font-weight:600}
+.slide .cta{border:0;background:#fff;color:var(--ink);font-weight:800;border-radius:24px;padding:9px 20px}
+.slide .art{font-size:5.2rem;line-height:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));z-index:1}
+@media (prefers-reduced-motion:no-preference){.slide .art{animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px) rotate(-4deg)}}}
+.dots{position:absolute;bottom:8px;right:0;left:0;display:flex;justify-content:center;gap:6px;z-index:2}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5)}
+.dots button[aria-current="true"]{width:22px;border-radius:5px;background:#fff}
 
 /* ---------- USP ---------- */
 .usp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
@@ -248,7 +261,7 @@ textarea{resize:none}
 .install .go{border:0;background:var(--brand);color:#fff;font-weight:800;border-radius:20px;padding:9px 16px;white-space:nowrap}
 .install .x{border:0;background:none;color:var(--muted);font-size:1.4rem;line-height:1;padding:4px 6px}
 .ios-steps li{margin-bottom:6px}
-@media(min-width:720px){.hrow .card{min-width:170px;max-width:170px}}
+@media(min-width:720px){.slide{min-height:220px;padding:34px}.slide h2{font-size:2.1rem}.slide .art{font-size:8rem}.hrow .card{min-width:170px;max-width:170px}}
 
 /* ---------- Customer Account, GPS & Notifications Modal & Widgets ---------- */
 .auth-chip-btn{background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:6px 12px;font-size:0.8rem;font-weight:800;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all .15s}
@@ -320,100 +333,815 @@ textarea{resize:none}
 </style>
 <link rel="stylesheet" href="./src/pro-theme.css">
 <style>
-.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}</style>
+.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}.intro-overlay{position:fixed;inset:0;z-index:600;background:rgba(8,18,14,.72);padding:18px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;backdrop-filter:blur(0px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear .38s}.intro-overlay.open{opacity:1;visibility:visible;backdrop-filter:blur(12px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear 0s}.intro-card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28);transform:scale(.9) translateY(18px);opacity:0;transition:transform .42s cubic-bezier(.22,.8,.32,1.1),opacity .3s ease}.intro-overlay.open .intro-card{transform:scale(1) translateY(0);opacity:1}.intro-progress{display:flex;gap:6px;padding:14px 18px 0}.intro-progress i{height:4px;flex:1;border-radius:99px;background:#e5ebe7;transition:background .35s ease,transform .25s ease}.intro-progress i.active{background:var(--brand)}.intro-progress i.current{transform:scaleY(1.6)}.intro-page{display:none;padding:26px 22px 20px;min-height:360px;overflow:hidden}.intro-page.active{display:flex;flex-direction:column;justify-content:center}.intro-page.active[data-dir="fwd"]{animation:introFwd .48s cubic-bezier(.22,.75,.32,1) both}.intro-page.active[data-dir="back"]{animation:introBack .48s cubic-bezier(.22,.75,.32,1) both}@keyframes introFwd{from{opacity:0;transform:translateX(-26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}@keyframes introBack{from{opacity:0;transform:translateX(26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}.intro-emoji{font-size:4.2rem;text-align:center;margin-bottom:14px;display:inline-block}.intro-page.active .intro-emoji{animation:introPop .55s cubic-bezier(.34,1.56,.64,1) both}@keyframes introPop{0%{opacity:0;transform:scale(.35) rotate(-10deg)}55%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}.intro-page h2{margin:0 0 10px;text-align:center;font-size:1.45rem;font-weight:900}.intro-page.active h2{animation:introFadeUp .4s ease both;animation-delay:.08s}.intro-page p{margin:0 auto;color:var(--muted);line-height:1.8;text-align:center;max-width:440px;font-size:.92rem}.intro-page.active>p{animation:introFadeUp .4s ease both;animation-delay:.14s}@keyframes introFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.intro-points{display:grid;gap:8px;margin:18px 0}.intro-point{background:#f8faf8;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.82rem;font-weight:700;opacity:0}.intro-page.active .intro-point{animation:introFadeUp .4s ease both}.intro-page.active .intro-point:nth-child(1){animation-delay:.2s}.intro-page.active .intro-point:nth-child(2){animation-delay:.27s}.intro-page.active .intro-point:nth-child(3){animation-delay:.34s}.intro-page.active .intro-point:nth-child(4){animation-delay:.41s}.intro-page.active .intro-note{opacity:0;animation:introFadeUp .4s ease both;animation-delay:.48s}.intro-pager{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}.intro-btn{border:0;border-radius:14px;padding:11px 18px;font-weight:900;transition:transform .15s ease,box-shadow .15s ease}.intro-btn:active{transform:scale(.94)}.intro-btn.primary{background:var(--brand);color:#fff;box-shadow:0 8px 18px rgba(233,75,60,.32)}.intro-btn.secondary{background:#f1f5f2;color:var(--ink)}.intro-skip{border:0;background:none;color:var(--muted);font-weight:700;text-align:right;transition:opacity .15s}.intro-skip:active{opacity:.6}.intro-note{font-size:.73rem!important;margin-top:12px!important}@media(max-width:520px){.intro-page{min-height:390px}.intro-page h2{font-size:1.25rem}.intro-pager{grid-template-columns:1fr auto auto;padding-inline:14px}}@media (prefers-reduced-motion:reduce){.intro-overlay,.intro-card,.intro-page.active,.intro-page.active *{animation:none!important;transition:none!important}}</style>
 
+<style id="scrollTourCSS">
+/* ================== Dynamic Scroll Tour ================== */
+.scroll-tour{
+  position:fixed;
+  inset:0;
+  z-index:580;
+  pointer-events:none;
+  display:none;
+}
+.scroll-tour.active{display:block}
 
+.scroll-tour-dim{
+  position:fixed;
+  inset:0;
+  background:rgba(4,12,9,.34);
+  backdrop-filter:blur(1.5px);
+  transition:opacity .25s ease;
+}
 
+.scroll-tour-card{
+  position:fixed;
+  z-index:3;
+  width:min(330px,calc(100vw - 28px));
+  background:#fff;
+  border:1px solid rgba(20,35,29,.08);
+  border-radius:20px;
+  padding:14px 15px;
+  box-shadow:0 18px 55px rgba(0,0,0,.24);
+  direction:rtl;
+  pointer-events:auto;
+  transform:translateY(10px) scale(.96);
+  opacity:0;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    opacity .25s ease,
+    left .3s ease,
+    top .3s ease;
+}
 
+.scroll-tour-card.show{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
 
-<style id="customerArrowTourCSS">
-.customer-arrow-tour{position:fixed;inset:0;z-index:99990;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;direction:rtl}
-.customer-arrow-tour.is-visible{opacity:1;visibility:visible}
-.customer-tour-backdrop{position:fixed;inset:0;z-index:99990;background:rgba(8,16,12,.78);pointer-events:auto;-webkit-mask:radial-gradient(ellipse var(--focus-rx,72px) var(--focus-ry,58px) at var(--focus-x,50vw) var(--focus-y,24vh),transparent 88%,#000 100%);mask:radial-gradient(ellipse var(--focus-rx,72px) var(--focus-ry,58px) at var(--focus-x,50vw) var(--focus-y,24vh),transparent 88%,#000 100%)}
-.customer-tour-ring{position:fixed;z-index:99991;pointer-events:none;border:2px solid #fff;border-radius:14px;box-shadow:0 0 0 4px rgba(233,75,60,.52),0 0 20px rgba(255,255,255,.4);opacity:0;transition:left .18s ease,top .18s ease,width .18s ease,height .18s ease,border-radius .18s ease,opacity .12s ease}
-.customer-tour-arrow{position:fixed;z-index:99992;width:42px;height:42px;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:#e94b3c;color:#fff;font-size:23px;font-weight:900;line-height:1;box-shadow:0 4px 14px rgba(18,32,23,.28);transform:translateX(-50%);animation:customer-arrow-nudge 1.35s ease-in-out infinite;pointer-events:none}
-.customer-tour-controls{position:fixed;z-index:99993;left:50%;bottom:max(12px,calc(env(safe-area-inset-bottom) + 8px));width:min(390px,calc(100vw - 24px));display:grid;grid-template-columns:minmax(0,1fr) 42px;align-items:center;gap:10px;padding:14px 12px 12px;border:1px solid rgba(255,255,255,.9);border-radius:20px;background:rgba(255,255,255,.97);box-shadow:0 10px 34px rgba(4,12,8,.26);transform:translateX(-50%);pointer-events:auto;overflow:hidden;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.customer-tour-controls::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:#e94b3c;transform:scaleX(0);transform-origin:right}
-.customer-tour-controls.is-counting::before{animation:customer-tour-countdown 3s linear forwards}
-.customer-tour-copy{min-width:0;text-align:right}
-.customer-tour-count{margin-bottom:3px;color:#e94b3c;font-size:10px;font-weight:800}
-.customer-tour-title{display:block;color:#14231d;font-size:14px;font-weight:900;line-height:1.35}
-.customer-tour-message{margin:3px 0 0;color:#56645c;font-size:12px;line-height:1.55}
-.customer-tour-auto{display:block;margin-top:4px;color:#879188;font-size:10px;line-height:1.3}
-.customer-tour-navs{display:grid;gap:6px}
-.customer-tour-nav{width:40px;height:40px;display:grid;place-items:center;padding:0;border:1px solid #dce7df;border-radius:13px;background:#f5f8f5;color:#24352b;font-size:23px;font-weight:800;line-height:1;cursor:pointer;touch-action:manipulation}
-.customer-tour-nav.is-primary{border-color:#e94b3c;background:#e94b3c;color:#fff}
-.customer-tour-nav:disabled{opacity:.42;cursor:default}
-.customer-tour-dismiss{position:absolute;z-index:1;top:7px;left:8px;width:28px;height:28px;padding:0;border:0;border-radius:9px;background:#f1f4f1;color:#667168;font-size:20px;line-height:1;cursor:pointer;touch-action:manipulation}
-.customer-tour-nav:focus-visible,.customer-tour-dismiss:focus-visible{outline:3px solid #14231d;outline-offset:2px}
-.customer-tour-active{overflow:hidden!important;overscroll-behavior:none}
-@keyframes customer-arrow-nudge{0%,100%{translate:0 0}50%{translate:0 4px}}
-@keyframes customer-tour-countdown{to{transform:scaleX(1)}}
-@media(max-width:520px){.customer-tour-controls{width:calc(100vw - 24px);padding:13px 11px 11px}.customer-tour-title{font-size:13px}.customer-tour-message{font-size:11px}.customer-tour-nav{width:38px;height:38px}}
-@media(prefers-reduced-motion:reduce){.customer-arrow-tour,.customer-tour-ring,.customer-tour-arrow,.customer-tour-controls::before{transition:none!important;animation:none!important}.customer-tour-arrow{translate:none}}
+.scroll-tour-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:6px;
+}
 
-/* Lightweight first-visit brand intro and customer store directory */
-.launch-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse at 50% 20%,#256c4d,#10251c 72%);color:#fff;transition:opacity .35s ease,visibility .35s ease}
-.launch-intro.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.launch-card{width:min(100%,430px);text-align:center}
-.launch-mark{width:86px;height:86px;border-radius:24px;margin:0 auto 14px;box-shadow:0 12px 30px #06170f80}
-.launch-kicker{font-size:.72rem;letter-spacing:.14em;color:#cae8d6;font-weight:800}
-.launch-title{font-size:clamp(1.7rem,7vw,2.35rem);line-height:1.25;margin:8px 0;font-weight:900}
-.launch-copy{color:#dcece2;font-size:.93rem;margin:0}
-.launch-scene{position:relative;margin:14px auto 10px;width:min(100%,430px);overflow:hidden;border:1px solid #ffffff28;border-radius:20px;background:#dff4e8;box-shadow:0 15px 35px #04150d66;aspect-ratio:16/9}
-.launch-scene video{display:block;width:100%;height:100%;object-fit:cover}
-.launch-scene-caption{min-height:25px;margin:0 auto 12px;color:#e1f1e7;font-size:.78rem;font-weight:800;line-height:1.5}
-.launch-route{height:2px;width:70%;margin:-6px auto 0;background:repeating-linear-gradient(90deg,#f3c95e 0 10px,transparent 10px 20px);opacity:.8;animation:route-move .8s linear infinite}
-@keyframes ride-in{from{transform:translateX(40px);opacity:.2}to{transform:translateX(0);opacity:1}}
-@keyframes ride-bob{to{translate:0 -4px}}
-@keyframes route-move{to{background-position:20px 0}}
-.launch-skip{min-height:44px;padding:9px 20px;border:1px solid #ffffff70;border-radius:999px;background:#ffffff12;color:#fff;font-weight:800}
-.launch-progress{height:3px;border-radius:3px;background:#ffffff30;margin:18px auto 0;overflow:hidden;max-width:230px}
-.launch-progress::after{content:"";display:block;height:100%;width:100%;background:#f3c95e;transform-origin:right;animation:intro-fill 6.6s linear both}
-@keyframes intro-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.store-directory{margin:16px 0 18px}
-.store-directory-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:0 2px 10px}
-.store-directory-head h2{margin:0;font-size:1.12rem}
-.store-directory-head p{margin:2px 0 0;color:var(--muted);font-size:.76rem}
-.store-directory-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.vendor-card{min-width:0;padding:0 0 10px;text-align:right;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh);transition:transform .18s,border-color .18s}
-.vendor-card:not(:disabled):hover{transform:translateY(-2px);border-color:#bed9ca}
-.vendor-card:disabled{opacity:.76;cursor:default}
-.vendor-card img{display:block;width:100%;aspect-ratio:1.7;object-fit:cover;background:#edf5ef}
-.vendor-card b,.vendor-card small{display:block;padding-inline:10px}
-.vendor-card b{font-size:.83rem;line-height:1.35;margin-top:8px}
-.vendor-card small{color:var(--muted);font-size:.69rem;margin-top:2px}
-.vendor-card .vendor-state{display:inline-flex;margin:7px 10px 0;padding:3px 8px;border-radius:999px;background:#e8f7ef;color:#0a8150;font-size:.64rem;font-weight:800}
-.vendor-card[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 2px #e94b3c22,var(--sh)}
-.vendor-card:disabled .vendor-state{background:#f2f3f2;color:#69736e}
-.store-menu-review{display:flex;flex-direction:column;gap:3px;margin:12px 0;padding:13px 15px;border:1px solid #f3d49a;border-radius:15px;background:#fff9e9;color:#69501c;font-size:.78rem;line-height:1.6}
-.store-menu-review b{font-size:.82rem;color:#5b4312}
-@media(max-width:700px){.store-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.vendor-card:last-child{grid-column:auto}.vendor-card img{aspect-ratio:1.9}}
-@media(max-width:520px){.logo{width:52px;height:52px;border-radius:15px}.launch-card{width:min(100%,410px)}.launch-scene-caption{font-size:.72rem}}
-@media(prefers-reduced-motion:reduce){.launch-intro,.launch-scene video,.launch-route,.launch-progress::after{animation:none!important;transition:none!important}}
+.scroll-tour-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#fff4f2;
+  font-size:20px;
+  flex:none;
+}
+
+.scroll-tour-title{
+  margin:0;
+  font-size:.92rem;
+  font-weight:900;
+  color:var(--ink);
+}
+
+.scroll-tour-text{
+  margin:0;
+  color:var(--muted);
+  font-size:.77rem;
+  line-height:1.65;
+}
+
+.scroll-tour-progress{
+  display:flex;
+  gap:4px;
+  margin-top:11px;
+}
+
+.scroll-tour-progress i{
+  height:3px;
+  flex:1;
+  border-radius:99px;
+  background:#e5ebe7;
+  transition:.3s;
+}
+
+.scroll-tour-progress i.active{
+  background:var(--brand);
+}
+
+.scroll-tour-close{
+  position:absolute;
+  top:8px;
+  left:9px;
+  border:0;
+  background:transparent;
+  color:#87938d;
+  font-size:19px;
+  cursor:pointer;
+  line-height:1;
+}
+
+.scroll-tour-arrow{
+  position:fixed;
+  z-index:4;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fff;
+  color:var(--brand);
+  font-size:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+  opacity:0;
+  transform:scale(.65);
+  transition:
+    opacity .25s ease,
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    left .3s ease,
+    top .3s ease;
+}
+
+.scroll-tour-arrow.show{
+  opacity:1;
+  transform:scale(1);
+  animation:tourArrowFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes tourArrowFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 7px}
+}
+
+/* العنصر اللي الجولة بتشرحه */
+.scroll-tour-target{
+  position:relative!important;
+  z-index:581!important;
+  border-radius:16px!important;
+  box-shadow:
+    0 0 0 4px rgba(233,75,60,.25),
+    0 0 0 9999px rgba(4,12,9,.22),
+    0 12px 35px rgba(0,0,0,.16)!important;
+  transition:box-shadow .3s ease!important;
+}
+
+/* لو الهدف زر في الهيدر */
+.scroll-tour-target.icon-btn{
+  border-radius:14px!important;
+}
+
+@media(max-width:520px){
+  .scroll-tour-card{
+    bottom:18px;
+    left:14px!important;
+    right:14px;
+    width:auto;
+  }
+
+  .scroll-tour-arrow{
+    width:43px;
+    height:43px;
+    font-size:22px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .scroll-tour-card,
+  .scroll-tour-arrow{
+    transition:none;
+  }
+  .scroll-tour-arrow.show{
+    animation:none;
+  }
+}
+</style>
+
+<!-- AMH_SCROLL_TOUR_START -->
+
+<!-- AMH_SCROLL_TOUR_START -->
+
+<style id="amhScrollTourCSS">
+
+/* ============================================================
+   AMH PROFESSIONAL SCROLL ONBOARDING
+   ============================================================ */
+
+:root{
+  --tour-brand:#e94b3c;
+  --tour-brand-dark:#bd3027;
+  --tour-green:#0a8150;
+  --tour-ink:#14231d;
+  --tour-muted:#65746d;
+  --tour-glass:rgba(255,255,255,.92);
+}
+
+/* ---------- Main layer ---------- */
+
+.amh-scroll-tour{
+  position:fixed;
+  inset:0;
+  z-index:99990;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+  direction:rtl;
+}
+
+.amh-scroll-tour.is-active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ---------- Background ---------- */
+
+.amh-tour-backdrop{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.04),
+      rgba(3,12,9,.48)
+    );
+  backdrop-filter:blur(1.5px);
+  -webkit-backdrop-filter:blur(1.5px);
+}
+
+/* ---------- Spotlight ---------- */
+
+.amh-tour-spotlight{
+  position:fixed;
+  z-index:99991;
+  pointer-events:none;
+  border-radius:18px;
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.92),
+    0 0 0 5px rgba(233,75,60,.34),
+    0 0 0 100vmax rgba(3,12,9,.42),
+    0 18px 60px rgba(0,0,0,.28);
+
+  opacity:0;
+
+  transition:
+    left .42s cubic-bezier(.2,.8,.2,1),
+    top .42s cubic-bezier(.2,.8,.2,1),
+    width .42s cubic-bezier(.2,.8,.2,1),
+    height .42s cubic-bezier(.2,.8,.2,1),
+    border-radius .3s ease,
+    opacity .25s ease;
+}
+
+.amh-scroll-tour.is-active .amh-tour-spotlight{
+  opacity:1;
+}
+
+/* ---------- Animated pulse around target ---------- */
+
+.amh-tour-pulse{
+  position:absolute;
+  inset:-7px;
+  border-radius:inherit;
+  border:2px solid rgba(233,75,60,.45);
+  animation:amhTourPulse 1.7s ease-out infinite;
+}
+
+@keyframes amhTourPulse{
+  0%{
+    transform:scale(.96);
+    opacity:.9;
+  }
+  70%{
+    transform:scale(1.08);
+    opacity:0;
+  }
+  100%{
+    transform:scale(1.08);
+    opacity:0;
+  }
+}
+
+/* ---------- Main information card ---------- */
+
+.amh-tour-card{
+  position:fixed;
+  z-index:99994;
+
+  width:min(390px,calc(100vw - 28px));
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(248,251,249,.95)
+    );
+
+  border:1px solid rgba(20,35,29,.09);
+  border-radius:24px;
+
+  padding:17px 17px 15px;
+
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.28),
+    0 5px 20px rgba(0,0,0,.12);
+
+  transform:
+    translateY(18px)
+    scale(.94);
+
+  opacity:0;
+
+  transition:
+    left .4s cubic-bezier(.2,.8,.2,1),
+    top .4s cubic-bezier(.2,.8,.2,1),
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    opacity .3s ease;
+}
+
+.amh-tour-card.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* ---------- Card top ---------- */
+
+.amh-tour-top{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+}
+
+.amh-tour-icon{
+  width:46px;
+  height:46px;
+  min-width:46px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0ed,
+      #fff8f7
+    );
+
+  border:1px solid rgba(233,75,60,.12);
+
+  font-size:22px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.amh-tour-heading{
+  min-width:0;
+  flex:1;
+  padding-left:23px;
+}
+
+.amh-tour-step{
+  display:block;
+  color:var(--tour-brand);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+  margin-bottom:3px;
+}
+
+.amh-tour-title{
+  margin:0;
+  color:var(--tour-ink);
+  font-size:15px;
+  line-height:1.35;
+  font-weight:950;
+}
+
+.amh-tour-close{
+  position:absolute;
+  top:10px;
+  left:11px;
+
+  width:27px;
+  height:27px;
+
+  border:0;
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#f1f4f2;
+  color:#68756f;
+
+  cursor:pointer;
+
+  font-size:17px;
+  line-height:1;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.amh-tour-close:hover{
+  background:#e8ece9;
+  transform:rotate(8deg);
+}
+
+/* ---------- Description ---------- */
+
+.amh-tour-description{
+  margin:10px 0 12px;
+
+  color:var(--tour-muted);
+
+  font-size:12px;
+  line-height:1.75;
+}
+
+/* ---------- Bottom controls ---------- */
+
+.amh-tour-bottom{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.amh-tour-progress{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex:1;
+}
+
+.amh-tour-dot{
+  height:4px;
+  flex:1;
+  border-radius:99px;
+  background:#e1e8e4;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.amh-tour-dot.active{
+  background:var(--tour-brand);
+  transform:scaleY(1.35);
+}
+
+.amh-tour-counter{
+  color:#84918b;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+/* ---------- Scroll hint ---------- */
+
+.amh-tour-scroll-hint{
+  position:fixed;
+  z-index:99993;
+
+  left:50%;
+  bottom:18px;
+
+  transform:
+    translateX(-50%)
+    translateY(10px);
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 13px;
+
+  background:rgba(20,35,29,.88);
+  color:#fff;
+
+  border-radius:999px;
+
+  font-size:10px;
+  font-weight:800;
+
+  box-shadow:0 10px 35px rgba(0,0,0,.22);
+
+  opacity:0;
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.amh-tour-scroll-hint.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.amh-tour-scroll-icon{
+  display:inline-block;
+  animation:
+    amhScrollFinger 1.2s ease-in-out infinite;
+}
+
+@keyframes amhScrollFinger{
+  0%,100%{
+    transform:translateY(-2px);
+  }
+  50%{
+    transform:translateY(4px);
+  }
+}
+
+/* ---------- Arrow ---------- */
+
+.amh-tour-arrow{
+  position:fixed;
+  z-index:99993;
+
+  width:52px;
+  height:52px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8faf9
+    );
+
+  color:var(--tour-brand);
+
+  border:2px solid rgba(233,75,60,.16);
+
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.22),
+    0 0 0 5px rgba(255,255,255,.18);
+
+  font-size:24px;
+  font-weight:900;
+
+  opacity:0;
+
+  transform:scale(.65);
+
+  transition:
+    left .4s cubic-bezier(.2,.8,.2,1),
+    top .4s cubic-bezier(.2,.8,.2,1),
+    opacity .25s ease,
+    transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.amh-tour-arrow.show{
+  opacity:1;
+  transform:scale(1);
+
+  animation:
+    amhArrowFloat 1.25s ease-in-out infinite;
+}
+
+@keyframes amhArrowFloat{
+  0%,100%{
+    margin-top:0;
+  }
+  50%{
+    margin-top:8px;
+  }
+}
+
+/* ---------- Target animation ---------- */
+
+.amh-tour-target{
+  position:relative!important;
+  z-index:99992!important;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease!important;
+}
+
+.amh-tour-target:hover{
+  transform:translateY(-1px);
+}
+
+/* ---------- Tiny label attached to target ---------- */
+
+.amh-tour-label{
+  position:fixed;
+  z-index:99995;
+
+  padding:6px 9px;
+
+  background:var(--tour-brand);
+  color:#fff;
+
+  border-radius:8px;
+
+  font-size:9px;
+  font-weight:900;
+
+  white-space:nowrap;
+
+  box-shadow:0 7px 20px rgba(233,75,60,.28);
+
+  opacity:0;
+
+  transform:translateY(5px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.amh-tour-label.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- Completion ---------- */
+
+.amh-tour-complete{
+  position:fixed;
+  inset:0;
+  z-index:100000;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(10,129,80,.18),
+      rgba(3,12,9,.72)
+    );
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+}
+
+.amh-tour-complete.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.amh-tour-complete-box{
+  width:min(380px,calc(100vw - 30px));
+
+  padding:28px 22px;
+
+  text-align:center;
+
+  background:#fff;
+  border-radius:28px;
+
+  box-shadow:0 30px 100px rgba(0,0,0,.32);
+
+  transform:scale(.9);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.amh-tour-complete.show .amh-tour-complete-box{
+  transform:scale(1);
+}
+
+.amh-tour-complete-icon{
+  width:68px;
+  height:68px;
+
+  margin:0 auto 12px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:22px;
+
+  background:#e9f7f0;
+
+  font-size:31px;
+
+  animation:
+    amhCompletePop .55s cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes amhCompletePop{
+  0%{transform:scale(.4);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+
+.amh-tour-complete h3{
+  margin:0 0 7px;
+  color:var(--tour-ink);
+  font-size:18px;
+  font-weight:950;
+}
+
+.amh-tour-complete p{
+  margin:0;
+  color:var(--tour-muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.amh-tour-complete button{
+  margin-top:17px;
+
+  border:0;
+  border-radius:13px;
+
+  padding:11px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--tour-brand),
+      var(--tour-brand-dark)
+    );
+
+  color:#fff;
+
+  font-weight:900;
+  font-size:12px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 22px rgba(233,75,60,.25);
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:600px){
+
+  .amh-tour-card{
+    left:14px!important;
+    right:14px!important;
+    bottom:15px!important;
+    top:auto!important;
+
+    width:auto;
+
+    border-radius:22px;
+
+    padding:15px 15px 13px;
+  }
+
+  .amh-tour-arrow{
+    width:44px;
+    height:44px;
+    font-size:21px;
+  }
+
+  .amh-tour-scroll-hint{
+    bottom:165px;
+  }
+
+  .amh-tour-label{
+    display:none;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+  .amh-tour-arrow.show,
+  .amh-tour-scroll-icon,
+  .amh-tour-pulse,
+  .amh-tour-complete-icon{
+    animation:none!important;
+  }
+
+  .amh-tour-card,
+  .amh-tour-arrow,
+  .amh-tour-spotlight,
+  .amh-tour-label{
+    transition:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
-
-<section class="launch-intro" id="launchIntro" role="dialog" aria-modal="true" aria-labelledby="launchTitle" aria-describedby="launchCopy">
-  <div class="launch-card">
-    <img class="launch-mark" src="./images/rider-bike-logo.svg" alt="">
-    <div class="launch-kicker">ALAZHAR CITY · الحي السادس</div>
-    <h1 class="launch-title" id="launchTitle">طلبك قريب.. وإحنا في الطريق</h1>
-    <p class="launch-copy" id="launchCopy">مشوار قريب في الحي السادس؟ هدفنا نوصل طلبك في حوالي ١٠ دقايق.</p>
-    <div class="launch-scene"><video id="customerIntroVideo" muted playsinline preload="metadata" poster="./images/intro-courier.svg" aria-label="مشاهد متتابعة لمندوب يستلم طلبًا من المتجر ويوصله للعميل"><source src="./media/customer-delivery-intro.mp4" type="video/mp4"></video></div>
-    <p class="launch-scene-caption" id="launchSceneCaption" aria-live="polite">بنستلم طلبك من المحل ونوصّله لحد بابك.</p>
-    <small style="display:block;color:#cce2d4;font-size:.7rem;margin:0 0 12px">الوقت تقديري وبيعتمد على تجهيز الطلب وحالة الطريق.</small>
-    <button class="launch-skip" id="launchSkip" type="button">ادخل للموقع</button>
-    <div class="launch-progress" aria-hidden="true"></div>
-  </div>
-</section>
 
 <div class="top">
   <div class="flagbar" aria-hidden="true"></div>
   <div class="wrap">
     <div class="bar">
-      <img class="logo" src="./images/rider-bike-logo.svg" alt="شعار مندوب الأزهر على عجلة بعلم فلسطين" width="58" height="58">
+      <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="46" height="46">
       <div class="loc">
         <small id="audience">التوصيل إلى</small>
         <b><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaName"></span></b>
@@ -444,7 +1172,11 @@ textarea{resize:none}
       <input type="search" id="search" placeholder="بتدور على إيه؟ اكتب اسم المنتج أو الدوا أو المشروب..." autocomplete="off" enterkeyhint="search">
       <button type="button" id="clearSearch" aria-label="مسح البحث">&times;</button>
     </label>
-    <div class="tabs" id="storeFilters" role="group" aria-label="فلترة المنتجات حسب المتجر"></div>
+    <div class="tabs" role="group" aria-label="نوع المتجر">
+      <button class="tab" data-group="all" aria-pressed="true"><svg class="v15-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18l-2 14H5L3 6z"/><path d="M8 6a4 4 0 0 1 8 0"/></svg> الكل</button>
+      <button class="tab" data-group="market" aria-pressed="false"><svg class="v15-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2 11h10l2-8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg> سوبرماركت</button>
+      <button class="tab" data-group="pharmacy" aria-pressed="false"><svg class="v15-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v18H8z"/><path d="M5 8h14v8H5z"/></svg> صيدلية</button>
+    </div>
   </div>
 </div>
 
@@ -456,19 +1188,14 @@ textarea{resize:none}
     <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
   </div>
 
-  <section class="v15-brand-hero v15-section-reveal" aria-label="الأزهر على عجلة">
-    <div class="v15-brand-hero-art"><img src="./images/rider-bike-logo.svg" alt="شعار مندوب على عجلة" width="82" height="82"></div>
+  <section class="v15-brand-hero v15-section-reveal" aria-label="Alazhar City Delivery">
+    <div class="v15-brand-hero-art"><img src="./images/logo.webp" alt="Alazhar City Delivery" width="82" height="82"></div>
     <div class="v15-brand-hero-copy">
       <span class="v15-brand-hero-kicker">ALAZHAR CITY DELIVERY</span>
       <h2>من طلبك لحد بابك — أسرع وأوضح.</h2>
-      <p>اختار متجرك من الحي السادس، اطلب اللي ناقصك، وتابع طلبك لحد بابك.</p>
+      <p>سوبرماركت وصيدلية للحي السادس، بواجهة بسيطة وحركة خفيفة تخليك تركز على طلبك.</p>
       <div class="v15-brand-hero-line" aria-hidden="true"></div>
     </div>
-  </section>
-
-  <section class="store-directory v15-section-reveal" id="storeDirectory" aria-label="متاجر الحي السادس">
-    <div class="store-directory-head"><div><h2>اختار متجرك</h2><p>متاجر قريبة منك في الحي السادس</p></div></div>
-    <div class="store-directory-grid" id="storeDirectoryGrid"></div>
   </section>
 
   <a class="pal" id="palBanner" href="./palestine.html">
@@ -487,6 +1214,13 @@ textarea{resize:none}
     <div class="hrow" id="featuredOffersRow"><div class="empty">بنجهّز لك العروض…</div></div>
   </section>
 
+  <section class="hero v15-card-motion v15-section-reveal" id="hero" aria-label="عروض">
+    <div class="slides" id="slides"></div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+
+
   <div class="usp v15-section-reveal">
     <div><span>⚡</span>توصيل في <span id="eta" style="display:inline;font-size:inherit"></span></div>
     <div><span>💵</span>الدفع عند الاستلام</div>
@@ -499,7 +1233,7 @@ textarea{resize:none}
     <span class="arr">‹</span>
   </a>
 
-  <section class="home-intro" aria-label="عن الخدمة"><div><span>لأهالي وطلبة الحي السادس</span><h1>متاجر الحي السادس، في مكان واحد.</h1><p>اختار السوبر ماركت أو المطعم أو المخبز أو الصيدلية، وشوف المنتجات وأسعارها قبل الطلب.</p></div><div class="home-intro-actions"><a href="#storeDirectory">اختار متجرك</a><a class="secondary" href="./track.html">تابع طلبك</a></div></section>
+  <section class="home-intro" aria-label="عن الخدمة"><div><span>لطلبة الأزهر في الحي السادس</span><h1>طلبك من مكان واحد، لحد باب سكنك.</h1><p>سوبرماركت وصيدلية، أسعار واضحة، وتوصيل بسيط من أول الطلب لحد الاستلام.</p></div><div class="home-intro-actions"><a href="#catSec">ابدأ اختيارك</a><a class="secondary" href="./track.html">تابع طلبك</a></div></section>
 
   <section class="sec v15-section-reveal" id="catSec">
     <div class="sec-head"><div><h2>🛍️ اختار اللي محتاجه</h2><p class="section-kicker">كل حاجة متقسمة علشان توصل للي بتدور عليه أسرع.</p></div></div>
@@ -527,6 +1261,41 @@ textarea{resize:none}
   <span>عرض السلة</span>
   <span id="barTotal">0 ج.م</span>
 </button>
+
+<div class="intro-overlay" id="firstLaunchIntro" aria-modal="true" role="dialog" aria-label="جولة البداية">
+  <div class="intro-card">
+    <div class="intro-progress" id="introProgress"><i class="active"></i><i></i><i></i><i></i></div>
+    <section class="intro-page active"><div class="intro-emoji">🎓</div><h2>اتعمل مخصوص لطلاب الأزهر</h2><p>كل اللي تحتاجه في الحي السادس بمدينة نصر من مكان واحد — أسعار واضحة وتوصيل لحد باب السكن.</p><div class="intro-points"><div class="intro-point">Location تركيزنا على مساكن طلبة الأزهر واللي حواليها</div><div class="intro-point">🛒 سوبرماركت + 💊 صيدلية في نفس التجربة</div><div class="intro-point">⚡ طلب بسيط وتوصيل مباشر</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🧭</div><h2>اطلبها في كام خطوة وخلاص</h2><p>اختار اللي محتاجه، راجع السلة، حدد مكانك، وإحنا نتابع الطلب معاك لحد ما يوصلك.</p><div class="intro-points"><div class="intro-point">1️⃣ اختار المنتجات أو اطلب طلب خاص</div><div class="intro-point">2️⃣ حدد عنوان السكن أو GPS</div><div class="intro-point">3️⃣ تابع حالة الطلب لحظة بلحظة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🇵🇸</div><h2>مع فلسطين</h2><p>عندنا صفحة مخصصة تشرح سياسة الدعم والمقاطعة والمصادر اللي تعتمد عليها المنصة.</p><div class="intro-points"><div class="intro-point">🕊️ علم فلسطين هيفضل ظاهر فوق</div><div class="intro-point">📖 اضغط عليه في أي وقت لقراءة التفاصيل</div><div class="intro-point">↗️ صفحة فلسطين + سياسة المقاطعة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">📲</div><h2>نزّل التطبيق المناسب ليك</h2><p>كل دور له تطبيق مستقل، والرابط اللي فتحته هو اللي بيحدد التطبيق:</p><div class="intro-points"><div class="intro-point">🛍️ العميل → Alazhar City</div><div class="intro-point">🛵 المندوب → Alazhar City Rider</div><div class="intro-point">🏪 المتجر → Alazhar City Store</div><div class="intro-point">🧭 الإدارة → Alazhar Admin</div></div><p class="intro-note">بعد التثبيت مش هنعيد الجولة دي عليك.</p></section>
+    <div class="intro-pager"><button class="intro-skip" id="introSkip" type="button">مش دلوقتي</button><button class="intro-btn secondary" id="introPrev" type="button" hidden>رجوع</button><button class="intro-btn primary" id="introNext" type="button">التالي</button></div>
+  </div>
+</div>
+
+<!-- ================== Dynamic Scroll Tour ================== -->
+<div class="scroll-tour" id="scrollTour" aria-hidden="true">
+  <div class="scroll-tour-dim"></div>
+
+  <div class="scroll-tour-arrow" id="scrollTourArrow">
+    ↓
+  </div>
+
+  <div class="scroll-tour-card" id="scrollTourCard">
+    <button class="scroll-tour-close" id="scrollTourClose" type="button" aria-label="إغلاق الجولة">&times;</button>
+
+    <div class="scroll-tour-head">
+      <div class="scroll-tour-icon" id="scrollTourIcon">👋</div>
+      <h3 class="scroll-tour-title" id="scrollTourTitle">أهلاً بيك</h3>
+    </div>
+
+    <p class="scroll-tour-text" id="scrollTourText"></p>
+
+    <div class="scroll-tour-progress" id="scrollTourProgress">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+</div>
 
 <div class="overlay" id="overlay"></div>
 
@@ -634,7 +1403,7 @@ textarea{resize:none}
     <div id="emailVerificationBox" class="verification-box" style="display:none"><div class="verification-icon">✉️</div><div class="verification-copy"><b>باقي خطوة صغيرة</b><span>فعّل بريدك الإلكتروني علشان نحافظ على حسابك وطلباتك بأمان.</span></div><button type="button" id="btnResendVerification" class="text-action">إعادة إرسال الرسالة</button></div>
     <div class="account-section-title"><b>بيانات الحساب</b><span>عدّل بياناتك من هنا</span></div>
     <div class="profile-edit-card"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="accountNameEdit" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="accountPhoneEdit" maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><p class="err" id="accountProfileError" role="alert"></p><button type="button" class="btn p auth-submit-wide" id="btnSaveAccountProfile">حفظ بيانات الحساب</button></div>
-    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
+    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><a href="./portal.html" class="account-action-card" id="portalShortcut" style="display:none"><span>🧭</span><b>لوحة التشغيل</b><small>للحسابات المعتمدة</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
     <div class="account-section-title"><b>عناوين التوصيل</b><span>احفظ عنوانك مرة واستخدمه وقت الطلب</span></div>
     <div class="gps-box account-gps-box"><div class="gps-box-head"><div><b>Location العنوان المفضل</b><small>حدد موقعك من GPS، واكتب وصفًا بسيطًا يساعد المندوب.</small></div><span class="mini-secure">خاص بحسابك</span></div><button type="button" class="gps-btn" id="btnProfileDetectGps">تحديد موقعي الآن</button><div class="gps-status" id="profileGpsStatus">لم نحدد موقعًا جديدًا بعد.</div><div class="addr-tags" id="profileAddrTags"><button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button><button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button><button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button><button type="button" class="addr-chip" data-label="العمل">💼 العمل</button></div><input type="text" id="profileDetailedAddr" placeholder="مثال: عمارة 12، الدور 4، شقة 7" maxlength="250"><button type="button" class="btn p" id="btnSaveAddressToProfile">حفظ العنوان</button></div>
     <div class="saved-title"><b>العناوين المحفوظة</b><span>اختار أي عنوان وقت الطلب</span></div><div class="saved-addr-list" id="savedAddressesList"></div>
@@ -652,9 +1421,7 @@ textarea{resize:none}
 <!-- Daily Offers & Notifications Sheet -->
 <section class="sheet" id="notificationsPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle">
   <div class="ph"><h2 id="notifTitle">🔔 العروض والإشعارات اليومية</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
-  <p style="font-size:0.82rem;color:var(--muted);margin:8px 0 14px">خليك أول واحد يعرف بالعروض وتنبيهات المتاجر القريبة.</p>
-  <button type="button" class="btn d" id="enablePushBtn" style="width:100%;margin-bottom:14px">فعّل إشعارات العروض</button>
-  <small id="pushStatus" style="display:block;color:var(--muted);margin:-6px 0 12px;text-align:center">الإشعارات اختيارية، وتقدر توقفها من إعدادات جهازك.</small>
+  <p style="font-size:0.82rem;color:var(--muted);margin:8px 0 14px">أحدث العروض اليومية، كوبونات التوصيل المجاني، وإشعارات السوبرماركت والصيدلية لطلبة الأزهر:</p>
   <div id="dailyOffersContainer"></div>
 </section>
 
@@ -676,7 +1443,7 @@ textarea{resize:none}
 
 <noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
 
-<script src="./config.js?v=20260926-15"></script>
+<script src="./config.js?v=20260924-11"></script>
 <script src="./platform-store.js"></script>
 <script type="module" src="./firebase-client.js"></script>
 <script src="./images/products/list.js?v=20260924-11" onerror="void 0"></script>
@@ -697,12 +1464,7 @@ const catMap = new Map(CATEGORIES.map(c => [c[0], { key:c[0], label:c[1], emoji:
 const hasPrice = p => typeof p.price === 'number' && p.price > 0;
 const isPharma = p => catMap.get(p.cat)?.group === 'pharmacy';
 
-const productStoreId = p => {
-  if (p?.storeId && STORE_DIRECTORY.some(s => s.id === p.storeId)) return p.storeId;
-  const group = catMap.get(p?.cat)?.group;
-  return group === 'pharmacy' ? 'pharmacy-1' : group === 'koshary' ? 'koshary-hind' : group === 'pizza' ? 'pizza-rahma' : group === 'bakeryShop' ? 'bakery-sixth' : 'market-1';
-};
-const state = { cart:{}, special:'', customer:{name:'',phone:'',address:'',note:''}, group:'all', cat:'all', query:'', storeId:'all' };
+const state = { cart:{}, special:'', customer:{name:'',phone:'',address:'',note:''}, group:'all', cat:'all', query:'' };
 
 function loadState(){
   try{
@@ -731,49 +1493,17 @@ function deliveryFee(){
 let toastTimer;
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1900); }
 
-/* ================== ساعات العمل وحالة المتجر — توقيت القاهرة ================== */
-let siteSettings = {};
-function cairoNow(){
-  const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
-  const value = key => parts.find(p=>p.type===key)?.value || '00';
-  return {date:`${value('year')}-${value('month')}-${value('day')}`,minutes:Number(value('hour'))*60+Number(value('minute'))};
+/* ================== حالة المتجر (مفتوح/مغلق) ================== */
+function cairoHour(){
+  const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+  return Number(parts.find(p=>p.type==='hour').value) + Number(parts.find(p=>p.type==='minute').value)/60;
 }
-function clockMinutes(value,fallback){
-  if(/^\d{2}:\d{2}$/.test(String(value||''))){const [h,m]=String(value).split(':').map(Number);if(h<24&&m<60)return h*60+m;}
-  return Math.max(0,Number(fallback)||0)*60;
-}
-function workWindow(){
-  const open=clockMinutes(siteSettings.openTime,CONFIG.openHour);
-  let close=clockMinutes(siteSettings.closeTime,CONFIG.closeHour);
-  if(close<=open) close+=1440;
-  return {open,close};
-}
-const hh = minutes => { const h=Math.floor((minutes%1440)/60),m=minutes%60,suf=h>=12?'م':'ص'; return `${((h%12)||12)}${m?`:${String(m).padStart(2,'0')}`:''} ${suf}`; };
-function isClosedToday(){const now=cairoNow();return siteSettings.closedToday===true && siteSettings.closedTodayDate===now.date;}
-function isOpen(){
-  if(isClosedToday())return false;
-  const now=cairoNow(),{open,close}=workWindow();let minutes=now.minutes;
-  if(close>1440&&minutes<close-1440)minutes+=1440;
-  return minutes>=open&&minutes<close;
-}
+const hh = h => { h = h % 24; const suf = h >= 12 ? 'م' : 'ص'; return ((h % 12) || 12) + ' ' + suf; };
+function isOpen(){ let h = cairoHour(); if (h < CONFIG.openHour && CONFIG.closeHour > 24) h += 24; return h >= CONFIG.openHour && h < CONFIG.closeHour; }
 function renderStatus(){
-  const el=$('#status'),open=isOpen(),{open:start,close:end}=workWindow();
-  el.className='status '+(open?'open':'closed');
-  el.textContent=open?'مفتوح الآن':isClosedToday()?'مغلق النهارده':`يفتح ${hh(start)}`;
-  el.title=isClosedToday()?(siteSettings.closedTodayReason||'المتجر مغلق النهارده'): `مواعيد العمل: ${hh(start)} – ${hh(end)}`;
-  const hours=$('#hours');if(hours)hours.textContent=`${hh(start)} – ${hh(end)}`;
-}
-function applySiteSettings(settings={}){
-  siteSettings={...settings};
-  window.ACDSiteSettings=siteSettings;
-  if(!/^\d{2}:\d{2}$/.test(String(settings.openTime||''))||!/^\d{2}:\d{2}$/.test(String(settings.closeTime||''))){CONFIG.openHour=6;CONFIG.closeHour=14;}
-  if(settings.area)CONFIG.area=settings.area;
-  if(settings.audience)CONFIG.audience=settings.audience;
-  if(settings.eta)CONFIG.eta=settings.eta;
-  for(const key of ['deliveryFee','freeDelivery','minOrder'])if(Number.isFinite(Number(settings[key])))CONFIG[key]=Number(settings[key]);
-  $('#areaName').textContent=CONFIG.area;$('#areaFixed').textContent='التوصيل إلى: '+CONFIG.area;$('#footArea').textContent=CONFIG.area;
-  $('#eta').textContent=CONFIG.eta;$('#audience').textContent='توصيل '+CONFIG.audience+' إلى';
-  renderStatus();
+  const el = $('#status'), open = isOpen();
+  el.className = 'status ' + (open ? 'open' : 'closed');
+  el.textContent = open ? 'مفتوح الآن' : 'يفتح ' + hh(CONFIG.openHour);
 }
 
 /* ================== الصور والمنتجات ================== */
@@ -790,7 +1520,6 @@ function picHTML(p){
 function actionHTML(id){
   const p = byId.get(id);
   if (p.soldOut) return '<button class="add" disabled>نفد</button>';
-  if (p.comingSoon) return '<button class="add" disabled>قريبًا</button>';
   const q = state.cart[id] || 0;
   if (!q) return `<button class="add" data-act="inc" data-id="${esc(id)}" aria-label="أضف ${esc(p.name)}">+</button>`;
   return `<div class="step"><button data-act="inc" data-id="${esc(id)}" aria-label="زيادة">+</button><output>${q}</output><button data-act="dec" data-id="${esc(id)}" aria-label="تقليل">−</button></div>`;
@@ -808,40 +1537,10 @@ function cardHTML(p){
 
 /* ================== العرض الرئيسي ================== */
 const inGroup = p => state.group === 'all' || catMap.get(p.cat).group === state.group;
-const visible = p => (!CONFIG.hideUnpriced || hasPrice(p)) && inGroup(p) && (state.storeId === 'all' || productStoreId(p) === state.storeId);
-
-function renderStoreDirectory(){
-  const grid=$('#storeDirectoryGrid');if(!grid)return;
-  grid.innerHTML=STORE_DIRECTORY.map(store=>{
-    const items=PRODUCTS.filter(p=>productStoreId(p)===store.id&&p.active!==false);
-    const count=items.length,readyCount=items.filter(p=>!p.comingSoon).length;
-    const available=count>0;
-    const label=readyCount?`${readyCount} منتج متاح`:available?'المنيو والأسعار تحت المراجعة':'قريبًا';
-    return `<button type="button" class="vendor-card" data-store-id="${esc(store.id)}" ${available?'':'disabled'} aria-pressed="${state.storeId===store.id}" aria-label="${esc(store.name)}${available?'':'، قريبًا'}"><img src="./${esc(store.image)}" alt="${esc(store.description)}" loading="lazy" decoding="async"><b>${esc(store.name)}</b><small>${esc(store.description)}</small><span class="vendor-state">${label}</span></button>`;
-  }).join('');
-}
-function renderStoreFilters(){
-  const filters=$('#storeFilters');if(!filters)return;
-  const options=[{id:'all',name:'كل المتاجر'},...STORE_DIRECTORY.map(store=>({id:store.id,name:store.name,count:PRODUCTS.filter(p=>productStoreId(p)===store.id&&p.active!==false).length,ready:PRODUCTS.some(p=>productStoreId(p)===store.id&&p.active!==false&&!p.comingSoon)}))];
-  filters.innerHTML=options.map(store=>`<button type="button" class="tab" data-store-filter="${esc(store.id)}" aria-pressed="${state.storeId===store.id}" ${store.id!=='all'&&!store.count?'disabled':''}>${esc(store.name)}${store.id!=='all'&&store.count&&!store.ready?' · تحت المراجعة':''}${store.id!=='all'&&!store.count?' · قريبًا':''}</button>`).join('');
-}
-function setStore(id){
-  if(id==='all'){
-    state.storeId='all';state.group='all';state.cat='all';
-    renderTiles();renderStoreFilters();renderStoreDirectory();renderContent();
-    const title=$('#content .sec-head');if(title)scrollPageTo(title);
-    return;
-  }
-  const store=STORE_DIRECTORY.find(s=>s.id===id);if(!store)return;
-  const count=PRODUCTS.filter(p=>productStoreId(p)===id&&p.active!==false).length;
-  if(!count){toast('هنضيف منتجات المتجر ده أول ما قائمته وأسعاره تجهز.');return;}
-  state.storeId=id;state.group='all';state.cat='all';
-  renderTiles();renderStoreFilters();renderStoreDirectory();renderContent();
-  const title=$('#content .sec-head');if(title)scrollPageTo(title);
-}
+const visible = p => (!CONFIG.hideUnpriced || hasPrice(p)) && inGroup(p);
 
 function renderTiles(){
-  const cats = CATEGORIES.filter(c => (state.group === 'all' || c[3] === state.group) && PRODUCTS.some(p => p.active!==false && p.cat===c[0] && (state.storeId==='all' || productStoreId(p)===state.storeId)));
+  const cats = CATEGORIES.filter(c => state.group === 'all' || c[3] === state.group);
   $('#tiles').innerHTML = cats.map(c => `<button class="tile" data-cat="${esc(c[0])}" aria-pressed="${state.cat===c[0]}" style="background:${c[4]}"><span class="em">${c[2]}</span>${esc(c[1])}</button>`).join('');
 }
 
@@ -854,7 +1553,7 @@ function section(title, list, opts={}){
 function renderContent(){
   const q = normalize(state.query.trim());
   $('#searchBox').classList.toggle('has', !!state.query);
-  $('#palBanner').style.display = $('.usp').style.display = $('#catSec').style.display = $('#storeDirectory').style.display = (q ? 'none' : '');
+  $('#palBanner').style.display = $('#hero').style.display = $('.usp').style.display = $('#catSec').style.display = (q ? 'none' : '');
   let html = '';
 
   if (q){
@@ -867,10 +1566,6 @@ function renderContent(){
     html = `<div class="crumb"><button class="chip" data-cat="all">✕ ${c.emoji} ${esc(c.label)}</button></div>` +
       section('', PRODUCTS.filter(p => p.cat === state.cat && visible(p)));
   } else {
-    const selectedStore=STORE_DIRECTORY.find(store=>store.id===state.storeId);
-    if(selectedStore&&PRODUCTS.some(p=>productStoreId(p)===state.storeId&&p.active!==false&&p.comingSoon)){
-      html += `<aside class="store-menu-review" role="status"><b>المنيو المبدئي لـ ${esc(selectedStore.name)}</b><span>بنراجع الأصناف والأسعار مع المحل؛ الأصناف المعلّمة «قريبًا» مش متاحة للطلب دلوقتي.</span></aside>`;
-    }
     const deals = PRODUCTS.filter(p => visible(p) && p.oldPrice > p.price);
     const best = PRODUCTS.filter(p => visible(p) && p.badge === 'الأكثر طلبًا');
     // العروض ظهرت فوق الصفحة داخل #featuredOffers بدل تكرارها هنا.
@@ -897,34 +1592,50 @@ function updateTimer(){
 }
 setInterval(updateTimer, 1000);
 
-function scrollPageTo(el){
-  if (!el) return;
-  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-  const top = Math.max(0, window.scrollY + el.getBoundingClientRect().top - 10);
-  window.scrollTo({top, behavior});
+/* ================== البانر ================== */
+let slideIdx = 0, slideTimer;
+function renderHero(){
+  $('#slides').innerHTML = BANNERS.map((b,i) => `<div class="slide" style="background:${b.bg}" data-go="${i}"><div><h2>${esc(b.title)}</h2><p>${esc(b.sub)}</p><button class="cta" data-slide="${i}">${esc(b.cta)}</button></div><div class="art" aria-hidden="true">${b.emoji}</div></div>`).join('');
+  $('#dots').innerHTML = BANNERS.map((_,i) => `<button data-dot="${i}" aria-label="شريحة ${i+1}" aria-current="${i===0}"></button>`).join('');
+  startSlides();
 }
+function showSlide(i){
+  slideIdx = (i + BANNERS.length) % BANNERS.length;
+  $('#slides').style.transform = `translateX(${slideIdx*100}%)`;   // RTL: الاتجاه موجب
+  $$('#dots button').forEach((d,k) => d.setAttribute('aria-current', k===slideIdx));
+}
+function startSlides(){
+  clearInterval(slideTimer);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  slideTimer = setInterval(() => showSlide(slideIdx+1), 4500);
+}
+function goBanner(i){
+  const g = BANNERS[i].go || {};
+  if (g.href){ location.href = g.href; return; }
+  if (g.group) setGroup(g.group);
+  if (g.cat){ setGroup('all'); setCat(g.cat); }
+  if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#featuredOffers')); }
+  if (g.group || g.cat) scrollTo($('#content'));
+}
+function scrollTo(el){ if (el) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
 
 /* ================== الفلاتر ================== */
+function setGroup(g){
+  state.group = g; state.cat = 'all';
+  $$('.tab').forEach(t => t.setAttribute('aria-pressed', t.dataset.group === g));
+  renderTiles(); renderContent();
+}
 function setCat(c){
   state.cat = c; renderTiles(); renderContent();
-  if (c !== 'all') scrollPageTo($('#content .sec-head'));
+  if (c !== 'all') scrollTo($('#content'));
 }
 
 /* ================== السلة ================== */
 function setQty(id, qty){
   const prev = state.cart[id] || 0;
-  if(byId.get(id)?.comingSoon){toast('الصنف ده لسه بيتراجع مع المحل.');return;}
   qty = Math.max(0, Math.min(99, qty));
-  if(qty>prev){
-    const storeId=productStoreId(byId.get(id));
-    const cartStores=new Set(Object.keys(state.cart).map(key=>productStoreId(byId.get(key))));
-    if(cartStores.size&&(!cartStores.has(storeId)||cartStores.size>1)){
-      toast('كل طلب من متجر واحد. فضّي السلة الأول لو هتطلب من متجر تاني.');return;
-    }
-    state.storeId=storeId;
-  }
   if (qty) state.cart[id] = qty; else delete state.cart[id];
-  saveState(); renderStoreFilters();renderStoreDirectory();renderContent();refreshCards(id); renderCart();
+  saveState(); refreshCards(id); renderCart();
   if (qty > prev){
     const b = $('#openCart'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
     if (!prev && isPharma(byId.get(id)) && !sessionStorageGet('pharmaSeen')){ toast('💊 المنتجات الصيدلانية بتتأكد مع الصيدلي قبل التسليم'); sessionStorageSet('pharmaSeen','1'); }
@@ -1063,14 +1774,17 @@ function buildMessage(name, phone, address, note, lat, lng, addressLabel){
   }
   if (note) L.push(`💬 ملاحظات: ${note}`);
   L.push('');
-  const storeId=Object.keys(state.cart).length?productStoreId(byId.get(Object.keys(state.cart)[0])):(state.storeId==='all'?'market-1':state.storeId);
-  const storeName=STORE_DIRECTORY.find(x=>x.id===storeId)?.name||'متجر الأزهر';
-  L.push(`🛍️ المتجر: ${storeName}`);
-  Object.keys(state.cart).forEach(id=>{
-    const p=byId.get(id),q=state.cart[id];
-    L.push(hasPrice(p)?`• ${p.name} × ${q} = ${p.price*q} ج.م`:`• ${p.name} × ${q} (السعر بالتأكيد)`);
+  const groups = [['market','🛒 سوبرماركت:'],['pharmacy','💊 صيدلية:']];
+  groups.forEach(([g,title]) => {
+    const ids = Object.keys(state.cart).filter(id => catMap.get(byId.get(id).cat).group === g);
+    if (!ids.length) return;
+    L.push(title);
+    ids.forEach(id => {
+      const p = byId.get(id), q = state.cart[id];
+      L.push(hasPrice(p) ? `• ${p.name} × ${q} = ${p.price*q} ج.م` : `• ${p.name} × ${q} (السعر بالتأكيد)`);
+    });
+    L.push('');
   });
-  L.push('');
   if (hasSpecial()) L.push('📝 طلب خاص:', state.special.trim(), '');
   L.push(
     `🧾 ثمن المنتجات: ${sub} ج.م`,
@@ -1084,10 +1798,6 @@ function buildMessage(name, phone, address, note, lat, lng, addressLabel){
 
 async function sendOrder(){
   showError('');
-  if(!isOpen()){
-    renderStatus();
-    return showError(isClosedToday()?'المتجر مغلق النهارده. تابعنا علشان تعرف أول ما نفتح.':`المتجر مغلق دلوقتي. مواعيدنا ${hh(workWindow().open)} – ${hh(workWindow().close)}.`);
-  }
   const name = $('#clientName').value.trim();
   const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g,'');
   let address = $('#clientLocation').value.trim();
@@ -1098,7 +1808,6 @@ async function sendOrder(){
   const btnIconEl = $('#sendOrderBtnIcon');
 
   if (!hasOrder()) return showError('السلة فاضية.');
-  if(new Set(Object.keys(state.cart).map(id=>productStoreId(byId.get(id)))).size>1)return showError('كل طلب من متجر واحد. فضّي السلة واختار متجر واحد بس.');
   const bm = boycottMatch(state.special) || boycottMatch(note);
   if (bm) return showError(`🕊️ الطلب فيه «${bm.group}» — مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة. عدّل الطلب الخاص/الملاحظات.`);
   if (name.length < 3) return showError('اكتب الاسم بالكامل.');
@@ -1176,8 +1885,7 @@ async function sendOrder(){
     deliveryFee: deliveryFee(),
     total: subtotal() + deliveryFee(),
     special: state.special,
-    hasPharma: hasPharma(),
-    storeId: Object.keys(state.cart).length ? productStoreId(byId.get(Object.keys(state.cart)[0])) : (state.storeId === 'all' ? 'market-1' : state.storeId)
+    hasPharma: hasPharma()
   };
 
   let createdOrder = null;
@@ -1397,7 +2105,7 @@ function renderCustomerAuthUI() {
     const nameEdit = $('#accountNameEdit'); const phoneEdit = $('#accountPhoneEdit');
     if (nameEdit) nameEdit.value = profile.name || user.displayName || '';
     if (phoneEdit) phoneEdit.value = profile.phone || user.phoneNumber || '';
-    const roleLabel = profile.role === 'customer' ? 'عميل' : 'حساب غير متاح هنا';
+    const roleLabel = profile.role === 'admin' ? 'إدارة' : profile.role === 'store' ? 'متجر' : profile.role === 'rider' ? 'مندوب' : 'عميل';
     if ($('#custRoleBadge')) $('#custRoleBadge').textContent = roleLabel;
     const displayName = profile.name || user.displayName || 'عميل الأزهر';
     if ($('#custProfileAvatar')) $('#custProfileAvatar').textContent = (displayName.trim().charAt(0) || 'A').toUpperCase();
@@ -1405,6 +2113,7 @@ function renderCustomerAuthUI() {
     if (photo) { if (profile.photoURL) { photo.src = profile.photoURL; photo.style.display='block'; if (avatar) avatar.style.display='none'; } else { photo.style.display='none'; if (avatar) avatar.style.display='grid'; } }
     const providers = Array.isArray(user.providerData) ? user.providerData.map(p => p.providerId) : [];
     if ($('#btnLinkGoogle')) $('#btnLinkGoogle').style.display = providers.includes('google.com') ? 'none' : 'flex';
+    if ($('#portalShortcut')) $('#portalShortcut').style.display = ['admin','store','rider'].includes(profile.role) ? 'flex' : 'none';
 
     const addresses = Array.isArray(profile.savedAddresses) ? profile.savedAddresses : [];
     const listEl = $('#savedAddressesList');
@@ -1636,14 +2345,6 @@ $('#openNotificationsBtn').addEventListener('click', () => {
   $('#notifBadge').style.display = 'none';
   openPanel('notificationsPanel');
 });
-$('#enablePushBtn')?.addEventListener('click',async()=>{
-  const button=$('#enablePushBtn'),status=$('#pushStatus');
-  if(!window.ACDCloud?.enableCustomerPush){if(status)status.textContent='خدمة الإشعارات لسه بتتجهز.';return;}
-  button.disabled=true;button.textContent='جارٍ تفعيل الإشعارات…';
-  try{await ACDCloud.enableCustomerPush();if(status)status.textContent='الإشعارات اتفعلت على الجهاز ده ✅';button.textContent='الإشعارات مفعّلة';toast('تمام، هيوصلك جديد العروض على الجهاز ده 🔔');}
-  catch(err){const message=ACDCloud.authError(err);if(status)status.textContent=message;button.textContent='حاول تفعيل الإشعارات تاني';toast(message);}
-  finally{button.disabled=false;}
-});
 
 window.addEventListener('acd-customer-auth', () => {
   renderCustomerAuthUI();
@@ -1651,10 +2352,6 @@ window.addEventListener('acd-customer-auth', () => {
 
 window.addEventListener('acd-cloud-ready', () => {
   renderCustomerAuthUI();
-});
-window.addEventListener('acd-push-message',event=>{
-  const data=event.detail||{};
-  toast([data.title,data.body].filter(Boolean).join(' — ')||'فيه جديد من متاجر الحي.');
 });
 
 /* ================== الأحداث ================== */
@@ -1671,11 +2368,11 @@ document.addEventListener('click', e => {
     }
     return;
   }
-  const store=e.target.closest('[data-store-id]');
-  if(store){setStore(store.dataset.storeId);return;}
   const cat = e.target.closest('[data-cat]');
   if (cat){ setCat(state.cat === cat.dataset.cat && cat.classList.contains('tile') ? 'all' : cat.dataset.cat); return; }
-  const filter = e.target.closest('[data-store-filter]'); if(filter){setStore(filter.dataset.storeFilter);return;}
+  const tab = e.target.closest('.tab'); if (tab){ setGroup(tab.dataset.group); return; }
+  const cta = e.target.closest('[data-slide]'); if (cta){ goBanner(+cta.dataset.slide); return; }
+  const dot = e.target.closest('[data-dot]'); if (dot){ showSlide(+dot.dataset.dot); startSlides(); return; }
   if (e.target.closest('[data-close]') || e.target.id === 'overlay') closeAll();
 });
 
@@ -1706,6 +2403,13 @@ $('#clearSearch').addEventListener('click', () => { $('#search').value=''; state
 
 [['#clientName','name'],['#clientPhone','phone'],['#clientLocation','address'],['#clientNote','note']].forEach(([s,k]) => $(s).addEventListener('input', e => { state.customer[k] = e.target.value; saveState(); }));
 
+// سحب البانر باللمس
+(() => {
+  const h = $('#hero'); let x0 = null;
+  h.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; clearInterval(slideTimer); }, {passive:true});
+  h.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) showSlide(slideIdx + (dx > 0 ? 1 : -1)); x0 = null; startSlides(); });
+})();
+
 document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.pic')) e.target.remove(); }, true);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
@@ -1725,15 +2429,23 @@ async function loadRemoteSiteData(){
   if(!window.ACDCloud) return;
   try{
     const settings = await ACDCloud.getSiteSettings();
-    applySiteSettings(settings||{});
-    if(!window._acdSiteSettingsUnsubscribe&&ACDCloud.watchSiteSettings)window._acdSiteSettingsUnsubscribe=ACDCloud.watchSiteSettings(applySiteSettings);
+    if(settings && Object.keys(settings).length){
+      CONFIG = {...CONFIG, ...settings};
+      $('#areaName').textContent = CONFIG.area;
+      $('#areaFixed').textContent = 'التوصيل إلى: ' + CONFIG.area;
+      $('#footArea').textContent = CONFIG.area;
+      $('#eta').textContent = CONFIG.eta;
+      $('#audience').textContent = 'توصيل ' + CONFIG.audience + ' إلى';
+      $('#hours').textContent = hh(CONFIG.openHour) + ' – ' + hh(CONFIG.closeHour);
+      renderStatus();
+    }
     const remote = await ACDCloud.getPublicCatalog();
     if(Array.isArray(remote) && remote.length){
       const merged = new Map(PRODUCTS.map(p=>[String(p.id), p]));
-      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ merged.set(id,{...p,id,storeId:p.storeId||null,price:Number(p.price||0),emoji:p.emoji||'🛍️'}); }});
+      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ merged.set(id,{...p,id,price:Number(p.price||0),emoji:p.emoji||'🛍️'}); }});
       PRODUCTS = Array.from(merged.values());
       byId = new Map(PRODUCTS.map(p=>[p.id,p]));
-      renderTiles(); renderStoreFilters();renderStoreDirectory();renderContent(); renderCart();
+      renderTiles(); renderContent(); renderCart();
     }
     remoteOffers = await ACDCloud.getPublicOffers();
     renderFeaturedOffers();
@@ -1744,21 +2456,363 @@ async function loadRemoteSiteData(){
 }
 window.addEventListener('acd-cloud-ready', loadRemoteSiteData);
 
-/* ================== حالة تثبيت التطبيق ================== */
+/* ================== جولة أول تشغيل ================== */
+const INTRO_KEY = CONFIG.storageKey + '-first-launch-v2';
 const PWA_INSTALLED_KEY = CONFIG.storageKey + '-pwa-installed-v2';
-function isPwaInstalled(){
-  try { return isStandalone() || localStorage.getItem(PWA_INSTALLED_KEY) === '1'; }
-  catch (_) { return isStandalone(); }
-}
-function markPwaInstalled(){
-  try { localStorage.setItem(PWA_INSTALLED_KEY, '1'); } catch (_) {}
-}
-function applyInstalledState(){
-  if (!isPwaInstalled()) return;
-  $('#installBox')?.classList.remove('show');
-  $('#topInstallBtn')?.setAttribute('hidden', 'hidden');
-  $('#palBanner')?.setAttribute('hidden', 'hidden');
-}
+let introIndex = 0;
+const introPages = () => $$('.intro-page');
+function isPwaInstalled(){ try{return isStandalone() || localStorage.getItem(PWA_INSTALLED_KEY)==='1';}catch(_){return isStandalone();} }
+function markPwaInstalled(){try{localStorage.setItem(PWA_INSTALLED_KEY,'1');localStorage.setItem(INTRO_KEY,'1');}catch(_){}}
+function applyInstalledState(){if(!isPwaInstalled())return;$('#installBox')?.classList.remove('show');$('#topInstallBtn')?.setAttribute('hidden','hidden');$('#palBanner')?.setAttribute('hidden','hidden');}
+window.addEventListener('appinstalled',()=>{markPwaInstalled();applyInstalledState();closeIntro(true);});
+function renderIntro(dir){const pages=introPages();pages.forEach((p,i)=>{if(i===introIndex){p.dataset.dir=dir||'fwd';p.classList.remove('active');void p.offsetWidth;p.classList.add('active');}else{p.classList.remove('active');delete p.dataset.dir;}});$$('#introProgress i').forEach((d,i)=>{d.classList.toggle('active',i<=introIndex);d.classList.toggle('current',i===introIndex);});$('#introPrev').hidden=introIndex===0;$('#introNext').textContent=introIndex===pages.length-1?'نزّل التطبيق':'التالي';}
+function openIntro(){if(isPwaInstalled())return;try{if(localStorage.getItem(INTRO_KEY)==='1')return;}catch(_){}introIndex=0;renderIntro('fwd');$('#firstLaunchIntro').classList.add('open');document.body.classList.add('lock');}
+function closeIntro(markDone=false){if(markDone){try{localStorage.setItem(INTRO_KEY,'1')}catch(_){}}$('#firstLaunchIntro').classList.remove('open');document.body.classList.remove('lock');}
+$('#introPrev')?.addEventListener('click',()=>{if(introIndex>0){introIndex--;renderIntro('back');}});
+$('#introNext')?.addEventListener('click',async()=>{if(introIndex<introPages().length-1){introIndex++;renderIntro('fwd');return;}try{closeIntro(false);await handleInstallAction();}catch(_){}});
+$('#introSkip')?.addEventListener('click',()=>closeIntro(true));
+$('#firstLaunchIntro')?.addEventListener('click',e=>{if(e.target.id==='firstLaunchIntro')closeIntro(true);});
+let introX0=null;$('#firstLaunchIntro')?.addEventListener('touchstart',e=>{introX0=e.touches[0].clientX},{passive:true});$('#firstLaunchIntro')?.addEventListener('touchend',e=>{if(introX0===null)return;const dx=e.changedTouches[0].clientX-introX0;introX0=null;if(Math.abs(dx)<45)return;if(dx<0&&introIndex<introPages().length-1){introIndex++;renderIntro('fwd');}else if(dx>0&&introIndex>0){introIndex--;renderIntro('back');}});
+
+
+/* ================== Dynamic Scroll Tour ================== */
+(function initDynamicScrollTour(){
+
+  const TOUR_KEY = CONFIG.storageKey + '-scroll-tour-v1';
+
+  const tour = document.getElementById('scrollTour');
+  const card = document.getElementById('scrollTourCard');
+  const arrow = document.getElementById('scrollTourArrow');
+  const icon = document.getElementById('scrollTourIcon');
+  const title = document.getElementById('scrollTourTitle');
+  const text = document.getElementById('scrollTourText');
+  const progress = document.getElementById('scrollTourProgress');
+  const close = document.getElementById('scrollTourClose');
+
+  if(!tour || !card || !arrow) return;
+
+  /*
+   * كل مرحلة مرتبطة بجزء حقيقي موجود في الموقع.
+   * المرحلة تظهر أثناء الـ scroll وتوجه المستخدم للعنصر.
+   */
+  const steps = [
+    {
+      target:'#openAccountBtn',
+      icon:'👤',
+      title:'1 — اعمل حسابك',
+      text:'من هنا تقدر تعمل حسابك، تضيف بياناتك وعناوينك، وتخلي الطلبات الجاية أسرع.',
+      minScroll:80,
+      arrow:'↑'
+    },
+    {
+      target:'#catSec',
+      icon:'🛍️',
+      title:'2 — اختار اللي محتاجه',
+      text:'انزل هنا واختار القسم اللي محتاجه، وبعدها اختار المنتجات وأضفها للسلة.',
+      minScroll:260,
+      arrow:'↓'
+    },
+    {
+      target:'#openCart',
+      icon:'🛒',
+      title:'3 — راجع السلة',
+      text:'بعد ما تخلص اختيارك افتح السلة من هنا، راجع المنتجات والكميات والإجمالي قبل إتمام الطلب.',
+      minScroll:700,
+      arrow:'↑'
+    },
+    {
+      target:'#openAccountBtn',
+      icon:'Location',
+      title:'4 — حدد مكان التوصيل',
+      text:'من حسابك تقدر تضيف عنوان السكن أو تستخدم تحديد الموقع GPS علشان المندوب يعرف مكان التسليم.',
+      minScroll:1000,
+      arrow:'↑'
+    },
+    {
+      target:'a[href="./track.html"]',
+      icon:'📦',
+      title:'5 — تابع طلبك',
+      text:'بعد الطلب، استخدم متابعة الطلب علشان تعرف حالة طلبك وتفاصيله لحد الاستلام.',
+      minScroll:1300,
+      arrow:'↓'
+    }
+  ];
+
+  let currentStep = -1;
+  let running = false;
+  let scrollTimer = null;
+
+  function alreadySeen(){
+    try{
+      return localStorage.getItem(TOUR_KEY) === '1';
+    }catch(_){
+      return false;
+    }
+  }
+
+  function markSeen(){
+    try{
+      localStorage.setItem(TOUR_KEY,'1');
+    }catch(_){}
+  }
+
+  function clearTarget(){
+    document.querySelectorAll('.scroll-tour-target').forEach(el=>{
+      el.classList.remove('scroll-tour-target');
+    });
+  }
+
+  function getTarget(step){
+    if(!step) return null;
+
+    /*
+     * track.html ممكن يكون موجود أكتر من مرة في الصفحة.
+     * نختار أول عنصر ظاهر.
+     */
+    const all = document.querySelectorAll(step.target);
+
+    for(const el of all){
+      const r = el.getBoundingClientRect();
+      if(r.width && r.height) return el;
+    }
+
+    return all[0] || null;
+  }
+
+  function positionArrow(target, step){
+    if(!target){
+      arrow.classList.remove('show');
+      return;
+    }
+
+    const r = target.getBoundingClientRect();
+
+    let x = r.left + r.width / 2 - 24;
+    let y;
+
+    if(step.arrow === '↑'){
+      y = Math.max(12, r.top - 62);
+    }else{
+      y = Math.min(window.innerHeight - 58, r.bottom + 14);
+    }
+
+    x = Math.max(10, Math.min(window.innerWidth - 58, x));
+
+    arrow.style.left = x + 'px';
+    arrow.style.top = y + 'px';
+    arrow.textContent = step.arrow;
+
+    requestAnimationFrame(()=>{
+      arrow.classList.add('show');
+    });
+  }
+
+  function positionCard(target){
+    if(window.innerWidth <= 520){
+      card.style.left = '';
+      card.style.top = '';
+      return;
+    }
+
+    const r = target?.getBoundingClientRect();
+
+    if(!r){
+      card.style.left = '50%';
+      card.style.top = '50%';
+      card.style.transform = 'translate(-50%,-50%)';
+      return;
+    }
+
+    card.style.transform = '';
+    
+    let left = r.left + r.width / 2 - 165;
+    let top = r.bottom + 18;
+
+    if(top + 170 > window.innerHeight){
+      top = r.top - 190;
+    }
+
+    left = Math.max(14, Math.min(window.innerWidth - 344, left));
+    top = Math.max(14, Math.min(window.innerHeight - 190, top));
+
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+
+  function renderProgress(index){
+    [...progress.children].forEach((dot,i)=>{
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function showStep(index){
+    if(index < 0 || index >= steps.length) return;
+
+    const step = steps[index];
+    const target = getTarget(step);
+
+    if(!target) return;
+
+    clearTarget();
+
+    currentStep = index;
+    running = true;
+
+    target.classList.add('scroll-tour-target');
+
+    icon.textContent = step.icon;
+    title.textContent = step.title;
+    text.textContent = step.text;
+
+    renderProgress(index);
+
+    tour.classList.add('active');
+    tour.setAttribute('aria-hidden','false');
+
+    positionArrow(target,step);
+    positionCard(target);
+
+    requestAnimationFrame(()=>{
+      card.classList.add('show');
+    });
+  }
+
+  function hideTour(mark=true){
+    clearTarget();
+    card.classList.remove('show');
+    arrow.classList.remove('show');
+    tour.classList.remove('active');
+    tour.setAttribute('aria-hidden','true');
+    running = false;
+
+    if(mark) markSeen();
+  }
+
+  function calculateStep(){
+    const y = window.scrollY || window.pageYOffset || 0;
+
+    /*
+     * نستخدم نقاط scroll تدريجية.
+     * المستخدم مش محتاج يضغط Next؛ الـ scroll نفسه هو الـ navigation.
+     */
+    let index = 0;
+
+    for(let i=0;i<steps.length;i++){
+      if(y >= steps[i].minScroll) index = i;
+    }
+
+    return index;
+  }
+
+  function handleScroll(){
+    if(alreadySeen()) return;
+
+    /*
+     * بداية الجولة أول ما المستخدم يبدأ يتحرك.
+     */
+    if(!running && window.scrollY > 25){
+      showStep(0);
+      return;
+    }
+
+    if(!running) return;
+
+    clearTimeout(scrollTimer);
+
+    scrollTimer = setTimeout(()=>{
+      const next = calculateStep();
+
+      if(next !== currentStep){
+        showStep(next);
+      }else{
+        const step = steps[currentStep];
+        const target = getTarget(step);
+
+        if(target){
+          positionArrow(target,step);
+          positionCard(target);
+        }
+      }
+    },45);
+  }
+
+  close?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لو المستخدم ضغط خارج الكارت، نعتبر إنه مش محتاج الجولة.
+   */
+  document.querySelector('.scroll-tour-dim')?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لما يوصل لآخر خطوة ونزل شوية زيادة:
+   * نختم الجولة.
+   */
+  window.addEventListener('scroll',()=>{
+    handleScroll();
+
+    if(running && currentStep === steps.length-1){
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if(max > 0 && window.scrollY > max - 120){
+        hideTour(true);
+      }
+    }
+  },{passive:true});
+
+  window.addEventListener('resize',()=>{
+    if(!running) return;
+
+    const step = steps[currentStep];
+    const target = getTarget(step);
+
+    if(target){
+      positionArrow(target,step);
+      positionCard(target);
+    }
+  });
+
+  /*
+   * بداية خفيفة:
+   * المستخدم يشوف أول رسالة من غير ما نوقف الصفحة.
+   */
+  setTimeout(()=>{
+    if(!alreadySeen() && window.scrollY < 25){
+      const first = steps[0];
+      const target = getTarget(first);
+
+      if(target){
+        currentStep = 0;
+        running = true;
+
+        target.classList.add('scroll-tour-target');
+
+        icon.textContent = first.icon;
+        title.textContent = first.title;
+        text.textContent = 'ابدأ بالنزول شوية، وأنا هشرحلك الموقع خطوة بخطوة 👇';
+
+        renderProgress(0);
+
+        tour.classList.add('active');
+        tour.setAttribute('aria-hidden','false');
+
+        positionArrow(target,first);
+        positionCard(target);
+
+        requestAnimationFrame(()=>{
+          card.classList.add('show');
+        });
+      }
+    }
+  },1800);
+
+})();
+
+
 /* ================== تثبيت التطبيق (PWA) ================== */
 let deferredPrompt = null;
 const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1770,12 +2824,7 @@ function showInstall(){
   $('#installBox').classList.add('show');
 }
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; showInstall(); });
-window.addEventListener('appinstalled', () => {
-  deferredPrompt = null;
-  markPwaInstalled();
-  applyInstalledState();
-  toast('تم تثبيت التطبيق ✅');
-});
+window.addEventListener('appinstalled', () => { deferredPrompt = null; markPwaInstalled(); $('#installBox').classList.remove('show'); $('#topInstallBtn')?.setAttribute('hidden','hidden'); closeIntro(true); toast('تم تثبيت التطبيق ✅'); });
 
 async function handleInstallAction(){
   if (deferredPrompt){
@@ -1805,7 +2854,7 @@ $('#installClose').addEventListener('click', () => {
 // عرض بانر التثبيت إذا لم يكن مثبتاً بالفعل
 showInstall();
 if (isPwaInstalled()) $('#topInstallBtn')?.setAttribute('hidden','hidden');
-
+setTimeout(openIntro, 250);
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
@@ -1825,203 +2874,1449 @@ $('#clientPhone').value = state.customer.phone;
 $('#clientLocation').value = state.customer.address;
 $('#clientNote').value = state.customer.note;
 renderStatus(); setInterval(renderStatus, 60000);
-renderTiles(); renderStoreFilters(); renderStoreDirectory(); renderContent(); renderCart(); renderFeaturedOffers();
+renderHero(); renderTiles(); renderContent(); renderCart(); renderFeaturedOffers();
 </script>
 <script src="./customer-flow.js?v=20260924"></script>
 
-<!-- جولة قصيرة تشرح أهم أدوات الموقع وتوصل العميل لصفحة تنزيل التطبيق -->
-<div class="customer-arrow-tour" id="customerArrowTour" aria-hidden="true">
-  <div class="customer-tour-backdrop" id="customerTourBackdrop" aria-hidden="true"></div>
-  <div class="customer-tour-ring" id="customerTourRing" aria-hidden="true"></div>
-  <div class="customer-tour-arrow" id="customerTourArrow" aria-hidden="true">↑</div>
-  <section class="customer-tour-controls" id="customerTourControls" aria-label="جولة سريعة في الموقع">
-    <button class="customer-tour-dismiss" id="customerTourDismiss" type="button" aria-label="تخطي الجولة" title="تخطي الجولة">×</button>
-    <div class="customer-tour-copy">
-      <div class="customer-tour-count" id="customerTourCount"></div>
-      <strong class="customer-tour-title" id="customerTourTitle"></strong>
-      <p class="customer-tour-message" id="customerTourMessage"></p>
-      <small class="customer-tour-auto" id="customerTourAuto"></small>
+<!-- دليل تفاعلي منبثق -->
+<div class="guided-tour-overlay" id="guidedTour" style="display: none;">
+  <div class="guided-tour-backdrop" onclick="closeTour()"></div>
+  <div class="guided-tour-tooltip" id="tourTooltip">
+    <div class="tour-arrow" id="tourArrow"></div>
+    <div class="tour-content">
+      <span class="tour-step-badge" id="tourStepBadge">خطوة 1 من 3</span>
+      <h3 id="tourTitle">عنوان الخطوة</h3>
+      <p id="tourDesc">وصف الخطوة للعميل وكيفية الاستخدام.</p>
+      <div class="tour-actions">
+        <button type="button" class="tour-btn secondary" onclick="closeTour()">إغلاق</button>
+        <button type="button" class="tour-btn primary" id="tourNextBtn">التالي ‹</button>
+      </div>
     </div>
-    <div class="customer-tour-navs">
-      <button class="customer-tour-nav" id="customerTourPrevious" type="button" aria-label="الخطوة السابقة" title="الخطوة السابقة" disabled>→</button>
-      <button class="customer-tour-nav is-primary" id="customerTourNext" type="button" aria-label="الخطوة التالية" title="الخطوة التالية">←</button>
-    </div>
-  </section>
+  </div>
 </div>
 
-<script id="customerArrowTourJS">
+<div
+  class="amh-scroll-tour"
+  id="amhScrollTour"
+  aria-hidden="true"
+>
+
+  <div class="amh-tour-backdrop"></div>
+
+  <div
+    class="amh-tour-spotlight"
+    id="amhTourSpotlight"
+    aria-hidden="true"
+  >
+    <div class="amh-tour-pulse"></div>
+  </div>
+
+  <div
+    class="amh-tour-arrow"
+    id="amhTourArrow"
+    aria-hidden="true"
+  >
+    ↓
+  </div>
+
+  <div
+    class="amh-tour-label"
+    id="amhTourLabel"
+    aria-hidden="true"
+  ></div>
+
+  <section
+    class="amh-tour-card"
+    id="amhTourCard"
+    role="dialog"
+    aria-live="polite"
+    aria-label="دليل استخدام الموقع"
+  >
+
+    <button
+      type="button"
+      class="amh-tour-close"
+      id="amhTourClose"
+      aria-label="إغلاق الدليل"
+    >×</button>
+
+    <div class="amh-tour-top">
+
+      <div
+        class="amh-tour-icon"
+        id="amhTourIcon"
+      >👋</div>
+
+      <div class="amh-tour-heading">
+
+        <span
+          class="amh-tour-step"
+          id="amhTourStep"
+        >دليل الموقع</span>
+
+        <h3
+          class="amh-tour-title"
+          id="amhTourTitle"
+        >أهلاً بيك</h3>
+
+      </div>
+
+    </div>
+
+    <p
+      class="amh-tour-description"
+      id="amhTourDescription"
+    ></p>
+
+    <div class="amh-tour-bottom">
+
+      <div
+        class="amh-tour-progress"
+        id="amhTourProgress"
+      ></div>
+
+      <span
+        class="amh-tour-counter"
+        id="amhTourCounter"
+      >1 / 6</span>
+
+    </div>
+
+  </section>
+
+  <div
+    class="amh-tour-scroll-hint"
+    id="amhTourScrollHint"
+  >
+    <span class="amh-tour-scroll-icon">☝️</span>
+    <span>انزل بالصفحة للتعرف على باقي الموقع</span>
+  </div>
+
+</div>
+
+
+<div
+  class="amh-tour-complete"
+  id="amhTourComplete"
+  aria-hidden="true"
+>
+
+  <div class="amh-tour-complete-box">
+
+    <div class="amh-tour-complete-icon">
+      ✓
+    </div>
+
+    <h3>
+      كده عرفت الموقع كله 🎉
+    </h3>
+
+    <p>
+      دلوقتي تقدر تعمل حساب، تختار منتجاتك،
+      تحدد مكان التوصيل، وتتابع طلبك لحد الاستلام.
+    </p>
+
+    <button
+      type="button"
+      id="amhTourCompleteClose"
+    >
+      ابدأ استخدام الموقع
+    </button>
+
+  </div>
+
+</div>
+
+
+<script id="amhScrollTourJS">
 (function(){
+
   'use strict';
 
-  const key = (window.CONFIG && CONFIG.storageKey ? CONFIG.storageKey : 'alazhar-city-delivery') + '-arrow-guide-v5';
-  const layer = document.getElementById('customerArrowTour');
-  const backdrop = document.getElementById('customerTourBackdrop');
-  const ring = document.getElementById('customerTourRing');
-  const arrow = document.getElementById('customerTourArrow');
-  const controls = document.getElementById('customerTourControls');
-  const count = document.getElementById('customerTourCount');
-  const title = document.getElementById('customerTourTitle');
-  const message = document.getElementById('customerTourMessage');
-  const autoText = document.getElementById('customerTourAuto');
-  const previous = document.getElementById('customerTourPrevious');
-  const next = document.getElementById('customerTourNext');
-  const dismiss = document.getElementById('customerTourDismiss');
-  if (![layer,backdrop,ring,arrow,controls,count,title,message,autoText,previous,next,dismiss].every(Boolean)) return;
+  /* ==========================================================
+     AMH PROFESSIONAL SCROLL TOUR
+     ========================================================== */
+
+  const TOUR_KEY =
+    (window.CONFIG && CONFIG.storageKey
+      ? CONFIG.storageKey
+      : 'alazhar-city-delivery')
+    + '-professional-scroll-tour-v2';
+
+  const $ = (selector) =>
+    document.querySelector(selector);
+
+  const tour =
+    $('#amhScrollTour');
+
+  const card =
+    $('#amhTourCard');
+
+  const spotlight =
+    $('#amhTourSpotlight');
+
+  const arrow =
+    $('#amhTourArrow');
+
+  const label =
+    $('#amhTourLabel');
+
+  const icon =
+    $('#amhTourIcon');
+
+  const stepEl =
+    $('#amhTourStep');
+
+  const title =
+    $('#amhTourTitle');
+
+  const description =
+    $('#amhTourDescription');
+
+  const progress =
+    $('#amhTourProgress');
+
+  const counter =
+    $('#amhTourCounter');
+
+  const close =
+    $('#amhTourClose');
+
+  const scrollHint =
+    $('#amhTourScrollHint');
+
+  const complete =
+    $('#amhTourComplete');
+
+  const completeClose =
+    $('#amhTourCompleteClose');
+
+  if(
+    !tour ||
+    !card ||
+    !spotlight ||
+    !arrow
+  ){
+    return;
+  }
+
+  /* ==========================================================
+     TOUR STEPS
+     ========================================================== */
 
   const steps = [
-    { selector:'#openAccountBtn', title:'حسابك وعناوينك', message:'من هنا تدخل حسابك وتحفظ بياناتك وعنوان التوصيل.' },
-    { selector:'#searchBox', title:'دور على اللي محتاجه', message:'اكتب اسم المنتج أو الدوا في البحث علشان توصله بسرعة.' },
-    { selector:'#storeDirectoryGrid', title:'اختار متجرك', message:'اختار السوبر ماركت أو المطعم أو المخبز أو الصيدلية، وكل منتج هيتعرض من متجره.' },
-    { selector:'#openCart', title:'راجع طلبك', message:'كل اللي ضفته هتلاقيه هنا قبل ما تأكد الطلب.' },
-    { selector:'#topInstallBtn', title:'نزّل التطبيق', message:'هنفتح صفحة التنزيل علشان تختار طريقة التثبيت المناسبة لموبايلك.' }
+
+    {
+      selector:'#openAccountBtn',
+
+      icon:'👤',
+
+      title:'ابدأ بإنشاء حسابك',
+
+      text:
+        'من زر الحساب تقدر تسجل حسابك وتدخل بياناتك وتضيف عناوين التوصيل. الحساب بيخلي إدارة طلباتك أسهل في كل مرة.',
+
+      label:'حسابك وعناوينك',
+
+      position:'top',
+
+      start:0
+    },
+
+    {
+      selector:'#catSec',
+
+      icon:'🛍️',
+
+      title:'اختار المنتجات',
+
+      text:
+        'انزل لقسم المنتجات واختار القسم اللي محتاجه. تصفح المنتجات وأضف اللي تحتاجه مباشرة إلى السلة.',
+
+      label:'الأقسام والمنتجات',
+
+      position:'top',
+
+      start:.12
+    },
+
+    {
+      selector:'#openCart',
+
+      icon:'🛒',
+
+      title:'راجع السلة',
+
+      text:
+        'من السلة تقدر تراجع المنتجات والكميات والإجمالي قبل إتمام الطلب، وتعدل أي حاجة محتاج تغيرها.',
+
+      label:'سلة المشتريات',
+
+      position:'bottom',
+
+      start:.30
+    },
+
+    {
+      selector:'#openAccountBtn',
+
+      icon:'Location',
+
+      title:'حدد مكان التوصيل',
+
+      text:
+        'من حسابك تقدر تضيف عنوان السكن أو تستخدم تحديد الموقع. كده بيانات التوصيل تبقى جاهزة للطلب.',
+
+      label:'العنوان و GPS',
+
+      position:'top',
+
+      start:.48
+    },
+
+    {
+      selector:'a[href="./track.html"]',
+
+      icon:'📦',
+
+      title:'تابع طلبك',
+
+      text:
+        'بعد إرسال الطلب استخدم متابعة الطلبات علشان تعرف حالة الطلب وتفاصيله وتتابع الرحلة لحد الاستلام.',
+
+      label:'متابعة الطلب',
+
+      position:'bottom',
+
+      start:.67
+    },
+
+    {
+      selector:'#installBox',
+
+      icon:'📲',
+
+      title:'ثبّت التطبيق على جهازك',
+
+      text:
+        'لو حابب وصول أسرع، تقدر تثبت التطبيق على جهازك وتفتحه مباشرة من الشاشة الرئيسية.',
+
+      label:'تثبيت التطبيق',
+
+      position:'top',
+
+      start:.84
+    }
+
   ];
-  const ordinals = ['١','٢','٣','٤','٥'];
+
   let current = -1;
   let running = false;
-  let timer = 0;
-  let frame = 0;
+  let initialized = false;
+  let scrollRAF = 0;
+  let finishTimer = null;
 
-  function completed(){
-    try { return localStorage.getItem(key) === '1'; }
-    catch (_) { return false; }
+  /* ==========================================================
+     STORAGE
+     ========================================================== */
+
+  function wasCompleted(){
+
+    try{
+      return localStorage.getItem(TOUR_KEY) === '1';
+    }catch(e){
+      return false;
+    }
+
   }
-  function markCompleted(){ try { localStorage.setItem(key, '1'); } catch (_) {} }
+
+  function markCompleted(){
+
+    try{
+      localStorage.setItem(
+        TOUR_KEY,
+        '1'
+      );
+    }catch(e){}
+
+  }
+
+  /* ==========================================================
+     TARGET
+     ========================================================== */
+
   function findTarget(step){
-    const target = step && document.querySelector(step.selector);
-    if (!target) return null;
-    const rect = target.getBoundingClientRect();
-    const style = getComputedStyle(target);
-    return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden' ? target : null;
-  }
-  function clamp(value,min,max){ return Math.max(min,Math.min(max,value)); }
 
-  function place(){
-    if (!running || current < 0) return;
-    const step = steps[current];
-    const target = findTarget(step);
-    if (!target) return;
-    const rect = target.getBoundingClientRect();
-    const left = clamp(rect.left - 5, 4, innerWidth - 12);
-    const top = clamp(rect.top - 5, 4, innerHeight - 12);
-    ring.style.left = left + 'px';
-    ring.style.top = top + 'px';
-    ring.style.width = clamp(rect.width + 10, 8, innerWidth - left - 4) + 'px';
-    ring.style.height = clamp(rect.height + 10, 8, innerHeight - top - 4) + 'px';
-    ring.style.borderRadius = Math.min(18,Math.max(10,rect.height / 5)) + 'px';
-    ring.style.opacity = '1';
+    if(!step) return null;
 
-    const cx = clamp(rect.left + rect.width / 2, 24, innerWidth - 24);
-    const cy = clamp(rect.top + rect.height / 2, 24, innerHeight - 24);
-    backdrop.style.setProperty('--focus-x', cx + 'px');
-    backdrop.style.setProperty('--focus-y', cy + 'px');
-    backdrop.style.setProperty('--focus-rx', Math.max(54,rect.width / 2 + 20) + 'px');
-    backdrop.style.setProperty('--focus-ry', Math.max(48,rect.height / 2 + 20) + 'px');
+    const nodes =
+      document.querySelectorAll(
+        step.selector
+      );
 
-    const arrowTop = rect.top < innerHeight * .56 ? rect.bottom + 7 : rect.top - 49;
-    arrow.style.left = cx + 'px';
-    arrow.style.top = clamp(arrowTop, 8, innerHeight - 48) + 'px';
-    arrow.textContent = arrowTop > cy ? '↑' : '↓';
+    if(!nodes.length){
+      return null;
+    }
 
-    count.textContent = ordinals[current] + ' من ٥';
-    title.textContent = step.title;
-    message.textContent = step.message;
-    const isFinal = current === steps.length - 1;
-    autoText.textContent = isFinal ? 'هنفتح صفحة التنزيل بعد ٣ ثواني' : 'هنتنقل للنقطة اللي بعدها بعد ٣ ثواني';
-    previous.disabled = current === 0;
-    next.textContent = isFinal ? '✓' : '←';
-    next.setAttribute('aria-label', isFinal ? 'فتح صفحة تنزيل التطبيق' : 'الخطوة التالية');
-    next.title = isFinal ? 'فتح صفحة تنزيل التطبيق' : 'الخطوة التالية';
+    for(const node of nodes){
+
+      const rect =
+        node.getBoundingClientRect();
+
+      const style =
+        window.getComputedStyle(node);
+
+      if(
+        rect.width > 0 &&
+        rect.height > 0 &&
+        style.display !== 'none' &&
+        style.visibility !== 'hidden'
+      ){
+        return node;
+      }
+
+    }
+
+    return nodes[0];
   }
 
-  function stopTimer(){
-    if (timer) window.clearTimeout(timer);
-    timer = 0;
-    controls.classList.remove('is-counting');
+  /* ==========================================================
+     PROGRESS
+     ========================================================== */
+
+  function buildProgress(){
+
+    progress.innerHTML = '';
+
+    steps.forEach((_,index)=>{
+
+      const dot =
+        document.createElement('i');
+
+      dot.className =
+        'amh-tour-dot';
+
+      if(index === 0){
+        dot.classList.add('active');
+      }
+
+      progress.appendChild(dot);
+
+    });
+
   }
-  function finish(){
-    stopTimer();
-    markCompleted();
-    window.location.assign('./install.html');
+
+  function updateProgress(index){
+
+    [...progress.children]
+      .forEach((dot,i)=>{
+
+        dot.classList.toggle(
+          'active',
+          i === index
+        );
+
+      });
+
+    counter.textContent =
+      `${index + 1} / ${steps.length}`;
   }
-  function scheduleNext(){
-    stopTimer();
-    if (!running) return;
-    requestAnimationFrame(function(){ controls.classList.add('is-counting'); });
-    timer = window.setTimeout(function(){
-      if (current === steps.length - 1) finish();
-      else showStep(current + 1);
-    },3000);
+
+  /* ==========================================================
+     TARGET RECT
+     ========================================================== */
+
+  function getRect(target){
+
+    if(!target){
+      return null;
+    }
+
+    const r =
+      target.getBoundingClientRect();
+
+    const padding = 7;
+
+    return {
+      left:
+        Math.max(
+          4,
+          r.left - padding
+        ),
+
+      top:
+        Math.max(
+          4,
+          r.top - padding
+        ),
+
+      width:
+        Math.min(
+          window.innerWidth - 8,
+          r.width + padding * 2
+        ),
+
+      height:
+        Math.min(
+          window.innerHeight - 8,
+          r.height + padding * 2
+        ),
+
+      right:
+        r.right + padding,
+
+      bottom:
+        r.bottom + padding
+    };
+
   }
+
+  /* ==========================================================
+     SPOTLIGHT
+     ========================================================== */
+
+  function moveSpotlight(target){
+
+    const r =
+      getRect(target);
+
+    if(!r){
+      spotlight.style.opacity = '0';
+      return;
+    }
+
+    spotlight.style.left =
+      r.left + 'px';
+
+    spotlight.style.top =
+      r.top + 'px';
+
+    spotlight.style.width =
+      r.width + 'px';
+
+    spotlight.style.height =
+      r.height + 'px';
+
+    spotlight.style.borderRadius =
+      Math.min(
+        20,
+        Math.max(
+          10,
+          r.height / 5
+        )
+      ) + 'px';
+
+  }
+
+  /* ==========================================================
+     ARROW
+     ========================================================== */
+
+  function moveArrow(target,step){
+
+    const r =
+      getRect(target);
+
+    if(!r){
+      arrow.classList.remove('show');
+      return;
+    }
+
+    let x =
+      r.left +
+      r.width / 2 -
+      26;
+
+    let y;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      y =
+        Math.min(
+          window.innerHeight - 65,
+          r.bottom + 14
+        );
+
+      arrow.textContent = '↓';
+
+    }else{
+
+      y =
+        Math.max(
+          12,
+          r.top - 66
+        );
+
+      arrow.textContent = '↑';
+
+    }
+
+    x =
+      Math.max(
+        8,
+        Math.min(
+          window.innerWidth - 60,
+          x
+        )
+      );
+
+    arrow.style.left =
+      x + 'px';
+
+    arrow.style.top =
+      y + 'px';
+
+    arrow.classList.add('show');
+
+  }
+
+  /* ==========================================================
+     LABEL
+     ========================================================== */
+
+  function moveLabel(target,step){
+
+    const r =
+      getRect(target);
+
+    if(
+      !r ||
+      window.innerWidth <= 600
+    ){
+
+      label.classList.remove('show');
+      return;
+
+    }
+
+    label.textContent =
+      step.label;
+
+    let x =
+      r.left +
+      r.width / 2 -
+      45;
+
+    let y;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      y =
+        Math.min(
+          window.innerHeight - 40,
+          r.bottom + 8
+        );
+
+    }else{
+
+      y =
+        Math.max(
+          8,
+          r.top - 32
+        );
+
+    }
+
+    x =
+      Math.max(
+        8,
+        Math.min(
+          window.innerWidth - 110,
+          x
+        )
+      );
+
+    label.style.left =
+      x + 'px';
+
+    label.style.top =
+      y + 'px';
+
+    label.classList.add('show');
+
+  }
+
+  /* ==========================================================
+     CARD POSITION
+     ========================================================== */
+
+  function moveCard(target,step){
+
+    /*
+     * On mobile the card stays at the bottom,
+     * keeping the target completely visible.
+     */
+
+    if(window.innerWidth <= 600){
+
+      card.style.left = '';
+      card.style.right = '';
+      card.style.top = '';
+      card.style.bottom = '15px';
+
+      return;
+
+    }
+
+    const r =
+      getRect(target);
+
+    if(!r) return;
+
+    const cardWidth =
+      Math.min(
+        390,
+        window.innerWidth - 28
+      );
+
+    let left =
+      r.left +
+      r.width / 2 -
+      cardWidth / 2;
+
+    let top;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      top =
+        r.bottom + 18;
+
+    }else{
+
+      top =
+        r.top - 185;
+
+    }
+
+    /*
+     * If there isn't enough space above,
+     * put the card below.
+     */
+
+    if(top < 12){
+
+      top =
+        r.bottom + 18;
+
+    }
+
+    /*
+     * If there isn't enough space below,
+     * put it above.
+     */
+
+    if(
+      top + 180 >
+      window.innerHeight
+    ){
+
+      top =
+        r.top - 190;
+
+    }
+
+    left =
+      Math.max(
+        14,
+        Math.min(
+          window.innerWidth -
+          cardWidth -
+          14,
+          left
+        )
+      );
+
+    top =
+      Math.max(
+        12,
+        Math.min(
+          window.innerHeight -
+          190,
+          top
+        )
+      );
+
+    card.style.width =
+      cardWidth + 'px';
+
+    card.style.left =
+      left + 'px';
+
+    card.style.right =
+      'auto';
+
+    card.style.top =
+      top + 'px';
+
+    card.style.bottom =
+      'auto';
+
+  }
+
+  /* ==========================================================
+     MOVE EVERYTHING
+     ========================================================== */
+
+  function updateVisuals(){
+
+    if(
+      !running ||
+      current < 0
+    ){
+      return;
+    }
+
+    const step =
+      steps[current];
+
+    const target =
+      findTarget(step);
+
+    if(!target){
+      return;
+    }
+
+    moveSpotlight(target);
+    moveArrow(target,step);
+    moveLabel(target,step);
+    moveCard(target,step);
+
+  }
+
+  /* ==========================================================
+     REMOVE TARGET
+     ========================================================== */
+
+  function clearTargets(){
+
+    document
+      .querySelectorAll(
+        '.amh-tour-target'
+      )
+      .forEach(el=>{
+
+        el.classList.remove(
+          'amh-tour-target'
+        );
+
+      });
+
+  }
+
+  /* ==========================================================
+     SHOW STEP
+     ========================================================== */
+
   function showStep(index){
-    if (index >= steps.length){ finish(); return; }
-    if (index < 0) return;
+
+    if(
+      index < 0 ||
+      index >= steps.length
+    ){
+      return;
+    }
+
+    const step =
+      steps[index];
+
+    const target =
+      findTarget(step);
+
+    if(!target){
+
+      /*
+       * If a target is missing,
+       * continue gracefully.
+       */
+
+      return;
+
+    }
+
+    clearTargets();
+
     current = index;
     running = true;
-    document.body.classList.add('customer-tour-active');
-    layer.classList.add('is-visible');
-    layer.setAttribute('aria-hidden','false');
-    place();
-    scheduleNext();
+
+    target.classList.add(
+      'amh-tour-target'
+    );
+
+    icon.textContent =
+      step.icon;
+
+    stepEl.textContent =
+      `الخطوة ${index + 1}`;
+
+    title.textContent =
+      step.title;
+
+    description.textContent =
+      step.text;
+
+    updateProgress(index);
+
+    tour.classList.add(
+      'is-active'
+    );
+
+    tour.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    /*
+     * Smooth entrance.
+     */
+
+    card.classList.remove(
+      'show'
+    );
+
+    requestAnimationFrame(()=>{
+
+      updateVisuals();
+
+      requestAnimationFrame(()=>{
+
+        card.classList.add(
+          'show'
+        );
+
+      });
+
+    });
+
+    /*
+     * Scroll hint appears during
+     * the first several steps.
+     */
+
+    if(index < steps.length - 1){
+
+      scrollHint.classList.add(
+        'show'
+      );
+
+      clearTimeout(
+        window.__amhTourHintTimer
+      );
+
+      window.__amhTourHintTimer =
+        setTimeout(()=>{
+
+          scrollHint.classList.remove(
+            'show'
+          );
+
+        },2800);
+
+    }else{
+
+      scrollHint.classList.remove(
+        'show'
+      );
+
+    }
+
   }
-  function closeGuide(save){
-    stopTimer();
+
+  /* ==========================================================
+     CLOSE
+     ========================================================== */
+
+  function closeTour(save=true){
+
     running = false;
-    layer.classList.remove('is-visible');
-    layer.setAttribute('aria-hidden','true');
-    document.body.classList.remove('customer-tour-active');
-    ring.style.opacity = '0';
-    if (save) markCompleted();
-  }
-  function update(){
-    if (!running || frame) return;
-    frame = requestAnimationFrame(function(){ frame = 0; place(); });
+
+    clearTargets();
+
+    card.classList.remove(
+      'show'
+    );
+
+    arrow.classList.remove(
+      'show'
+    );
+
+    label.classList.remove(
+      'show'
+    );
+
+    spotlight.style.opacity =
+      '0';
+
+    scrollHint.classList.remove(
+      'show'
+    );
+
+    tour.classList.remove(
+      'is-active'
+    );
+
+    tour.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    if(save){
+      markCompleted();
+    }
+
   }
 
-  previous.addEventListener('click',function(){ if (current > 0) showStep(current - 1); });
-  next.addEventListener('click',function(){ if (current === steps.length - 1) finish(); else showStep(current + 1); });
-  dismiss.addEventListener('click',function(){ closeGuide(true); });
-  backdrop.addEventListener('pointerdown',function(){ scheduleNext(); },{passive:true});
-  document.addEventListener('keydown',function(event){
-    if (!running) return;
-    if (event.key === 'Escape') closeGuide(true);
-    if (event.key === 'ArrowLeft') current === steps.length - 1 ? finish() : showStep(current + 1);
-    if (event.key === 'ArrowRight' && current > 0) showStep(current - 1);
-  });
-  window.addEventListener('resize',update,{passive:true});
-  window.addEventListener('scroll',update,{passive:true});
-  document.addEventListener('visibilitychange',function(){
-    if (document.hidden) stopTimer();
-    else if (running) scheduleNext();
-  });
+  /* ==========================================================
+     COMPLETE SCREEN
+     ========================================================== */
 
-  if (!completed()){
-    window.setTimeout(function(){
-      if (!completed() && scrollY < 30) showStep(0);
-    },800);
+  function showComplete(){
+
+    clearTimeout(
+      finishTimer
+    );
+
+    closeTour(false);
+
+    complete.classList.add(
+      'show'
+    );
+
+    complete.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    markCompleted();
+
   }
+
+  function closeComplete(){
+
+    complete.classList.remove(
+      'show'
+    );
+
+    complete.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    markCompleted();
+
+  }
+
+  /* ==========================================================
+     DETERMINE CURRENT STEP FROM PAGE SCROLL
+     ========================================================== */
+
+  function calculateStep(){
+
+    const doc =
+      document.documentElement;
+
+    const maxScroll =
+      Math.max(
+        1,
+        doc.scrollHeight -
+        window.innerHeight
+      );
+
+    const ratio =
+      window.scrollY /
+      maxScroll;
+
+    let index = 0;
+
+    for(
+      let i = 0;
+      i < steps.length;
+      i++
+    ){
+
+      if(
+        ratio >= steps[i].start
+      ){
+        index = i;
+      }
+
+    }
+
+    return index;
+
+  }
+
+  /* ==========================================================
+     SCROLL ENGINE
+     ========================================================== */
+
+  function handleScroll(){
+
+    if(
+      !running ||
+      !initialized
+    ){
+      return;
+    }
+
+    if(scrollRAF){
+      return;
+    }
+
+    scrollRAF =
+      requestAnimationFrame(()=>{
+
+        scrollRAF = 0;
+
+        const next =
+          calculateStep();
+
+        if(
+          next !== current
+        ){
+
+          showStep(next);
+
+        }else{
+
+          updateVisuals();
+
+        }
+
+        /*
+         * End of page.
+         */
+
+        const doc =
+          document.documentElement;
+
+        const nearBottom =
+          window.scrollY +
+          window.innerHeight >=
+          doc.scrollHeight - 80;
+
+        if(
+          nearBottom &&
+          current === steps.length - 1
+        ){
+
+          finishTimer =
+            setTimeout(
+              showComplete,
+              650
+            );
+
+        }
+
+      });
+
+  }
+
+  /* ==========================================================
+     USER INTERACTION
+     ========================================================== */
+
+  close.addEventListener(
+    'click',
+    ()=>{
+      closeTour(true);
+    }
+  );
+
+  completeClose.addEventListener(
+    'click',
+    closeComplete
+  );
+
+  /*
+   * ESC closes the tour.
+   */
+
+  document.addEventListener(
+    'keydown',
+    event=>{
+
+      if(
+        event.key === 'Escape' &&
+        running
+      ){
+
+        closeTour(true);
+
+      }
+
+    }
+  );
+
+  /*
+   * Clicking the backdrop closes it.
+   */
+
+  tour
+    .querySelector('.amh-tour-backdrop')
+    ?.addEventListener(
+      'click',
+      ()=>{
+        closeTour(true);
+      }
+    );
+
+  /*
+   * Keep the target in view if the
+   * user manually resizes the window.
+   */
+
+  window.addEventListener(
+    'resize',
+    ()=>{
+      if(running){
+        updateVisuals();
+      }
+    },
+    {passive:true}
+  );
+
+  window.addEventListener(
+    'scroll',
+    handleScroll,
+    {passive:true}
+  );
+
+  /* ==========================================================
+     START
+     ========================================================== */
+
+  function start(){
+
+    if(wasCompleted()){
+      return;
+    }
+
+    buildProgress();
+
+    initialized = true;
+
+    /*
+     * Don't block the first page.
+     * Give the user a short introduction,
+     * then the scroll controls the tour.
+     */
+
+    setTimeout(()=>{
+
+      if(
+        wasCompleted()
+      ){
+        return;
+      }
+
+      const first =
+        findTarget(steps[0]);
+
+      if(!first){
+        return;
+      }
+
+      showStep(0);
+
+      scrollHint.classList.add(
+        'show'
+      );
+
+      setTimeout(()=>{
+
+        scrollHint.classList.remove(
+          'show'
+        );
+
+      },4000);
+
+    },1500);
+
+  }
+
+  /*
+   * Wait until the current site has loaded.
+   */
+
+  if(
+    document.readyState ===
+    'loading'
+  ){
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      start,
+      {once:true}
+    );
+
+  }else{
+
+    start();
+
+  }
+
+  /*
+   * Developer/testing helper.
+   *
+   * From console:
+   * window.resetAMHScrollTour()
+   */
+
+  window.resetAMHScrollTour =
+    function(){
+
+      try{
+        localStorage.removeItem(
+          TOUR_KEY
+        );
+      }catch(e){}
+
+      location.reload();
+
+    };
+
 })();
 </script>
-<script>
-(() => {
-  const intro=document.getElementById('launchIntro');
-  const skip=document.getElementById('launchSkip');
-  if(!intro||!skip)return;
-  const key='acd-customer-intro-seen-v2';
-  const video=document.getElementById('customerIntroVideo');
-  const caption=document.getElementById('launchSceneCaption');
-  const captions=['بنستلم طلبك من المحل ونجهزه ليك.','مندوبنا على العجلة اتحرك من المتجر.','بنوصّل الطلب لحد بابك في الحي السادس.','هدفنا حوالي ١٠ دقايق حسب التجهيز والطريق.'];
-  let captionIndex=0,captionTimer=0;
-  const showCaption=()=>{if(caption){caption.textContent=captions[captionIndex%captions.length];captionIndex++;}};
-  const stopIntro=()=>{clearInterval(captionTimer);if(video){video.pause();video.currentTime=0;}};
-  const hide=()=>{intro.classList.add('is-hidden');stopIntro();try{sessionStorage.setItem(key,'1')}catch(_){}};
-  let seen=false;try{seen=sessionStorage.getItem(key)==='1'}catch(_){}
-  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(seen){intro.classList.add('is-hidden');stopIntro();}
-  else if(!reducedMotion){video?.play().catch(()=>{});captionTimer=window.setInterval(showCaption,1550);window.setTimeout(hide,6800);}
-  else {intro.classList.add('is-hidden');stopIntro();}
-  skip.addEventListener('click',hide);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!intro.classList.contains('is-hidden'))hide()});
-})();
+
+<!-- AMH_SCROLL_TOUR_END -->
+</body>
+</html>
+    const c = catMap.get(state.cat);
+    const list = PRODUCTS.filter(p => visible(p) && p.cat === state.cat);
+    html = `
+      <div class="crumb">
+        <button class="chip" data-cat="all">← كل الأقسام</button>
+        <b>${esc(c.label)}</b>
+      </div>
+      <section class="sec">
+        <div class="grid">
+          ${list.length ? list.map(cardHTML).join('') : '<p class="empty">لا توجد منتجات في هذا القسم حالياً</p>'}
+        </div>
+      </section>
+    `;
+  }
+
+  $('#content').innerHTML = html;
+}
+
+document.addEventListener('click', (e) => {
+  const catBtn = e.target.closest('[data-cat]');
+  if (catBtn) {
+    state.cat = catBtn.dataset.cat;
+    renderContent();
+    return;
+  }
+
+  const addBtn = e.target.closest('[data-add]');
+  if (addBtn) {
+    const id = addBtn.dataset.add;
+    const item = state.cart.find(i => i.id === id);
+    if (item) {
+      item.qty++;
+    } else {
+      state.cart.push({ id, qty: 1 });
+    }
+    updateCart();
+    return;
+  }
+});
+
+renderContent();
+</script>
+</body>
+</html>
+    const c = catMap.get(state.cat);
+    const list = PRODUCTS.filter(p => visible(p) && p.cat === state.cat);
+    html = `
+      <div class="crumb">
+        <button class="chip" data-cat="all">← كل الأقسام</button>
+        <b>${esc(c.label)}</b>
+      </div>
+      <section class="sec">
+        <div class="grid">
+          ${list.length ? list.map(cardHTML).join('') : '<p class="empty">لا توجد منتجات في هذا القسم حالياً</p>'}
+        </div>
+      </section>
+    `;
+  }
+
+  $('#content').innerHTML = html;
+}
+
+document.addEventListener('click', (e) => {
+  const catBtn = e.target.closest('[data-cat]');
+  if (catBtn) {
+    state.cat = catBtn.dataset.cat;
+    renderContent();
+    return;
+  }
+
+  const addBtn = e.target.closest('[data-add]');
+  if (addBtn) {
+    const id = addBtn.dataset.add;
+    const item = state.cart.find(i => i.id === id);
+    if (item) {
+      item.qty++;
+    } else {
+      state.cart.push({ id, qty: 1 });
+    }
+    updateCart();
+    return;
+  }
+});
+
+renderContent();
+</script>
+</body>
+</html>
+
+    const c = catMap.get(state.cat);
+    const list = PRODUCTS.filter(p => visible(p) && p.cat === state.cat);
+    html = `
+      <div class="crumb">
+        <button class="chip" data-cat="all">← كل الأقسام</button>
+        <b>${esc(c.label)}</b>
+      </div>
+      <section class="sec">
+        <div class="grid">
+          ${list.length ? list.map(cardHTML).join('') : '<p class="empty">لا توجد منتجات في هذا القسم حالياً</p>'}
+        </div>
+      </section>
+    `;
+  }
+
+  $('#content').innerHTML = html;
+}
+
+document.addEventListener('click', (e) => {
+  const catBtn = e.target.closest('[data-cat]');
+  if (catBtn) {
+    state.cat = catBtn.dataset.cat;
+    renderContent();
+    return;
+  }
+
+  const addBtn = e.target.closest('[data-add]');
+  if (addBtn) {
+    const id = addBtn.dataset.add;
+    const item = state.cart.find(i => i.id === id);
+    if (item) {
+      item.qty++;
+    } else {
+      state.cart.push({ id, qty: 1 });
+    }
+    updateCart();
+    return;
+  }
+});
+
+renderContent();
 </script>
 </body>
 </html>

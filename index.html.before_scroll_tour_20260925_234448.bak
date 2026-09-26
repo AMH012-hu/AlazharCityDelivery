@@ -1,0 +1,4123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14231d">
+<base href="./">
+<title>Alazhar City Delivery | سوبرماركت وصيدلية — الحي السادس مدينة نصر</title>
+<meta name="description" content="سوبرماركت وصيدلية لطلبة جامعة الأزهر في الحي السادس. اختار اللي محتاجه، ابعت طلبك، وخليه يوصل لحد بابك بسهولة.">
+<meta property="og:title" content="Alazhar City Delivery">
+<meta property="og:description" content="طلبات السوبرماركت والصيدلية لطلبة الأزهر — بسيطة من أول الاختيار لحد الاستلام.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:image" content="https://amh012-hu.github.io/AlazharCityDelivery/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Alazhar City">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brand:#e94b3c; --brand-d:#bd3027; --brand-l:#fff0ed;
+  --green:#0a8150; --green-l:#e5f6ee;
+  --ink:#14231d; --muted:#69736e; --line:#e7ebe8; --bg:#f6f7f4; --card:#fff;
+  --r:18px; --sh:0 3px 14px rgba(20,35,29,.07); --sh2:0 14px 32px rgba(20,35,29,.14);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;padding-bottom:calc(90px + var(--safe-b));-webkit-tap-highlight-color:transparent}
+body.lock{overflow:hidden}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+img{max-width:100%}
+:focus-visible{outline:3px solid rgba(255,87,34,.5);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.flagbar{height:4px;background:linear-gradient(90deg,var(--brand),var(--brand) 48%,#0a8150 48%,#0a8150)}
+.bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px}
+.logo{width:46px;height:46px;border-radius:14px;object-fit:cover;background:var(--ink);flex:none;box-shadow:0 5px 12px rgba(20,35,29,.18)}
+.loc{flex:1;min-width:0;line-height:1.25}
+.loc small{display:block;color:var(--muted);font-size:.7rem;font-weight:600}
+.loc b{display:flex;align-items:center;gap:4px;font-size:.92rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loc b svg{color:var(--brand)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:20px;background:var(--green-l);color:var(--green);white-space:nowrap}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.status.closed{background:#fdeaea;color:#d62828}
+.status.open::before{animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.icon-btn{position:relative;width:44px;height:44px;border-radius:14px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;box-shadow:0 5px 12px rgba(20,35,29,.16);transition:transform .15s,background .15s,box-shadow .15s}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn.download-btn{background:var(--brand);color:#fff;box-shadow:0 5px 14px rgba(233,75,60,.32)}
+.icon-btn.download-btn:hover{background:var(--brand-d);transform:translateY(-1px);box-shadow:0 7px 18px rgba(233,75,60,.45)}
+.icon-btn.download-btn:active{transform:scale(.94)}
+.icon-btn.download-btn svg{width:1.35em;height:1.35em}
+@media(max-width:440px){
+  .bar{gap:6px}
+  .loc small{display:none}
+  .loc b{font-size:.84rem}
+  .status{padding:4px 8px;font-size:.68rem}
+  .palchip{width:38px;height:38px;font-size:1.15rem}
+  .icon-btn{width:38px;height:38px}
+}
+@media(max-width:350px){
+  .status{display:none}
+}
+.icon-btn .cnt{position:absolute;top:-4px;left:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ink);color:#fff;font-size:.72rem;font-weight:800;display:none;place-items:center}
+.icon-btn .cnt.show{display:grid}
+.icon-btn.bump{animation:bump .35s}
+@keyframes bump{40%{transform:scale(1.18)}}
+.search{display:flex;align-items:center;gap:8px;background:var(--bg);border:2px solid transparent;border-radius:14px;padding:0 12px;margin-bottom:8px}
+.search:focus-within{border-color:var(--brand);background:#fff}
+.search svg{color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:transparent;padding:12px 0;outline:none}
+.search button{border:0;background:none;color:var(--muted);font-size:1.3rem;display:none}
+.search.has button{display:block}
+.tabs{display:flex;gap:6px;padding-bottom:10px}
+.tab{flex:1;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 6px;font-weight:800;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.tab[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-l);color:var(--brand-d)}
+.tab[data-group="pharmacy"][aria-pressed="true"]{border-color:var(--green);background:var(--green-l);color:var(--green)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;margin-top:14px;border-radius:24px;overflow:hidden;box-shadow:var(--sh2);border:1px solid rgba(255,255,255,.3)}
+.slides{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.slide{min-width:100%;padding:26px 24px;min-height:178px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;overflow:hidden}
+.slide::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.1);left:-70px;bottom:-110px}
+.slide h2{margin:0 0 6px;font-size:1.5rem;font-weight:900;line-height:1.3}
+.slide p{margin:0 0 14px;font-size:.92rem;opacity:.95;font-weight:600}
+.slide .cta{border:0;background:#fff;color:var(--ink);font-weight:800;border-radius:24px;padding:9px 20px}
+.slide .art{font-size:5.2rem;line-height:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));z-index:1}
+@media (prefers-reduced-motion:no-preference){.slide .art{animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px) rotate(-4deg)}}}
+.dots{position:absolute;bottom:8px;right:0;left:0;display:flex;justify-content:center;gap:6px;z-index:2}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5)}
+.dots button[aria-current="true"]{width:22px;border-radius:5px;background:#fff}
+
+/* ---------- USP ---------- */
+.usp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.usp div{background:#fff;border-radius:16px;padding:12px 6px;text-align:center;font-size:.74rem;font-weight:700;box-shadow:var(--sh);line-height:1.4;border:1px solid var(--line)}
+.usp span{display:block;font-size:1.4rem;margin-bottom:2px}
+
+/* ---------- Sections ---------- */
+.sec{margin-top:22px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.sec-head h2{margin:0;font-size:1.15rem;font-weight:900;display:flex;align-items:center;gap:8px}
+.sec-head .more{border:0;background:none;color:var(--brand);font-weight:800;font-size:.85rem}
+.timer{display:inline-flex;gap:4px;direction:ltr;font-weight:800;font-size:.8rem}
+.timer b{background:var(--ink);color:#fff;border-radius:6px;padding:2px 6px;min-width:26px;text-align:center}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px}
+.tile{border:0;border-radius:16px;padding:12px 4px 10px;text-align:center;font-weight:700;font-size:.78rem;line-height:1.35;display:flex;flex-direction:column;align-items:center;gap:6px;transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.tile:active{transform:scale(.96)}
+.tile .em{font-size:2rem;line-height:1}
+.tile[aria-pressed="true"]{outline:3px solid var(--brand)}
+.hrow{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;scrollbar-width:none}
+.hrow::-webkit-scrollbar{display:none}
+.hrow .card{min-width:150px;max-width:150px;scroll-snap-align:start}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+
+.crumb{display:flex;align-items:center;gap:8px;margin-top:16px}
+.chip{border:0;background:var(--brand);color:#fff;border-radius:20px;padding:6px 14px;font-weight:800;font-size:.82rem}
+
+/* ---------- Product card ---------- */
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:8px 8px 10px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;border:1px solid rgba(20,35,29,.05)}
+.card.sold{opacity:.55}
+.pic{position:relative;aspect-ratio:1/1;border-radius:12px;display:grid;place-items:center;font-size:3.6rem;overflow:hidden;background:#f8f9fa}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;border-radius:12px;transition:transform .2s ease}
+.card:hover .pic img{transform:scale(1.03)}
+.badge{position:absolute;top:8px;right:8px;background:var(--brand);color:#fff;font-size:.66rem;font-weight:800;border-radius:8px;padding:2px 8px;z-index:2}
+.badge.pharma{background:var(--green)}
+.card h3{margin:0;font-size:.85rem;font-weight:700;line-height:1.45;min-height:2.9em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto}
+.price{font-weight:900;font-size:1rem;line-height:1.1}
+.price small{font-weight:700;font-size:.68rem;color:var(--muted)}
+.price s{display:block;color:var(--muted);font-weight:600;font-size:.72rem}
+.add{width:38px;height:38px;border-radius:50%;border:2px solid var(--brand);background:#fff;color:var(--brand);font-size:1.4rem;font-weight:700;display:grid;place-items:center;flex:none;transition:background .15s,color .15s}
+.add:active,.add:hover{background:var(--brand);color:#fff}
+.add:disabled{border-color:#ccc;color:#aaa;background:#f3f3f3;cursor:not-allowed;font-size:.7rem}
+.step{display:flex;align-items:center;background:var(--brand);border-radius:20px;color:#fff;flex:none}
+.step button{width:32px;height:36px;border:0;background:none;color:#fff;font-size:1.25rem;font-weight:700}
+.step output{min-width:20px;text-align:center;font-weight:800}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:44px 16px}
+.empty span{font-size:3rem;display:block}
+
+/* ---------- Promo strips ---------- */
+.strip{margin-top:22px;border-radius:18px;padding:16px;display:flex;align-items:center;gap:12px;background:linear-gradient(120deg,#1b1b1f,#3a3a45);color:#fff}
+.strip .em{font-size:2.2rem}
+.strip div{flex:1;line-height:1.4}
+.strip b{display:block;font-size:1rem}
+.strip small{opacity:.8}
+.strip button{border:0;background:var(--brand);color:#fff;font-weight:800;border-radius:20px;padding:9px 16px;white-space:nowrap}
+.notice{margin-top:16px;background:var(--green-l);border:1px solid #b8ead2;color:#0b6b4a;border-radius:14px;padding:10px 14px;font-size:.8rem;font-weight:600;line-height:1.7}
+footer{margin-top:30px;padding:20px 0 6px;text-align:center;color:var(--muted);font-size:.78rem;line-height:1.9}
+
+/* ---------- Cart bar ---------- */
+.cartbar{position:fixed;left:12px;right:12px;bottom:calc(12px + var(--safe-b));max-width:560px;margin:0 auto;z-index:90;background:var(--brand);color:#fff;border:0;border-radius:18px;padding:13px 16px;display:none;align-items:center;justify-content:space-between;gap:10px;font-weight:800;box-shadow:0 10px 26px rgba(255,87,34,.45)}
+.cartbar.show{display:flex;animation:up .3s}
+@keyframes up{from{transform:translateY(30px);opacity:0}}
+.cartbar .n{background:rgba(255,255,255,.25);border-radius:10px;padding:2px 10px}
+
+/* ---------- Panels ---------- */
+.overlay{position:fixed;inset:0;background:rgba(10,10,20,.55);z-index:150;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.overlay.open{opacity:1;visibility:visible;transition-delay:0s}
+.drawer,.sheet{position:fixed;background:#fff;z-index:200;visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.drawer.open,.sheet.open{visibility:visible;transform:none;transition-delay:0s}
+.drawer{top:0;right:0;height:100%;width:min(94%,420px);transform:translateX(100%);display:flex;flex-direction:column}
+.sheet{left:0;right:0;bottom:0;max-width:560px;margin:0 auto;border-radius:22px 22px 0 0;padding:18px 18px calc(18px + var(--safe-b));transform:translateY(100%);max-height:90%;overflow-y:auto}
+.ph{display:flex;align-items:center;justify-content:space-between}
+.ph h2{margin:0;font-size:1.1rem;font-weight:900}
+.close{border:0;background:none;font-size:1.8rem;line-height:1;color:var(--muted);padding:2px 10px}
+.drawer .ph{padding:14px 16px;border-bottom:1px solid var(--line)}
+.dbody{flex:1;overflow-y:auto;padding:10px 16px 16px}
+.dfoot{padding:12px 16px calc(14px + var(--safe-b));border-top:1px solid var(--line)}
+.free{background:var(--brand-l);border-radius:14px;padding:10px 12px;font-size:.8rem;font-weight:700;margin-bottom:8px}
+.free.done{background:var(--green-l);color:var(--green)}
+.meter{height:8px;background:#fff;border-radius:6px;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#ffb347);border-radius:6px;transition:width .4s}
+.free.done .meter i{background:var(--green)}
+.line{display:grid;grid-template-columns:52px 1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.line .th{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:1.8rem;overflow:hidden;position:relative}
+.line .th img{width:100%;height:100%;object-fit:contain;background:#fff}
+.line .nm{font-weight:700;font-size:.85rem;line-height:1.4}
+.line .tt{font-weight:900;font-size:.92rem;white-space:nowrap}
+.line .ctrl{grid-column:2/-1;display:flex;align-items:center;gap:10px;font-size:.75rem;color:var(--muted)}
+.line .step button{height:30px;width:30px}
+.link{border:0;background:none;color:#d62828;font-weight:700;font-size:.78rem;text-decoration:underline}
+.link.n{color:var(--muted)}
+.sp-line{margin:10px 0;padding:10px 12px;background:#fff7e6;border-right:4px solid #ffb020;border-radius:10px;font-size:.84rem}
+.sp-line p{margin:4px 0 6px;white-space:pre-wrap;word-break:break-word}
+.add-special{width:100%;margin-top:10px;border:2px dashed #d5d5df;background:none;border-radius:12px;padding:10px;font-weight:700;color:var(--muted)}
+.pharma-note{margin:10px 0;background:var(--green-l);color:#0b6b4a;border-radius:12px;padding:9px 12px;font-size:.76rem;font-weight:600;line-height:1.7}
+.bill{background:#fafafa;border:1px dashed #d0d0d8;border-radius:14px;padding:12px;margin:12px 0}
+.row{display:flex;justify-content:space-between;margin:5px 0;font-size:.86rem}
+.row.total{border-top:1px solid var(--line);padding-top:8px;margin-top:8px;font-weight:900;font-size:1rem;color:var(--brand-d)}
+.row .ok{color:var(--green);font-weight:800}
+.bn{font-size:.73rem;color:var(--muted);margin:6px 0 0;line-height:1.6}
+label.f{display:block;font-size:.8rem;font-weight:700;margin-top:10px}
+input[type=text],input[type=tel],textarea,select{width:100%;padding:11px 12px;margin-top:4px;border:1.5px solid #dcdce4;border-radius:12px;background:#fff}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--brand)}
+textarea{resize:none}
+.fixed-area{display:flex;align-items:center;gap:8px;background:var(--brand-l);border-radius:12px;padding:10px 12px;font-weight:800;font-size:.85rem;margin-top:12px}
+.fixed-area svg{color:var(--brand)}
+.err{color:#d62828;font-size:.82rem;font-weight:700;min-height:1.2em;margin:8px 0 0}
+.pay{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;margin-top:10px;color:var(--muted)}
+.btn{width:100%;border:0;padding:14px;border-radius:14px;font-weight:900;font-size:1rem}
+.btn.p{background:var(--brand);color:#fff}
+.btn.p:disabled{background:#c9c9d2;cursor:not-allowed}
+.btn.d{background:var(--ink);color:#fff;margin-top:10px}
+.btn.g{background:none;color:var(--muted);font-size:.85rem;padding:8px;margin-top:4px;font-weight:700}
+.counter{font-size:.72rem;color:var(--muted);text-align:left;margin-top:2px}
+.sheet ol{padding-right:22px;line-height:2.1;margin:12px 0 0;font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(90px + var(--safe-b));transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:22px;font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:300;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.skeleton{height:200px;border-radius:16px;background:linear-gradient(90deg,#eee 25%,#f7f7f7 50%,#eee 75%);background-size:200% 100%;animation:sk 1.2s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+
+
+
+/* ---------- Palestine banner (top of page) ---------- */
+.pal{margin-top:14px;display:block;text-decoration:none;color:#fff;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 8px 22px rgba(0,0,0,.22);min-height:92px;background:linear-gradient(180deg,#0d0d0d 0 33.4%,#f2f2f2 33.4% 66.7%,#149954 66.7%)}
+.pal::before{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(0,0,0,.82),rgba(0,0,0,.55) 55%,rgba(0,0,0,.15))}
+.pal::after{content:"";position:absolute;left:0;top:0;bottom:0;width:24%;background:#e4312b;clip-path:polygon(0 0,100% 50%,0 100%)}
+.pal .t{position:relative;z-index:1;padding:16px 18px;line-height:1.45;display:flex;align-items:center;gap:12px}
+.pal .fl{font-size:2.4rem;line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.pal b{display:block;font-size:1.25rem;font-weight:900;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.pal small{font-weight:700;font-size:.8rem;opacity:.95;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.pal .go{margin-inline-start:auto;background:#fff;color:#0b6b3a;border-radius:18px;padding:5px 14px;font-weight:800;font-size:.8rem;white-space:nowrap;position:relative;z-index:1}
+@media (prefers-reduced-motion:no-preference){.pal .fl{animation:wave 3s ease-in-out infinite;transform-origin:70% 90%}@keyframes wave{50%{transform:rotate(-6deg)}}}
+.palchip{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #149954;display:grid;place-items:center;font-size:1.35rem;text-decoration:none;flex:none}
+@media(max-width:380px){.pal .go{display:none}}
+
+/* ---------- Pledge ---------- */
+.pledge{margin-top:12px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;background:linear-gradient(120deg,#101614,#1d2b26);border-radius:18px;padding:13px 14px;border:1px solid #2b3d36;box-shadow:var(--sh)}
+.pledge .em{font-size:1.8rem}
+.pledge div{flex:1;line-height:1.45}
+.pledge b{display:block;font-size:.95rem}
+.pledge small{opacity:.85;font-weight:600;font-size:.78rem}
+.pledge .arr{font-size:1.4rem;opacity:.7}
+.bmsg{margin-top:16px;background:#101614;color:#fff;border-radius:16px;padding:14px;line-height:1.7;font-size:.88rem;font-weight:600}
+.bmsg b{color:#7fe3b5}
+.bmsg a{color:#7fe3b5}
+
+/* ---------- Install ---------- */
+.install{margin-top:12px;border-radius:18px;padding:14px;display:none;align-items:center;gap:12px;background:linear-gradient(120deg,#fff1ea,#ffe0d2);border:1px solid #ffd2bd}
+.install.show{display:flex;animation:up .3s}
+.install img{width:48px;height:48px;border-radius:12px;flex:none}
+.install div{flex:1;line-height:1.4;min-width:0}
+.install b{display:block;font-size:.95rem}
+.install small{color:var(--muted);font-weight:600}
+.install .go{border:0;background:var(--brand);color:#fff;font-weight:800;border-radius:20px;padding:9px 16px;white-space:nowrap}
+.install .x{border:0;background:none;color:var(--muted);font-size:1.4rem;line-height:1;padding:4px 6px}
+.ios-steps li{margin-bottom:6px}
+@media(min-width:720px){.slide{min-height:220px;padding:34px}.slide h2{font-size:2.1rem}.slide .art{font-size:8rem}.hrow .card{min-width:170px;max-width:170px}}
+
+/* ---------- Customer Account, GPS & Notifications Modal & Widgets ---------- */
+.auth-chip-btn{background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:6px 12px;font-size:0.8rem;font-weight:800;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all .15s}
+.auth-chip-btn:hover{border-color:var(--brand);background:var(--brand-l)}
+.bell-dot{position:absolute;top:2px;right:2px;width:9px;height:9px;border-radius:50%;background:#ef4444;border:2px solid #fff}
+.gps-box{background:#f0fdf4;border:1.5px dashed #86efac;border-radius:14px;padding:12px;margin:12px 0 10px;display:flex;flex-direction:column;gap:8px}
+.gps-btn{width:100%;background:#15803d;color:#fff;border:0;border-radius:10px;padding:9px 12px;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background .2s}
+.gps-btn:hover{background:#166534}
+.gps-btn:disabled{background:#9ca3af;cursor:not-allowed}
+.gps-status{font-size:0.75rem;font-weight:700;color:#166534;line-height:1.4}
+.addr-tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.addr-chip{background:#fff;border:1px solid #d1d5db;border-radius:16px;padding:4px 10px;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all .15s}
+.addr-chip.selected{background:var(--ink);color:#fff;border-color:var(--ink)}
+.saved-addr-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.saved-addr-card{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color .15s}
+.saved-addr-card:hover{border-color:var(--brand)}
+.auth-tabs{display:flex;gap:8px;border-bottom:2px solid var(--line);margin-bottom:14px}
+.auth-tab{flex:1;background:none;border:none;border-bottom:3px solid transparent;padding:10px;font-size:0.9rem;font-weight:800;color:var(--muted);cursor:pointer}
+.auth-tab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.offer-card{background:#fff;border:1px solid #fed7aa;border-right:5px solid var(--brand);border-radius:12px;padding:12px 14px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.offer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.offer-badge{background:#ffedd5;color:#c2410c;font-size:0.72rem;font-weight:800;border-radius:6px;padding:2px 8px}
+.offer-title{font-size:0.88rem;font-weight:800;color:var(--ink);margin:0}
+.offer-desc{font-size:0.78rem;color:var(--muted);margin:4px 0 0;line-height:1.4}
+
+/* ---------- Professional Firebase Account UI ---------- */
+.auth-security-note{background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:9px 11px;margin:12px 0;font-size:.76rem;color:#334155;line-height:1.55}
+.password-hint{background:#f8faf9;border-radius:10px;padding:8px 10px;margin:-3px 0 10px;color:var(--muted);font-size:.72rem;font-weight:700;line-height:1.5}
+.auth-submit-wide{width:100%;display:flex;justify-content:center;align-items:center;min-height:44px}
+.btn:disabled,.auth-submit-wide:disabled{opacity:.65;cursor:not-allowed}
+</style>
+<link rel="stylesheet" href="./src/pro-theme.css">
+<style>
+.featured-offers-top{margin-top:16px;padding:14px 0 2px}.featured-offers-top .section-kicker{margin:2px 0 0;color:var(--muted);font-size:.74rem;font-weight:600}.featured-offers-top .empty{padding:18px 10px;width:100%;background:#fff;border:1px dashed var(--line);border-radius:14px}.intro-overlay{position:fixed;inset:0;z-index:600;background:rgba(8,18,14,.72);padding:18px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;backdrop-filter:blur(0px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear .38s}.intro-overlay.open{opacity:1;visibility:visible;backdrop-filter:blur(12px);transition:opacity .38s ease,backdrop-filter .38s ease,visibility 0s linear 0s}.intro-card{width:min(560px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28);transform:scale(.9) translateY(18px);opacity:0;transition:transform .42s cubic-bezier(.22,.8,.32,1.1),opacity .3s ease}.intro-overlay.open .intro-card{transform:scale(1) translateY(0);opacity:1}.intro-progress{display:flex;gap:6px;padding:14px 18px 0}.intro-progress i{height:4px;flex:1;border-radius:99px;background:#e5ebe7;transition:background .35s ease,transform .25s ease}.intro-progress i.active{background:var(--brand)}.intro-progress i.current{transform:scaleY(1.6)}.intro-page{display:none;padding:26px 22px 20px;min-height:360px;overflow:hidden}.intro-page.active{display:flex;flex-direction:column;justify-content:center}.intro-page.active[data-dir="fwd"]{animation:introFwd .48s cubic-bezier(.22,.75,.32,1) both}.intro-page.active[data-dir="back"]{animation:introBack .48s cubic-bezier(.22,.75,.32,1) both}@keyframes introFwd{from{opacity:0;transform:translateX(-26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}@keyframes introBack{from{opacity:0;transform:translateX(26px) scale(.97)}to{opacity:1;transform:translateX(0) scale(1)}}.intro-emoji{font-size:4.2rem;text-align:center;margin-bottom:14px;display:inline-block}.intro-page.active .intro-emoji{animation:introPop .55s cubic-bezier(.34,1.56,.64,1) both}@keyframes introPop{0%{opacity:0;transform:scale(.35) rotate(-10deg)}55%{opacity:1;transform:scale(1.15) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}.intro-page h2{margin:0 0 10px;text-align:center;font-size:1.45rem;font-weight:900}.intro-page.active h2{animation:introFadeUp .4s ease both;animation-delay:.08s}.intro-page p{margin:0 auto;color:var(--muted);line-height:1.8;text-align:center;max-width:440px;font-size:.92rem}.intro-page.active>p{animation:introFadeUp .4s ease both;animation-delay:.14s}@keyframes introFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.intro-points{display:grid;gap:8px;margin:18px 0}.intro-point{background:#f8faf8;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font-size:.82rem;font-weight:700;opacity:0}.intro-page.active .intro-point{animation:introFadeUp .4s ease both}.intro-page.active .intro-point:nth-child(1){animation-delay:.2s}.intro-page.active .intro-point:nth-child(2){animation-delay:.27s}.intro-page.active .intro-point:nth-child(3){animation-delay:.34s}.intro-page.active .intro-point:nth-child(4){animation-delay:.41s}.intro-page.active .intro-note{opacity:0;animation:introFadeUp .4s ease both;animation-delay:.48s}.intro-pager{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}.intro-btn{border:0;border-radius:14px;padding:11px 18px;font-weight:900;transition:transform .15s ease,box-shadow .15s ease}.intro-btn:active{transform:scale(.94)}.intro-btn.primary{background:var(--brand);color:#fff;box-shadow:0 8px 18px rgba(233,75,60,.32)}.intro-btn.secondary{background:#f1f5f2;color:var(--ink)}.intro-skip{border:0;background:none;color:var(--muted);font-weight:700;text-align:right;transition:opacity .15s}.intro-skip:active{opacity:.6}.intro-note{font-size:.73rem!important;margin-top:12px!important}@media(max-width:520px){.intro-page{min-height:390px}.intro-page h2{font-size:1.25rem}.intro-pager{grid-template-columns:1fr auto auto;padding-inline:14px}}@media (prefers-reduced-motion:reduce){.intro-overlay,.intro-card,.intro-page.active,.intro-page.active *{animation:none!important;transition:none!important}}</style>
+
+<style id="scrollTourCSS">
+/* ================== Dynamic Scroll Tour ================== */
+.scroll-tour{
+  position:fixed;
+  inset:0;
+  z-index:580;
+  pointer-events:none;
+  display:none;
+}
+.scroll-tour.active{display:block}
+
+.scroll-tour-dim{
+  position:fixed;
+  inset:0;
+  background:rgba(4,12,9,.34);
+  backdrop-filter:blur(1.5px);
+  transition:opacity .25s ease;
+}
+
+.scroll-tour-card{
+  position:fixed;
+  z-index:3;
+  width:min(330px,calc(100vw - 28px));
+  background:#fff;
+  border:1px solid rgba(20,35,29,.08);
+  border-radius:20px;
+  padding:14px 15px;
+  box-shadow:0 18px 55px rgba(0,0,0,.24);
+  direction:rtl;
+  pointer-events:auto;
+  transform:translateY(10px) scale(.96);
+  opacity:0;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    opacity .25s ease,
+    left .3s ease,
+    top .3s ease;
+}
+
+.scroll-tour-card.show{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+
+.scroll-tour-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:6px;
+}
+
+.scroll-tour-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#fff4f2;
+  font-size:20px;
+  flex:none;
+}
+
+.scroll-tour-title{
+  margin:0;
+  font-size:.92rem;
+  font-weight:900;
+  color:var(--ink);
+}
+
+.scroll-tour-text{
+  margin:0;
+  color:var(--muted);
+  font-size:.77rem;
+  line-height:1.65;
+}
+
+.scroll-tour-progress{
+  display:flex;
+  gap:4px;
+  margin-top:11px;
+}
+
+.scroll-tour-progress i{
+  height:3px;
+  flex:1;
+  border-radius:99px;
+  background:#e5ebe7;
+  transition:.3s;
+}
+
+.scroll-tour-progress i.active{
+  background:var(--brand);
+}
+
+.scroll-tour-close{
+  position:absolute;
+  top:8px;
+  left:9px;
+  border:0;
+  background:transparent;
+  color:#87938d;
+  font-size:19px;
+  cursor:pointer;
+  line-height:1;
+}
+
+.scroll-tour-arrow{
+  position:fixed;
+  z-index:4;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fff;
+  color:var(--brand);
+  font-size:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+  opacity:0;
+  transform:scale(.65);
+  transition:
+    opacity .25s ease,
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    left .3s ease,
+    top .3s ease;
+}
+
+.scroll-tour-arrow.show{
+  opacity:1;
+  transform:scale(1);
+  animation:tourArrowFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes tourArrowFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 7px}
+}
+
+/* العنصر اللي الجولة بتشرحه */
+.scroll-tour-target{
+  position:relative!important;
+  z-index:581!important;
+  border-radius:16px!important;
+  box-shadow:
+    0 0 0 4px rgba(233,75,60,.25),
+    0 0 0 9999px rgba(4,12,9,.22),
+    0 12px 35px rgba(0,0,0,.16)!important;
+  transition:box-shadow .3s ease!important;
+}
+
+/* لو الهدف زر في الهيدر */
+.scroll-tour-target.icon-btn{
+  border-radius:14px!important;
+}
+
+@media(max-width:520px){
+  .scroll-tour-card{
+    bottom:18px;
+    left:14px!important;
+    right:14px;
+    width:auto;
+  }
+
+  .scroll-tour-arrow{
+    width:43px;
+    height:43px;
+    font-size:22px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .scroll-tour-card,
+  .scroll-tour-arrow{
+    transition:none;
+  }
+  .scroll-tour-arrow.show{
+    animation:none;
+  }
+}
+</style>
+
+<!-- AMH_SCROLL_TOUR_START -->
+
+<!-- AMH_SCROLL_TOUR_START -->
+
+<style id="amhScrollTourCSS">
+
+/* ============================================================
+   AMH PROFESSIONAL SCROLL ONBOARDING
+   ============================================================ */
+
+:root{
+  --tour-brand:#e94b3c;
+  --tour-brand-dark:#bd3027;
+  --tour-green:#0a8150;
+  --tour-ink:#14231d;
+  --tour-muted:#65746d;
+  --tour-glass:rgba(255,255,255,.92);
+}
+
+/* ---------- Main layer ---------- */
+
+.amh-scroll-tour{
+  position:fixed;
+  inset:0;
+  z-index:99990;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+  direction:rtl;
+}
+
+.amh-scroll-tour.is-active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ---------- Background ---------- */
+
+.amh-tour-backdrop{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.04),
+      rgba(3,12,9,.48)
+    );
+  backdrop-filter:blur(1.5px);
+  -webkit-backdrop-filter:blur(1.5px);
+}
+
+/* ---------- Spotlight ---------- */
+
+.amh-tour-spotlight{
+  position:fixed;
+  z-index:99991;
+  pointer-events:none;
+  border-radius:18px;
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.92),
+    0 0 0 5px rgba(233,75,60,.34),
+    0 0 0 100vmax rgba(3,12,9,.42),
+    0 18px 60px rgba(0,0,0,.28);
+
+  opacity:0;
+
+  transition:
+    left .42s cubic-bezier(.2,.8,.2,1),
+    top .42s cubic-bezier(.2,.8,.2,1),
+    width .42s cubic-bezier(.2,.8,.2,1),
+    height .42s cubic-bezier(.2,.8,.2,1),
+    border-radius .3s ease,
+    opacity .25s ease;
+}
+
+.amh-scroll-tour.is-active .amh-tour-spotlight{
+  opacity:1;
+}
+
+/* ---------- Animated pulse around target ---------- */
+
+.amh-tour-pulse{
+  position:absolute;
+  inset:-7px;
+  border-radius:inherit;
+  border:2px solid rgba(233,75,60,.45);
+  animation:amhTourPulse 1.7s ease-out infinite;
+}
+
+@keyframes amhTourPulse{
+  0%{
+    transform:scale(.96);
+    opacity:.9;
+  }
+  70%{
+    transform:scale(1.08);
+    opacity:0;
+  }
+  100%{
+    transform:scale(1.08);
+    opacity:0;
+  }
+}
+
+/* ---------- Main information card ---------- */
+
+.amh-tour-card{
+  position:fixed;
+  z-index:99994;
+
+  width:min(390px,calc(100vw - 28px));
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(248,251,249,.95)
+    );
+
+  border:1px solid rgba(20,35,29,.09);
+  border-radius:24px;
+
+  padding:17px 17px 15px;
+
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.28),
+    0 5px 20px rgba(0,0,0,.12);
+
+  transform:
+    translateY(18px)
+    scale(.94);
+
+  opacity:0;
+
+  transition:
+    left .4s cubic-bezier(.2,.8,.2,1),
+    top .4s cubic-bezier(.2,.8,.2,1),
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    opacity .3s ease;
+}
+
+.amh-tour-card.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* ---------- Card top ---------- */
+
+.amh-tour-top{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+}
+
+.amh-tour-icon{
+  width:46px;
+  height:46px;
+  min-width:46px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0ed,
+      #fff8f7
+    );
+
+  border:1px solid rgba(233,75,60,.12);
+
+  font-size:22px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.amh-tour-heading{
+  min-width:0;
+  flex:1;
+  padding-left:23px;
+}
+
+.amh-tour-step{
+  display:block;
+  color:var(--tour-brand);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+  margin-bottom:3px;
+}
+
+.amh-tour-title{
+  margin:0;
+  color:var(--tour-ink);
+  font-size:15px;
+  line-height:1.35;
+  font-weight:950;
+}
+
+.amh-tour-close{
+  position:absolute;
+  top:10px;
+  left:11px;
+
+  width:27px;
+  height:27px;
+
+  border:0;
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#f1f4f2;
+  color:#68756f;
+
+  cursor:pointer;
+
+  font-size:17px;
+  line-height:1;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.amh-tour-close:hover{
+  background:#e8ece9;
+  transform:rotate(8deg);
+}
+
+/* ---------- Description ---------- */
+
+.amh-tour-description{
+  margin:10px 0 12px;
+
+  color:var(--tour-muted);
+
+  font-size:12px;
+  line-height:1.75;
+}
+
+/* ---------- Bottom controls ---------- */
+
+.amh-tour-bottom{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.amh-tour-progress{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex:1;
+}
+
+.amh-tour-dot{
+  height:4px;
+  flex:1;
+  border-radius:99px;
+  background:#e1e8e4;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.amh-tour-dot.active{
+  background:var(--tour-brand);
+  transform:scaleY(1.35);
+}
+
+.amh-tour-counter{
+  color:#84918b;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+/* ---------- Scroll hint ---------- */
+
+.amh-tour-scroll-hint{
+  position:fixed;
+  z-index:99993;
+
+  left:50%;
+  bottom:18px;
+
+  transform:
+    translateX(-50%)
+    translateY(10px);
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 13px;
+
+  background:rgba(20,35,29,.88);
+  color:#fff;
+
+  border-radius:999px;
+
+  font-size:10px;
+  font-weight:800;
+
+  box-shadow:0 10px 35px rgba(0,0,0,.22);
+
+  opacity:0;
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.amh-tour-scroll-hint.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.amh-tour-scroll-icon{
+  display:inline-block;
+  animation:
+    amhScrollFinger 1.2s ease-in-out infinite;
+}
+
+@keyframes amhScrollFinger{
+  0%,100%{
+    transform:translateY(-2px);
+  }
+  50%{
+    transform:translateY(4px);
+  }
+}
+
+/* ---------- Arrow ---------- */
+
+.amh-tour-arrow{
+  position:fixed;
+  z-index:99993;
+
+  width:52px;
+  height:52px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8faf9
+    );
+
+  color:var(--tour-brand);
+
+  border:2px solid rgba(233,75,60,.16);
+
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.22),
+    0 0 0 5px rgba(255,255,255,.18);
+
+  font-size:24px;
+  font-weight:900;
+
+  opacity:0;
+
+  transform:scale(.65);
+
+  transition:
+    left .4s cubic-bezier(.2,.8,.2,1),
+    top .4s cubic-bezier(.2,.8,.2,1),
+    opacity .25s ease,
+    transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.amh-tour-arrow.show{
+  opacity:1;
+  transform:scale(1);
+
+  animation:
+    amhArrowFloat 1.25s ease-in-out infinite;
+}
+
+@keyframes amhArrowFloat{
+  0%,100%{
+    margin-top:0;
+  }
+  50%{
+    margin-top:8px;
+  }
+}
+
+/* ---------- Target animation ---------- */
+
+.amh-tour-target{
+  position:relative!important;
+  z-index:99992!important;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease!important;
+}
+
+.amh-tour-target:hover{
+  transform:translateY(-1px);
+}
+
+/* ---------- Tiny label attached to target ---------- */
+
+.amh-tour-label{
+  position:fixed;
+  z-index:99995;
+
+  padding:6px 9px;
+
+  background:var(--tour-brand);
+  color:#fff;
+
+  border-radius:8px;
+
+  font-size:9px;
+  font-weight:900;
+
+  white-space:nowrap;
+
+  box-shadow:0 7px 20px rgba(233,75,60,.28);
+
+  opacity:0;
+
+  transform:translateY(5px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.amh-tour-label.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- Completion ---------- */
+
+.amh-tour-complete{
+  position:fixed;
+  inset:0;
+  z-index:100000;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(10,129,80,.18),
+      rgba(3,12,9,.72)
+    );
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+}
+
+.amh-tour-complete.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.amh-tour-complete-box{
+  width:min(380px,calc(100vw - 30px));
+
+  padding:28px 22px;
+
+  text-align:center;
+
+  background:#fff;
+  border-radius:28px;
+
+  box-shadow:0 30px 100px rgba(0,0,0,.32);
+
+  transform:scale(.9);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.amh-tour-complete.show .amh-tour-complete-box{
+  transform:scale(1);
+}
+
+.amh-tour-complete-icon{
+  width:68px;
+  height:68px;
+
+  margin:0 auto 12px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:22px;
+
+  background:#e9f7f0;
+
+  font-size:31px;
+
+  animation:
+    amhCompletePop .55s cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes amhCompletePop{
+  0%{transform:scale(.4);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+
+.amh-tour-complete h3{
+  margin:0 0 7px;
+  color:var(--tour-ink);
+  font-size:18px;
+  font-weight:950;
+}
+
+.amh-tour-complete p{
+  margin:0;
+  color:var(--tour-muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.amh-tour-complete button{
+  margin-top:17px;
+
+  border:0;
+  border-radius:13px;
+
+  padding:11px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--tour-brand),
+      var(--tour-brand-dark)
+    );
+
+  color:#fff;
+
+  font-weight:900;
+  font-size:12px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 22px rgba(233,75,60,.25);
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:600px){
+
+  .amh-tour-card{
+    left:14px!important;
+    right:14px!important;
+    bottom:15px!important;
+    top:auto!important;
+
+    width:auto;
+
+    border-radius:22px;
+
+    padding:15px 15px 13px;
+  }
+
+  .amh-tour-arrow{
+    width:44px;
+    height:44px;
+    font-size:21px;
+  }
+
+  .amh-tour-scroll-hint{
+    bottom:165px;
+  }
+
+  .amh-tour-label{
+    display:none;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+  .amh-tour-arrow.show,
+  .amh-tour-scroll-icon,
+  .amh-tour-pulse,
+  .amh-tour-complete-icon{
+    animation:none!important;
+  }
+
+  .amh-tour-card,
+  .amh-tour-arrow,
+  .amh-tour-spotlight,
+  .amh-tour-label{
+    transition:none!important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="flagbar" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="bar">
+      <img class="logo" src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="46" height="46">
+      <div class="loc">
+        <small id="audience">التوصيل إلى</small>
+        <b><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaName"></span></b>
+      </div>
+      <span class="status" id="status"></span>
+      <a class="palchip" href="./palestine.html" aria-label="مع فلسطين" title="مع فلسطين">🇵🇸</a>
+      <button class="icon-btn" id="openNotificationsBtn" aria-label="العروض والإشعارات اليومية" title="العروض والإشعارات اليومية" style="position:relative">
+        <span style="font-size:1.15rem">🔔</span>
+        <span class="bell-dot" id="notifBadge" style="display:block"></span>
+      </button>
+      <button class="icon-btn" id="openAccountBtn" aria-label="حساب العميل وتحديد الموقع" title="حسابي وعناويني" style="position:relative">
+        <span style="font-size:1.15rem" id="userIcon">👤</span>
+      </button>
+      <a class="icon-btn" href="./track.html" aria-label="تتبع الطلب وتقييم الخدمة" title="تتبع طلباتك وسجل الطلبات" style="text-decoration:none;display:grid;place-items:center;font-size:1.1rem">📍</a>
+      <button class="icon-btn download-btn" id="topInstallBtn" aria-label="تنزيل التطبيق" title="تنزيل التطبيق (أندرويد / آيفون)">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+      <button class="icon-btn" id="openCart" aria-label="فتح السلة">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cnt" id="cartCount">0</span>
+      </button>
+    </div>
+    <label class="search" id="searchBox">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="sr-only">ابحث عن منتج</span>
+      <input type="search" id="search" placeholder="بتدور على إيه؟ اكتب اسم المنتج أو الدوا أو المشروب..." autocomplete="off" enterkeyhint="search">
+      <button type="button" id="clearSearch" aria-label="مسح البحث">&times;</button>
+    </label>
+    <div class="tabs" role="group" aria-label="نوع المتجر">
+      <button class="tab" data-group="all" aria-pressed="true">🛍️ الكل</button>
+      <button class="tab" data-group="market" aria-pressed="false">🛒 سوبرماركت</button>
+      <button class="tab" data-group="pharmacy" aria-pressed="false">💊 صيدلية</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="install" id="installBox" role="region" aria-label="تثبيت التطبيق">
+    <img src="icons/icon-192.png" alt="" width="48" height="48">
+    <div><b>خلي الطلب أسرع على موبايلك</b><small>خلي الموقع قريب منك من غير ما تفتح المتصفح كل مرة · <a href="./install.html" style="color:var(--brand-d);font-weight:700">الخطوات</a></small></div>
+    <button class="go" id="installBtn">تحميل</button>
+    <button class="x" id="installClose" aria-label="إخفاء">&times;</button>
+  </div>
+
+  <a class="pal" id="palBanner" href="./palestine.html">
+    <div class="t">
+      <span class="fl" aria-hidden="true">🇵🇸</span>
+      <div><b>مع فلسطين</b><small>ملتزمون بالمقاطعة — موقفنا بأفعال مش شعارات</small></div>
+      <span class="go">اعرف أكتر ‹</span>
+    </div>
+  </a>
+
+  <section class="sec featured-offers-top" id="featuredOffers" aria-label="عروض اليوم">
+    <div class="sec-head">
+      <div><h2>🔥 عروض اليوم</h2><p class="section-kicker">خصومات بننزلها أول بأول علشان تلاقي الحاجة الحلوة من غير لف كتير.</p></div>
+      <button class="more" id="featuredOffersMore" type="button">شوف الكل ‹</button>
+    </div>
+    <div class="hrow" id="featuredOffersRow"><div class="empty">بنجهّز لك العروض…</div></div>
+  </section>
+
+  <section class="hero" id="hero" aria-label="عروض">
+    <div class="slides" id="slides"></div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+
+
+  <div class="usp">
+    <div><span>⚡</span>توصيل في <span id="eta" style="display:inline;font-size:inherit"></span></div>
+    <div><span>💵</span>الدفع عند الاستلام</div>
+    <div><span>🎓</span>أسعار تناسب الطلبة</div>
+  </div>
+
+  <a class="pledge" href="./boycott.html">
+    <span class="em">🕊️</span>
+    <div><b>مش بنبيع ومش بنوصّل منتجات مقاطعة</b><small>شوف قائمة الشركات ومصادرها</small></div>
+    <span class="arr">‹</span>
+  </a>
+
+  <section class="home-intro" aria-label="عن الخدمة"><div><span>لطلبة الأزهر في الحي السادس</span><h1>طلبك من مكان واحد، لحد باب سكنك.</h1><p>سوبرماركت وصيدلية، أسعار واضحة، وتوصيل بسيط من أول الطلب لحد الاستلام.</p></div><div class="home-intro-actions"><a href="#catSec">ابدأ اختيارك</a><a class="secondary" href="./track.html">تابع طلبك</a></div></section>
+
+  <section class="sec" id="catSec">
+    <div class="sec-head"><div><h2>🛍️ اختار اللي محتاجه</h2><p class="section-kicker">كل حاجة متقسمة علشان توصل للي بتدور عليه أسرع.</p></div></div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <div id="content"><div class="grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+
+  <div class="strip">
+    <span class="em">📝</span>
+    <div><b>مش لاقي اللي عايزه؟</b><small>اكتب طلبك وهنوفره لك ونكلمك بالسعر</small></div>
+    <button id="openSpecial">طلب خاص</button>
+  </div>
+
+  <p class="notice">💊 <b>تنبيه الصيدلية:</b> بنوفر المنتجات والأدوية اللي تُصرف بدون روشتة فقط. أي دوا بيتأكد مع الصيدلي قبل التسليم، والاستشارة الطبية مش بديل عن الدكتور. لو الأعراض شديدة أو مستمرة اتواصل مع طبيب.</p>
+
+  <footer>
+    <div><b id="brandName"></b> — <span id="footArea"></span></div>
+    <div>مواعيد العمل: <span id="hours"></span> · <button class="link n" id="openHelp">إزاي تطلب؟</button> · <a href="./track.html" style="color:var(--brand-d);font-weight:700">📍 متابعة طلبي</a> · <a href="./install.html" style="color:var(--brand-d);font-weight:700">📲 تنزيل التطبيق</a> · <a href="./palestine.html" style="color:var(--brand-d);font-weight:700">🇵🇸 مع فلسطين</a> · <a href="./boycott.html" style="color:var(--brand-d);font-weight:700">🕊️ سياسة المقاطعة</a></div>
+  </footer>
+</main>
+
+<button class="cartbar" id="cartBar" aria-label="عرض السلة">
+  <span class="n" id="barCount">0</span>
+  <span>عرض السلة</span>
+  <span id="barTotal">0 ج.م</span>
+</button>
+
+<div class="intro-overlay" id="firstLaunchIntro" aria-modal="true" role="dialog" aria-label="جولة البداية">
+  <div class="intro-card">
+    <div class="intro-progress" id="introProgress"><i class="active"></i><i></i><i></i><i></i></div>
+    <section class="intro-page active"><div class="intro-emoji">🎓</div><h2>اتعمل مخصوص لطلاب الأزهر</h2><p>كل اللي تحتاجه في الحي السادس بمدينة نصر من مكان واحد — أسعار واضحة وتوصيل لحد باب السكن.</p><div class="intro-points"><div class="intro-point">📍 تركيزنا على مساكن طلبة الأزهر واللي حواليها</div><div class="intro-point">🛒 سوبرماركت + 💊 صيدلية في نفس التجربة</div><div class="intro-point">⚡ طلب بسيط وتوصيل مباشر</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🧭</div><h2>اطلبها في كام خطوة وخلاص</h2><p>اختار اللي محتاجه، راجع السلة، حدد مكانك، وإحنا نتابع الطلب معاك لحد ما يوصلك.</p><div class="intro-points"><div class="intro-point">1️⃣ اختار المنتجات أو اطلب طلب خاص</div><div class="intro-point">2️⃣ حدد عنوان السكن أو GPS</div><div class="intro-point">3️⃣ تابع حالة الطلب لحظة بلحظة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">🇵🇸</div><h2>مع فلسطين</h2><p>عندنا صفحة مخصصة تشرح سياسة الدعم والمقاطعة والمصادر اللي تعتمد عليها المنصة.</p><div class="intro-points"><div class="intro-point">🕊️ علم فلسطين هيفضل ظاهر فوق</div><div class="intro-point">📖 اضغط عليه في أي وقت لقراءة التفاصيل</div><div class="intro-point">↗️ صفحة فلسطين + سياسة المقاطعة</div></div></section>
+    <section class="intro-page"><div class="intro-emoji">📲</div><h2>نزّل التطبيق المناسب ليك</h2><p>كل دور له تطبيق مستقل، والرابط اللي فتحته هو اللي بيحدد التطبيق:</p><div class="intro-points"><div class="intro-point">🛍️ العميل → Alazhar City</div><div class="intro-point">🛵 المندوب → Alazhar City Rider</div><div class="intro-point">🏪 المتجر → Alazhar City Store</div><div class="intro-point">🧭 الإدارة → Alazhar Admin</div></div><p class="intro-note">بعد التثبيت مش هنعيد الجولة دي عليك.</p></section>
+    <div class="intro-pager"><button class="intro-skip" id="introSkip" type="button">مش دلوقتي</button><button class="intro-btn secondary" id="introPrev" type="button" hidden>رجوع</button><button class="intro-btn primary" id="introNext" type="button">التالي</button></div>
+  </div>
+</div>
+
+<!-- ================== Dynamic Scroll Tour ================== -->
+<div class="scroll-tour" id="scrollTour" aria-hidden="true">
+  <div class="scroll-tour-dim"></div>
+
+  <div class="scroll-tour-arrow" id="scrollTourArrow">
+    ↓
+  </div>
+
+  <div class="scroll-tour-card" id="scrollTourCard">
+    <button class="scroll-tour-close" id="scrollTourClose" type="button" aria-label="إغلاق الجولة">&times;</button>
+
+    <div class="scroll-tour-head">
+      <div class="scroll-tour-icon" id="scrollTourIcon">👋</div>
+      <h3 class="scroll-tour-title" id="scrollTourTitle">أهلاً بيك</h3>
+    </div>
+
+    <p class="scroll-tour-text" id="scrollTourText"></p>
+
+    <div class="scroll-tour-progress" id="scrollTourProgress">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Cart -->
+<aside class="drawer" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="ph"><h2 id="cartTitle">🛒 سلة الطلبات</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div class="dbody">
+    <div class="free" id="free"></div>
+    <div id="cartItems"></div>
+    <button class="add-special" id="addSpecialBtn">＋ إضافة طلب خاص</button>
+    <div class="pharma-note" id="pharmaNote" hidden>💊 المنتجات الصيدلانية هتتأكد مع الصيدلي قبل التسليم.</div>
+    <div class="bill">
+      <div class="row"><span>ثمن المنتجات</span><span><b id="itemsTotal">0</b> ج.م</span></div>
+      <div class="row"><span>التوصيل</span><span id="deliveryFee"></span></div>
+      <div class="row total"><span>الإجمالي</span><span><b id="finalTotal">0</b> ج.م</span></div>
+      <p class="bn" id="billNote" hidden>الأصناف اللي سعرها بالتأكيد (الطلب الخاص) هتتضاف على الإجمالي بعد ما نكلمك.</p>
+    </div>
+    <div class="fixed-area"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="areaFixed"></span></div>
+    
+    <!-- GPS Location Fast Detect Box -->
+    <div class="gps-box" style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:14px;padding:12px;margin:12px 0 10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <b style="font-size:0.85rem;color:#166534">📍 تحديد موقع التوصيل بـ GPS وقت الطلب</b>
+        <span id="savedAddressBadge" style="font-size:0.7rem;background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:10px;font-weight:800">نفس سيستم طلبات</span>
+      </div>
+      <p style="font-size:0.76rem;color:#166534;margin:4px 0 8px;line-height:1.4">
+        هنحدد موقع سكنك تلقائياً بالقمر الصناعي (GPS) وقت إرسال الطلب وهيتسجل في حسابك باسم <b>السكن</b> بدون ما تحتاج تكتب عنوان!
+      </p>
+
+      <!-- Location Mode Toggle -->
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <label id="lblGpsOption" style="flex:1;display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #16a34a;border-radius:10px;padding:8px;font-size:0.78rem;font-weight:800;color:#166534;cursor:pointer">
+          <input type="radio" name="orderLocType" id="locTypeGps" value="gps" checked style="accent-color:#16a34a">
+          <span>🎯 تحديد موقعي بـ GPS وقت الطلب</span>
+        </label>
+        <label id="lblManualOption" style="flex:1;display:flex;align-items:center;gap:6px;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:10px;padding:8px;font-size:0.78rem;font-weight:700;color:var(--muted);cursor:pointer">
+          <input type="radio" name="orderLocType" id="locTypeManual" value="manual" style="accent-color:#16a34a">
+          <span>✍️ كتابة يدوية</span>
+        </label>
+      </div>
+
+      <!-- Quick Address Label Select (السكن، الكلية، المكتب) -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+        <span style="font-size:0.75rem;font-weight:700;color:#166534">تسجيل الموقع في حسابك باسم:</span>
+        <span id="cartCurrentLabelDisplay" style="font-size:0.75rem;font-weight:800;color:#15803d">🏠 السكن</span>
+      </div>
+      <div class="addr-tags" id="cartAddrTags">
+        <button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button>
+        <button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button>
+        <button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button>
+        <button type="button" class="addr-chip" data-label="العمل"> العمل</button>
+      </div>
+
+      <div class="gps-status" id="cartGpsStatus" style="font-size:0.78rem;font-weight:700;color:#15803d;margin-top:6px;background:#dcfce7;padding:6px 10px;border-radius:8px">
+        ⚡ جاهز: اضغط زر «إرسال الطلب» تحت، وهيلتقط موقع السكن بـ GPS فوراً ويبعت لوكيشن الخريطة للدليفري!
+      </div>
+    </div>
+
+    <label class="f">الاسم بالكامل<input type="text" id="clientName" autocomplete="name" maxlength="60" placeholder="اسمك"></label>
+    <label class="f">رقم الموبايل<input type="tel" id="clientPhone" inputmode="tel" autocomplete="tel" maxlength="15" placeholder="01xxxxxxxxx" dir="ltr" style="text-align:right"></label>
+    <div id="manualAddressWrapper" style="display:none">
+      <label class="f">العنوان بالتفصيل (العمارة / الشارع / علامة مميزة)<input type="text" id="clientLocation" autocomplete="street-address" maxlength="150" placeholder="مثال: الحي السادس، شارع الطيران عمارة 5"></label>
+    </div>
+    <label class="f">ملاحظات للمندوب (رقم الشقة / الدور - اختياري)<input type="text" id="clientNote" maxlength="100" placeholder="مثال: الدور الرابع، شقة 12، رن الجرس"></label>
+    <div class="pay">💵 الدفع كاش عند الاستلام</div>
+    <p class="err" id="formError" role="alert"></p>
+  </div>
+  <div class="dfoot">
+    <button class="btn p" id="sendOrder" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.96rem;padding:14px">
+      <span id="sendOrderBtnIcon">🛵</span>
+      <span id="sendOrderBtnText">تحديد موقعي (GPS) وإرسال الطلب الآن</span>
+    </button>
+    <button class="btn g" id="clearCart">تفريغ السلة</button>
+  </div>
+</aside>
+
+<!-- Special -->
+<section class="sheet" id="specialPanel" role="dialog" aria-modal="true" aria-labelledby="specialTitle">
+  <div class="ph"><h2 id="specialTitle" style="color:var(--brand-d)">📝 طلب خاص</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <label class="sr-only" for="specialText">اكتب طلبك</label>
+  <textarea id="specialText" rows="4" maxlength="300" placeholder="اكتب هنا اللي محتاجه وهنتصل بيك نحدد السعر..."></textarea>
+  <div class="counter"><span id="specialCount">0</span> / 300</div>
+  <p class="err" id="specialErr" role="alert"></p>
+  <p style="font-size:.75rem;color:var(--muted);margin:4px 0 0">🕊️ مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة — <a href="./boycott.html">القائمة</a></p>
+  <button class="btn d" id="saveSpecial">حفظ في السلة</button>
+</section>
+
+<!-- Help -->
+<section class="sheet" id="helpPanel" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="ph"><h2 id="helpTitle">إزاي تطلب؟</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <ol>
+    <li>اختار من السوبرماركت أو الصيدلية وزوّد الكمية.</li>
+    <li>عايز حاجة مش موجودة؟ استخدم «طلب خاص».</li>
+    <li>افتح السلة، اكتب بياناتك، وابعت الطلب على واتساب.</li>
+    <li>المندوب بيوصلك والدفع كاش عند الاستلام.</li>
+    <li>🕊️ مش بنبيع ولا بنوصّل منتجات الشركات المقاطعة.</li>
+  </ol>
+</section>
+
+<!-- Account & GPS Sheet -->
+<section class="sheet account-sheet" id="accountPanel" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+  <div class="ph account-ph"><div><span class="eyebrow">ALAZHAR CITY · ACCOUNT</span><h2 id="accountTitle">حسابك في مكان واحد</h2><p class="account-subtitle">بياناتك، عناوينك، وطلباتك محفوظة علشان كل مرة تطلب فيها تبقى أسهل.</p></div><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div id="accountLoggedIn" style="display:none">
+    <div class="account-profile-card"><div class="account-avatar-wrap"><img id="custProfilePhoto" class="account-avatar" alt="صورة الحساب" style="display:none"><div id="custProfileAvatar" class="account-avatar-fallback">A</div></div><div class="account-profile-main"><div class="account-name-row"><b id="custProfileName">اسم العميل</b><span id="custRoleBadge" class="account-role-badge">عميل</span></div><div id="custProfileEmail" class="account-email"></div><div id="custProfilePhone" class="account-phone"></div></div><button type="button" id="btnCustLogout" class="ghost-danger">تسجيل الخروج</button></div>
+    <div id="emailVerificationBox" class="verification-box" style="display:none"><div class="verification-icon">✉️</div><div class="verification-copy"><b>باقي خطوة صغيرة</b><span>فعّل بريدك الإلكتروني علشان نحافظ على حسابك وطلباتك بأمان.</span></div><button type="button" id="btnResendVerification" class="text-action">إعادة إرسال الرسالة</button></div>
+    <div class="account-section-title"><b>بيانات الحساب</b><span>عدّل بياناتك من هنا</span></div>
+    <div class="profile-edit-card"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="accountNameEdit" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="accountPhoneEdit" maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><p class="err" id="accountProfileError" role="alert"></p><button type="button" class="btn p auth-submit-wide" id="btnSaveAccountProfile">حفظ بيانات الحساب</button></div>
+    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><a href="./portal.html" class="account-action-card" id="portalShortcut" style="display:none"><span>🧭</span><b>لوحة التشغيل</b><small>للحسابات المعتمدة</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
+    <div class="account-section-title"><b>عناوين التوصيل</b><span>احفظ عنوانك مرة واستخدمه وقت الطلب</span></div>
+    <div class="gps-box account-gps-box"><div class="gps-box-head"><div><b>📍 العنوان المفضل</b><small>حدد موقعك من GPS، واكتب وصفًا بسيطًا يساعد المندوب.</small></div><span class="mini-secure">خاص بحسابك</span></div><button type="button" class="gps-btn" id="btnProfileDetectGps">تحديد موقعي الآن</button><div class="gps-status" id="profileGpsStatus">لم نحدد موقعًا جديدًا بعد.</div><div class="addr-tags" id="profileAddrTags"><button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button><button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button><button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button><button type="button" class="addr-chip" data-label="العمل">💼 العمل</button></div><input type="text" id="profileDetailedAddr" placeholder="مثال: عمارة 12، الدور 4، شقة 7" maxlength="250"><button type="button" class="btn p" id="btnSaveAddressToProfile">حفظ العنوان</button></div>
+    <div class="saved-title"><b>العناوين المحفوظة</b><span>اختار أي عنوان وقت الطلب</span></div><div class="saved-addr-list" id="savedAddressesList"></div>
+  </div>
+  <div id="accountLoggedOut">
+    <div class="auth-hero"><div class="auth-hero-mark">👋</div><div><b>أهلًا بيك في Alazhar City</b><p>اعمل حساب مرة واحدة، وبعدها بياناتك وعناوينك وطلباتك هتكون أقرب لك.</p></div></div>
+    <div class="auth-tabs" role="tablist" aria-label="الحساب"><button class="auth-tab active" id="tabCustomerLogin" type="button" role="tab" aria-selected="true">تسجيل الدخول</button><button class="auth-tab" id="tabCustomerRegister" type="button" role="tab" aria-selected="false">إنشاء حساب</button></div>
+    <div class="auth-security-note"><span>🔐</span><div><b>بياناتك مؤمّنة</b><p>كلمة السر مش بتتخزن عندنا كبيانات عادية؛ خدمة تسجيل الدخول بتتحقق منها بشكل آمن.</p></div></div>
+    <button type="button" class="google-auth-btn" id="btnGoogleAuth"><span class="google-logo">G</span><span><b>المتابعة باستخدام Google</b><small>من غير كلمة مرور جديدة</small></span><span class="auth-arrow">←</span></button><div class="auth-divider"><span>أو باستخدام البريد الإلكتروني</span></div>
+    <form id="custLoginForm"><label class="f pro-field">البريد الإلكتروني<input type="email" id="loginEmail" required autocomplete="email" placeholder="name@example.com" dir="ltr"></label><label class="f pro-field password-field">كلمة المرور<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="loginPassword">إظهار</button></label><div class="auth-inline-row"><button type="button" id="btnResetPassword" class="link n">نسيت كلمة المرور؟</button><span>هنبعت لك رابط إعادة التعيين على بريدك.</span></div><p class="err" id="loginError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnLoginSubmit">تسجيل الدخول</button></form>
+    <form id="custRegisterForm" style="display:none"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="regName" required minlength="3" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="regPhone" required maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><label class="f pro-field">البريد الإلكتروني<input type="email" id="regEmail" required maxlength="120" autocomplete="email" placeholder="name@example.com" dir="ltr"></label><div class="form-grid-2"><label class="f pro-field password-field">كلمة المرور<input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="8 خانات على الأقل"><button type="button" class="password-toggle" data-toggle-password="regPassword">إظهار</button></label><label class="f pro-field password-field">تأكيد كلمة المرور<input type="password" id="regPasswordConfirm" required minlength="8" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="regPasswordConfirm">إظهار</button></label></div><div class="password-meter" id="passwordMeter"><span></span><span></span><span></span><span></span></div><div class="password-hint" id="passwordHint">اختار كلمة مرور مختلفة عن كلمات المرور اللي بتستخدمها في مواقع تانية.</div><details class="optional-address"><summary>📍 ضيف عنوانك دلوقتي <small>اختياري</small></summary><div class="gps-box account-gps-box compact"><div class="gps-box-head"><div><b>عنوان التوصيل</b><small>ممكن تضيفه الآن أو بعدين من حسابك.</small></div></div><button type="button" class="gps-btn" id="btnRegDetectGps">تحديد الموقع بـ GPS</button><div class="gps-status" id="regGpsStatus">لم نحدد موقعًا بعد.</div></div><label class="f pro-field">العنوان بالتفصيل<input type="text" id="regAddress" maxlength="250" autocomplete="street-address" placeholder="مثال: الحي السادس، عمارة 4، شقة 2"></label></details><p class="err" id="regError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnRegisterSubmit">إنشاء الحساب</button><p class="auth-footnote">بعد التسجيل هنبعت رسالة تفعيل على بريدك الإلكتروني. وبعد التفعيل تقدر تطلب وتتابع طلباتك بشكل طبيعي.</p></form>
+  </div>
+</section>
+
+<!-- Daily Offers & Notifications Sheet -->
+<section class="sheet" id="notificationsPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle">
+  <div class="ph"><h2 id="notifTitle">🔔 العروض والإشعارات اليومية</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <p style="font-size:0.82rem;color:var(--muted);margin:8px 0 14px">أحدث العروض اليومية، كوبونات التوصيل المجاني، وإشعارات السوبرماركت والصيدلية لطلبة الأزهر:</p>
+  <div id="dailyOffersContainer"></div>
+</section>
+
+<!-- Install (iOS / manual) -->
+<section class="sheet" id="installPanel" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+  <div class="ph"><h2 id="installTitle">📲 تثبيت التطبيق على جهازك</h2><button class="close" data-close aria-label="إغلاق">&times;</button></div>
+  <div style="display:flex;align-items:center;gap:12px;margin:14px 0;background:var(--brand-l);padding:12px 14px;border-radius:14px;border:1px solid #ffd8cf">
+    <img src="icons/icon-192.png" alt="" width="46" height="46" style="border-radius:12px;flex:none">
+    <div style="line-height:1.4">
+      <b style="display:block;font-size:.95rem">تطبيق Alazhar City Delivery</b>
+      <small style="color:var(--muted);font-weight:600">اطلب في ثوانٍ بدون الحاجة لفتح المتصفح في كل مرة</small>
+    </div>
+  </div>
+  <ol class="ios-steps" id="installSteps"></ol>
+  <a href="./install.html" class="btn d" style="display:block;text-align:center;text-decoration:none;margin-top:14px;padding:12px;border-radius:14px">📖 الدليل المصور لخطوات التثبيت (أندرويد / آيفون)</a>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript><p style="text-align:center;padding:40px">فعّل JavaScript عشان تقدر تطلب من الموقع.</p></noscript>
+
+<script src="./config.js?v=20260924-11"></script>
+<script src="./platform-store.js"></script>
+<script type="module" src="./firebase-client.js"></script>
+<script src="./images/products/list.js?v=20260924-11" onerror="void 0"></script>
+<script>
+'use strict';
+
+/* ================== أدوات عامة ================== */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => Number(n).toLocaleString('en-US');
+const normalize = s => String(s).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
+const toLatinDigits = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+
+let remoteOffers = [];
+let byId = new Map(PRODUCTS.map(p => [p.id, p]));
+const catMap = new Map(CATEGORIES.map(c => [c[0], { key:c[0], label:c[1], emoji:c[2], group:c[3], color:c[4] }]));
+const hasPrice = p => typeof p.price === 'number' && p.price > 0;
+const isPharma = p => catMap.get(p.cat)?.group === 'pharmacy';
+
+const state = { cart:{}, special:'', customer:{name:'',phone:'',address:'',note:''}, group:'all', cat:'all', query:'' };
+
+function loadState(){
+  try{
+    const s = JSON.parse(localStorage.getItem(CONFIG.storageKey) || '{}');
+    if (s.cart && typeof s.cart === 'object')
+      for (const [id,q] of Object.entries(s.cart)){ const n = Math.min(99, parseInt(q,10)); if (byId.has(id) && n>0) state.cart[id]=n; }
+    if (typeof s.special === 'string') state.special = s.special.slice(0,300);
+    if (s.customer) for (const k of ['name','phone','address','note']) if (typeof s.customer[k] === 'string') state.customer[k] = s.customer[k];
+  }catch(e){}
+}
+function saveState(){
+  try{ localStorage.setItem(CONFIG.storageKey, JSON.stringify({cart:state.cart, special:state.special, customer:state.customer})); }catch(e){}
+}
+
+/* ---------- حسابات السلة ---------- */
+const subtotal = () => Object.entries(state.cart).reduce((s,[id,q]) => s + (hasPrice(byId.get(id)) ? byId.get(id).price*q : 0), 0);
+const itemCount = () => Object.values(state.cart).reduce((a,b)=>a+b,0);
+const hasSpecial = () => state.special.trim() !== '';
+const hasOrder = () => itemCount() > 0 || hasSpecial();
+const hasPharma = () => Object.keys(state.cart).some(id => isPharma(byId.get(id)));
+function deliveryFee(){
+  if (!hasOrder()) return 0;
+  return (CONFIG.freeDelivery && subtotal() >= CONFIG.freeDelivery) ? 0 : CONFIG.deliveryFee;
+}
+
+let toastTimer;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1900); }
+
+/* ================== حالة المتجر (مفتوح/مغلق) ================== */
+function cairoHour(){
+  const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+  return Number(parts.find(p=>p.type==='hour').value) + Number(parts.find(p=>p.type==='minute').value)/60;
+}
+const hh = h => { h = h % 24; const suf = h >= 12 ? 'م' : 'ص'; return ((h % 12) || 12) + ' ' + suf; };
+function isOpen(){ let h = cairoHour(); if (h < CONFIG.openHour && CONFIG.closeHour > 24) h += 24; return h >= CONFIG.openHour && h < CONFIG.closeHour; }
+function renderStatus(){
+  const el = $('#status'), open = isOpen();
+  el.className = 'status ' + (open ? 'open' : 'closed');
+  el.textContent = open ? 'مفتوح الآن' : 'يفتح ' + hh(CONFIG.openHour);
+}
+
+/* ================== الصور والمنتجات ================== */
+function picHTML(p){
+  const c = catMap.get(p.cat);
+  const have = !window.IMAGE_IDS || window.IMAGE_IDS.includes(p.id);   // list.js بيحدد الصور الموجودة فعلًا (يمنع 404)
+  const src = p.img || (CONFIG.autoImages && have ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
+  const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
+  let badge = '';
+  if (p.oldPrice && p.oldPrice > p.price) badge = `<span class="badge${isPharma(p)?' pharma':''}">-${Math.round((1 - p.price/p.oldPrice)*100)}%</span>`;
+  else if (p.badge) badge = `<span class="badge${isPharma(p)?' pharma':''}">${esc(p.badge)}</span>`;
+  return `<div class="pic" style="background:${c.color}">${badge}<span aria-hidden="true">${p.emoji || c.emoji}</span>${img}</div>`;
+}
+function actionHTML(id){
+  const p = byId.get(id);
+  if (p.soldOut) return '<button class="add" disabled>نفد</button>';
+  const q = state.cart[id] || 0;
+  if (!q) return `<button class="add" data-act="inc" data-id="${esc(id)}" aria-label="أضف ${esc(p.name)}">+</button>`;
+  return `<div class="step"><button data-act="inc" data-id="${esc(id)}" aria-label="زيادة">+</button><output>${q}</output><button data-act="dec" data-id="${esc(id)}" aria-label="تقليل">−</button></div>`;
+}
+function cardHTML(p){
+  return `<article class="card${p.soldOut?' sold':''}">
+    ${picHTML(p)}
+    <h3>${esc(p.name)}</h3>
+    <div class="card-foot">
+      <div class="price">${hasPrice(p) ? fmt(p.price) + ' <small>ج.م</small>' : '<small>السعر عند التأكيد</small>'}${p.oldPrice && p.oldPrice>p.price ? `<s>${fmt(p.oldPrice)} ج.م</s>` : ''}</div>
+      <div class="card-action" data-id="${esc(p.id)}">${actionHTML(p.id)}</div>
+    </div>
+  </article>`;
+}
+
+/* ================== العرض الرئيسي ================== */
+const inGroup = p => state.group === 'all' || catMap.get(p.cat).group === state.group;
+const visible = p => (!CONFIG.hideUnpriced || hasPrice(p)) && inGroup(p);
+
+function renderTiles(){
+  const cats = CATEGORIES.filter(c => state.group === 'all' || c[3] === state.group);
+  $('#tiles').innerHTML = cats.map(c => `<button class="tile" data-cat="${esc(c[0])}" aria-pressed="${state.cat===c[0]}" style="background:${c[4]}"><span class="em">${c[2]}</span>${esc(c[1])}</button>`).join('');
+}
+
+function section(title, list, opts={}){
+  if (!list.length) return '';
+  const head = `<div class="sec-head"><h2>${title}${opts.timer ? ' <span class="timer" id="timer"></span>' : ''}</h2>${opts.cat ? `<button class="more" data-cat="${esc(opts.cat)}">عرض الكل ‹</button>` : ''}</div>`;
+  return `<section class="sec" ${opts.id ? `id="${opts.id}"`:''}>${head}${opts.row ? `<div class="hrow">${list.map(cardHTML).join('')}</div>` : `<div class="grid">${list.map(cardHTML).join('')}</div>`}</section>`;
+}
+
+function renderContent(){
+  const q = normalize(state.query.trim());
+  $('#searchBox').classList.toggle('has', !!state.query);
+  $('#palBanner').style.display = $('#hero').style.display = $('.usp').style.display = $('#catSec').style.display = (q ? 'none' : '');
+  let html = '';
+
+  if (q){
+    const list = PRODUCTS.filter(p => visible(p) && (normalize(p.name).includes(q) || normalize(catMap.get(p.cat).label).includes(q)));
+    const bm = boycottMatch(state.query);
+    const bnote = bm ? `<div class="bmsg">🕊️ <b>«${esc(state.query)}»</b> من علامات <b>${esc(bm.group)}</b> المشمولة بالمقاطعة — مش بنبيعها ومش بنوصّلها. جرّب البدائل المتاحة تحت، أو <a href="./boycott.html">اعرف القائمة والمصادر</a>.</div>` : '';
+    html = bnote + `<div class="sec"><div class="sec-head"><h2>🔎 نتائج «${esc(state.query)}» (${list.length})</h2></div><div class="grid">${list.length ? list.map(cardHTML).join('') : '<p class="empty"><span>🔍</span>مش لاقيين نفس الاسم دلوقتي.<br>جرّب كلمة تانية أو ابعت لنا «طلب خاص».</p>'}</div></div>`;
+  } else if (state.cat !== 'all'){
+    const c = catMap.get(state.cat);
+    html = `<div class="crumb"><button class="chip" data-cat="all">✕ ${c.emoji} ${esc(c.label)}</button></div>` +
+      section('', PRODUCTS.filter(p => p.cat === state.cat && visible(p)));
+  } else {
+    const deals = PRODUCTS.filter(p => visible(p) && p.oldPrice > p.price);
+    const best = PRODUCTS.filter(p => visible(p) && p.badge === 'الأكثر طلبًا');
+    // العروض ظهرت فوق الصفحة داخل #featuredOffers بدل تكرارها هنا.
+    html += section('⭐ الناس بتطلب إيه؟', best, {row:true});
+    CATEGORIES.filter(c => state.group === 'all' || c[3] === state.group).forEach(c => {
+      html += section(`${c[2]} ${esc(c[1])}`, PRODUCTS.filter(p => p.cat === c[0] && visible(p)), {row:true, cat:c[0]});
+    });
+  }
+  $('#content').innerHTML = html;
+  updateTimer();
+}
+
+function refreshCards(id){
+  document.querySelectorAll(`.card-action[data-id="${CSS.escape(id)}"]`).forEach(h => h.innerHTML = actionHTML(id));
+}
+
+/* ================== عدّاد العروض ================== */
+function updateTimer(){
+  const el = $('#timer'); if (!el) return;
+  const n = new Date(); const end = new Date(n); end.setHours(24,0,0,0);
+  let s = Math.max(0, Math.floor((end - n)/1000));
+  const p = v => String(v).padStart(2,'0');
+  el.innerHTML = `<b>${p(Math.floor(s/3600))}</b>:<b>${p(Math.floor(s%3600/60))}</b>:<b>${p(s%60)}</b>`;
+}
+setInterval(updateTimer, 1000);
+
+/* ================== البانر ================== */
+let slideIdx = 0, slideTimer;
+function renderHero(){
+  $('#slides').innerHTML = BANNERS.map((b,i) => `<div class="slide" style="background:${b.bg}" data-go="${i}"><div><h2>${esc(b.title)}</h2><p>${esc(b.sub)}</p><button class="cta" data-slide="${i}">${esc(b.cta)}</button></div><div class="art" aria-hidden="true">${b.emoji}</div></div>`).join('');
+  $('#dots').innerHTML = BANNERS.map((_,i) => `<button data-dot="${i}" aria-label="شريحة ${i+1}" aria-current="${i===0}"></button>`).join('');
+  startSlides();
+}
+function showSlide(i){
+  slideIdx = (i + BANNERS.length) % BANNERS.length;
+  $('#slides').style.transform = `translateX(${slideIdx*100}%)`;   // RTL: الاتجاه موجب
+  $$('#dots button').forEach((d,k) => d.setAttribute('aria-current', k===slideIdx));
+}
+function startSlides(){
+  clearInterval(slideTimer);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  slideTimer = setInterval(() => showSlide(slideIdx+1), 4500);
+}
+function goBanner(i){
+  const g = BANNERS[i].go || {};
+  if (g.href){ location.href = g.href; return; }
+  if (g.group) setGroup(g.group);
+  if (g.cat){ setGroup('all'); setCat(g.cat); }
+  if (g.deals){ setGroup('all'); setCat('all'); scrollTo($('#featuredOffers')); }
+  if (g.group || g.cat) scrollTo($('#content'));
+}
+function scrollTo(el){ if (el) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+
+/* ================== الفلاتر ================== */
+function setGroup(g){
+  state.group = g; state.cat = 'all';
+  $$('.tab').forEach(t => t.setAttribute('aria-pressed', t.dataset.group === g));
+  renderTiles(); renderContent();
+}
+function setCat(c){
+  state.cat = c; renderTiles(); renderContent();
+  if (c !== 'all') scrollTo($('#content'));
+}
+
+/* ================== السلة ================== */
+function setQty(id, qty){
+  const prev = state.cart[id] || 0;
+  qty = Math.max(0, Math.min(99, qty));
+  if (qty) state.cart[id] = qty; else delete state.cart[id];
+  saveState(); refreshCards(id); renderCart();
+  if (qty > prev){
+    const b = $('#openCart'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+    if (!prev && isPharma(byId.get(id)) && !sessionStorageGet('pharmaSeen')){ toast('💊 المنتجات الصيدلانية بتتأكد مع الصيدلي قبل التسليم'); sessionStorageSet('pharmaSeen','1'); }
+  }
+}
+function sessionStorageGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+function sessionStorageSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
+
+function renderCart(){
+  const ids = Object.keys(state.cart);
+  let html = ids.map(id => {
+    const p = byId.get(id), q = state.cart[id], c = catMap.get(p.cat);
+    const thContent = p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}">` : (p.emoji || c.emoji);
+    return `<div class="line">
+      <div class="th" style="background:${c.color}">${thContent}</div>
+      <span class="nm">${esc(p.name)}</span>
+      <span class="tt">${hasPrice(p) ? fmt(p.price*q) + ' ج.م' : 'بالتأكيد'}</span>
+      <div class="ctrl">
+        <div class="step"><button data-act="inc" data-id="${esc(id)}" aria-label="زيادة">+</button><output>${q}</output><button data-act="dec" data-id="${esc(id)}" aria-label="تقليل">−</button></div>
+        <span>${hasPrice(p) ? fmt(p.price) + ' ج.م للقطعة' : ''}</span>
+        <button class="link" data-act="remove" data-id="${esc(id)}">حذف</button>
+      </div></div>`;
+  }).join('');
+  if (hasSpecial()) html += `<div class="sp-line"><strong>📝 طلب خاص</strong><p>${esc(state.special)}</p><button class="link n" data-act="edit-special">تعديل</button> <button class="link" data-act="clear-special">حذف</button></div>`;
+  if (!html) html = '<p class="empty" style="padding:30px 10px"><span>🛒</span>السلة فاضية.<br>ضيف منتجات وابدأ طلبك.</p>';
+  $('#cartItems').innerHTML = html;
+
+  const sub = subtotal(), fee = deliveryFee();
+  $('#itemsTotal').textContent = fmt(sub);
+  $('#deliveryFee').innerHTML = !hasOrder() ? '0 ج.م' : (fee === 0 ? '<span class="ok">مجاني 🎉</span>' : `<b>${fmt(fee)}</b> ج.م`);
+  $('#finalTotal').textContent = fmt(sub + fee);
+  $('#billNote').hidden = !hasSpecial();
+  $('#pharmaNote').hidden = !hasPharma();
+  $('#cartCount').textContent = itemCount();
+  $('#cartCount').classList.toggle('show', itemCount() > 0);
+  $('#sendOrder').disabled = !hasOrder();
+  $('#addSpecialBtn').style.display = hasSpecial() ? 'none' : '';
+
+  // شريط التوصيل المجاني
+  const fr = $('#free');
+  if (CONFIG.freeDelivery && hasOrder()){
+    fr.style.display = '';
+    const left = CONFIG.freeDelivery - sub;
+    fr.classList.toggle('done', left <= 0);
+    fr.innerHTML = (left <= 0 ? '🎉 التوصيل عليك مجاني!' : `🛵 ضيف ${fmt(left)} ج.م كمان واحصل على توصيل مجاني`) + `<div class="meter"><i style="width:${Math.min(100, sub/CONFIG.freeDelivery*100)}%"></i></div>`;
+  } else fr.style.display = 'none';
+
+  // شريط السلة السفلي
+  const bar = $('#cartBar');
+  bar.classList.toggle('show', hasOrder());
+  $('#barCount').textContent = itemCount() + (hasSpecial() ? '+' : '');
+  $('#barTotal').textContent = fmt(sub) + ' ج.م';
+}
+
+/* ================== اللوحات ================== */
+const panels = ['cartPanel','specialPanel','helpPanel','installPanel','accountPanel','notificationsPanel'];
+let lastFocus = null;
+function openPanel(id){
+  closeAll(true); lastFocus = document.activeElement;
+  $('#'+id).classList.add('open'); $('#overlay').classList.add('open'); document.body.classList.add('lock');
+  const t = $('#'+id).querySelector('textarea, [data-close]'); setTimeout(() => t && t.focus(), 60);
+}
+function closeAll(keep){
+  panels.forEach(id => $('#'+id).classList.remove('open'));
+  $('#overlay').classList.remove('open'); document.body.classList.remove('lock');
+  if (!keep && lastFocus){ lastFocus.focus(); lastFocus = null; }
+}
+function openSpecial(){ $('#specialErr').textContent = ''; $('#specialText').value = state.special; updateSpecialCount(); openPanel('specialPanel'); }
+function updateSpecialCount(){ $('#specialCount').textContent = $('#specialText').value.length; }
+
+/* ================== إرسال الطلب ================== */
+const showError = m => $('#formError').textContent = m;
+let currentGpsCoords = null;
+let currentAddressLabel = 'السكن';
+
+// Reverse Geocode or humanize GPS location
+async function reverseGeocodeCairo(lat, lng) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ar`, { headers: { 'User-Agent': 'AlazharDelivery/2.0' } });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.display_name) {
+        return data.display_name.split(',').slice(0, 3).join(' - ');
+      }
+    }
+  } catch (_) {}
+  return `موقع GPS (${lat.toFixed(4)}, ${lng.toFixed(4)}) - الحي السادس، مدينة نصر`;
+}
+
+function getDeviceGpsCoords() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      return reject(new Error('خاصية تحديد الموقع الجغرافي (GPS) غير مدعومة في متصفحك.'));
+    }
+    navigator.geolocation.getCurrentPosition(
+      async pos => {
+        try {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+          currentGpsCoords = { lat, lng };
+          const address = await reverseGeocodeCairo(lat, lng);
+          resolve({ lat, lng, address });
+        } catch (e) {
+          resolve({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            address: `موقع GPS (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}) - الحي السادس، مدينة نصر`
+          });
+        }
+      },
+      err => {
+        let msg = 'تعذر الحصول على الموقع';
+        if (err.code === 1) msg = 'يرجى السماح بصلاحية الموقع (GPS) في المتصفح لتحديد موقع السكن فوراً وقت الطلب.';
+        else if (err.code === 2) msg = 'تعذر التقاط إشارة الأقمار الصناعية GPS.';
+        else if (err.code === 3) msg = 'انتهت مهلة البحث عن الموقع.';
+        reject(new Error(msg));
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+    );
+  });
+}
+
+function buildMessage(name, phone, address, note, lat, lng, addressLabel){
+  const sub = subtotal(), fee = deliveryFee(), total = sub + fee;
+  const labelText = addressLabel ? ` (${addressLabel})` : ' (السكن)';
+  const L = [
+    `*طلب جديد - ${CONFIG.brand}*`,
+    '',
+    `👤 العميل: ${name}`,
+    `📞 الموبايل: ${phone}`,
+    `📍 المنطقة: ${CONFIG.area}`,
+    `🏠 العنوان: ${address}${labelText}`
+  ];
+  if (lat && lng) {
+    L.push(`🗺️ لوكيشن GPS مباشر للمندوب: https://maps.google.com/?q=${lat},${lng}`);
+  }
+  if (note) L.push(`💬 ملاحظات: ${note}`);
+  L.push('');
+  const groups = [['market','🛒 سوبرماركت:'],['pharmacy','💊 صيدلية:']];
+  groups.forEach(([g,title]) => {
+    const ids = Object.keys(state.cart).filter(id => catMap.get(byId.get(id).cat).group === g);
+    if (!ids.length) return;
+    L.push(title);
+    ids.forEach(id => {
+      const p = byId.get(id), q = state.cart[id];
+      L.push(hasPrice(p) ? `• ${p.name} × ${q} = ${p.price*q} ج.م` : `• ${p.name} × ${q} (السعر بالتأكيد)`);
+    });
+    L.push('');
+  });
+  if (hasSpecial()) L.push('📝 طلب خاص:', state.special.trim(), '');
+  L.push(
+    `🧾 ثمن المنتجات: ${sub} ج.م`,
+    `🚚 التوصيل: ${fee ? fee + ' ج.م' : 'مجاني'}`,
+    `💰 الإجمالي: ${total} ج.م` + (hasSpecial() ? ' (+ الطلب الخاص)' : ''),
+    '💵 الدفع: كاش عند الاستلام'
+  );
+  if (hasPharma()) L.push('', '⚕️ الطلب فيه منتجات صيدلانية — برجاء تأكيد الصيدلي.');
+  return L.join('\n');
+}
+
+async function sendOrder(){
+  showError('');
+  const name = $('#clientName').value.trim();
+  const phone = toLatinDigits($('#clientPhone').value).replace(/[\s-]/g,'');
+  let address = $('#clientLocation').value.trim();
+  const note = $('#clientNote').value.trim();
+  const isGpsSelected = $('#locTypeGps') ? $('#locTypeGps').checked : true;
+  const sendBtn = $('#sendOrder');
+  const btnTextEl = $('#sendOrderBtnText');
+  const btnIconEl = $('#sendOrderBtnIcon');
+
+  if (!hasOrder()) return showError('السلة فاضية.');
+  const bm = boycottMatch(state.special) || boycottMatch(note);
+  if (bm) return showError(`🕊️ الطلب فيه «${bm.group}» — مش بنوفّر ولا بنوصّل منتجات الشركات المقاطعة. عدّل الطلب الخاص/الملاحظات.`);
+  if (name.length < 3) return showError('اكتب الاسم بالكامل.');
+  if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone)) return showError('رقم الموبايل غير صحيح. مثال: 01012345678');
+  if (CONFIG.minOrder && subtotal() < CONFIG.minOrder && !hasSpecial()) return showError(`أقل قيمة للطلب ${CONFIG.minOrder} ج.م.`);
+
+  let lat = state.customer?.lat || currentGpsCoords?.lat || null;
+  let lng = state.customer?.lng || currentGpsCoords?.lng || null;
+  let label = currentAddressLabel || 'السكن';
+
+  // تحديد الموقع وقت الطلب تلقائياً إذا كان خيار GPS مفعلاً أو إذا لم يكتب العميل عنوان
+  if (isGpsSelected || !address || address.length < 3) {
+    if (btnTextEl) btnTextEl.textContent = 'جاري تحديد موقعك بالـ GPS وقت الطلب...';
+    if (btnIconEl) btnIconEl.textContent = '⏳';
+    sendBtn.disabled = true;
+    $('#cartGpsStatus').textContent = '🛰️ جاري التقاط إحداثيات السكن بالقمر الصناعي الآن...';
+
+    try {
+      const gpsRes = await getDeviceGpsCoords();
+      lat = gpsRes.lat;
+      lng = gpsRes.lng;
+      address = gpsRes.address;
+      $('#clientLocation').value = address;
+      $('#cartGpsStatus').textContent = `✅ تم التقاط موقع ${label}: ${address}`;
+    } catch (err) {
+      if (btnTextEl) btnTextEl.textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+      if (btnIconEl) btnIconEl.textContent = '🛵';
+      sendBtn.disabled = false;
+      if (!address || address.length < 3) {
+        return showError(err.message || 'تعذر تحديد الموقع تلقائياً، يرجى كتابة العنوان أو تفعيل الـ GPS في هاتفك.');
+      }
+    } finally {
+      if (btnTextEl) btnTextEl.textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+      if (btnIconEl) btnIconEl.textContent = '🛵';
+      sendBtn.disabled = false;
+    }
+  }
+
+  if (!address || address.length < 3) {
+    return showError('يرجى تحديد موقع السكن بالـ GPS أو كتابة العنوان بالتفصيل.');
+  }
+
+  // حفظ الموقع في بيانات العميل المسجلة باسم السكن
+  state.customer = { name, phone, address, note, lat, lng, addressLabel: label };
+  saveState();
+
+  if (window.ACDPlatform) {
+    ACDPlatform.auth.addCustomerSavedAddress({
+      label: label || 'السكن',
+      address,
+      lat,
+      lng
+    });
+  }
+
+  if (window.ACDCloud && ACDCloud.user()) {
+    try {
+      ACDCloud.saveCustomerAddress({
+        label: label || 'السكن',
+        address,
+        lat,
+        lng,
+        phone
+      }).catch(() => {});
+    } catch (_) {}
+  }
+
+  const waNum = (CONFIG.whatsapp || '201501805674').replace(/\D/g, '');
+  const url = `https://wa.me/${waNum}?text=${encodeURIComponent(buildMessage(name, phone, address, note, lat, lng, label))}`;
+
+  const orderInput = {
+    customer: { name, phone, address, note, lat, lng, addressLabel: label },
+    items: Object.entries(state.cart).map(([id,quantity])=>({id,name:byId.get(id).name,quantity,price:byId.get(id).price})),
+    subtotal: subtotal(),
+    deliveryFee: deliveryFee(),
+    total: subtotal() + deliveryFee(),
+    special: state.special,
+    hasPharma: hasPharma()
+  };
+
+  let createdOrder = null;
+  const cloudUser = window.ACDCloud?.user?.();
+  if (cloudUser) {
+    if (!cloudUser.emailVerified) {
+      return showError('فعّل بريدك الإلكتروني أولاً من رابط التفعيل، ثم أرسل الطلب مرة أخرى. يمكنك إعادة إرسال الرابط من «حسابي».');
+    }
+    try {
+      createdOrder = await ACDCloud.createOrder(orderInput);
+    } catch (err) {
+      return showError(ACDCloud.authError(err));
+    }
+  } else {
+    // Guest checkout is intentionally WhatsApp-only. Production tracking/order history requires a verified account.
+  }
+
+  const orderMsg = createdOrder ? `تم تسجيل طلبك (${createdOrder.reference || createdOrder.id}) وحفظ موقع ${label} بنجاح!` : 'تم تجهيز الطلب وتحديد الموقع';
+  toast(orderMsg + ' — لوكيشن الخريطة مرفق للمندوب 📍');
+  const w = window.open(url, '_blank');
+  if (!w || w.closed || typeof w.closed === 'undefined') {
+    window.location.href = url;
+  }
+}
+
+/* ================== منطق حساب العميل وتحديد الموقع بالـ GPS والإشعارات ================== */
+function detectDeviceLocation(onSuccess, onError) {
+  getDeviceGpsCoords()
+    .then(res => onSuccess(res))
+    .catch(err => onError(err.message || 'تعذر الحصول على الموقع'));
+}
+
+// Bind address chips
+function initAddrChips(containerSelector, onSelect) {
+  const container = $(containerSelector);
+  if (!container) return;
+  container.addEventListener('click', e => {
+    const chip = e.target.closest('.addr-chip');
+    if (!chip) return;
+    container.querySelectorAll('.addr-chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    const label = chip.dataset.label;
+    if (onSelect) onSelect(label);
+  });
+}
+
+initAddrChips('#cartAddrTags', lbl => {
+  currentAddressLabel = lbl;
+  const labelDisplay = $('#cartCurrentLabelDisplay');
+  if (labelDisplay) {
+    const icon = lbl === 'السكن' ? '🏠 ' : (lbl === 'العمل' ? '💼 ' : '🎓 ');
+    labelDisplay.textContent = icon + lbl;
+  }
+  const statusEl = $('#cartGpsStatus');
+  if (statusEl && !currentGpsCoords) {
+    statusEl.textContent = `⚡ جاهز: هيتم التقاط موقعك وتحديده كـ «${lbl}» أول ما تضغط على زر الطلب تحت!`;
+  }
+});
+initAddrChips('#profileAddrTags', lbl => { currentAddressLabel = lbl; });
+
+// Location Mode Toggle Event (GPS at order time vs Manual)
+const locGpsRadio = $('#locTypeGps');
+const locManualRadio = $('#locTypeManual');
+const manualAddrWrap = $('#manualAddressWrapper');
+const lblGpsOpt = $('#lblGpsOption');
+const lblManualOpt = $('#lblManualOption');
+
+if (locGpsRadio && locManualRadio) {
+  locGpsRadio.addEventListener('change', () => {
+    if (locGpsRadio.checked) {
+      if (manualAddrWrap) manualAddrWrap.style.display = 'none';
+      if (lblGpsOpt) { lblGpsOpt.style.borderColor = '#16a34a'; lblGpsOpt.style.color = '#166534'; lblGpsOpt.style.background = '#fff'; }
+      if (lblManualOpt) { lblManualOpt.style.borderColor = '#d1d5db'; lblManualOpt.style.color = 'var(--muted)'; lblManualOpt.style.background = '#f9fafb'; }
+      $('#cartGpsStatus').textContent = `⚡ جاهز: هيتم التقاط موقعك وتحديده كـ «${currentAddressLabel}» أول ما تضغط على زر الطلب تحت!`;
+      if ($('#sendOrderBtnText')) $('#sendOrderBtnText').textContent = 'تحديد موقعي (GPS) وإرسال الطلب الآن';
+    }
+  });
+
+  locManualRadio.addEventListener('change', () => {
+    if (locManualRadio.checked) {
+      if (manualAddrWrap) manualAddrWrap.style.display = 'block';
+      if (lblManualOpt) { lblManualOpt.style.borderColor = '#16a34a'; lblManualOpt.style.color = '#166534'; lblManualOpt.style.background = '#fff'; }
+      if (lblGpsOpt) { lblGpsOpt.style.borderColor = '#d1d5db'; lblGpsOpt.style.color = 'var(--muted)'; lblGpsOpt.style.background = '#f9fafb'; }
+      $('#cartGpsStatus').textContent = '✍️ يمكنك كتابة تفاصيل الشارع والعمارة يدوياً في الخانة أدناه.';
+      if ($('#sendOrderBtnText')) $('#sendOrderBtnText').textContent = 'إرسال الطلب على واتساب';
+    }
+  });
+}
+
+// Cart GPS Button
+const btnCartGps = $('#btnCartDetectGps');
+if (btnCartGps) {
+  btnCartGps.addEventListener('click', () => {
+    btnCartGps.disabled = true;
+    $('#cartGpsStatus').textContent = '⏳ جاري تحديد موقعك بالقمر الصناعي...';
+    detectDeviceLocation(
+      res => {
+        btnCartGps.disabled = false;
+        $('#cartGpsStatus').textContent = `✅ تم التقاط الموقع بنجاح: ${res.address}`;
+        $('#clientLocation').value = res.address;
+        state.customer.address = res.address;
+        state.customer.lat = res.lat;
+        state.customer.lng = res.lng;
+        state.customer.addressLabel = currentAddressLabel;
+        saveState();
+        toast(`📍 تم تحديد موقعك (${currentAddressLabel}) بدقة عبر GPS`);
+
+        // If user logged in, save to profile
+        if (window.ACDPlatform) {
+          ACDPlatform.auth.addCustomerSavedAddress({
+            label: currentAddressLabel,
+            address: res.address,
+            lat: res.lat,
+            lng: res.lng
+          });
+        }
+      },
+      err => {
+        btnCartGps.disabled = false;
+        $('#cartGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Profile GPS Button
+const btnProfileGps = $('#btnProfileDetectGps');
+if (btnProfileGps) {
+  btnProfileGps.addEventListener('click', () => {
+    btnProfileGps.disabled = true;
+    $('#profileGpsStatus').textContent = '⏳ جاري تحديد موقعك بالقمر الصناعي...';
+    detectDeviceLocation(
+      res => {
+        btnProfileGps.disabled = false;
+        $('#profileGpsStatus').textContent = `✅ تم التقاط الموقع: ${res.address}`;
+        $('#profileDetailedAddr').value = res.address;
+      },
+      err => {
+        btnProfileGps.disabled = false;
+        $('#profileGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Reg GPS Button
+const btnRegGps = $('#btnRegDetectGps');
+if (btnRegGps) {
+  btnRegGps.addEventListener('click', () => {
+    btnRegGps.disabled = true;
+    $('#regGpsStatus').textContent = '⏳ جاري تحديد موقعك بالـ GPS...';
+    detectDeviceLocation(
+      res => {
+        btnRegGps.disabled = false;
+        $('#regGpsStatus').textContent = `✅ تم التقاط موقع السكن: ${res.address}`;
+        $('#regAddress').value = res.address;
+      },
+      err => {
+        btnRegGps.disabled = false;
+        $('#regGpsStatus').textContent = `⚠️ ${err}`;
+      }
+    );
+  });
+}
+
+// Save Address to Profile
+const btnSaveAddr = $('#btnSaveAddressToProfile');
+if (btnSaveAddr) {
+  btnSaveAddr.addEventListener('click', async () => {
+    const val = $('#profileDetailedAddr').value.trim();
+    if (val.length < 3) return toast('يرجى كتابة أو تحديد العنوان أولاً');
+    if (window.ACDCloud?.saveCustomerAddress) {
+      try {
+        await ACDCloud.saveCustomerAddress({
+          label: currentAddressLabel,
+          address: val,
+          lat: currentGpsCoords?.lat || null,
+          lng: currentGpsCoords?.lng || null
+        });
+        toast(`✅ تم حفظ «${currentAddressLabel}» في حسابك بنجاح!`);
+        renderCustomerAuthUI();
+      } catch (err) {
+        toast(ACDCloud.authError(err));
+      }
+    }
+  });
+}
+
+// Render Customer Auth UI (Firebase is the only production account authority)
+function authUserView() {
+  const fbUser = window.ACDCloud?.user?.();
+  const profile = window.ACDCloud?.profile?.();
+  if (!fbUser || !profile) return null;
+  return { user: fbUser, profile };
+}
+
+function renderCustomerAuthUI() {
+  const account = authUserView();
+  const loggedInBox = $('#accountLoggedIn');
+  const loggedOutBox = $('#accountLoggedOut');
+  const userIcon = $('#userIcon');
+
+  if (account) {
+    const { user, profile } = account;
+    loggedInBox.style.display = 'block';
+    loggedOutBox.style.display = 'none';
+    $('#custProfileName').textContent = profile.name || user.displayName || 'عميل الأزهر';
+    $('#custProfileEmail').textContent = profile.email || user.email || '';
+    $('#custProfilePhone').textContent = profile.phone || 'لم تتم إضافة رقم موبايل';
+    if (userIcon) userIcon.textContent = profile.emailVerified ? '🟢' : '🟡';
+
+    const verifyBox = $('#emailVerificationBox');
+    if (verifyBox) verifyBox.style.display = user.emailVerified ? 'none' : 'block';
+
+    if (!$('#clientName').value && profile.name) $('#clientName').value = profile.name;
+    if (!$('#clientPhone').value && profile.phone) $('#clientPhone').value = profile.phone;
+    const nameEdit = $('#accountNameEdit'); const phoneEdit = $('#accountPhoneEdit');
+    if (nameEdit) nameEdit.value = profile.name || user.displayName || '';
+    if (phoneEdit) phoneEdit.value = profile.phone || user.phoneNumber || '';
+    const roleLabel = profile.role === 'admin' ? 'إدارة' : profile.role === 'store' ? 'متجر' : profile.role === 'rider' ? 'مندوب' : 'عميل';
+    if ($('#custRoleBadge')) $('#custRoleBadge').textContent = roleLabel;
+    const displayName = profile.name || user.displayName || 'عميل الأزهر';
+    if ($('#custProfileAvatar')) $('#custProfileAvatar').textContent = (displayName.trim().charAt(0) || 'A').toUpperCase();
+    const photo = $('#custProfilePhoto'); const avatar = $('#custProfileAvatar');
+    if (photo) { if (profile.photoURL) { photo.src = profile.photoURL; photo.style.display='block'; if (avatar) avatar.style.display='none'; } else { photo.style.display='none'; if (avatar) avatar.style.display='grid'; } }
+    const providers = Array.isArray(user.providerData) ? user.providerData.map(p => p.providerId) : [];
+    if ($('#btnLinkGoogle')) $('#btnLinkGoogle').style.display = providers.includes('google.com') ? 'none' : 'flex';
+    if ($('#portalShortcut')) $('#portalShortcut').style.display = ['admin','store','rider'].includes(profile.role) ? 'flex' : 'none';
+
+    const addresses = Array.isArray(profile.savedAddresses) ? profile.savedAddresses : [];
+    const listEl = $('#savedAddressesList');
+    if (listEl) {
+      if (!addresses.length) {
+        listEl.innerHTML = '<div style="font-size:0.8rem;color:var(--muted);padding:8px">لا توجد عناوين محفوظة بعد.</div>';
+      } else {
+        listEl.innerHTML = addresses.map(a => `
+          <div class="saved-addr-card" data-addr="${esc(a.address || '')}" data-label="${esc(a.label || 'السكن')}">
+            <div>
+              <b style="color:var(--brand-d)">${a.label === 'السكن' ? '🏠' : (a.label === 'العمل' ? '💼' : '🎓')} ${esc(a.label || 'السكن')}</b>
+              <div style="font-size:0.75rem;color:var(--muted);margin-top:2px">${esc(a.address || 'موقع GPS محفوظ')}</div>
+            </div>
+            <button type="button" class="btn-act" style="background:var(--brand);color:#fff;border:0;border-radius:8px;padding:5px 10px;font-size:0.75rem;font-weight:700">اختيار</button>
+          </div>
+        `).join('');
+      }
+    }
+  } else {
+    loggedInBox.style.display = 'none';
+    loggedOutBox.style.display = 'block';
+    if (userIcon) userIcon.textContent = '👤';
+  }
+}
+
+// Select saved address from card
+document.addEventListener('click', e => {
+  const card = e.target.closest('.saved-addr-card');
+  if (!card) return;
+  const addr = card.dataset.addr || '';
+  const label = card.dataset.label || 'السكن';
+  $('#clientLocation').value = addr;
+  state.customer.address = addr;
+  state.customer.addressLabel = label;
+  saveState();
+  toast(`تم تطبيق عنوان «${label}» في سلة الشراء بنجاح!`);
+  closeAll();
+});
+
+function setAuthBusy(formId, busy, label) {
+  const form = document.getElementById(formId);
+  const btn = form?.querySelector('button[type="submit"]');
+  if (!btn) return;
+  btn.disabled = busy;
+  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+  btn.textContent = busy ? label : btn.dataset.label;
+}
+
+// Auth Tabs switch
+$('#tabCustomerRegister').addEventListener('click', () => {
+  $('#tabCustomerRegister').classList.add('active'); $('#tabCustomerRegister').setAttribute('aria-selected','true');
+  $('#tabCustomerLogin').setAttribute('aria-selected','false');
+  $('#tabCustomerLogin').classList.remove('active');
+  $('#custRegisterForm').style.display = 'block';
+  $('#custLoginForm').style.display = 'none';
+});
+$('#tabCustomerLogin').addEventListener('click', () => {
+  $('#tabCustomerLogin').classList.add('active'); $('#tabCustomerLogin').setAttribute('aria-selected','true');
+  $('#tabCustomerRegister').setAttribute('aria-selected','false');
+  $('#tabCustomerRegister').classList.remove('active');
+  $('#custLoginForm').style.display = 'block';
+  $('#custRegisterForm').style.display = 'none';
+});
+
+// Account form UX
+document.querySelectorAll('[data-toggle-password]').forEach(btn => btn.addEventListener('click', () => { const input = document.getElementById(btn.dataset.togglePassword); if (!input) return; const visible = input.type === 'text'; input.type = visible ? 'password' : 'text'; btn.textContent = visible ? 'إظهار' : 'إخفاء'; }));
+function updatePasswordStrength(password){ const meter=$('#passwordMeter'); if(!meter) return; const score=[password.length>=8,/[A-Za-z]/.test(password),/\d/.test(password),/[^A-Za-z\d]/.test(password)].filter(Boolean).length; [...meter.children].forEach((el,i)=>el.classList.toggle('on',i<score)); const h=$('#passwordHint'); if(h) h.textContent=score<=1?'ضعيفة — استخدم 8 خانات على الأقل مع حروف وأرقام.':score===2?'مقبولة — إضافة رقم ورمز تخليها أقوى.':score===3?'جيدة — باقي خطوة صغيرة.':'قوية — ممتاز.'; }
+$('#regPassword')?.addEventListener('input', e => updatePasswordStrength(e.target.value));
+
+// Customer Registration
+$('#custRegisterForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = $('#regName').value.trim();
+  const email = $('#regEmail').value.trim().toLowerCase();
+  const phone = $('#regPhone').value.trim();
+  const password = $('#regPassword').value;
+  const confirmPassword = $('#regPasswordConfirm').value;
+  const address = $('#regAddress').value.trim();
+  const errEl = $('#regError');
+  errEl.textContent = '';
+
+  if (name.length < 3) return errEl.textContent = 'يرجى كتابة الاسم بالكامل.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return errEl.textContent = 'اكتب بريدًا إلكترونيًا صحيحًا.';
+  const normalizedPhone = phone.replace(/[\s-]/g, '').replace(/\D/g, '');
+  if (!/^01[0125]\d{8}$/.test(normalizedPhone)) return errEl.textContent = 'رقم الموبايل غير صحيح (مثال: 01012345678).';
+  if (password.length < 8) return errEl.textContent = 'كلمة المرور يجب أن تكون 8 خانات على الأقل.';
+  if (password !== confirmPassword) return errEl.textContent = 'تأكيد كلمة المرور غير مطابق.';
+
+  if (!window.ACDCloud?.signUpWithEmail) {
+    errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة وحاول مرة أخرى.';
+    return;
+  }
+
+  setAuthBusy('custRegisterForm', true, 'جارٍ إنشاء الحساب...');
+  try {
+    const res = await ACDCloud.signUpWithEmail(email, password, name, normalizedPhone, {
+      label: currentAddressLabel || 'السكن',
+      address,
+      lat: currentGpsCoords?.lat,
+      lng: currentGpsCoords?.lng
+    });
+    toast(`مرحباً بك يا ${name}! تم إنشاء الحساب. راجع بريدك الإلكتروني لتفعيل الحساب ✉️`);
+    renderCustomerAuthUI();
+  } catch (err) {
+    errEl.textContent = ACDCloud.authError(err);
+  } finally {
+    setAuthBusy('custRegisterForm', false);
+  }
+});
+
+// Customer Login
+$('#custLoginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = $('#loginEmail').value.trim().toLowerCase();
+  const password = $('#loginPassword').value;
+  const errEl = $('#loginError');
+  errEl.textContent = '';
+  if (!window.ACDCloud?.signInWithEmail) return errEl.textContent = 'خدمة الحساب غير جاهزة. أعد تحميل الصفحة.';
+
+  setAuthBusy('custLoginForm', true, 'جارٍ تسجيل الدخول...');
+  try {
+    const res = await ACDCloud.signInWithEmail(email, password);
+    toast(`أهلاً بعودتك يا ${res.profile?.name || 'عميل الأزهر'}! 👋`);
+    renderCustomerAuthUI();
+  } catch (err) {
+    errEl.textContent = ACDCloud.authError(err);
+  } finally {
+    setAuthBusy('custLoginForm', false);
+  }
+});
+
+// Password reset
+$('#btnResetPassword').addEventListener('click', async () => {
+  const email = $('#loginEmail').value.trim().toLowerCase();
+  const errEl = $('#loginError');
+  if (!email) {
+    errEl.textContent = 'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟».';
+    return;
+  }
+  try {
+    await ACDCloud.resetPassword(email);
+    errEl.style.color = '#166534';
+    errEl.textContent = 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.';
+  } catch (err) {
+    errEl.style.color = '';
+    errEl.textContent = ACDCloud.authError(err);
+  }
+});
+
+// Resend verification email
+$('#btnResendVerification').addEventListener('click', async () => {
+  try {
+    await ACDCloud.resendVerification();
+    toast('تم إرسال رسالة تفعيل جديدة إلى بريدك الإلكتروني ✉️');
+  } catch (err) {
+    toast(ACDCloud.authError(err));
+  }
+});
+
+// Customer Logout
+$('#btnCustLogout').addEventListener('click', async () => {
+  try {
+    await ACDCloud.signOut();
+    toast('تم تسجيل الخروج بنجاح.');
+    renderCustomerAuthUI();
+  } catch (err) {
+    toast(ACDCloud.authError(err));
+  }
+});
+
+// Account profile actions
+$('#btnSaveAccountProfile')?.addEventListener('click', async () => { const errEl=$('#accountProfileError'); if(errEl) errEl.textContent=''; const name=$('#accountNameEdit')?.value.trim()||''; const phone=$('#accountPhoneEdit')?.value.trim()||''; if(name.length<3){ if(errEl) errEl.textContent='اكتب الاسم بالكامل علشان نستخدمه في الطلبات.'; return; } const btn=$('#btnSaveAccountProfile'); const old=btn?.textContent; if(btn){btn.disabled=true;btn.textContent='جارٍ حفظ البيانات...';} try{await ACDCloud.saveCustomerProfile({name,phone}); renderCustomerAuthUI(); toast('تم حفظ بيانات حسابك ✅');}catch(err){if(errEl) errEl.textContent=ACDCloud.authError(err);}finally{if(btn){btn.disabled=false;btn.textContent=old||'حفظ بيانات الحساب';}} });
+$('#btnAccountRefreshClaims')?.addEventListener('click', async()=>{try{await ACDCloud.refreshClaims();renderCustomerAuthUI();toast('تم تحديث الجلسة والصلاحيات ✅')}catch(err){toast(ACDCloud.authError(err))}});
+$('#btnLinkGoogle')?.addEventListener('click', async()=>{const btn=$('#btnLinkGoogle');try{if(btn)btn.disabled=true;const res=await ACDCloud.linkGoogleAccount();if(res?.redirecting)return;renderCustomerAuthUI();toast('تم ربط حساب Google بحسابك ✅')}catch(err){toast(ACDCloud.authError(err))}finally{if(btn)btn.disabled=false}});
+
+// Google Login
+$('#btnGoogleAuth').addEventListener('click', async () => {
+  if (!window.ACDCloud?.signIn) return toast('جاري تجهيز تسجيل الدخول، جرّب بعد ثواني.');
+  const btn=$('#btnGoogleAuth'); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="google-logo">G</span><span><b>جارٍ فتح Google…</b><small>ثواني ونرجعك للموقع</small></span><span class="auth-spinner"></span>';
+  try { const res=await ACDCloud.signIn(); if(res?.redirecting) return; toast(`أهلاً بيك${res.user?.displayName ? ` يا ${res.user.displayName.split(' ')[0]}` : ''} 👋`); renderCustomerAuthUI(); } catch(err){ toast(ACDCloud.authError(err)); btn.disabled=false; btn.innerHTML=old; }
+});
+window.addEventListener('acd-auth-google-complete', () => { renderCustomerAuthUI(); toast('أهلاً بيك 👋 تم تسجيل الدخول بحساب Google.'); });
+window.addEventListener('acd-auth-google-linked', () => { renderCustomerAuthUI(); toast('تم ربط حساب Google بحسابك بنجاح ✅'); });
+
+window.addEventListener('acd-auth-change', () => renderCustomerAuthUI());
+window.addEventListener('acd-auth-profile', () => renderCustomerAuthUI());
+
+// Open Account Panel
+$('#openAccountBtn').addEventListener('click', () => {
+  renderCustomerAuthUI();
+  openPanel('accountPanel');
+});
+
+// Daily Offers & Notifications
+function renderDailyOffers() {
+  const container = $('#dailyOffersContainer');
+  if (!container || !window.ACDPlatform) return;
+  const list = remoteOffers.length ? remoteOffers : ACDPlatform.getOffers();
+  container.innerHTML = list.map(o => `
+    <div class="offer-card">
+      <div class="offer-head">
+        <span class="offer-badge">${esc(o.tag)}</span>
+        <span style="font-size:0.75rem;color:var(--muted)">${esc(o.date)}</span>
+      </div>
+      <h3 class="offer-title">${esc(o.title)}</h3>
+      <p class="offer-desc">${esc(o.desc)}</p>
+    </div>
+  `).join('');
+}
+
+$('#openNotificationsBtn').addEventListener('click', () => {
+  renderDailyOffers();
+  $('#notifBadge').style.display = 'none';
+  openPanel('notificationsPanel');
+});
+
+window.addEventListener('acd-customer-auth', () => {
+  renderCustomerAuthUI();
+});
+
+window.addEventListener('acd-cloud-ready', () => {
+  renderCustomerAuthUI();
+});
+
+/* ================== الأحداث ================== */
+document.addEventListener('click', e => {
+  const act = e.target.closest('[data-act]');
+  if (act){
+    const id = act.dataset.id;
+    switch (act.dataset.act){
+      case 'inc': setQty(id, (state.cart[id]||0)+1); break;
+      case 'dec': setQty(id, (state.cart[id]||0)-1); break;
+      case 'remove': setQty(id, 0); break;
+      case 'edit-special': openSpecial(); break;
+      case 'clear-special': state.special=''; saveState(); renderCart(); break;
+    }
+    return;
+  }
+  const cat = e.target.closest('[data-cat]');
+  if (cat){ setCat(state.cat === cat.dataset.cat && cat.classList.contains('tile') ? 'all' : cat.dataset.cat); return; }
+  const tab = e.target.closest('.tab'); if (tab){ setGroup(tab.dataset.group); return; }
+  const cta = e.target.closest('[data-slide]'); if (cta){ goBanner(+cta.dataset.slide); return; }
+  const dot = e.target.closest('[data-dot]'); if (dot){ showSlide(+dot.dataset.dot); startSlides(); return; }
+  if (e.target.closest('[data-close]') || e.target.id === 'overlay') closeAll();
+});
+
+$('#openCart').addEventListener('click', () => openPanel('cartPanel'));
+$('#cartBar').addEventListener('click', () => openPanel('cartPanel'));
+$('#openHelp').addEventListener('click', () => openPanel('helpPanel'));
+$('#openSpecial').addEventListener('click', openSpecial);
+$('#addSpecialBtn').addEventListener('click', openSpecial);
+$('#sendOrder').addEventListener('click', sendOrder);
+$('#clearCart').addEventListener('click', () => {
+  if (!hasOrder() || !confirm('تفريغ السلة بالكامل؟')) return;
+  const ids = Object.keys(state.cart); state.cart = {}; state.special = '';
+  saveState(); ids.forEach(refreshCards); renderCart();
+});
+$('#saveSpecial').addEventListener('click', () => {
+  const txt = $('#specialText').value.trim();
+  const bm = boycottMatch(txt);
+  if (bm){ $('#specialErr').textContent = `🕊️ آسفين، «${bm.group}» من الشركات المقاطعة ومش بنوفّرها ولا بنوصّلها. شيلها من الطلب أو اطلب بديل.`; return; }
+  $('#specialErr').textContent = '';
+  state.special = txt; saveState(); renderCart(); closeAll();
+  toast(state.special ? 'تم حفظ الطلب الخاص في السلة' : 'تم حذف الطلب الخاص');
+});
+$('#specialText').addEventListener('input', updateSpecialCount);
+
+let searchTimer;
+$('#search').addEventListener('input', e => { clearTimeout(searchTimer); searchTimer = setTimeout(() => { state.query = e.target.value; renderContent(); }, 150); });
+$('#clearSearch').addEventListener('click', () => { $('#search').value=''; state.query=''; renderContent(); $('#search').focus(); });
+
+[['#clientName','name'],['#clientPhone','phone'],['#clientLocation','address'],['#clientNote','note']].forEach(([s,k]) => $(s).addEventListener('input', e => { state.customer[k] = e.target.value; saveState(); }));
+
+// سحب البانر باللمس
+(() => {
+  const h = $('#hero'); let x0 = null;
+  h.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; clearInterval(slideTimer); }, {passive:true});
+  h.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) showSlide(slideIdx + (dx > 0 ? 1 : -1)); x0 = null; startSlides(); });
+})();
+
+document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.pic')) e.target.remove(); }, true);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+
+
+/* ================== كتالوج وإعدادات Firebase ================== */
+function renderFeaturedOffers(){
+  const row = $('#featuredOffersRow');
+  if(!row) return;
+  const deals = PRODUCTS.filter(p => visible(p) && p.oldPrice && p.oldPrice > p.price);
+  const productCards = deals.slice(0,10).map(cardHTML).join('');
+  const infoCards = remoteOffers.map(o => `<article class="card offer-card"><div class="offer-head"><span class="offer-badge">${esc(o.tag||'عرض اليوم')}</span></div><h3 class="offer-title">${esc(o.title||'')}</h3><p class="offer-desc">${esc(o.desc||'')}</p></article>`).join('');
+  row.innerHTML = (productCards + infoCards) || `<div class="empty">العروض بتتحدث أول بأول. ارجع بعد شوية وهتلاقي الجديد.</div>`;
+}
+
+async function loadRemoteSiteData(){
+  if(!window.ACDCloud) return;
+  try{
+    const settings = await ACDCloud.getSiteSettings();
+    if(settings && Object.keys(settings).length){
+      CONFIG = {...CONFIG, ...settings};
+      $('#areaName').textContent = CONFIG.area;
+      $('#areaFixed').textContent = 'التوصيل إلى: ' + CONFIG.area;
+      $('#footArea').textContent = CONFIG.area;
+      $('#eta').textContent = CONFIG.eta;
+      $('#audience').textContent = 'توصيل ' + CONFIG.audience + ' إلى';
+      $('#hours').textContent = hh(CONFIG.openHour) + ' – ' + hh(CONFIG.closeHour);
+      renderStatus();
+    }
+    const remote = await ACDCloud.getPublicCatalog();
+    if(Array.isArray(remote) && remote.length){
+      const merged = new Map(PRODUCTS.map(p=>[String(p.id), p]));
+      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ merged.set(id,{...p,id,price:Number(p.price||0),emoji:p.emoji||'🛍️'}); }});
+      PRODUCTS = Array.from(merged.values());
+      byId = new Map(PRODUCTS.map(p=>[p.id,p]));
+      renderTiles(); renderContent(); renderCart();
+    }
+    remoteOffers = await ACDCloud.getPublicOffers();
+    renderFeaturedOffers();
+  }catch(err){
+    console.warn('Remote catalog unavailable; local catalog remains active.', err?.code || err);
+    renderFeaturedOffers();
+  }
+}
+window.addEventListener('acd-cloud-ready', loadRemoteSiteData);
+
+/* ================== جولة أول تشغيل ================== */
+const INTRO_KEY = CONFIG.storageKey + '-first-launch-v2';
+const PWA_INSTALLED_KEY = CONFIG.storageKey + '-pwa-installed-v2';
+let introIndex = 0;
+const introPages = () => $$('.intro-page');
+function isPwaInstalled(){ try{return isStandalone() || localStorage.getItem(PWA_INSTALLED_KEY)==='1';}catch(_){return isStandalone();} }
+function markPwaInstalled(){try{localStorage.setItem(PWA_INSTALLED_KEY,'1');localStorage.setItem(INTRO_KEY,'1');}catch(_){}}
+function applyInstalledState(){if(!isPwaInstalled())return;$('#installBox')?.classList.remove('show');$('#topInstallBtn')?.setAttribute('hidden','hidden');$('#palBanner')?.setAttribute('hidden','hidden');}
+window.addEventListener('appinstalled',()=>{markPwaInstalled();applyInstalledState();closeIntro(true);});
+function renderIntro(dir){const pages=introPages();pages.forEach((p,i)=>{if(i===introIndex){p.dataset.dir=dir||'fwd';p.classList.remove('active');void p.offsetWidth;p.classList.add('active');}else{p.classList.remove('active');delete p.dataset.dir;}});$$('#introProgress i').forEach((d,i)=>{d.classList.toggle('active',i<=introIndex);d.classList.toggle('current',i===introIndex);});$('#introPrev').hidden=introIndex===0;$('#introNext').textContent=introIndex===pages.length-1?'نزّل التطبيق':'التالي';}
+function openIntro(){if(isPwaInstalled())return;try{if(localStorage.getItem(INTRO_KEY)==='1')return;}catch(_){}introIndex=0;renderIntro('fwd');$('#firstLaunchIntro').classList.add('open');document.body.classList.add('lock');}
+function closeIntro(markDone=false){if(markDone){try{localStorage.setItem(INTRO_KEY,'1')}catch(_){}}$('#firstLaunchIntro').classList.remove('open');document.body.classList.remove('lock');}
+$('#introPrev')?.addEventListener('click',()=>{if(introIndex>0){introIndex--;renderIntro('back');}});
+$('#introNext')?.addEventListener('click',async()=>{if(introIndex<introPages().length-1){introIndex++;renderIntro('fwd');return;}try{closeIntro(false);await handleInstallAction();}catch(_){}});
+$('#introSkip')?.addEventListener('click',()=>closeIntro(true));
+$('#firstLaunchIntro')?.addEventListener('click',e=>{if(e.target.id==='firstLaunchIntro')closeIntro(true);});
+let introX0=null;$('#firstLaunchIntro')?.addEventListener('touchstart',e=>{introX0=e.touches[0].clientX},{passive:true});$('#firstLaunchIntro')?.addEventListener('touchend',e=>{if(introX0===null)return;const dx=e.changedTouches[0].clientX-introX0;introX0=null;if(Math.abs(dx)<45)return;if(dx<0&&introIndex<introPages().length-1){introIndex++;renderIntro('fwd');}else if(dx>0&&introIndex>0){introIndex--;renderIntro('back');}});
+
+
+/* ================== Dynamic Scroll Tour ================== */
+(function initDynamicScrollTour(){
+
+  const TOUR_KEY = CONFIG.storageKey + '-scroll-tour-v1';
+
+  const tour = document.getElementById('scrollTour');
+  const card = document.getElementById('scrollTourCard');
+  const arrow = document.getElementById('scrollTourArrow');
+  const icon = document.getElementById('scrollTourIcon');
+  const title = document.getElementById('scrollTourTitle');
+  const text = document.getElementById('scrollTourText');
+  const progress = document.getElementById('scrollTourProgress');
+  const close = document.getElementById('scrollTourClose');
+
+  if(!tour || !card || !arrow) return;
+
+  /*
+   * كل مرحلة مرتبطة بجزء حقيقي موجود في الموقع.
+   * المرحلة تظهر أثناء الـ scroll وتوجه المستخدم للعنصر.
+   */
+  const steps = [
+    {
+      target:'#openAccountBtn',
+      icon:'👤',
+      title:'1 — اعمل حسابك',
+      text:'من هنا تقدر تعمل حسابك، تضيف بياناتك وعناوينك، وتخلي الطلبات الجاية أسرع.',
+      minScroll:80,
+      arrow:'↑'
+    },
+    {
+      target:'#catSec',
+      icon:'🛍️',
+      title:'2 — اختار اللي محتاجه',
+      text:'انزل هنا واختار القسم اللي محتاجه، وبعدها اختار المنتجات وأضفها للسلة.',
+      minScroll:260,
+      arrow:'↓'
+    },
+    {
+      target:'#openCart',
+      icon:'🛒',
+      title:'3 — راجع السلة',
+      text:'بعد ما تخلص اختيارك افتح السلة من هنا، راجع المنتجات والكميات والإجمالي قبل إتمام الطلب.',
+      minScroll:700,
+      arrow:'↑'
+    },
+    {
+      target:'#openAccountBtn',
+      icon:'📍',
+      title:'4 — حدد مكان التوصيل',
+      text:'من حسابك تقدر تضيف عنوان السكن أو تستخدم تحديد الموقع GPS علشان المندوب يعرف مكان التسليم.',
+      minScroll:1000,
+      arrow:'↑'
+    },
+    {
+      target:'a[href="./track.html"]',
+      icon:'📦',
+      title:'5 — تابع طلبك',
+      text:'بعد الطلب، استخدم متابعة الطلب علشان تعرف حالة طلبك وتفاصيله لحد الاستلام.',
+      minScroll:1300,
+      arrow:'↓'
+    }
+  ];
+
+  let currentStep = -1;
+  let running = false;
+  let scrollTimer = null;
+
+  function alreadySeen(){
+    try{
+      return localStorage.getItem(TOUR_KEY) === '1';
+    }catch(_){
+      return false;
+    }
+  }
+
+  function markSeen(){
+    try{
+      localStorage.setItem(TOUR_KEY,'1');
+    }catch(_){}
+  }
+
+  function clearTarget(){
+    document.querySelectorAll('.scroll-tour-target').forEach(el=>{
+      el.classList.remove('scroll-tour-target');
+    });
+  }
+
+  function getTarget(step){
+    if(!step) return null;
+
+    /*
+     * track.html ممكن يكون موجود أكتر من مرة في الصفحة.
+     * نختار أول عنصر ظاهر.
+     */
+    const all = document.querySelectorAll(step.target);
+
+    for(const el of all){
+      const r = el.getBoundingClientRect();
+      if(r.width && r.height) return el;
+    }
+
+    return all[0] || null;
+  }
+
+  function positionArrow(target, step){
+    if(!target){
+      arrow.classList.remove('show');
+      return;
+    }
+
+    const r = target.getBoundingClientRect();
+
+    let x = r.left + r.width / 2 - 24;
+    let y;
+
+    if(step.arrow === '↑'){
+      y = Math.max(12, r.top - 62);
+    }else{
+      y = Math.min(window.innerHeight - 58, r.bottom + 14);
+    }
+
+    x = Math.max(10, Math.min(window.innerWidth - 58, x));
+
+    arrow.style.left = x + 'px';
+    arrow.style.top = y + 'px';
+    arrow.textContent = step.arrow;
+
+    requestAnimationFrame(()=>{
+      arrow.classList.add('show');
+    });
+  }
+
+  function positionCard(target){
+    if(window.innerWidth <= 520){
+      card.style.left = '';
+      card.style.top = '';
+      return;
+    }
+
+    const r = target?.getBoundingClientRect();
+
+    if(!r){
+      card.style.left = '50%';
+      card.style.top = '50%';
+      card.style.transform = 'translate(-50%,-50%)';
+      return;
+    }
+
+    card.style.transform = '';
+    
+    let left = r.left + r.width / 2 - 165;
+    let top = r.bottom + 18;
+
+    if(top + 170 > window.innerHeight){
+      top = r.top - 190;
+    }
+
+    left = Math.max(14, Math.min(window.innerWidth - 344, left));
+    top = Math.max(14, Math.min(window.innerHeight - 190, top));
+
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+
+  function renderProgress(index){
+    [...progress.children].forEach((dot,i)=>{
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function showStep(index){
+    if(index < 0 || index >= steps.length) return;
+
+    const step = steps[index];
+    const target = getTarget(step);
+
+    if(!target) return;
+
+    clearTarget();
+
+    currentStep = index;
+    running = true;
+
+    target.classList.add('scroll-tour-target');
+
+    icon.textContent = step.icon;
+    title.textContent = step.title;
+    text.textContent = step.text;
+
+    renderProgress(index);
+
+    tour.classList.add('active');
+    tour.setAttribute('aria-hidden','false');
+
+    positionArrow(target,step);
+    positionCard(target);
+
+    requestAnimationFrame(()=>{
+      card.classList.add('show');
+    });
+  }
+
+  function hideTour(mark=true){
+    clearTarget();
+    card.classList.remove('show');
+    arrow.classList.remove('show');
+    tour.classList.remove('active');
+    tour.setAttribute('aria-hidden','true');
+    running = false;
+
+    if(mark) markSeen();
+  }
+
+  function calculateStep(){
+    const y = window.scrollY || window.pageYOffset || 0;
+
+    /*
+     * نستخدم نقاط scroll تدريجية.
+     * المستخدم مش محتاج يضغط Next؛ الـ scroll نفسه هو الـ navigation.
+     */
+    let index = 0;
+
+    for(let i=0;i<steps.length;i++){
+      if(y >= steps[i].minScroll) index = i;
+    }
+
+    return index;
+  }
+
+  function handleScroll(){
+    if(alreadySeen()) return;
+
+    /*
+     * بداية الجولة أول ما المستخدم يبدأ يتحرك.
+     */
+    if(!running && window.scrollY > 25){
+      showStep(0);
+      return;
+    }
+
+    if(!running) return;
+
+    clearTimeout(scrollTimer);
+
+    scrollTimer = setTimeout(()=>{
+      const next = calculateStep();
+
+      if(next !== currentStep){
+        showStep(next);
+      }else{
+        const step = steps[currentStep];
+        const target = getTarget(step);
+
+        if(target){
+          positionArrow(target,step);
+          positionCard(target);
+        }
+      }
+    },45);
+  }
+
+  close?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لو المستخدم ضغط خارج الكارت، نعتبر إنه مش محتاج الجولة.
+   */
+  document.querySelector('.scroll-tour-dim')?.addEventListener('click',()=>{
+    hideTour(true);
+  });
+
+  /*
+   * لما يوصل لآخر خطوة ونزل شوية زيادة:
+   * نختم الجولة.
+   */
+  window.addEventListener('scroll',()=>{
+    handleScroll();
+
+    if(running && currentStep === steps.length-1){
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if(max > 0 && window.scrollY > max - 120){
+        hideTour(true);
+      }
+    }
+  },{passive:true});
+
+  window.addEventListener('resize',()=>{
+    if(!running) return;
+
+    const step = steps[currentStep];
+    const target = getTarget(step);
+
+    if(target){
+      positionArrow(target,step);
+      positionCard(target);
+    }
+  });
+
+  /*
+   * بداية خفيفة:
+   * المستخدم يشوف أول رسالة من غير ما نوقف الصفحة.
+   */
+  setTimeout(()=>{
+    if(!alreadySeen() && window.scrollY < 25){
+      const first = steps[0];
+      const target = getTarget(first);
+
+      if(target){
+        currentStep = 0;
+        running = true;
+
+        target.classList.add('scroll-tour-target');
+
+        icon.textContent = first.icon;
+        title.textContent = first.title;
+        text.textContent = 'ابدأ بالنزول شوية، وأنا هشرحلك الموقع خطوة بخطوة 👇';
+
+        renderProgress(0);
+
+        tour.classList.add('active');
+        tour.setAttribute('aria-hidden','false');
+
+        positionArrow(target,first);
+        positionCard(target);
+
+        requestAnimationFrame(()=>{
+          card.classList.add('show');
+        });
+      }
+    }
+  },1800);
+
+})();
+
+
+/* ================== تثبيت التطبيق (PWA) ================== */
+let deferredPrompt = null;
+const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const installDismissed = () => { try { return Date.now() - Number(localStorage.getItem(CONFIG.storageKey + '-install-x') || 0) < 7*864e5; } catch(e){ return false; } };
+
+function showInstall(){
+  if (isPwaInstalled() || installDismissed()) return;
+  $('#installBox').classList.add('show');
+}
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; showInstall(); });
+window.addEventListener('appinstalled', () => { deferredPrompt = null; markPwaInstalled(); $('#installBox').classList.remove('show'); $('#topInstallBtn')?.setAttribute('hidden','hidden'); closeIntro(true); toast('تم تثبيت التطبيق ✅'); });
+
+async function handleInstallAction(){
+  if (deferredPrompt){
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    if (outcome === 'accepted'){
+      $('#installBox').classList.remove('show');
+      toast('تم تثبيت التطبيق بنجاح ✅');
+    }
+    return;
+  }
+  // خطوات التثبيت اليدوي (أندرويد / آيفون / كمبيوتر)
+  $('#installSteps').innerHTML = isIOS()
+    ? '<li>افتح الموقع في متصفح <b>Safari</b>.</li><li>اضغط على زرار المشاركة <b>⬆️</b> أسفل الشاشة.</li><li>اختر <b>«إضافة إلى الشاشة الرئيسية» (Add to Home Screen)</b>.</li><li>اضغط <b>إضافة</b> وستظهر أيقونة التطبيق على شاشة موبايلك.</li>'
+    : '<li>اضغط على قائمة المتصفح (الثلاث نقاط <b>⋮</b> أعلى اليسار/اليمين).</li><li>اختر <b>«تثبيت التطبيق» (Install app)</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>أكّد التثبيت وستنزل أيقونة التطبيق على جهازك فورًا كأي تطبيق أندرويد.</li>';
+  openPanel('installPanel');
+}
+
+$('#installBtn').addEventListener('click', handleInstallAction);
+const topBtn = $('#topInstallBtn');
+if (topBtn) topBtn.addEventListener('click', handleInstallAction);
+$('#installClose').addEventListener('click', () => {
+  $('#installBox').classList.remove('show');
+  try { localStorage.setItem(CONFIG.storageKey + '-install-x', String(Date.now())); } catch(e){}
+});
+// عرض بانر التثبيت إذا لم يكن مثبتاً بالفعل
+showInstall();
+if (isPwaInstalled()) $('#topInstallBtn')?.setAttribute('hidden','hidden');
+setTimeout(openIntro, 250);
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+
+/* ================== تشغيل ================== */
+loadState();
+$('#areaName').textContent = CONFIG.area;
+$('#areaFixed').textContent = 'التوصيل إلى: ' + CONFIG.area;
+$('#footArea').textContent = CONFIG.area;
+$('#brandName').textContent = CONFIG.brand;
+$('#eta').textContent = CONFIG.eta;
+$('#hours').textContent = hh(CONFIG.openHour) + ' – ' + hh(CONFIG.closeHour);
+$('#audience').textContent = 'توصيل ' + CONFIG.audience + ' إلى';
+$('#clientName').value = state.customer.name;
+$('#clientPhone').value = state.customer.phone;
+$('#clientLocation').value = state.customer.address;
+$('#clientNote').value = state.customer.note;
+renderStatus(); setInterval(renderStatus, 60000);
+renderHero(); renderTiles(); renderContent(); renderCart(); renderFeaturedOffers();
+</script>
+<script src="./customer-flow.js?v=20260924"></script>
+
+<!-- دليل تفاعلي منبثق -->
+<div class="guided-tour-overlay" id="guidedTour" style="display: none;">
+  <div class="guided-tour-backdrop" onclick="closeTour()"></div>
+  <div class="guided-tour-tooltip" id="tourTooltip">
+    <div class="tour-arrow" id="tourArrow"></div>
+    <div class="tour-content">
+      <span class="tour-step-badge" id="tourStepBadge">خطوة 1 من 3</span>
+      <h3 id="tourTitle">عنوان الخطوة</h3>
+      <p id="tourDesc">وصف الخطوة للعميل وكيفية الاستخدام.</p>
+      <div class="tour-actions">
+        <button type="button" class="tour-btn secondary" onclick="closeTour()">إغلاق</button>
+        <button type="button" class="tour-btn primary" id="tourNextBtn">التالي ‹</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="amh-scroll-tour"
+  id="amhScrollTour"
+  aria-hidden="true"
+>
+
+  <div class="amh-tour-backdrop"></div>
+
+  <div
+    class="amh-tour-spotlight"
+    id="amhTourSpotlight"
+    aria-hidden="true"
+  >
+    <div class="amh-tour-pulse"></div>
+  </div>
+
+  <div
+    class="amh-tour-arrow"
+    id="amhTourArrow"
+    aria-hidden="true"
+  >
+    ↓
+  </div>
+
+  <div
+    class="amh-tour-label"
+    id="amhTourLabel"
+    aria-hidden="true"
+  ></div>
+
+  <section
+    class="amh-tour-card"
+    id="amhTourCard"
+    role="dialog"
+    aria-live="polite"
+    aria-label="دليل استخدام الموقع"
+  >
+
+    <button
+      type="button"
+      class="amh-tour-close"
+      id="amhTourClose"
+      aria-label="إغلاق الدليل"
+    >×</button>
+
+    <div class="amh-tour-top">
+
+      <div
+        class="amh-tour-icon"
+        id="amhTourIcon"
+      >👋</div>
+
+      <div class="amh-tour-heading">
+
+        <span
+          class="amh-tour-step"
+          id="amhTourStep"
+        >دليل الموقع</span>
+
+        <h3
+          class="amh-tour-title"
+          id="amhTourTitle"
+        >أهلاً بيك</h3>
+
+      </div>
+
+    </div>
+
+    <p
+      class="amh-tour-description"
+      id="amhTourDescription"
+    ></p>
+
+    <div class="amh-tour-bottom">
+
+      <div
+        class="amh-tour-progress"
+        id="amhTourProgress"
+      ></div>
+
+      <span
+        class="amh-tour-counter"
+        id="amhTourCounter"
+      >1 / 6</span>
+
+    </div>
+
+  </section>
+
+  <div
+    class="amh-tour-scroll-hint"
+    id="amhTourScrollHint"
+  >
+    <span class="amh-tour-scroll-icon">☝️</span>
+    <span>انزل بالصفحة للتعرف على باقي الموقع</span>
+  </div>
+
+</div>
+
+
+<div
+  class="amh-tour-complete"
+  id="amhTourComplete"
+  aria-hidden="true"
+>
+
+  <div class="amh-tour-complete-box">
+
+    <div class="amh-tour-complete-icon">
+      ✓
+    </div>
+
+    <h3>
+      كده عرفت الموقع كله 🎉
+    </h3>
+
+    <p>
+      دلوقتي تقدر تعمل حساب، تختار منتجاتك،
+      تحدد مكان التوصيل، وتتابع طلبك لحد الاستلام.
+    </p>
+
+    <button
+      type="button"
+      id="amhTourCompleteClose"
+    >
+      ابدأ استخدام الموقع
+    </button>
+
+  </div>
+
+</div>
+
+
+<script id="amhScrollTourJS">
+(function(){
+
+  'use strict';
+
+  /* ==========================================================
+     AMH PROFESSIONAL SCROLL TOUR
+     ========================================================== */
+
+  const TOUR_KEY =
+    (window.CONFIG && CONFIG.storageKey
+      ? CONFIG.storageKey
+      : 'alazhar-city-delivery')
+    + '-professional-scroll-tour-v2';
+
+  const $ = (selector) =>
+    document.querySelector(selector);
+
+  const tour =
+    $('#amhScrollTour');
+
+  const card =
+    $('#amhTourCard');
+
+  const spotlight =
+    $('#amhTourSpotlight');
+
+  const arrow =
+    $('#amhTourArrow');
+
+  const label =
+    $('#amhTourLabel');
+
+  const icon =
+    $('#amhTourIcon');
+
+  const stepEl =
+    $('#amhTourStep');
+
+  const title =
+    $('#amhTourTitle');
+
+  const description =
+    $('#amhTourDescription');
+
+  const progress =
+    $('#amhTourProgress');
+
+  const counter =
+    $('#amhTourCounter');
+
+  const close =
+    $('#amhTourClose');
+
+  const scrollHint =
+    $('#amhTourScrollHint');
+
+  const complete =
+    $('#amhTourComplete');
+
+  const completeClose =
+    $('#amhTourCompleteClose');
+
+  if(
+    !tour ||
+    !card ||
+    !spotlight ||
+    !arrow
+  ){
+    return;
+  }
+
+  /* ==========================================================
+     TOUR STEPS
+     ========================================================== */
+
+  const steps = [
+
+    {
+      selector:'#openAccountBtn',
+
+      icon:'👤',
+
+      title:'ابدأ بإنشاء حسابك',
+
+      text:
+        'من زر الحساب تقدر تسجل حسابك وتدخل بياناتك وتضيف عناوين التوصيل. الحساب بيخلي إدارة طلباتك أسهل في كل مرة.',
+
+      label:'حسابك وعناوينك',
+
+      position:'top',
+
+      start:0
+    },
+
+    {
+      selector:'#catSec',
+
+      icon:'🛍️',
+
+      title:'اختار المنتجات',
+
+      text:
+        'انزل لقسم المنتجات واختار القسم اللي محتاجه. تصفح المنتجات وأضف اللي تحتاجه مباشرة إلى السلة.',
+
+      label:'الأقسام والمنتجات',
+
+      position:'top',
+
+      start:.12
+    },
+
+    {
+      selector:'#openCart',
+
+      icon:'🛒',
+
+      title:'راجع السلة',
+
+      text:
+        'من السلة تقدر تراجع المنتجات والكميات والإجمالي قبل إتمام الطلب، وتعدل أي حاجة محتاج تغيرها.',
+
+      label:'سلة المشتريات',
+
+      position:'bottom',
+
+      start:.30
+    },
+
+    {
+      selector:'#openAccountBtn',
+
+      icon:'📍',
+
+      title:'حدد مكان التوصيل',
+
+      text:
+        'من حسابك تقدر تضيف عنوان السكن أو تستخدم تحديد الموقع. كده بيانات التوصيل تبقى جاهزة للطلب.',
+
+      label:'العنوان و GPS',
+
+      position:'top',
+
+      start:.48
+    },
+
+    {
+      selector:'a[href="./track.html"]',
+
+      icon:'📦',
+
+      title:'تابع طلبك',
+
+      text:
+        'بعد إرسال الطلب استخدم متابعة الطلبات علشان تعرف حالة الطلب وتفاصيله وتتابع الرحلة لحد الاستلام.',
+
+      label:'متابعة الطلب',
+
+      position:'bottom',
+
+      start:.67
+    },
+
+    {
+      selector:'#installBox',
+
+      icon:'📲',
+
+      title:'ثبّت التطبيق على جهازك',
+
+      text:
+        'لو حابب وصول أسرع، تقدر تثبت التطبيق على جهازك وتفتحه مباشرة من الشاشة الرئيسية.',
+
+      label:'تثبيت التطبيق',
+
+      position:'top',
+
+      start:.84
+    }
+
+  ];
+
+  let current = -1;
+  let running = false;
+  let initialized = false;
+  let scrollRAF = 0;
+  let finishTimer = null;
+
+  /* ==========================================================
+     STORAGE
+     ========================================================== */
+
+  function wasCompleted(){
+
+    try{
+      return localStorage.getItem(TOUR_KEY) === '1';
+    }catch(e){
+      return false;
+    }
+
+  }
+
+  function markCompleted(){
+
+    try{
+      localStorage.setItem(
+        TOUR_KEY,
+        '1'
+      );
+    }catch(e){}
+
+  }
+
+  /* ==========================================================
+     TARGET
+     ========================================================== */
+
+  function findTarget(step){
+
+    if(!step) return null;
+
+    const nodes =
+      document.querySelectorAll(
+        step.selector
+      );
+
+    if(!nodes.length){
+      return null;
+    }
+
+    for(const node of nodes){
+
+      const rect =
+        node.getBoundingClientRect();
+
+      const style =
+        window.getComputedStyle(node);
+
+      if(
+        rect.width > 0 &&
+        rect.height > 0 &&
+        style.display !== 'none' &&
+        style.visibility !== 'hidden'
+      ){
+        return node;
+      }
+
+    }
+
+    return nodes[0];
+  }
+
+  /* ==========================================================
+     PROGRESS
+     ========================================================== */
+
+  function buildProgress(){
+
+    progress.innerHTML = '';
+
+    steps.forEach((_,index)=>{
+
+      const dot =
+        document.createElement('i');
+
+      dot.className =
+        'amh-tour-dot';
+
+      if(index === 0){
+        dot.classList.add('active');
+      }
+
+      progress.appendChild(dot);
+
+    });
+
+  }
+
+  function updateProgress(index){
+
+    [...progress.children]
+      .forEach((dot,i)=>{
+
+        dot.classList.toggle(
+          'active',
+          i === index
+        );
+
+      });
+
+    counter.textContent =
+      `${index + 1} / ${steps.length}`;
+  }
+
+  /* ==========================================================
+     TARGET RECT
+     ========================================================== */
+
+  function getRect(target){
+
+    if(!target){
+      return null;
+    }
+
+    const r =
+      target.getBoundingClientRect();
+
+    const padding = 7;
+
+    return {
+      left:
+        Math.max(
+          4,
+          r.left - padding
+        ),
+
+      top:
+        Math.max(
+          4,
+          r.top - padding
+        ),
+
+      width:
+        Math.min(
+          window.innerWidth - 8,
+          r.width + padding * 2
+        ),
+
+      height:
+        Math.min(
+          window.innerHeight - 8,
+          r.height + padding * 2
+        ),
+
+      right:
+        r.right + padding,
+
+      bottom:
+        r.bottom + padding
+    };
+
+  }
+
+  /* ==========================================================
+     SPOTLIGHT
+     ========================================================== */
+
+  function moveSpotlight(target){
+
+    const r =
+      getRect(target);
+
+    if(!r){
+      spotlight.style.opacity = '0';
+      return;
+    }
+
+    spotlight.style.left =
+      r.left + 'px';
+
+    spotlight.style.top =
+      r.top + 'px';
+
+    spotlight.style.width =
+      r.width + 'px';
+
+    spotlight.style.height =
+      r.height + 'px';
+
+    spotlight.style.borderRadius =
+      Math.min(
+        20,
+        Math.max(
+          10,
+          r.height / 5
+        )
+      ) + 'px';
+
+  }
+
+  /* ==========================================================
+     ARROW
+     ========================================================== */
+
+  function moveArrow(target,step){
+
+    const r =
+      getRect(target);
+
+    if(!r){
+      arrow.classList.remove('show');
+      return;
+    }
+
+    let x =
+      r.left +
+      r.width / 2 -
+      26;
+
+    let y;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      y =
+        Math.min(
+          window.innerHeight - 65,
+          r.bottom + 14
+        );
+
+      arrow.textContent = '↓';
+
+    }else{
+
+      y =
+        Math.max(
+          12,
+          r.top - 66
+        );
+
+      arrow.textContent = '↑';
+
+    }
+
+    x =
+      Math.max(
+        8,
+        Math.min(
+          window.innerWidth - 60,
+          x
+        )
+      );
+
+    arrow.style.left =
+      x + 'px';
+
+    arrow.style.top =
+      y + 'px';
+
+    arrow.classList.add('show');
+
+  }
+
+  /* ==========================================================
+     LABEL
+     ========================================================== */
+
+  function moveLabel(target,step){
+
+    const r =
+      getRect(target);
+
+    if(
+      !r ||
+      window.innerWidth <= 600
+    ){
+
+      label.classList.remove('show');
+      return;
+
+    }
+
+    label.textContent =
+      step.label;
+
+    let x =
+      r.left +
+      r.width / 2 -
+      45;
+
+    let y;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      y =
+        Math.min(
+          window.innerHeight - 40,
+          r.bottom + 8
+        );
+
+    }else{
+
+      y =
+        Math.max(
+          8,
+          r.top - 32
+        );
+
+    }
+
+    x =
+      Math.max(
+        8,
+        Math.min(
+          window.innerWidth - 110,
+          x
+        )
+      );
+
+    label.style.left =
+      x + 'px';
+
+    label.style.top =
+      y + 'px';
+
+    label.classList.add('show');
+
+  }
+
+  /* ==========================================================
+     CARD POSITION
+     ========================================================== */
+
+  function moveCard(target,step){
+
+    /*
+     * On mobile the card stays at the bottom,
+     * keeping the target completely visible.
+     */
+
+    if(window.innerWidth <= 600){
+
+      card.style.left = '';
+      card.style.right = '';
+      card.style.top = '';
+      card.style.bottom = '15px';
+
+      return;
+
+    }
+
+    const r =
+      getRect(target);
+
+    if(!r) return;
+
+    const cardWidth =
+      Math.min(
+        390,
+        window.innerWidth - 28
+      );
+
+    let left =
+      r.left +
+      r.width / 2 -
+      cardWidth / 2;
+
+    let top;
+
+    if(
+      step.position === 'bottom'
+    ){
+
+      top =
+        r.bottom + 18;
+
+    }else{
+
+      top =
+        r.top - 185;
+
+    }
+
+    /*
+     * If there isn't enough space above,
+     * put the card below.
+     */
+
+    if(top < 12){
+
+      top =
+        r.bottom + 18;
+
+    }
+
+    /*
+     * If there isn't enough space below,
+     * put it above.
+     */
+
+    if(
+      top + 180 >
+      window.innerHeight
+    ){
+
+      top =
+        r.top - 190;
+
+    }
+
+    left =
+      Math.max(
+        14,
+        Math.min(
+          window.innerWidth -
+          cardWidth -
+          14,
+          left
+        )
+      );
+
+    top =
+      Math.max(
+        12,
+        Math.min(
+          window.innerHeight -
+          190,
+          top
+        )
+      );
+
+    card.style.width =
+      cardWidth + 'px';
+
+    card.style.left =
+      left + 'px';
+
+    card.style.right =
+      'auto';
+
+    card.style.top =
+      top + 'px';
+
+    card.style.bottom =
+      'auto';
+
+  }
+
+  /* ==========================================================
+     MOVE EVERYTHING
+     ========================================================== */
+
+  function updateVisuals(){
+
+    if(
+      !running ||
+      current < 0
+    ){
+      return;
+    }
+
+    const step =
+      steps[current];
+
+    const target =
+      findTarget(step);
+
+    if(!target){
+      return;
+    }
+
+    moveSpotlight(target);
+    moveArrow(target,step);
+    moveLabel(target,step);
+    moveCard(target,step);
+
+  }
+
+  /* ==========================================================
+     REMOVE TARGET
+     ========================================================== */
+
+  function clearTargets(){
+
+    document
+      .querySelectorAll(
+        '.amh-tour-target'
+      )
+      .forEach(el=>{
+
+        el.classList.remove(
+          'amh-tour-target'
+        );
+
+      });
+
+  }
+
+  /* ==========================================================
+     SHOW STEP
+     ========================================================== */
+
+  function showStep(index){
+
+    if(
+      index < 0 ||
+      index >= steps.length
+    ){
+      return;
+    }
+
+    const step =
+      steps[index];
+
+    const target =
+      findTarget(step);
+
+    if(!target){
+
+      /*
+       * If a target is missing,
+       * continue gracefully.
+       */
+
+      return;
+
+    }
+
+    clearTargets();
+
+    current = index;
+    running = true;
+
+    target.classList.add(
+      'amh-tour-target'
+    );
+
+    icon.textContent =
+      step.icon;
+
+    stepEl.textContent =
+      `الخطوة ${index + 1}`;
+
+    title.textContent =
+      step.title;
+
+    description.textContent =
+      step.text;
+
+    updateProgress(index);
+
+    tour.classList.add(
+      'is-active'
+    );
+
+    tour.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    /*
+     * Smooth entrance.
+     */
+
+    card.classList.remove(
+      'show'
+    );
+
+    requestAnimationFrame(()=>{
+
+      updateVisuals();
+
+      requestAnimationFrame(()=>{
+
+        card.classList.add(
+          'show'
+        );
+
+      });
+
+    });
+
+    /*
+     * Scroll hint appears during
+     * the first several steps.
+     */
+
+    if(index < steps.length - 1){
+
+      scrollHint.classList.add(
+        'show'
+      );
+
+      clearTimeout(
+        window.__amhTourHintTimer
+      );
+
+      window.__amhTourHintTimer =
+        setTimeout(()=>{
+
+          scrollHint.classList.remove(
+            'show'
+          );
+
+        },2800);
+
+    }else{
+
+      scrollHint.classList.remove(
+        'show'
+      );
+
+    }
+
+  }
+
+  /* ==========================================================
+     CLOSE
+     ========================================================== */
+
+  function closeTour(save=true){
+
+    running = false;
+
+    clearTargets();
+
+    card.classList.remove(
+      'show'
+    );
+
+    arrow.classList.remove(
+      'show'
+    );
+
+    label.classList.remove(
+      'show'
+    );
+
+    spotlight.style.opacity =
+      '0';
+
+    scrollHint.classList.remove(
+      'show'
+    );
+
+    tour.classList.remove(
+      'is-active'
+    );
+
+    tour.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    if(save){
+      markCompleted();
+    }
+
+  }
+
+  /* ==========================================================
+     COMPLETE SCREEN
+     ========================================================== */
+
+  function showComplete(){
+
+    clearTimeout(
+      finishTimer
+    );
+
+    closeTour(false);
+
+    complete.classList.add(
+      'show'
+    );
+
+    complete.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    markCompleted();
+
+  }
+
+  function closeComplete(){
+
+    complete.classList.remove(
+      'show'
+    );
+
+    complete.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    markCompleted();
+
+  }
+
+  /* ==========================================================
+     DETERMINE CURRENT STEP FROM PAGE SCROLL
+     ========================================================== */
+
+  function calculateStep(){
+
+    const doc =
+      document.documentElement;
+
+    const maxScroll =
+      Math.max(
+        1,
+        doc.scrollHeight -
+        window.innerHeight
+      );
+
+    const ratio =
+      window.scrollY /
+      maxScroll;
+
+    let index = 0;
+
+    for(
+      let i = 0;
+      i < steps.length;
+      i++
+    ){
+
+      if(
+        ratio >= steps[i].start
+      ){
+        index = i;
+      }
+
+    }
+
+    return index;
+
+  }
+
+  /* ==========================================================
+     SCROLL ENGINE
+     ========================================================== */
+
+  function handleScroll(){
+
+    if(
+      !running ||
+      !initialized
+    ){
+      return;
+    }
+
+    if(scrollRAF){
+      return;
+    }
+
+    scrollRAF =
+      requestAnimationFrame(()=>{
+
+        scrollRAF = 0;
+
+        const next =
+          calculateStep();
+
+        if(
+          next !== current
+        ){
+
+          showStep(next);
+
+        }else{
+
+          updateVisuals();
+
+        }
+
+        /*
+         * End of page.
+         */
+
+        const doc =
+          document.documentElement;
+
+        const nearBottom =
+          window.scrollY +
+          window.innerHeight >=
+          doc.scrollHeight - 80;
+
+        if(
+          nearBottom &&
+          current === steps.length - 1
+        ){
+
+          finishTimer =
+            setTimeout(
+              showComplete,
+              650
+            );
+
+        }
+
+      });
+
+  }
+
+  /* ==========================================================
+     USER INTERACTION
+     ========================================================== */
+
+  close.addEventListener(
+    'click',
+    ()=>{
+      closeTour(true);
+    }
+  );
+
+  completeClose.addEventListener(
+    'click',
+    closeComplete
+  );
+
+  /*
+   * ESC closes the tour.
+   */
+
+  document.addEventListener(
+    'keydown',
+    event=>{
+
+      if(
+        event.key === 'Escape' &&
+        running
+      ){
+
+        closeTour(true);
+
+      }
+
+    }
+  );
+
+  /*
+   * Clicking the backdrop closes it.
+   */
+
+  tour
+    .querySelector('.amh-tour-backdrop')
+    ?.addEventListener(
+      'click',
+      ()=>{
+        closeTour(true);
+      }
+    );
+
+  /*
+   * Keep the target in view if the
+   * user manually resizes the window.
+   */
+
+  window.addEventListener(
+    'resize',
+    ()=>{
+      if(running){
+        updateVisuals();
+      }
+    },
+    {passive:true}
+  );
+
+  window.addEventListener(
+    'scroll',
+    handleScroll,
+    {passive:true}
+  );
+
+  /* ==========================================================
+     START
+     ========================================================== */
+
+  function start(){
+
+    if(wasCompleted()){
+      return;
+    }
+
+    buildProgress();
+
+    initialized = true;
+
+    /*
+     * Don't block the first page.
+     * Give the user a short introduction,
+     * then the scroll controls the tour.
+     */
+
+    setTimeout(()=>{
+
+      if(
+        wasCompleted()
+      ){
+        return;
+      }
+
+      const first =
+        findTarget(steps[0]);
+
+      if(!first){
+        return;
+      }
+
+      showStep(0);
+
+      scrollHint.classList.add(
+        'show'
+      );
+
+      setTimeout(()=>{
+
+        scrollHint.classList.remove(
+          'show'
+        );
+
+      },4000);
+
+    },1500);
+
+  }
+
+  /*
+   * Wait until the current site has loaded.
+   */
+
+  if(
+    document.readyState ===
+    'loading'
+  ){
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      start,
+      {once:true}
+    );
+
+  }else{
+
+    start();
+
+  }
+
+  /*
+   * Developer/testing helper.
+   *
+   * From console:
+   * window.resetAMHScrollTour()
+   */
+
+  window.resetAMHScrollTour =
+    function(){
+
+      try{
+        localStorage.removeItem(
+          TOUR_KEY
+        );
+      }catch(e){}
+
+      location.reload();
+
+    };
+
+})();
+</script>
+
+<!-- AMH_SCROLL_TOUR_END -->
+</body>
+</html>

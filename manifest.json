@@ -1,7 +1,7 @@
 {
   "name": "Alazhar City",
   "short_name": "Alazhar City",
-  "description": "سوبرماركت وصيدلية لطلبة جامعة الأزهر — الحي السادس مدينة نصر",
+  "description": "اطلب من متاجر الحي السادس في مدينة نصر وتابع طلبك لحد بابك",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "./index.html",
@@ -30,8 +30,5 @@
       "purpose": "maskable"
     }
   ],
-  "display_override": [
-    "fullscreen",
-    "standalone"
-  ]
+  "display_override": ["standalone"]
 }

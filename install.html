@@ -73,7 +73,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
 
 <header>
   <div class="wrap bar">
-    <img src="./images/logo.webp" alt="شعار Alazhar City Delivery" width="40" height="40">
+      <img src="./images/rider-bike-logo.svg" alt="شعار الأزهر على عجلة" width="40" height="40">
     <b>ALAZHAR CITY</b>
     <a class="back" href="./index.html">‹ ارجع للمتجر</a>
   </div>
@@ -85,33 +85,10 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
     <h1>نزّل التطبيق على موبايلك<br>في أقل من نص دقيقة</h1>
     <p>من غير متجر تطبيقات ومن غير مساحة كبيرة — أيقونة على شاشتك وتطلب بضغطة.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;position:relative;z-index:2">
-      <button class="cta" id="installNow">🛒 تطبيق المتجر والطلبات</button>
-      <a href="./rider.html" class="cta" style="background:#111e19;color:#fff;text-decoration:none">🛵 تطبيق المندوب (App)</a>
-      <a href="./store.html" class="cta" style="background:#0a8150;color:#fff;text-decoration:none">🏪 تطبيق التاجر (App)</a>
+      <button class="cta" id="installNow">🛒 نزّل تطبيق الأزهر</button>
     </div>
     <span class="hint" id="hint"></span>
   </section>
-
-  <div style="background:#fff;border-radius:18px;padding:16px 18px;margin-top:14px;box-shadow:var(--sh);border:1px solid var(--line)">
-    <b style="display:block;font-size:1rem;color:var(--ink);margin-bottom:6px">📌 تطبيقات المنظومة المستقلة:</b>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px">
-      <div style="background:var(--bg);padding:12px;border-radius:12px">
-        <b style="color:var(--ink)">🛒 تطبيق العميل والطلاب</b>
-        <small style="display:block;color:var(--muted)">تصفح المنتجات وطلب السوبرماركت والصيدلية وتتبع التوصيل.</small>
-        <a href="./index.html" style="font-size:0.8rem;display:inline-block;margin-top:6px">فتح المتجر ‹</a>
-      </div>
-      <div style="background:#f0fdf4;border:1px solid #bbf7d0;padding:12px;border-radius:12px">
-        <b style="color:#166534">🛵 تطبيق المندوب الخاص (Rider)</b>
-        <small style="display:block;color:#166534">محمي بتسجيل دخول كباتن، حساب رحلاتك ومحفظتك الخاصة معزول تماماً عن التاجر.</small>
-        <a href="./rider.html" style="font-size:0.8rem;color:#166534;display:inline-block;margin-top:6px">فتح تطبيق المندوب ‹</a>
-      </div>
-      <div style="background:#eff6ff;border:1px solid #bfdbfe;padding:12px;border-radius:12px">
-        <b style="color:#1e40af">🏪 تطبيق التاجر والمتجر (Store)</b>
-        <small style="display:block;color:#1e40af">محمي بكلمة سر المتجر لاستقبال وتجهيز الطلبات الحية وطباعة البونات دون تدخل من المندوب.</small>
-        <a href="./store.html" style="font-size:0.8rem;color:#1e40af;display:inline-block;margin-top:6px">فتح تطبيق التاجر ‹</a>
-      </div>
-    </div>
-  </div>
 
   <div class="done" id="done">✅ التطبيق متثبت عندك بالفعل. افتحه من أيقونة الشاشة الرئيسية.</div>
 
@@ -245,16 +222,6 @@ btn.addEventListener('click', async () => {
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')){
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
-</script>
-
-<script>
-document.addEventListener('click', function (e) {
-  const btn = e.target.closest('#installNow');
-  if (!btn) return;
-  e.preventDefault();
-  e.stopPropagation();
-  location.href = './downloads/client/AlazharCity.apk';
-}, true);
 </script>
 
 </body>
