@@ -391,14 +391,11 @@ textarea{resize:none}
 .account-sheet{top:0;right:0;left:auto;bottom:0;width:min(100%,470px);max-width:none;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;margin:0;padding:18px 18px calc(18px + var(--safe-b));border-radius:0;transform:translateX(100%);box-shadow:-18px 0 55px rgba(7,20,13,.2);overflow-y:auto;overscroll-behavior:contain}
 .account-sheet.open{transform:translateX(0)}
 .account-ph{position:sticky;top:-18px;z-index:5;padding:5px 0 12px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.account-menu-shell{position:sticky;top:58px;z-index:4;margin:12px 0;background:#fff}
-.account-nav-toggle{width:100%;min-height:45px;display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid #dfe8e3;border-radius:13px;background:#f8faf8;color:var(--ink);font-size:.8rem;font-weight:900;text-align:right}
-.account-nav-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-.account-nav-chevron{margin-right:auto;color:var(--muted);transition:transform .18s}
-.account-nav-toggle[aria-expanded="true"] .account-nav-chevron{transform:rotate(180deg)}
-.account-quick-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:7px;padding:9px;border:1px solid #e3ebe6;border-radius:14px;background:#fff;box-shadow:0 10px 24px rgba(16,34,26,.08)}
-.account-quick-nav[hidden]{display:none}
-.account-quick-nav button{min-height:39px;padding:8px 10px;border:1px solid #e4ebe6;border-radius:11px;background:#f8faf8;color:var(--ink);font-size:.72rem;font-weight:800;text-align:right;touch-action:manipulation}
+.account-menu-shell{margin:12px 0;background:#fff}
+.account-quick-nav{display:grid;grid-template-columns:1fr;gap:7px;padding:10px;border:1px solid #e3ebe6;border-radius:15px;background:#fff;box-shadow:0 10px 24px rgba(16,34,26,.08)}
+.account-quick-nav button{min-height:46px;display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #e4ebe6;border-radius:12px;background:#f8faf8;color:var(--ink);font-size:.8rem;font-weight:850;text-align:right;touch-action:manipulation}
+.account-quick-nav button::after{content:'‹';margin-inline-start:auto;color:var(--brand);font-size:1.15rem}
+.account-quick-nav button:focus-visible{outline:3px solid #16845b55;outline-offset:2px}
 .account-menu-section{scroll-margin-top:122px;margin-top:14px}
 .account-wide-link{width:100%;text-decoration:none}
 .account-info-card{display:flex;align-items:flex-start;gap:11px;padding:14px;border:1px solid #e1e9e4;border-radius:16px;background:linear-gradient(140deg,#fff,#f7faf8)}
@@ -646,13 +643,12 @@ textarea{resize:none}
   <div class="ph account-ph"><div><span class="eyebrow">ALAZHAR CITY · ACCOUNT</span><h2 id="accountTitle">حسابك في مكان واحد</h2><p class="account-subtitle">بياناتك، عناوينك، وطلباتك محفوظة علشان كل مرة تطلب فيها تبقى أسهل.</p></div><button class="close" data-close aria-label="إغلاق">&times;</button></div>
   <div id="accountLoggedIn" style="display:none">
     <div class="account-menu-shell">
-      <button type="button" id="accountNavToggle" class="account-nav-toggle" aria-expanded="false" aria-controls="accountQuickNav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>قائمة حسابك</span><span class="account-nav-chevron" aria-hidden="true">⌄</span></button>
-      <nav id="accountQuickNav" class="account-quick-nav" aria-label="أقسام حساب العميل" hidden>
-        <button type="button" data-account-scroll="accountProfileSection">حسابي</button>
-        <button type="button" data-account-scroll="accountOrdersSection">سجل الطلبات</button>
-        <button type="button" data-account-scroll="accountPaymentSection">الدفع</button>
-        <button type="button" data-account-scroll="accountSettingsSection">الإعدادات</button>
-        <button type="button" data-account-scroll="accountAboutSection">عنّا</button>
+      <nav id="accountQuickNav" class="account-quick-nav" aria-label="أقسام حساب العميل">
+        <button type="button" data-account-scroll="accountProfileSection"><span aria-hidden="true">👤</span>حسابي وبياناتي</button>
+        <button type="button" data-account-scroll="accountOrdersSection"><span aria-hidden="true">📦</span>سجل الطلبات</button>
+        <button type="button" data-account-scroll="accountPaymentSection"><span aria-hidden="true">💵</span>الفلوس والحسابات</button>
+        <button type="button" data-account-scroll="accountSettingsSection"><span aria-hidden="true">⚙️</span>الإعدادات والعناوين</button>
+        <button type="button" data-account-scroll="accountAboutSection"><span aria-hidden="true">ℹ️</span>معلومات عنّا</button>
       </nav>
     </div>
     <div class="account-profile-card" id="accountProfileSection"><div class="account-avatar-wrap"><img id="custProfilePhoto" class="account-avatar" alt="صورة الحساب" style="display:none"><div id="custProfileAvatar" class="account-avatar-fallback">A</div></div><div class="account-profile-main"><div class="account-name-row"><b id="custProfileName">اسم العميل</b><span id="custRoleBadge" class="account-role-badge">عميل</span></div><div id="custProfileEmail" class="account-email"></div><div id="custProfilePhone" class="account-phone"></div></div><button type="button" id="btnCustLogout" class="ghost-danger">تسجيل الخروج</button></div>
@@ -1013,7 +1009,9 @@ const panels = ['cartPanel','specialPanel','helpPanel','installPanel','accountPa
 let lastFocus = null;
 function openPanel(id){
   closeAll(true); lastFocus = document.activeElement;
-  $('#'+id).classList.add('open'); $('#overlay').classList.add('open'); document.body.classList.add('lock');
+  const panel=$('#'+id);
+  if(id==='accountPanel') panel.scrollTop=0;
+  panel.classList.add('open'); $('#overlay').classList.add('open'); document.body.classList.add('lock');
   const t = $('#'+id).querySelector('textarea, [data-close]'); setTimeout(() => t && t.focus(), 60);
 }
 function closeAll(keep){
@@ -1641,16 +1639,10 @@ $('#openAccountBtn').addEventListener('click', () => {
   renderCustomerAuthUI();
   openPanel('accountPanel');
 });
-$('#accountNavToggle')?.addEventListener('click', () => {
-  const nav=$('#accountQuickNav'),button=$('#accountNavToggle');
-  const open=button.getAttribute('aria-expanded')!=='true';
-  button.setAttribute('aria-expanded',String(open));nav.hidden=!open;
-});
 $('#accountQuickNav')?.addEventListener('click', event => {
   const button=event.target.closest('[data-account-scroll]');if(!button)return;
   const target=document.getElementById(button.dataset.accountScroll);if(!target)return;
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
-  $('#accountQuickNav').hidden=true;$('#accountNavToggle').setAttribute('aria-expanded','false');
 });
 function openReturnedAccount(){
   if(new URLSearchParams(location.search).get('openAccount')!=='1'||!authUserView())return;
