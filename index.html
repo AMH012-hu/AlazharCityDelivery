@@ -1509,7 +1509,9 @@ $('#custRegisterForm').addEventListener('submit', async e => {
       lat: currentGpsCoords?.lat,
       lng: currentGpsCoords?.lng
     });
-    toast(`مرحباً بك يا ${name}! تم إنشاء الحساب. راجع بريدك الإلكتروني لتفعيل الحساب ✉️`);
+    toast(res.verificationSent === false
+      ? `أهلًا بيك يا ${name}! الحساب اتعمل، بس رسالة التفعيل ماوصلتش. تقدر تعيد إرسالها من حسابك.`
+      : `مرحباً بك يا ${name}! تم إنشاء الحساب. راجع بريدك الإلكتروني لتفعيل الحساب ✉️`);
     renderCustomerAuthUI();
   } catch (err) {
     errEl.textContent = ACDCloud.authError(err);

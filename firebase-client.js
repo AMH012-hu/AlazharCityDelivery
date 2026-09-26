@@ -57,6 +57,7 @@ let currentClaims = {};
 let stopOrderListeners = [];
 let persistenceReady = false;
 let foregroundPushBound = false;
+let customerSignupInProgress = false;
 
 const ROLE_CUSTOMER = 'customer';
 const PRIVILEGED_ROLES = new Set(['admin', 'store', 'rider']);
@@ -130,6 +131,9 @@ function readableAuthError(error) {
     'NAME_REQUIRED': 'اكتب الاسم بالكامل.',
     'PHONE_INVALID': 'رقم الموبايل غير صحيح.',
     'auth/network-request-failed': 'تعذر الاتصال بخدمة تسجيل الدخول. تحقق من الإنترنت وحاول مرة أخرى.',
+    'permission-denied': 'تعذر حفظ بيانات الحساب. تحقق من اتصال الإنترنت ثم سجّل الدخول مرة أخرى.',
+    'unavailable': 'خدمة الحساب غير متاحة مؤقتًا. تحقق من الإنترنت وحاول مرة أخرى.',
+    'SIGN_UP_IN_PROGRESS': 'جارٍ إنشاء الحساب بالفعل. انتظر لحظة قبل المحاولة مرة أخرى.',
     'auth/requires-recent-login': 'لأسباب أمنية، سجّل الدخول مرة أخرى ثم أعد المحاولة.',
     'auth/operation-not-allowed': 'طريقة تسجيل الدخول المطلوبة غير مفعلة في Firebase Authentication.',
     'functions/unauthenticated': 'سجّل دخولك من جديد ثم حاول الإرسال.',
@@ -221,7 +225,6 @@ async function signIn(preferredRole) {
   void preferredRole;
   await ensurePersistence();
   sessionStorage.setItem('acd-google-auth-intent','1');
-  if (isLikelyMobile()) { await signInWithRedirect(auth, googleProvider); return { redirecting: true }; }
   try {
     const result = await signInWithPopup(auth, googleProvider);
     sessionStorage.removeItem('acd-google-auth-intent');
@@ -230,7 +233,6 @@ async function signIn(preferredRole) {
     await syncCurrentProfile();
     return { user: currentUser, profile: currentProfile };
   } catch (error) {
-    if (error?.code==='auth/popup-blocked' || error?.code==='auth/cancelled-popup-request') { await signInWithRedirect(auth,googleProvider); return {redirecting:true}; }
     sessionStorage.removeItem('acd-google-auth-intent');
     throw error;
   }
@@ -249,42 +251,53 @@ async function signUpWithEmail(email, password, displayName, phone, addressObj =
   const cleanEmail = String(email || '').trim().toLowerCase();
   if (!cleanEmail) throw new Error('auth/invalid-email');
   if (String(password || '').length < 8) throw new Error('auth/weak-password');
+  if (customerSignupInProgress) throw new Error('SIGN_UP_IN_PROGRESS');
 
-  const cred = await createUserWithEmailAndPassword(auth, cleanEmail, password);
-  currentUser = cred.user;
+  customerSignupInProgress = true;
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, cleanEmail, password);
+    currentUser = cred.user;
 
-  const safeName = String(displayName || '').trim().slice(0, 80);
-  const safePhone = String(phone || '').replace(/\D/g, '').slice(0, 15);
-  if (safeName) {
-    try { await updateProfile(currentUser, { displayName: safeName }); } catch (_) {}
-  }
+    const safeName = String(displayName || '').trim().slice(0, 80);
+    const safePhone = String(phone || '').replace(/\D/g, '').slice(0, 15);
+    if (safeName) {
+      try { await updateProfile(currentUser, { displayName: safeName }); } catch (_) {}
+    }
 
-  let savedAddresses = [];
-  if (addressObj && (addressObj.address || addressObj.lat || addressObj.lng)) {
-    savedAddresses.push({
-      id: window.crypto?.randomUUID?.() || `addr-${Date.now().toString(36)}`,
-      label: String(addressObj.label || 'السكن').slice(0, 40),
-      address: String(addressObj.address || '').slice(0, 250),
-      lat: Number.isFinite(addressObj.lat) ? addressObj.lat : null,
-      lng: Number.isFinite(addressObj.lng) ? addressObj.lng : null,
-      isDefault: true
+    let savedAddresses = [];
+    if (addressObj && (addressObj.address || addressObj.lat || addressObj.lng)) {
+      savedAddresses.push({
+        id: window.crypto?.randomUUID?.() || `addr-${Date.now().toString(36)}`,
+        label: String(addressObj.label || 'السكن').slice(0, 40),
+        address: String(addressObj.address || '').slice(0, 250),
+        lat: Number.isFinite(addressObj.lat) ? addressObj.lat : null,
+        lng: Number.isFinite(addressObj.lng) ? addressObj.lng : null,
+        isDefault: true
+      });
+    }
+
+    await setDoc(doc(db, 'users', currentUser.uid), {
+      role: ROLE_CUSTOMER,
+      name: safeName || 'عميل الأزهر',
+      email: cleanEmail,
+      phone: safePhone,
+      savedAddresses,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
     });
+
+    // The signup flow owns the first profile write; skip the auth listener's
+    // automatic profile bootstrap until this write completes to avoid a race.
+    let verificationSent = true;
+    try { await sendEmailVerification(currentUser); }
+    catch (error) { verificationSent = false; console.warn('Signup succeeded, but the verification email could not be sent.', error?.code || error); }
+    await syncCurrentProfile({createIfMissing: false});
+    const result = { user: currentUser, profile: currentProfile, verificationSent };
+    window.dispatchEvent(new CustomEvent('acd-auth-change', { detail: { user: currentUser, profile: currentProfile, claims: { ...currentClaims } } }));
+    return result;
+  } finally {
+    customerSignupInProgress = false;
   }
-
-  await setDoc(doc(db, 'users', currentUser.uid), {
-    role: ROLE_CUSTOMER,
-    name: safeName || 'عميل الأزهر',
-    email: cleanEmail,
-    phone: safePhone,
-    savedAddresses,
-    createdAt: serverTimestamp(),
-    updatedAt: serverTimestamp()
-  });
-
-  // Email verification is a normal production account-control step.
-  await sendEmailVerification(currentUser);
-  await syncCurrentProfile({createIfMissing: false});
-  return { user: currentUser, profile: currentProfile };
 }
 
 async function signInWithEmail(email, password) {
@@ -780,9 +793,11 @@ window.ACDCloud = {
     }
   } catch(err){ console.error('ACD Google redirect sign-in failed:',err); window.dispatchEvent(new CustomEvent('acd-auth-error',{detail:{code:err?.code||'',message:readableAuthError(err)}})); }
   onAuthStateChanged(auth,async user=>{
+    const signupOwnsProfile = Boolean(user && customerSignupInProgress);
     stopAllOrderListeners(); currentUser=user;
-    try{ if(user){ await getClaims(user,true); await syncCurrentProfile({createIfMissing:true}); } else { currentProfile=null; currentClaims={}; } }
+    try{ if(user){ await getClaims(user,true); if(!signupOwnsProfile) await syncCurrentProfile({createIfMissing:true}); } else { currentProfile=null; currentClaims={}; } }
     catch(err){ console.error('ACD auth initialization failed:',err); currentProfile=null; currentClaims={}; window.dispatchEvent(new CustomEvent('acd-auth-error',{detail:{code:err?.code||'',message:readableAuthError(err)}})); }
+    if(signupOwnsProfile)return;
     window.dispatchEvent(new CustomEvent('acd-auth-change',{detail:{user:currentUser,profile:currentProfile,claims:currentClaims}})); emitProfile();
   });
 })();

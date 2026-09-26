@@ -317,14 +317,16 @@ $('#registerForm').addEventListener('submit', async event => {
   setBusy(button, true, 'جارٍ إنشاء الحساب');
   registrationInProgress = true;
   try {
-    await window.ACDCloud.signUpWithEmail(
+    const result = await window.ACDCloud.signUpWithEmail(
       $('#regEmail').value.trim(),
       $('#regPassword').value,
       $('#regName').value.trim(),
       $('#regPhone').value.trim(),
       null
     );
-    setMessage(message, 'الحساب اتعمل. فعّل بريدك الإلكتروني، وجاري فتح المتجر…', true);
+    setMessage(message, result.verificationSent === false
+      ? 'الحساب اتعمل، لكن تعذر إرسال رسالة التفعيل. افتح حسابك لإعادة إرسالها.'
+      : 'الحساب اتعمل. فعّل بريدك الإلكتروني، وجاري فتح المتجر…', true);
     registrationInProgress = false;
     window.setTimeout(go, 900);
   } catch (error) {
@@ -352,7 +354,29 @@ $('#resetBtn').addEventListener('click', async () => {
 
 window.addEventListener('acd-auth-google-complete', go);
 window.addEventListener('acd-auth-change', event => {
-  if (!registrationInProgress && event.detail && event.detail.user) go();
+  if (registrationInProgress) return;
+  if (event.detail && event.detail.user) {
+    if (event.detail.profile) {
+      go();
+    } else if (!$('#loginMsg').textContent.trim()) {
+      setMessage($('#loginMsg'), 'حسابك اتعرف، بس ماقدرناش نحمّل بياناته. راجع اتصال الإنترنت وحاول تاني.', false);
+    }
+    return;
+  }
+
+  // On mobile Google sign-in returns to this page. If Firebase finishes the
+  // redirect without a user, make the cancelled/unfinished attempt visible.
+  if (sessionStorage.getItem('acd-google-auth-intent') === '1') {
+    sessionStorage.removeItem('acd-google-auth-intent');
+    setBusy($('#googleBtn'), false, 'المتابعة باستخدام Google');
+    setMessage($('#loginMsg'), 'تسجيل الدخول بجوجل ماكملش. جرّب تاني أو سجّل دخولك بالبريد الإلكتروني.', false);
+  }
+});
+window.addEventListener('acd-auth-error', event => {
+  if (registrationInProgress || redirecting) return;
+  sessionStorage.removeItem('acd-google-auth-intent');
+  setBusy($('#googleBtn'), false, 'المتابعة باستخدام Google');
+  setMessage($('#loginMsg'), event.detail?.message || 'حصلت مشكلة وإحنا بنسجّل دخولك. جرّب تاني.', false);
 });
 window.setTimeout(() => {
   if (window.ACDCloud && window.ACDCloud.user && window.ACDCloud.user()) go();
