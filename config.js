@@ -19,7 +19,7 @@ let CONFIG = {
     hideUnpriced: false,
     autoImages: true,                // يحمّل صورة كل منتج تلقائيًا من images/products/<كود-المنتج>.webp
     imageDir: 'images/products/',
-    imageVersion: '2'                // غيّره (2، 3...) لما تبدّل صور عشان الكاش
+    imageVersion: '3'                // غيّره (2، 3...) لما تبدّل صور عشان الكاش
 };
 
 /* متاجر الحي السادس — المتاجر الجديدة تظهر للعميل عند إضافة منتجاتها من البوابة. */
