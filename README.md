@@ -32,3 +32,9 @@
 ## Production authentication
 
 See [`README_PRODUCTION_AUTH.md`](./README_PRODUCTION_AUTH.md) for the Firebase Authentication, email verification, password reset, role provisioning, and Firestore security setup.
+
+## تطبيق أندرويد قابل للتنزيل
+
+- تنزيل APK: [AlazharCity.apk](downloads/client/AlazharCity.apk)
+- مشروع Android Studio: [android/](android/)
+- لمعالجة شريط Chrome في نسخة TWA: [خطوات Digital Asset Links](TWA_ASSET_LINKS.md)

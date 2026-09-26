@@ -35,6 +35,12 @@ header{background:#fff;box-shadow:0 1px 0 var(--line);position:sticky;top:0;z-in
 .hero .ph{position:absolute;left:18px;top:14px;font-size:4.6rem;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));z-index:1}
 .cta{border:0;background:#fff;color:var(--ink);font-weight:900;border-radius:26px;padding:12px 26px;font-size:1rem;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .cta:disabled{opacity:.7;cursor:default}
+.apk-cta{display:inline-flex;align-items:center;text-decoration:none;line-height:1.5}
+.apk-download-card{margin:10px 0 16px;padding:16px;border:1px solid #b8ead2;border-radius:18px;background:linear-gradient(145deg,#fff,#f0fbf5);box-shadow:var(--sh)}
+.apk-download-card h3{margin:0 0 4px;font-size:1rem;font-weight:900}
+.apk-download-card p{margin:0 0 12px;color:var(--muted);font-size:.85rem;font-weight:600}
+.apk-download-card .apk-cta{background:var(--green);color:#fff}
+.apk-download-card small{display:block;margin-top:9px;color:var(--muted);font-size:.74rem}
 .hint{display:block;margin-top:10px;font-size:.78rem;opacity:.9;position:relative}
 
 .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
@@ -82,10 +88,11 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
 <main class="wrap">
   <section class="hero">
     <span class="ph" aria-hidden="true">📲</span>
-    <h1>نزّل التطبيق على موبايلك<br>في أقل من نص دقيقة</h1>
-    <p>من غير متجر تطبيقات ومن غير مساحة كبيرة — أيقونة على شاشتك وتطلب بضغطة.</p>
+    <h1>الأزهر على عجلة معاك على موبايلك</h1>
+    <p>ثبّت موقعنا على شاشتك، أو نزّل نسخة Android كملف APK من المشروع الرسمي على GitHub.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;position:relative;z-index:2">
       <button class="cta" id="installNow">🛒 نزّل تطبيق الأزهر</button>
+      <a class="cta apk-cta" href="./downloads/client/AlazharCity.apk" download="AlazharCity.apk" aria-label="تنزيل تطبيق الأزهر على عجلة لأندرويد بصيغة APK">📦 تنزيل نسخة Android (APK)</a>
     </div>
     <span class="hint" id="hint"></span>
   </section>
@@ -107,6 +114,8 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
 
   <!-- Android -->
   <section class="panel" id="p-android" role="tabpanel">
+    <div class="apk-download-card"><h3>عايز التطبيق كملف على أندرويد؟</h3><p>نزّل النسخة المثبتة في المشروع على GitHub. بعد التنزيل، افتح الملف وكمّل خطوات التثبيت اللي بيعرضها Android.</p><a class="cta apk-cta" href="./downloads/client/AlazharCity.apk" download="AlazharCity.apk">📦 تنزيل APK لأندرويد</a><small>لو حمّلت التحديث يدويًا بعدين، Android هيسألك تأكد تثبيت الإصدار الجديد.</small></div>
+    <p class="tip"><b>أو ثبّت الموقع من غير ملف:</b> اتبع الخطوات اللي تحت لإضافة أيقونة سريعة من Chrome للشاشة الرئيسية.</p>
     <ol class="steps">
       <li><div><b>افتح الموقع في متصفح Chrome</b><small>لازم تفتحه من كروم مش من جوه تطبيق تاني (زي فيسبوك أو واتساب).</small></div></li>
       <li><div><b>دوس على زرار «نزّل التطبيق دلوقتي» فوق</b><small>لو ظهرت لك رسالة «تثبيت» دوس <span class="ic">تثبيت</span>.</small></div></li>
@@ -142,8 +151,8 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px}
 
   <h2>أسئلة شائعة</h2>
   <details>
-    <summary>هل أحتاج لتحميل ملف APK لتشغيل التطبيق على أندرويد؟</summary>
-    <p>لا تحتاج لتحميل ملف APK يدويًا أو تفعيل «تثبيت من مصادر غير معروفة»! التطبيق مبني بأحدث تقنيات الويب التقدمي (PWA) المعتمدة من Google؛ بمجرد الضغط على زر «تثبيت التطبيق» من متصفح Google Chrome، سيتم تثبيت التطبيق فورًا على شاشة هاتفك مع أيقونته الرسمية ويعمل ملء الشاشة وبدون أي إعلانات أو متجر، ويتحدث تلقائيًا مع كل تعديل.</p>
+    <summary>أستخدم نسخة APK ولا أضيف الموقع للشاشة؟</summary>
+    <p>تقدر تنزّل نسخة Android من الزرار وتثبتها من الملف. ولو تفضّل طريقة من غير تنزيل ملف، اختار «ثبّت التطبيق» واتبع خطوات المتصفح. ملاحظة: تحديث APK نفسه بيتنزّل ويتثبت يدويًا؛ تحديثات الموقع بتظهر من النت بعد نشرها.</p>
   </details>
   <details>
     <summary>مفيش زرار أو خيار للتثبيت عندي، ليه؟</summary>

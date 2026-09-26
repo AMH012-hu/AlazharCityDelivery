@@ -7,5 +7,32 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/.gradle/**",
+      "**/local.properties",
+      "**/*.sh",
+      "**/*.bak",
+      "**/*.md",
+      "**/*.jpg",
+      "firebase-debug.log*",
+      "functions/**",
+      "scripts/**",
+      "tools/**",
+      "src/**",
+      "android/**",
+      "outputs/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }

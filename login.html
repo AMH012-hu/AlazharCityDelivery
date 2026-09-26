@@ -207,14 +207,16 @@ import './firebase-client.js';
 const $ = selector => document.querySelector(selector);
 const params = new URLSearchParams(location.search);
 const allowedDestinations = ['index.html', 'track.html'];
-const requestedDestination = params.get('returnTo');
+const openAccountAfterReturn = params.get('openAccount') === '1';
+const requestedDestination = openAccountAfterReturn ? 'index.html' : params.get('returnTo');
 const destination = allowedDestinations.includes(requestedDestination) ? requestedDestination : 'index.html';
 let redirecting = false;
+let registrationInProgress = false;
 
 function go(){
   if (redirecting) return;
   redirecting = true;
-  location.replace('./' + destination);
+  location.replace('./' + destination + (openAccountAfterReturn ? '?openAccount=1' : ''));
 }
 
 function setMode(register){
@@ -314,6 +316,7 @@ $('#registerForm').addEventListener('submit', async event => {
     return;
   }
   setBusy(button, true, 'جارٍ إنشاء الحساب');
+  registrationInProgress = true;
   try {
     await window.ACDCloud.signUpWithEmail(
       $('#regEmail').value.trim(),
@@ -323,8 +326,10 @@ $('#registerForm').addEventListener('submit', async event => {
       null
     );
     setMessage(message, 'الحساب اتعمل. فعّل بريدك الإلكتروني، وجاري فتح المتجر…', true);
+    registrationInProgress = false;
     window.setTimeout(go, 900);
   } catch (error) {
+    registrationInProgress = false;
     setMessage(message, errorText(error), false);
     setBusy(button, false, 'إنشاء الحساب');
   }
@@ -348,7 +353,7 @@ $('#resetBtn').addEventListener('click', async () => {
 
 window.addEventListener('acd-auth-google-complete', go);
 window.addEventListener('acd-auth-change', event => {
-  if (event.detail && event.detail.user) go();
+  if (!registrationInProgress && event.detail && event.detail.user) go();
 });
 window.setTimeout(() => {
   if (window.ACDCloud && window.ACDCloud.user && window.ACDCloud.user()) go();

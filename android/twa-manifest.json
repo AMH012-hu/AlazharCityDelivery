@@ -1,0 +1,53 @@
+{
+  "packageId": "io.github.amh012_hu.twa",
+  "host": "amh012-hu.github.io",
+  "name": "Alazhar City",
+  "launcherName": "Alazhar City",
+  "display": "standalone",
+  "themeColor": "#14231D",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#14231D",
+  "enableNotifications": true,
+  "startUrl": "/AlazharCityDelivery/index.html",
+  "iconUrl": "https://amh012-hu.github.io/AlazharCityDelivery/icons/icon-512.png",
+  "maskableIconUrl": "https://amh012-hu.github.io/AlazharCityDelivery/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "alias": "AlazharCity"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://amh012-hu.github.io/AlazharCityDelivery/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://amh012-hu.github.io/AlazharCityDelivery/",
+  "minSdkVersion": 21,
+  "orientation": "default",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [
+    "fullscreen",
+    "standalone"
+  ],
+  "appVersion": "1"
+}

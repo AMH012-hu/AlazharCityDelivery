@@ -176,7 +176,7 @@ def smooth(a): return a*a*(3-2*a)
 
 def main():
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
-    durations=[1.45,1.55,1.5,1.45]
+    durations=[1.8,1.95,1.8,1.77]
     cross=.24
     starts=[0]
     for i in range(1,4): starts.append(starts[-1]+durations[i-1]-cross)

@@ -91,7 +91,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/choc-milk.jpg"
+        "images/products/choc-milk.webp"
     ],
     [
         "dairy",
@@ -109,7 +109,7 @@ const RAW = [
         "🍓",
         "",
         "",
-        "images/products/strawberry-yogurt.jpg"
+        "images/products/strawberry-yogurt.webp"
     ],
     [
         "dairy",
@@ -118,7 +118,7 @@ const RAW = [
         "🍶",
         "",
         "",
-        "images/products/greek-yogurt.jpg"
+        "images/products/greek-yogurt.webp"
     ],
     [
         "dairy",
@@ -127,7 +127,7 @@ const RAW = [
         "🧀",
         32,
         "خصم",
-        "images/products/cheese-triangles.jpg"
+        "images/products/cheese-triangles.webp"
     ],
     [
         "dairy",
@@ -136,7 +136,7 @@ const RAW = [
         "🧀",
         "",
         "",
-        "images/products/cheese-triangles.jpg"
+        "images/products/cheese-triangles.webp"
     ],
     [
         "dairy",
@@ -154,7 +154,7 @@ const RAW = [
         "🧀",
         "",
         "",
-        "images/products/romi-cheese.jpg"
+        "images/products/romi-cheese.webp"
     ],
     [
         "dairy",
@@ -163,7 +163,7 @@ const RAW = [
         "🧀",
         "",
         "",
-        "images/products/cheddar-slices.jpg"
+        "images/products/cheddar-slices.webp"
     ],
     [
         "dairy",
@@ -217,7 +217,7 @@ const RAW = [
         "🍞",
         "",
         "الأكثر طلبًا",
-        "images/products/toast.jpg"
+        "images/products/toast.webp"
     ],
     [
         "bakery",
@@ -226,7 +226,7 @@ const RAW = [
         "🍞",
         "",
         "",
-        "images/products/brown-toast.jpg"
+        "images/products/brown-toast.webp"
     ],
     [
         "bakery",
@@ -235,7 +235,7 @@ const RAW = [
         "🥖",
         "",
         "",
-        "images/products/fino-bread.jpg"
+        "images/products/fino-bread.webp"
     ],
     [
         "bakery",
@@ -244,7 +244,7 @@ const RAW = [
         "🫓",
         "",
         "",
-        "images/products/flatbread.jpg"
+        "images/products/flatbread.webp"
     ],
     [
         "bakery",
@@ -253,7 +253,7 @@ const RAW = [
         "🥖",
         "",
         "",
-        "images/products/brown-toast.jpg"
+        "images/products/brown-toast.webp"
     ],
     [
         "bakery",
@@ -262,7 +262,7 @@ const RAW = [
         "🥐",
         "",
         "",
-        "images/products/croissant.jpg"
+        "images/products/croissant.webp"
     ],
     [
         "bakery",
@@ -280,7 +280,7 @@ const RAW = [
         "🥚",
         "165",
         "خصم",
-        "images/products/eggs.jpg"
+        "images/products/eggs.webp"
     ],
     [
         "bakery",
@@ -289,7 +289,7 @@ const RAW = [
         "🥚",
         "",
         "",
-        "images/products/eggs.jpg"
+        "images/products/eggs.webp"
     ],
     [
         "bakery",
@@ -298,7 +298,7 @@ const RAW = [
         "🥚",
         "",
         "",
-        "images/products/eggs.jpg"
+        "images/products/eggs.webp"
     ],
     [
         "bakery",
@@ -307,7 +307,7 @@ const RAW = [
         "🥧",
         "",
         "",
-        "images/products/feteer-meshaltet.jpg"
+        "images/products/feteer-meshaltet.webp"
     ],
     [
         "bakery",
@@ -316,7 +316,7 @@ const RAW = [
         "🍘",
         "",
         "",
-        "images/products/crispy-rusks.jpg"
+        "images/products/crispy-rusks.webp"
     ],
     [
         "drinks",
@@ -415,7 +415,7 @@ const RAW = [
         "🍺",
         "",
         "",
-        "images/products/energy-drink.jpg"
+        "images/products/energy-drink.webp"
     ],
     [
         "soda",
@@ -424,7 +424,7 @@ const RAW = [
         "🍏",
         "",
         "الأكثر طلبًا",
-        "images/products/spiro-spathis.jpg"
+        "images/products/spiro-spathis.webp"
     ],
     [
         "soda",
@@ -433,7 +433,7 @@ const RAW = [
         "🍋",
         "",
         "الأكثر طلبًا",
-        "images/products/spiro-spathis.jpg"
+        "images/products/spiro-spathis.webp"
     ],
     [
         "soda",
@@ -478,7 +478,7 @@ const RAW = [
         "⚡",
         "",
         "الأكثر طلبًا",
-        "images/products/energy-drink.jpg"
+        "images/products/energy-drink.webp"
     ],
     [
         "soda",
@@ -487,7 +487,7 @@ const RAW = [
         "⚡",
         "140",
         "خصم",
-        "images/products/energy-drink.jpg"
+        "images/products/energy-drink.webp"
     ],
     [
         "hot",
@@ -514,7 +514,7 @@ const RAW = [
         "🍃",
         "",
         "",
-        "images/products/green-tea.jpg"
+        "images/products/green-tea.webp"
     ],
     [
         "hot",
@@ -523,7 +523,7 @@ const RAW = [
         "☕",
         "",
         "الأكثر طلبًا",
-        "images/products/coffee-mix.jpg"
+        "images/products/coffee-mix.webp"
     ],
     [
         "hot",
@@ -532,7 +532,7 @@ const RAW = [
         "☕",
         "",
         "",
-        "images/products/misr-cafe.jpg"
+        "images/products/misr-cafe.webp"
     ],
     [
         "hot",
@@ -541,7 +541,7 @@ const RAW = [
         "☕",
         "",
         "",
-        "images/products/turkish-coffee.jpg"
+        "images/products/turkish-coffee.webp"
     ],
     [
         "hot",
@@ -550,7 +550,7 @@ const RAW = [
         "☕",
         "",
         "",
-        "images/products/turkish-coffee.jpg"
+        "images/products/turkish-coffee.webp"
     ],
     [
         "hot",
@@ -559,7 +559,7 @@ const RAW = [
         "☕",
         "",
         "",
-        "images/products/coffee-mix.jpg"
+        "images/products/coffee-mix.webp"
     ],
     [
         "hot",
@@ -568,7 +568,7 @@ const RAW = [
         "🌿",
         "",
         "",
-        "images/products/green-tea.jpg"
+        "images/products/green-tea.webp"
     ],
     [
         "hot",
@@ -577,7 +577,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/choc-milk.jpg"
+        "images/products/choc-milk.webp"
     ],
     [
         "hot",
@@ -586,7 +586,7 @@ const RAW = [
         "🍬",
         "",
         "",
-        "images/products/sugar.jpg"
+        "images/products/sugar.webp"
     ],
     [
         "snacks",
@@ -595,7 +595,7 @@ const RAW = [
         "🥔",
         "",
         "الأكثر طلبًا",
-        "images/products/big-chips-cheese.jpg"
+        "images/products/big-chips-cheese.webp"
     ],
     [
         "snacks",
@@ -604,7 +604,7 @@ const RAW = [
         "🥔",
         "",
         "الأكثر طلبًا",
-        "images/products/big-chips-chili.jpg"
+        "images/products/big-chips-chili.webp"
     ],
     [
         "snacks",
@@ -613,7 +613,7 @@ const RAW = [
         "🥔",
         "",
         "",
-        "images/products/big-chips-salt.jpg"
+        "images/products/big-chips-salt.webp"
     ],
     [
         "snacks",
@@ -622,7 +622,7 @@ const RAW = [
         "🥔",
         "",
         "",
-        "images/products/big-chips-tomato.jpg"
+        "images/products/big-chips-tomato.webp"
     ],
     [
         "snacks",
@@ -631,7 +631,7 @@ const RAW = [
         "🥔",
         "",
         "",
-        "images/products/big-chips-chili.jpg"
+        "images/products/big-chips-chili.webp"
     ],
     [
         "snacks",
@@ -640,7 +640,7 @@ const RAW = [
         "🥔",
         "",
         "",
-        "images/products/big-chips-tomato.jpg"
+        "images/products/big-chips-tomato.webp"
     ],
     [
         "snacks",
@@ -649,7 +649,7 @@ const RAW = [
         "🥔",
         "22",
         "خصم",
-        "images/products/big-chips-cheese.jpg"
+        "images/products/big-chips-cheese.webp"
     ],
     [
         "snacks",
@@ -658,7 +658,7 @@ const RAW = [
         "🍿",
         "",
         "",
-        "images/products/sweet-corn.jpg"
+        "images/products/sweet-corn.webp"
     ],
     [
         "snacks",
@@ -667,7 +667,7 @@ const RAW = [
         "🍪",
         "",
         "",
-        "images/products/tea-biscuits.jpg"
+        "images/products/tea-biscuits.webp"
     ],
     [
         "snacks",
@@ -676,7 +676,7 @@ const RAW = [
         "🍪",
         "",
         "",
-        "images/products/nawaem-biscuits.jpg"
+        "images/products/nawaem-biscuits.webp"
     ],
     [
         "snacks",
@@ -685,7 +685,7 @@ const RAW = [
         "🍫",
         "",
         "الأكثر طلبًا",
-        "images/products/shamadan-wafer.jpg"
+        "images/products/shamadan-wafer.webp"
     ],
     [
         "snacks",
@@ -694,7 +694,7 @@ const RAW = [
         "🥜",
         "",
         "",
-        "images/products/mixed-nuts.jpg"
+        "images/products/mixed-nuts.webp"
     ],
     [
         "snacks",
@@ -703,7 +703,7 @@ const RAW = [
         "🌰",
         "",
         "",
-        "images/products/mixed-nuts.jpg"
+        "images/products/mixed-nuts.webp"
     ],
     [
         "snacks",
@@ -712,7 +712,7 @@ const RAW = [
         "🍑",
         "",
         "",
-        "images/products/dates-pack.jpg"
+        "images/products/dates-pack.webp"
     ],
     [
         "snacks",
@@ -721,7 +721,7 @@ const RAW = [
         "🥮",
         "",
         "",
-        "images/products/croissant.jpg"
+        "images/products/croissant.webp"
     ],
     [
         "sweets",
@@ -730,7 +730,7 @@ const RAW = [
         "🍫",
         "",
         "بديل وطني",
-        "images/products/corona-spread.jpg"
+        "images/products/corona-spread.webp"
     ],
     [
         "sweets",
@@ -739,7 +739,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/corona-bar.jpg"
+        "images/products/corona-bar.webp"
     ],
     [
         "sweets",
@@ -748,7 +748,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/choc-hazelnut.jpg"
+        "images/products/choc-hazelnut.webp"
     ],
     [
         "sweets",
@@ -757,7 +757,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/chocolate.jpg"
+        "images/products/chocolate.webp"
     ],
     [
         "sweets",
@@ -766,7 +766,7 @@ const RAW = [
         "💪",
         "",
         "",
-        "images/products/protein-bar.jpg"
+        "images/products/protein-bar.webp"
     ],
     [
         "sweets",
@@ -784,7 +784,7 @@ const RAW = [
         "🍯",
         "",
         "",
-        "images/products/halawa-tahiniya.jpg"
+        "images/products/halawa-tahiniya.webp"
     ],
     [
         "sweets",
@@ -793,7 +793,7 @@ const RAW = [
         "🍯",
         "",
         "",
-        "images/products/honey.jpg"
+        "images/products/honey.webp"
     ],
     [
         "sweets",
@@ -802,7 +802,7 @@ const RAW = [
         "🍓",
         "",
         "",
-        "images/products/strawberries.jpg"
+        "images/products/strawberries.webp"
     ],
     [
         "study",
@@ -847,7 +847,7 @@ const RAW = [
         "🥣",
         "",
         "",
-        "images/products/oats.jpg"
+        "images/products/oats.webp"
     ],
     [
         "study",
@@ -856,7 +856,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/foul.jpg"
+        "images/products/foul.webp"
     ],
     [
         "study",
@@ -865,7 +865,7 @@ const RAW = [
         "🐟",
         "",
         "",
-        "images/products/tuna.jpg"
+        "images/products/tuna.webp"
     ],
     [
         "study",
@@ -874,7 +874,7 @@ const RAW = [
         "💪",
         "",
         "",
-        "images/products/toast.jpg"
+        "images/products/toast.webp"
     ],
     [
         "pantry",
@@ -883,7 +883,7 @@ const RAW = [
         "🍚",
         "",
         "الأكثر طلبًا",
-        "images/products/rice-egyptian.jpg"
+        "images/products/rice-egyptian.webp"
     ],
     [
         "pantry",
@@ -910,7 +910,7 @@ const RAW = [
         "🍬",
         "",
         "",
-        "images/products/sugar.jpg"
+        "images/products/sugar.webp"
     ],
     [
         "pantry",
@@ -919,7 +919,7 @@ const RAW = [
         "🧂",
         "",
         "",
-        "images/products/el-kheir-salt.jpg"
+        "images/products/el-kheir-salt.webp"
     ],
     [
         "pantry",
@@ -928,7 +928,7 @@ const RAW = [
         "🫒",
         "",
         "",
-        "images/products/oil.jpg"
+        "images/products/oil.webp"
     ],
     [
         "pantry",
@@ -937,7 +937,7 @@ const RAW = [
         "🌽",
         "",
         "",
-        "images/products/oil.jpg"
+        "images/products/oil.webp"
     ],
     [
         "pantry",
@@ -946,7 +946,7 @@ const RAW = [
         "🧈",
         "",
         "",
-        "images/products/rawabi-ghee.jpg"
+        "images/products/rawabi-ghee.webp"
     ],
     [
         "pantry",
@@ -955,7 +955,7 @@ const RAW = [
         "🌾",
         "",
         "",
-        "images/products/flour.jpg"
+        "images/products/flour.webp"
     ],
     [
         "pantry",
@@ -964,7 +964,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/yellow-lentils.jpg"
+        "images/products/yellow-lentils.webp"
     ],
     [
         "pantry",
@@ -973,7 +973,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/white-beans.jpg"
+        "images/products/white-beans.webp"
     ],
     [
         "pantry",
@@ -982,7 +982,7 @@ const RAW = [
         "🌴",
         "",
         "",
-        "images/products/dates-pack.jpg"
+        "images/products/dates-pack.webp"
     ],
     [
         "pantry",
@@ -991,7 +991,7 @@ const RAW = [
         "🌶️",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "pantry",
@@ -1009,7 +1009,7 @@ const RAW = [
         "🐟",
         "",
         "الأكثر طلبًا",
-        "images/products/tuna.jpg"
+        "images/products/tuna.webp"
     ],
     [
         "canned",
@@ -1018,7 +1018,7 @@ const RAW = [
         "🐟",
         "",
         "",
-        "images/products/tuna.jpg"
+        "images/products/tuna.webp"
     ],
     [
         "canned",
@@ -1027,7 +1027,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/foul.jpg"
+        "images/products/foul.webp"
     ],
     [
         "canned",
@@ -1036,7 +1036,7 @@ const RAW = [
         "🌽",
         "",
         "",
-        "images/products/sweet-corn.jpg"
+        "images/products/sweet-corn.webp"
     ],
     [
         "canned",
@@ -1045,7 +1045,7 @@ const RAW = [
         "🍅",
         "",
         "",
-        "images/products/harvest-sauce.jpg"
+        "images/products/harvest-sauce.webp"
     ],
     [
         "canned",
@@ -1054,7 +1054,7 @@ const RAW = [
         "🍅",
         "",
         "",
-        "images/products/tomato-paste.jpg"
+        "images/products/tomato-paste.webp"
     ],
     [
         "canned",
@@ -1081,7 +1081,7 @@ const RAW = [
         "🥒",
         "",
         "",
-        "images/products/pickled-cucumbers.jpg"
+        "images/products/pickled-cucumbers.webp"
     ],
     [
         "canned",
@@ -1090,7 +1090,7 @@ const RAW = [
         "🫒",
         "",
         "",
-        "images/products/oil.jpg"
+        "images/products/oil.webp"
     ],
     [
         "canned",
@@ -1099,7 +1099,7 @@ const RAW = [
         "🥩",
         "",
         "",
-        "images/products/beef-luncheon.jpg"
+        "images/products/beef-luncheon.webp"
     ],
     [
         "frozen",
@@ -1108,7 +1108,7 @@ const RAW = [
         "🍟",
         "",
         "",
-        "images/products/potatoes.jpg"
+        "images/products/potatoes.webp"
     ],
     [
         "frozen",
@@ -1171,7 +1171,7 @@ const RAW = [
         "🧺",
         "",
         "بديل وطني",
-        "images/products/oxi.jpg"
+        "images/products/oxi.webp"
     ],
     [
         "clean",
@@ -1180,7 +1180,7 @@ const RAW = [
         "🫧",
         "",
         "بديل وطني",
-        "images/products/wafeer.jpg"
+        "images/products/wafeer.webp"
     ],
     [
         "clean",
@@ -1189,7 +1189,7 @@ const RAW = [
         "🧹",
         "",
         "",
-        "images/products/wafeer.jpg"
+        "images/products/wafeer.webp"
     ],
     [
         "clean",
@@ -1198,7 +1198,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/wafeer.jpg"
+        "images/products/wafeer.webp"
     ],
     [
         "clean",
@@ -1207,7 +1207,7 @@ const RAW = [
         "🧻",
         "",
         "",
-        "images/products/tissues.jpg"
+        "images/products/tissues.webp"
     ],
     [
         "clean",
@@ -1216,7 +1216,7 @@ const RAW = [
         "🧻",
         "",
         "",
-        "images/products/toilet-paper.jpg"
+        "images/products/toilet-paper.webp"
     ],
     [
         "clean",
@@ -1225,7 +1225,7 @@ const RAW = [
         "🧻",
         "",
         "",
-        "images/products/toilet-paper.jpg"
+        "images/products/toilet-paper.webp"
     ],
     [
         "clean",
@@ -1234,7 +1234,7 @@ const RAW = [
         "🗑️",
         "",
         "",
-        "images/products/trash-bags.jpg"
+        "images/products/trash-bags.webp"
     ],
     [
         "clean",
@@ -1243,7 +1243,7 @@ const RAW = [
         "🧽",
         "",
         "",
-        "images/products/cleaning-sponges.jpg"
+        "images/products/cleaning-sponges.webp"
     ],
     [
         "clean",
@@ -1252,7 +1252,7 @@ const RAW = [
         "🌸",
         "",
         "",
-        "images/products/shampoo.jpg"
+        "images/products/shampoo.webp"
     ],
     [
         "care",
@@ -1261,7 +1261,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/shampoo.jpg"
+        "images/products/shampoo.webp"
     ],
     [
         "care",
@@ -1270,7 +1270,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/shampoo.jpg"
+        "images/products/shampoo.webp"
     ],
     [
         "care",
@@ -1279,7 +1279,7 @@ const RAW = [
         "🧼",
         "",
         "",
-        "images/products/bath-soap.jpg"
+        "images/products/bath-soap.webp"
     ],
     [
         "care",
@@ -1288,7 +1288,7 @@ const RAW = [
         "🚿",
         "",
         "",
-        "images/products/shampoo.jpg"
+        "images/products/shampoo.webp"
     ],
     [
         "care",
@@ -1297,7 +1297,7 @@ const RAW = [
         "🪥",
         "",
         "",
-        "images/products/toothpaste.jpg"
+        "images/products/toothpaste.webp"
     ],
     [
         "care",
@@ -1306,7 +1306,7 @@ const RAW = [
         "🪥",
         "",
         "",
-        "images/products/toothpaste.jpg"
+        "images/products/toothpaste.webp"
     ],
     [
         "care",
@@ -1315,7 +1315,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/rollon-deodorant.jpg"
+        "images/products/rollon-deodorant.webp"
     ],
     [
         "care",
@@ -1324,7 +1324,7 @@ const RAW = [
         "🪒",
         "",
         "",
-        "images/products/shaving-razors.jpg"
+        "images/products/shaving-razors.webp"
     ],
     [
         "care",
@@ -1333,7 +1333,7 @@ const RAW = [
         "🌸",
         "",
         "",
-        "images/products/cologne-555.jpg"
+        "images/products/cologne-555.webp"
     ],
     [
         "stationery",
@@ -1342,7 +1342,7 @@ const RAW = [
         "📓",
         "",
         "الأكثر طلبًا",
-        "images/products/spiral-notebook.jpg"
+        "images/products/spiral-notebook.webp"
     ],
     [
         "stationery",
@@ -1351,7 +1351,7 @@ const RAW = [
         "📒",
         "",
         "",
-        "images/products/notebook.jpg"
+        "images/products/notebook.webp"
     ],
     [
         "stationery",
@@ -1360,7 +1360,7 @@ const RAW = [
         "🖊️",
         "",
         "",
-        "images/products/blue-pens.jpg"
+        "images/products/blue-pens.webp"
     ],
     [
         "stationery",
@@ -1369,7 +1369,7 @@ const RAW = [
         "✏️",
         "",
         "",
-        "images/products/pencil-eraser.jpg"
+        "images/products/pencil-eraser.webp"
     ],
     [
         "stationery",
@@ -1378,7 +1378,7 @@ const RAW = [
         "🖍️",
         "",
         "",
-        "images/products/highlighter.jpg"
+        "images/products/highlighter.webp"
     ],
     [
         "stationery",
@@ -1387,7 +1387,7 @@ const RAW = [
         "📏",
         "",
         "",
-        "images/products/plastic-ruler.jpg"
+        "images/products/plastic-ruler.webp"
     ],
     [
         "stationery",
@@ -1396,7 +1396,7 @@ const RAW = [
         "📄",
         "",
         "",
-        "images/products/a4-paper.jpg"
+        "images/products/a4-paper.webp"
     ],
     [
         "pain",
@@ -1405,7 +1405,7 @@ const RAW = [
         "💊",
         "",
         "الأكثر طلبًا",
-        "images/products/panadol-blue.jpg"
+        "images/products/panadol-blue.webp"
     ],
     [
         "pain",
@@ -1414,7 +1414,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/panadol-extra.jpg"
+        "images/products/panadol-extra.webp"
     ],
     [
         "pain",
@@ -1423,7 +1423,7 @@ const RAW = [
         "🍼",
         "",
         "",
-        "images/products/paracetamol-syrup.jpg"
+        "images/products/paracetamol-syrup.webp"
     ],
     [
         "pain",
@@ -1432,7 +1432,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/cetal-tablets.jpg"
+        "images/products/cetal-tablets.webp"
     ],
     [
         "pain",
@@ -1441,7 +1441,7 @@ const RAW = [
         "🩹",
         "",
         "",
-        "images/products/pain-patch.jpg"
+        "images/products/pain-patch.webp"
     ],
     [
         "pain",
@@ -1450,7 +1450,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/pain-gel.jpg"
+        "images/products/pain-gel.webp"
     ],
     [
         "cold",
@@ -1459,7 +1459,7 @@ const RAW = [
         "🍬",
         "",
         "الأكثر طلبًا",
-        "images/products/throat-lozenges.jpg"
+        "images/products/throat-lozenges.webp"
     ],
     [
         "cold",
@@ -1468,7 +1468,7 @@ const RAW = [
         "👃",
         "",
         "",
-        "images/products/nasal-spray.jpg"
+        "images/products/nasal-spray.webp"
     ],
     [
         "cold",
@@ -1477,7 +1477,7 @@ const RAW = [
         "🍯",
         "",
         "",
-        "images/products/cough-syrup-herbal.jpg"
+        "images/products/cough-syrup-herbal.webp"
     ],
     [
         "cold",
@@ -1486,7 +1486,7 @@ const RAW = [
         "🥤",
         "",
         "",
-        "images/products/antacid-sachets.jpg"
+        "images/products/antacid-sachets.webp"
     ],
     [
         "cold",
@@ -1495,7 +1495,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/congestal.jpg"
+        "images/products/congestal.webp"
     ],
     [
         "cold",
@@ -1504,7 +1504,7 @@ const RAW = [
         "🤧",
         "",
         "",
-        "images/products/tissues.jpg"
+        "images/products/tissues.webp"
     ],
     [
         "cold",
@@ -1513,7 +1513,7 @@ const RAW = [
         "🍵",
         "",
         "",
-        "images/products/green-tea.jpg"
+        "images/products/green-tea.webp"
     ],
     [
         "stomach",
@@ -1522,7 +1522,7 @@ const RAW = [
         "🫧",
         "",
         "الأكثر طلبًا",
-        "images/products/antacid-sachets.jpg"
+        "images/products/antacid-sachets.webp"
     ],
     [
         "stomach",
@@ -1531,7 +1531,7 @@ const RAW = [
         "🧪",
         "",
         "",
-        "images/products/antacid-liquid.jpg"
+        "images/products/antacid-liquid.webp"
     ],
     [
         "stomach",
@@ -1540,7 +1540,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/antacid.jpg"
+        "images/products/antacid.webp"
     ],
     [
         "stomach",
@@ -1549,7 +1549,7 @@ const RAW = [
         "💧",
         "",
         "",
-        "images/products/antacid.jpg"
+        "images/products/antacid.webp"
     ],
     [
         "stomach",
@@ -1558,7 +1558,7 @@ const RAW = [
         "🍵",
         "",
         "",
-        "images/products/green-tea.jpg"
+        "images/products/green-tea.webp"
     ],
     [
         "stomach",
@@ -1567,7 +1567,7 @@ const RAW = [
         "⚫",
         "",
         "",
-        "images/products/eucarbon.jpg"
+        "images/products/eucarbon.webp"
     ],
     [
         "vitamins",
@@ -1576,7 +1576,7 @@ const RAW = [
         "🍊",
         "85",
         "خصم",
-        "images/products/vitamin-c-tube.jpg"
+        "images/products/vitamin-c-tube.webp"
     ],
     [
         "vitamins",
@@ -1585,7 +1585,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/vitamin-c.jpg"
+        "images/products/vitamin-c.webp"
     ],
     [
         "vitamins",
@@ -1594,7 +1594,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/vitamin-c.jpg"
+        "images/products/vitamin-c.webp"
     ],
     [
         "vitamins",
@@ -1603,7 +1603,7 @@ const RAW = [
         "🐟",
         "",
         "",
-        "images/products/omega-3.jpg"
+        "images/products/omega-3.webp"
     ],
     [
         "vitamins",
@@ -1612,7 +1612,7 @@ const RAW = [
         "☀️",
         "",
         "",
-        "images/products/vitamin-c.jpg"
+        "images/products/vitamin-c.webp"
     ],
     [
         "vitamins",
@@ -1621,7 +1621,7 @@ const RAW = [
         "💊",
         "",
         "",
-        "images/products/feroglobin.jpg"
+        "images/products/feroglobin.webp"
     ],
     [
         "vitamins",
@@ -1630,7 +1630,7 @@ const RAW = [
         "💪",
         "",
         "",
-        "images/products/protein-bar.jpg"
+        "images/products/protein-bar.webp"
     ],
     [
         "firstaid",
@@ -1639,7 +1639,7 @@ const RAW = [
         "🩹",
         "",
         "الأكثر طلبًا",
-        "images/products/bandages.jpg"
+        "images/products/bandages.webp"
     ],
     [
         "firstaid",
@@ -1648,7 +1648,7 @@ const RAW = [
         "🩹",
         "",
         "",
-        "images/products/medical-gauze.jpg"
+        "images/products/medical-gauze.webp"
     ],
     [
         "firstaid",
@@ -1657,7 +1657,7 @@ const RAW = [
         "🩹",
         "",
         "",
-        "images/products/crepe-bandage.jpg"
+        "images/products/crepe-bandage.webp"
     ],
     [
         "firstaid",
@@ -1666,7 +1666,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/betadine.jpg"
+        "images/products/betadine.webp"
     ],
     [
         "firstaid",
@@ -1675,7 +1675,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/medical-alcohol.jpg"
+        "images/products/medical-alcohol.webp"
     ],
     [
         "firstaid",
@@ -1684,7 +1684,7 @@ const RAW = [
         "☁️",
         "",
         "",
-        "images/products/bandages.jpg"
+        "images/products/bandages.webp"
     ],
     [
         "firstaid",
@@ -1693,7 +1693,7 @@ const RAW = [
         "🌡️",
         "",
         "",
-        "images/products/thermometer.jpg"
+        "images/products/thermometer.webp"
     ],
     [
         "firstaid",
@@ -1702,7 +1702,7 @@ const RAW = [
         "😷",
         "",
         "",
-        "images/products/medical-masks.jpg"
+        "images/products/medical-masks.webp"
     ],
     [
         "firstaid",
@@ -1711,7 +1711,7 @@ const RAW = [
         "🧰",
         "",
         "",
-        "images/products/firstaid-kit.jpg"
+        "images/products/firstaid-kit.webp"
     ],
     [
         "skin",
@@ -1720,7 +1720,7 @@ const RAW = [
         "☀️",
         "",
         "",
-        "images/products/sunscreen-spf.jpg"
+        "images/products/sunscreen-spf.webp"
     ],
     [
         "skin",
@@ -1729,7 +1729,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/eva-cream.jpg"
+        "images/products/eva-cream.webp"
     ],
     [
         "skin",
@@ -1738,7 +1738,7 @@ const RAW = [
         "🧴",
         "",
         "",
-        "images/products/eva-cream.jpg"
+        "images/products/eva-cream.webp"
     ],
     [
         "skin",
@@ -1747,7 +1747,7 @@ const RAW = [
         "💄",
         "",
         "",
-        "images/products/lip-balm.jpg"
+        "images/products/lip-balm.webp"
     ],
     [
         "skin",
@@ -1756,7 +1756,7 @@ const RAW = [
         "🫙",
         "",
         "",
-        "images/products/vaseline-pure.jpg"
+        "images/products/vaseline-pure.webp"
     ],
     [
         "skin",
@@ -1765,7 +1765,7 @@ const RAW = [
         "🌿",
         "",
         "",
-        "images/products/hair-oil.jpg"
+        "images/products/hair-oil.webp"
     ],
     [
         "hygiene",
@@ -1774,7 +1774,7 @@ const RAW = [
         "🧻",
         "",
         "",
-        "images/products/tissues.jpg"
+        "images/products/tissues.webp"
     ],
     [
         "hygiene",
@@ -1783,7 +1783,7 @@ const RAW = [
         "🧴",
         "",
         "الأكثر طلبًا",
-        "images/products/dish-liquid.jpg"
+        "images/products/dish-liquid.webp"
     ],
     [
         "hygiene",
@@ -1792,7 +1792,7 @@ const RAW = [
         "🧼",
         "",
         "",
-        "images/products/bandages.jpg"
+        "images/products/bandages.webp"
     ],
     [
         "hygiene",
@@ -1801,7 +1801,7 @@ const RAW = [
         "🦷",
         "",
         "",
-        "images/products/dental-floss.jpg"
+        "images/products/dental-floss.webp"
     ],
     [
         "hygiene",
@@ -1810,7 +1810,7 @@ const RAW = [
         "🫧",
         "",
         "",
-        "images/products/mouthwash.jpg"
+        "images/products/mouthwash.webp"
     ],
     [
         "rice",
@@ -1819,7 +1819,7 @@ const RAW = [
         "🍚",
         "185",
         "خصم",
-        "images/products/rice-egyptian.jpg"
+        "images/products/rice-egyptian.webp"
     ],
     [
         "rice",
@@ -1828,7 +1828,7 @@ const RAW = [
         "🍚",
         "",
         "",
-        "images/products/rice-egyptian.jpg"
+        "images/products/rice-egyptian.webp"
     ],
     [
         "rice",
@@ -1873,7 +1873,7 @@ const RAW = [
         "🍜",
         "",
         "",
-        "images/products/vermicelli-pasta.jpg"
+        "images/products/vermicelli-pasta.webp"
     ],
     [
         "rice",
@@ -1882,7 +1882,7 @@ const RAW = [
         "🍚",
         "",
         "",
-        "images/products/orzo-pasta.jpg"
+        "images/products/orzo-pasta.webp"
     ],
     [
         "rice",
@@ -1891,7 +1891,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/yellow-lentils.jpg"
+        "images/products/yellow-lentils.webp"
     ],
     [
         "rice",
@@ -1900,7 +1900,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/yellow-lentils.jpg"
+        "images/products/yellow-lentils.webp"
     ],
     [
         "rice",
@@ -1909,7 +1909,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/white-beans.jpg"
+        "images/products/white-beans.webp"
     ],
     [
         "rice",
@@ -1918,7 +1918,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/white-beans.jpg"
+        "images/products/white-beans.webp"
     ],
     [
         "rice",
@@ -1927,7 +1927,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/foul.jpg"
+        "images/products/foul.webp"
     ],
     [
         "rice",
@@ -1936,7 +1936,7 @@ const RAW = [
         "🫘",
         "",
         "",
-        "images/products/foul.jpg"
+        "images/products/foul.webp"
     ],
     [
         "rice",
@@ -1945,7 +1945,7 @@ const RAW = [
         "🥣",
         "",
         "",
-        "images/products/oats.jpg"
+        "images/products/oats.webp"
     ],
     [
         "rice",
@@ -1954,7 +1954,7 @@ const RAW = [
         "🍿",
         "",
         "",
-        "images/products/sweet-corn.jpg"
+        "images/products/sweet-corn.webp"
     ],
     [
         "veg",
@@ -1963,7 +1963,7 @@ const RAW = [
         "🍅",
         "",
         "",
-        "images/products/tomatoes.jpg"
+        "images/products/tomatoes.webp"
     ],
     [
         "veg",
@@ -1972,7 +1972,7 @@ const RAW = [
         "🧅",
         "",
         "",
-        "images/products/onions.jpg"
+        "images/products/onions.webp"
     ],
     [
         "veg",
@@ -1981,7 +1981,7 @@ const RAW = [
         "🧄",
         "",
         "",
-        "images/products/garlic.jpg"
+        "images/products/garlic.webp"
     ],
     [
         "veg",
@@ -1990,7 +1990,7 @@ const RAW = [
         "🥔",
         "",
         "",
-        "images/products/potatoes.jpg"
+        "images/products/potatoes.webp"
     ],
     [
         "veg",
@@ -1999,7 +1999,7 @@ const RAW = [
         "🥒",
         "",
         "",
-        "images/products/cucumbers.jpg"
+        "images/products/cucumbers.webp"
     ],
     [
         "veg",
@@ -2008,7 +2008,7 @@ const RAW = [
         "🥕",
         "",
         "",
-        "images/products/carrots.jpg"
+        "images/products/carrots.webp"
     ],
     [
         "veg",
@@ -2017,7 +2017,7 @@ const RAW = [
         "🫑",
         "",
         "",
-        "images/products/bell-peppers.jpg"
+        "images/products/bell-peppers.webp"
     ],
     [
         "veg",
@@ -2026,7 +2026,7 @@ const RAW = [
         "🫑",
         "",
         "",
-        "images/products/bell-peppers.jpg"
+        "images/products/bell-peppers.webp"
     ],
     [
         "veg",
@@ -2035,7 +2035,7 @@ const RAW = [
         "🥒",
         "",
         "",
-        "images/products/cucumbers.jpg"
+        "images/products/cucumbers.webp"
     ],
     [
         "veg",
@@ -2044,7 +2044,7 @@ const RAW = [
         "🍆",
         "",
         "",
-        "images/products/onions.jpg"
+        "images/products/onions.webp"
     ],
     [
         "veg",
@@ -2053,7 +2053,7 @@ const RAW = [
         "🌿",
         "",
         "",
-        "images/products/green-herbs.jpg"
+        "images/products/green-herbs.webp"
     ],
     [
         "veg",
@@ -2062,7 +2062,7 @@ const RAW = [
         "🌿",
         "",
         "",
-        "images/products/green-herbs.jpg"
+        "images/products/green-herbs.webp"
     ],
     [
         "veg",
@@ -2071,7 +2071,7 @@ const RAW = [
         "🍋",
         "",
         "",
-        "images/products/lemons.jpg"
+        "images/products/lemons.webp"
     ],
     [
         "veg",
@@ -2080,7 +2080,7 @@ const RAW = [
         "🍌",
         "",
         "الأكثر طلبًا",
-        "images/products/bananas.jpg"
+        "images/products/bananas.webp"
     ],
     [
         "veg",
@@ -2089,7 +2089,7 @@ const RAW = [
         "🍎",
         "",
         "",
-        "images/products/apples.jpg"
+        "images/products/apples.webp"
     ],
     [
         "veg",
@@ -2098,7 +2098,7 @@ const RAW = [
         "🍊",
         "",
         "",
-        "images/products/oranges.jpg"
+        "images/products/oranges.webp"
     ],
     [
         "veg",
@@ -2107,7 +2107,7 @@ const RAW = [
         "🍓",
         "",
         "",
-        "images/products/strawberries.jpg"
+        "images/products/strawberries.webp"
     ],
     [
         "spices",
@@ -2116,7 +2116,7 @@ const RAW = [
         "🌶️",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "spices",
@@ -2125,7 +2125,7 @@ const RAW = [
         "🌿",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "spices",
@@ -2134,7 +2134,7 @@ const RAW = [
         "⚫",
         "",
         "",
-        "images/products/black-pepper.jpg"
+        "images/products/black-pepper.webp"
     ],
     [
         "spices",
@@ -2143,7 +2143,7 @@ const RAW = [
         "🌶️",
         "",
         "",
-        "images/products/red-paprika.jpg"
+        "images/products/red-paprika.webp"
     ],
     [
         "spices",
@@ -2152,7 +2152,7 @@ const RAW = [
         "🌶️",
         "",
         "",
-        "images/products/red-paprika.jpg"
+        "images/products/red-paprika.webp"
     ],
     [
         "spices",
@@ -2161,7 +2161,7 @@ const RAW = [
         "🟡",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "spices",
@@ -2170,7 +2170,7 @@ const RAW = [
         "🍂",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "spices",
@@ -2179,7 +2179,7 @@ const RAW = [
         "🧂",
         "",
         "",
-        "images/products/ground-cumin.jpg"
+        "images/products/ground-cumin.webp"
     ],
     [
         "spices",
@@ -2188,7 +2188,7 @@ const RAW = [
         "🍃",
         "",
         "",
-        "images/products/green-tea.jpg"
+        "images/products/green-tea.webp"
     ],
     [
         "spices",
@@ -2197,7 +2197,7 @@ const RAW = [
         "🧊",
         "",
         "",
-        "images/products/chicken-stock.jpg"
+        "images/products/chicken-stock.webp"
     ],
     [
         "spices",
@@ -2206,7 +2206,7 @@ const RAW = [
         "🧊",
         "",
         "",
-        "images/products/chicken-stock.jpg"
+        "images/products/chicken-stock.webp"
     ],
     [
         "spices",
@@ -2215,7 +2215,7 @@ const RAW = [
         "🧄",
         "",
         "",
-        "images/products/garlic.jpg"
+        "images/products/garlic.webp"
     ],
     [
         "baking",
@@ -2224,7 +2224,7 @@ const RAW = [
         "🌾",
         "",
         "",
-        "images/products/flour.jpg"
+        "images/products/flour.webp"
     ],
     [
         "baking",
@@ -2233,7 +2233,7 @@ const RAW = [
         "🍞",
         "",
         "",
-        "images/products/baking-powder.jpg"
+        "images/products/baking-powder.webp"
     ],
     [
         "baking",
@@ -2242,7 +2242,7 @@ const RAW = [
         "🥄",
         "",
         "",
-        "images/products/baking-powder.jpg"
+        "images/products/baking-powder.webp"
     ],
     [
         "baking",
@@ -2251,7 +2251,7 @@ const RAW = [
         "🍦",
         "",
         "",
-        "images/products/baking-powder.jpg"
+        "images/products/baking-powder.webp"
     ],
     [
         "baking",
@@ -2260,7 +2260,7 @@ const RAW = [
         "🍫",
         "",
         "",
-        "images/products/baking-powder.jpg"
+        "images/products/baking-powder.webp"
     ],
     [
         "baking",
@@ -2269,7 +2269,7 @@ const RAW = [
         "🥄",
         "",
         "",
-        "images/products/flour.jpg"
+        "images/products/flour.webp"
     ],
     [
         "baking",
@@ -2278,7 +2278,7 @@ const RAW = [
         "🍚",
         "",
         "",
-        "images/products/sugar.jpg"
+        "images/products/sugar.webp"
     ],
     [
         "baking",
@@ -2287,7 +2287,7 @@ const RAW = [
         "🥛",
         "",
         "",
-        "images/products/flour.jpg"
+        "images/products/flour.webp"
     ],
     [
         "baking",
@@ -2296,7 +2296,7 @@ const RAW = [
         "🧀",
         "",
         "",
-        "images/products/cheese-triangles.jpg"
+        "images/products/cheese-triangles.webp"
     ],
     [
         "baking",
@@ -2305,7 +2305,7 @@ const RAW = [
         "🥣",
         "",
         "",
-        "images/products/flour.jpg"
+        "images/products/flour.webp"
     ],
     [
         "baking",
@@ -2314,7 +2314,7 @@ const RAW = [
         "🍮",
         "",
         "",
-        "images/products/baking-powder.jpg"
+        "images/products/baking-powder.webp"
     ],
     [
         "kitchen",
@@ -2323,7 +2323,7 @@ const RAW = [
         "🥫",
         "",
         "",
-        "images/products/aluminum-foil.jpg"
+        "images/products/aluminum-foil.webp"
     ],
     [
         "kitchen",
@@ -2332,7 +2332,7 @@ const RAW = [
         "📄",
         "",
         "",
-        "images/products/aluminum-foil.jpg"
+        "images/products/aluminum-foil.webp"
     ],
     [
         "kitchen",
@@ -2341,7 +2341,7 @@ const RAW = [
         "🧻",
         "",
         "",
-        "images/products/plastic-wrap.jpg"
+        "images/products/plastic-wrap.webp"
     ],
     [
         "kitchen",
@@ -2350,7 +2350,7 @@ const RAW = [
         "🍽️",
         "",
         "",
-        "images/products/paper-plates.jpg"
+        "images/products/paper-plates.webp"
     ],
     [
         "kitchen",
@@ -2359,7 +2359,7 @@ const RAW = [
         "🥤",
         "",
         "",
-        "images/products/paper-plates.jpg"
+        "images/products/paper-plates.webp"
     ],
     [
         "kitchen",
@@ -2368,7 +2368,7 @@ const RAW = [
         "🍴",
         "",
         "",
-        "images/products/paper-plates.jpg"
+        "images/products/paper-plates.webp"
     ],
     [
         "kitchen",
@@ -2377,7 +2377,7 @@ const RAW = [
         "🔥",
         "",
         "",
-        "images/products/safety-matches.jpg"
+        "images/products/safety-matches.webp"
     ],
     [
         "kitchen",
@@ -2386,7 +2386,7 @@ const RAW = [
         "🧽",
         "",
         "",
-        "images/products/cleaning-sponges.jpg"
+        "images/products/cleaning-sponges.webp"
     ],
     [
         "kitchen",
