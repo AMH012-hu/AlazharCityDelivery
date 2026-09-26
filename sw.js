@@ -1,9 +1,9 @@
 /* Service Worker — Alazhar City Delivery
    غيّر VERSION كل ما تنشر تحديث كبير عشان الكاش القديم يتمسح. */
-const VERSION = 'v20-2026-09-26-account-rollback-image-fallback';
+const VERSION = 'v21-2026-09-26-google-popup-login';
 const SHELL = `shell-${VERSION}`;
 const IMGS = `imgs-${VERSION}`;
-const SHELL_FILES = ['./', './index.html', './track.html', './rider.html', './store.html', './portal.html', './manifest.json', './manifest-rider.json', './manifest-store.json', './manifest-admin.json', './icons/icon-192.png', './icons/icon-512.png', './images/rider-bike-logo.svg', './images/intro-courier.svg', './images/stores/supermarket.svg', './images/stores/koshary.svg', './images/stores/bakery.svg', './images/stores/pizza.svg', './images/stores/pharmacy.svg'];
+const SHELL_FILES = ['./', './index.html', './login.html', './track.html', './rider.html', './store.html', './portal.html', './manifest.json', './manifest-rider.json', './manifest-store.json', './manifest-admin.json', './icons/icon-192.png', './icons/icon-512.png', './images/rider-bike-logo.svg', './images/intro-courier.svg', './images/stores/supermarket.svg', './images/stores/koshary.svg', './images/stores/bakery.svg', './images/stores/pizza.svg', './images/stores/pharmacy.svg'];
 
 // Firebase Cloud Messaging runs in the same worker as the customer's PWA.
 try {
