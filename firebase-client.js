@@ -719,7 +719,39 @@ async function rateOrder(id, ratingData) {
 
   const stars = Math.max(1, Math.min(5, Number(ratingData?.stars || 5)));
   const comment = String(ratingData?.comment || '').trim().slice(0, 300);
-  const tags = Array.isArray(ratingData?.tags)
+    const tags = Array.isArray(ratingData?.tags) ? ratingData.tags.map(t => String(t).slice(0, 40)) : [];
+
+  const ratingPayload = {
+    stars,
+    comment,
+    tags,
+    createdAt: serverTimestamp()
+  };
+
+  await updateDoc(ref, {
+    rating: ratingPayload,
+    ratedAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  });
+
+  return ratingPayload;
+}rray(ratingData?.tags) ? ratingData.tags.map(t => String(t).slice(0, 40)) : [];
+
+  const ratingPayload = {
+    stars,
+    comment,
+    tags,
+    createdAt: serverTimestamp()
+  };
+
+  await updateDoc(ref, {
+    rating: ratingPayload,
+    ratedAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  });
+
+  return ratingPayload;
+}
     ? ratingData.tags.map(x => String(x).slice(0, 80)).slice(0, 10)
     : [];
 
@@ -758,6 +790,7 @@ window.ACDCloud = {
    enableCustomerPush, sendBroadcastNotification,
   watchOrders,
   signOut: signOutUser,
+  export const acdAuth = {
   user: () => currentUser,
   profile: () => currentProfile,
   claims: () => ({ ...currentClaims }),
