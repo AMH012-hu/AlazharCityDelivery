@@ -207,8 +207,7 @@ import './firebase-client.js';
 const $ = selector => document.querySelector(selector);
 const params = new URLSearchParams(location.search);
 const allowedDestinations = ['index.html', 'track.html'];
-const openAccountAfterReturn = params.get('openAccount') === '1';
-const requestedDestination = openAccountAfterReturn ? 'index.html' : params.get('returnTo');
+const requestedDestination = params.get('returnTo');
 const destination = allowedDestinations.includes(requestedDestination) ? requestedDestination : 'index.html';
 let redirecting = false;
 let registrationInProgress = false;
@@ -216,7 +215,7 @@ let registrationInProgress = false;
 function go(){
   if (redirecting) return;
   redirecting = true;
-  location.replace('./' + destination + (openAccountAfterReturn ? '?openAccount=1' : ''));
+  location.replace('./' + destination);
 }
 
 function setMode(register){

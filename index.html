@@ -388,23 +388,8 @@ textarea{resize:none}
 .vendor-card:disabled .vendor-state{background:#f2f3f2;color:#69736e}
 .store-menu-review{display:flex;flex-direction:column;gap:3px;margin:12px 0;padding:13px 15px;border:1px solid #f3d49a;border-radius:15px;background:#fff9e9;color:#69501c;font-size:.78rem;line-height:1.6}
 .store-menu-review b{font-size:.82rem;color:#5b4312}
-.account-sheet{top:0;right:0;left:auto;bottom:0;width:min(100%,470px);max-width:none;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;margin:0;padding:18px 18px calc(18px + var(--safe-b));border-radius:0;transform:translateX(100%);box-shadow:-18px 0 55px rgba(7,20,13,.2);overflow-y:auto;overscroll-behavior:contain}
-.account-sheet.open{transform:translateX(0)}
-.account-ph{position:sticky;top:-18px;z-index:5;padding:5px 0 12px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.account-menu-shell{margin:12px 0;background:#fff}
-.account-quick-nav{display:grid;grid-template-columns:1fr;gap:7px;padding:10px;border:1px solid #e3ebe6;border-radius:15px;background:#fff;box-shadow:0 10px 24px rgba(16,34,26,.08)}
-.account-quick-nav button{min-height:46px;display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #e4ebe6;border-radius:12px;background:#f8faf8;color:var(--ink);font-size:.8rem;font-weight:850;text-align:right;touch-action:manipulation}
-.account-quick-nav button::after{content:'‹';margin-inline-start:auto;color:var(--brand);font-size:1.15rem}
-.account-quick-nav button:focus-visible{outline:3px solid #16845b55;outline-offset:2px}
-.account-menu-section{scroll-margin-top:122px;margin-top:14px}
-.account-wide-link{width:100%;text-decoration:none}
-.account-info-card{display:flex;align-items:flex-start;gap:11px;padding:14px;border:1px solid #e1e9e4;border-radius:16px;background:linear-gradient(140deg,#fff,#f7faf8)}
-.account-info-card>span{font-size:1.35rem}
-.account-info-card b,.account-info-card small{display:block}
-.account-info-card b{font-size:.8rem}
-.account-info-card small{margin-top:3px;color:var(--muted);font-size:.68rem;line-height:1.65}
 @media(max-width:700px){.store-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.vendor-card:last-child{grid-column:auto}.vendor-card img{aspect-ratio:1.9}}
-@media(max-width:520px){.logo{width:52px;height:52px;border-radius:15px}.launch-card{width:min(100%,410px)}.launch-scene-caption{font-size:.72rem}.account-sheet{padding:12px 14px calc(16px + var(--safe-b))}.account-ph{top:-12px}.account-menu-shell{top:58px}}
+@media(max-width:520px){.logo{width:52px;height:52px;border-radius:15px}.launch-card{width:min(100%,410px)}.launch-scene-caption{font-size:.72rem}}
 @media(prefers-reduced-motion:reduce){.launch-intro,.launch-scene video,.launch-route,.launch-progress::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -439,8 +424,8 @@ textarea{resize:none}
         <svg class="v15-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
         <span class="bell-dot" id="notifBadge" style="display:block"></span>
       </button>
-      <button class="icon-btn v15-icon-btn v15-login-link" id="openAccountBtn" aria-label="قائمة حسابك" title="قائمة حسابك" style="position:relative">
-        <svg class="v15-icon" id="userIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="icon-btn v15-icon-btn v15-login-link" id="openAccountBtn" aria-label="تسجيل الدخول أو فتح الحساب" title="تسجيل الدخول / حسابي" style="position:relative">
+        <svg class="v15-icon" id="userIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.1-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
       </button>
       <button class="icon-btn download-btn" id="topInstallBtn" aria-label="تنزيل التطبيق" title="تنزيل التطبيق (أندرويد / آيفون)">
         <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -642,27 +627,14 @@ textarea{resize:none}
 <section class="sheet account-sheet" id="accountPanel" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
   <div class="ph account-ph"><div><span class="eyebrow">ALAZHAR CITY · ACCOUNT</span><h2 id="accountTitle">حسابك في مكان واحد</h2><p class="account-subtitle">بياناتك، عناوينك، وطلباتك محفوظة علشان كل مرة تطلب فيها تبقى أسهل.</p></div><button class="close" data-close aria-label="إغلاق">&times;</button></div>
   <div id="accountLoggedIn" style="display:none">
-    <div class="account-menu-shell">
-      <nav id="accountQuickNav" class="account-quick-nav" aria-label="أقسام حساب العميل">
-        <button type="button" data-account-scroll="accountProfileSection"><span aria-hidden="true">👤</span>حسابي وبياناتي</button>
-        <button type="button" data-account-scroll="accountOrdersSection"><span aria-hidden="true">📦</span>سجل الطلبات</button>
-        <button type="button" data-account-scroll="accountPaymentSection"><span aria-hidden="true">💵</span>الفلوس والحسابات</button>
-        <button type="button" data-account-scroll="accountSettingsSection"><span aria-hidden="true">⚙️</span>الإعدادات والعناوين</button>
-        <button type="button" data-account-scroll="accountAboutSection"><span aria-hidden="true">ℹ️</span>معلومات عنّا</button>
-      </nav>
-    </div>
-    <div class="account-profile-card" id="accountProfileSection"><div class="account-avatar-wrap"><img id="custProfilePhoto" class="account-avatar" alt="صورة الحساب" style="display:none"><div id="custProfileAvatar" class="account-avatar-fallback">A</div></div><div class="account-profile-main"><div class="account-name-row"><b id="custProfileName">اسم العميل</b><span id="custRoleBadge" class="account-role-badge">عميل</span></div><div id="custProfileEmail" class="account-email"></div><div id="custProfilePhone" class="account-phone"></div></div><button type="button" id="btnCustLogout" class="ghost-danger">تسجيل الخروج</button></div>
+    <div class="account-profile-card"><div class="account-avatar-wrap"><img id="custProfilePhoto" class="account-avatar" alt="صورة الحساب" style="display:none"><div id="custProfileAvatar" class="account-avatar-fallback">A</div></div><div class="account-profile-main"><div class="account-name-row"><b id="custProfileName">اسم العميل</b><span id="custRoleBadge" class="account-role-badge">عميل</span></div><div id="custProfileEmail" class="account-email"></div><div id="custProfilePhone" class="account-phone"></div></div><button type="button" id="btnCustLogout" class="ghost-danger">تسجيل الخروج</button></div>
     <div id="emailVerificationBox" class="verification-box" style="display:none"><div class="verification-icon">✉️</div><div class="verification-copy"><b>باقي خطوة صغيرة</b><span>فعّل بريدك الإلكتروني علشان نحافظ على حسابك وطلباتك بأمان.</span></div><button type="button" id="btnResendVerification" class="text-action">إعادة إرسال الرسالة</button></div>
-    <section class="account-menu-section" id="accountOrdersSection"><div class="account-section-title"><b>سجل الطلبات</b><span>متابعة الطلبات والتقييم</span></div><a href="./track.html" class="account-action-card account-wide-link"><span>📦</span><b>افتح طلباتك وتتبعها</b><small>السجل والتفاصيل موجودين داخل حسابك.</small></a></section>
-    <section class="account-menu-section" id="accountPaymentSection"><div class="account-section-title"><b>الدفع والحسابات</b></div><div class="account-info-card"><span>💵</span><div><b>الدفع كاش عند الاستلام</b><small>المحفظة والدفع الإلكتروني مش متاحين حاليًا؛ مش بنعرض رصيد أو مدفوعات غير مسجلة.</small></div></div></section>
-    <section class="account-menu-section" id="accountSettingsSection"><div class="account-section-title"><b>إعدادات وبيانات الحساب</b><span>بياناتك تفضل خاصة بحسابك</span></div>
+    <div class="account-section-title"><b>بيانات الحساب</b><span>عدّل بياناتك من هنا</span></div>
     <div class="profile-edit-card"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="accountNameEdit" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="accountPhoneEdit" maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><p class="err" id="accountProfileError" role="alert"></p><button type="button" class="btn p auth-submit-wide" id="btnSaveAccountProfile">حفظ بيانات الحساب</button></div>
-    <div class="account-actions-grid"><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث أمان الحساب</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
+    <div class="account-actions-grid"><a href="./track.html" class="account-action-card"><span>📦</span><b>طلباتي</b><small>متابعة الطلبات والتقييم</small></a><button type="button" class="account-action-card" id="btnAccountRefreshClaims"><span>🔄</span><b>تحديث الجلسة</b><small>تحديث الصلاحيات</small></button><button type="button" class="account-action-card" id="btnLinkGoogle" style="display:none"><span>🔗</span><b>ربط Google</b><small>دخول أسرع بعد كده</small></button></div>
     <div class="account-section-title"><b>عناوين التوصيل</b><span>احفظ عنوانك مرة واستخدمه وقت الطلب</span></div>
     <div class="gps-box account-gps-box"><div class="gps-box-head"><div><b>📍 العنوان المفضل</b><small>حدد موقعك من GPS، واكتب وصفًا بسيطًا يساعد المندوب.</small></div><span class="mini-secure">خاص بحسابك</span></div><button type="button" class="gps-btn" id="btnProfileDetectGps">تحديد موقعي الآن</button><div class="gps-status" id="profileGpsStatus">لم نحدد موقعًا جديدًا بعد.</div><div class="addr-tags" id="profileAddrTags"><button type="button" class="addr-chip selected" data-label="السكن">🏠 السكن</button><button type="button" class="addr-chip" data-label="سكن الطلبة">🎓 سكن الطلبة</button><button type="button" class="addr-chip" data-label="المدينة الجامعية">🏢 المدينة الجامعية</button><button type="button" class="addr-chip" data-label="العمل">💼 العمل</button></div><input type="text" id="profileDetailedAddr" placeholder="مثال: عمارة 12، الدور 4، شقة 7" maxlength="250"><button type="button" class="btn p" id="btnSaveAddressToProfile">حفظ العنوان</button></div>
     <div class="saved-title"><b>العناوين المحفوظة</b><span>اختار أي عنوان وقت الطلب</span></div><div class="saved-addr-list" id="savedAddressesList"></div>
-    </section>
-    <section class="account-menu-section" id="accountAboutSection"><div class="account-section-title"><b>عن الأزهر على عجلة</b></div><div class="account-info-card"><span>🚴</span><div><b>خدمة محلية لأهالي الحي السادس</b><small>بنوصّل من متاجر الحي لحد باب البيت، وبندعم حق الشعب الفلسطيني. وقت التوصيل تقديري حسب تجهيز الطلب والطريق.</small></div></div></section>
   </div>
   <div id="accountLoggedOut">
     <div class="auth-hero"><div class="auth-hero-mark">👋</div><div><b>أهلًا بيك في Alazhar City</b><p>اعمل حساب مرة واحدة، وبعدها بياناتك وعناوينك وطلباتك هتكون أقرب لك.</p></div></div>
@@ -670,7 +642,7 @@ textarea{resize:none}
     <div class="auth-security-note"><span>🔐</span><div><b>بياناتك مؤمّنة</b><p>كلمة السر مش بتتخزن عندنا كبيانات عادية؛ خدمة تسجيل الدخول بتتحقق منها بشكل آمن.</p></div></div>
     <button type="button" class="google-auth-btn" id="btnGoogleAuth"><span class="google-logo">G</span><span><b>المتابعة باستخدام Google</b><small>من غير كلمة مرور جديدة</small></span><span class="auth-arrow">←</span></button><div class="auth-divider"><span>أو باستخدام البريد الإلكتروني</span></div>
     <form id="custLoginForm"><label class="f pro-field">البريد الإلكتروني<input type="email" id="loginEmail" required autocomplete="email" placeholder="name@example.com" dir="ltr"></label><label class="f pro-field password-field">كلمة المرور<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="loginPassword">إظهار</button></label><div class="auth-inline-row"><button type="button" id="btnResetPassword" class="link n">نسيت كلمة المرور؟</button><span>هنبعت لك رابط إعادة التعيين على بريدك.</span></div><p class="err" id="loginError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnLoginSubmit">تسجيل الدخول</button></form>
-    <form id="custRegisterForm" style="display:none"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="regName" required minlength="3" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="regPhone" required maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><label class="f pro-field">البريد الإلكتروني<input type="email" id="regEmail" required maxlength="120" autocomplete="email" placeholder="name@example.com" dir="ltr"></label><div class="form-grid-2"><label class="f pro-field password-field">كلمة المرور<input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="8 خانات على الأقل"><button type="button" class="password-toggle" data-toggle-password="regPassword">إظهار</button></label><label class="f pro-field password-field">تأكيد كلمة المرور<input type="password" id="regPasswordConfirm" required minlength="8" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="regPasswordConfirm">إظهار</button></label></div><div class="password-meter" id="passwordMeter"><span></span><span></span><span></span><span></span></div><div class="password-hint" id="passwordHint">اختار كلمة مرور مختلفة عن كلمات المرور اللي بتستخدمها في مواقع تانية.</div><details class="optional-address"><summary>Location ضيف عنوانك دلوقتي <small>اختياري</small></summary><div class="gps-box account-gps-box compact"><div class="gps-box-head"><div><b>عنوان التوصيل</b><small>ممكن تضيفه الآن أو بعدين من حسابك.</small></div></div><button type="button" class="gps-btn" id="btnRegDetectGps">تحديد الموقع بـ GPS</button><div class="gps-status" id="regGpsStatus">لم نحدد موقعًا بعد.</div></div><label class="f pro-field">العنوان بالتفصيل<input type="text" id="regAddress" maxlength="250" autocomplete="street-address" placeholder="مثال: الحي السادس، عمارة 4، شقة 2"></label></details><p class="err" id="regError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnRegisterSubmit">إنشاء الحساب</button><p class="auth-footnote">بعد التسجيل هنبعت رسالة تفعيل على بريدك الإلكتروني. وبعد التفعيل تقدر تطلب وتتابع طلباتك بشكل طبيعي.</p></form>
+    <form id="custRegisterForm" style="display:none"><div class="form-grid-2"><label class="f pro-field">الاسم بالكامل<input type="text" id="regName" required minlength="3" maxlength="80" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label><label class="f pro-field">رقم الموبايل<input type="tel" id="regPhone" required maxlength="15" autocomplete="tel" placeholder="01012345678" dir="ltr"></label></div><label class="f pro-field">البريد الإلكتروني<input type="email" id="regEmail" required maxlength="120" autocomplete="email" placeholder="name@example.com" dir="ltr"></label><div class="form-grid-2"><label class="f pro-field password-field">كلمة المرور<input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="8 خانات على الأقل"><button type="button" class="password-toggle" data-toggle-password="regPassword">إظهار</button></label><label class="f pro-field password-field">تأكيد كلمة المرور<input type="password" id="regPasswordConfirm" required minlength="8" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"><button type="button" class="password-toggle" data-toggle-password="regPasswordConfirm">إظهار</button></label></div><div class="password-meter" id="passwordMeter"><span></span><span></span><span></span><span></span></div><div class="password-hint" id="passwordHint">اختار كلمة مرور مختلفة عن كلمات المرور اللي بتستخدمها في مواقع تانية.</div><details class="optional-address"><summary>ضيف عنوانك دلوقتي <small>اختياري</small></summary><div class="gps-box account-gps-box compact"><div class="gps-box-head"><div><b>عنوان التوصيل</b><small>ممكن تضيفه الآن أو بعدين من حسابك.</small></div></div><button type="button" class="gps-btn" id="btnRegDetectGps">تحديد الموقع بـ GPS</button><div class="gps-status" id="regGpsStatus">لم نحدد موقعًا بعد.</div></div><label class="f pro-field">العنوان بالتفصيل<input type="text" id="regAddress" maxlength="250" autocomplete="street-address" placeholder="مثال: الحي السادس، عمارة 4، شقة 2"></label></details><p class="err" id="regError" role="alert"></p><button type="submit" class="btn p auth-submit-wide" id="btnRegisterSubmit">إنشاء الحساب</button><p class="auth-footnote">بعد التسجيل هنبعت رسالة تفعيل على بريدك الإلكتروني. وبعد التفعيل تقدر تطلب وتتابع طلباتك بشكل طبيعي.</p></form>
   </div>
 </section>
 
@@ -806,11 +778,17 @@ function picHTML(p){
   const c = catMap.get(p.cat);
   const have = !window.IMAGE_IDS || window.IMAGE_IDS.includes(p.id);   // list.js بيحدد الصور الموجودة فعلًا (يمنع 404)
   const src = p.img || (CONFIG.autoImages && have ? `${CONFIG.imageDir}${p.id}.webp?v=${CONFIG.imageVersion}` : '');
-  const img = src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
+  const fallback = p.imageFallback && p.imageFallback !== src ? ` data-fallback="${esc(p.imageFallback)}"` : '';
+  const img = src ? `<img src="${esc(src)}"${fallback} alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
   let badge = '';
   if (p.oldPrice && p.oldPrice > p.price) badge = `<span class="badge${isPharma(p)?' pharma':''}">-${Math.round((1 - p.price/p.oldPrice)*100)}%</span>`;
   else if (p.badge) badge = `<span class="badge${isPharma(p)?' pharma':''}">${esc(p.badge)}</span>`;
   return `<div class="pic" style="background:${c.color}">${badge}<span aria-hidden="true">${p.emoji || c.emoji}</span>${img}</div>`;
+}
+function handleProductImageError(image){
+  const fallback=image.dataset.fallback;
+  if(fallback&&!image.dataset.fallbackTried){image.dataset.fallbackTried='1';image.src=fallback;return;}
+  image.remove();
 }
 function actionHTML(id){
   const p = byId.get(id);
@@ -1009,9 +987,7 @@ const panels = ['cartPanel','specialPanel','helpPanel','installPanel','accountPa
 let lastFocus = null;
 function openPanel(id){
   closeAll(true); lastFocus = document.activeElement;
-  const panel=$('#'+id);
-  if(id==='accountPanel') panel.scrollTop=0;
-  panel.classList.add('open'); $('#overlay').classList.add('open'); document.body.classList.add('lock');
+  $('#'+id).classList.add('open'); $('#overlay').classList.add('open'); document.body.classList.add('lock');
   const t = $('#'+id).querySelector('textarea, [data-close]'); setTimeout(() => t && t.focus(), 60);
 }
 function closeAll(keep){
@@ -1633,23 +1609,13 @@ window.addEventListener('acd-auth-profile', () => renderCustomerAuthUI());
 $('#openAccountBtn').addEventListener('click', () => {
   const account = authUserView();
   if (!account) {
-    window.location.href = `./login.html?openAccount=1`;
+    const returnTo = encodeURIComponent(window.location.pathname.split('/').pop() || 'index.html');
+    window.location.href = `./login.html?returnTo=${returnTo}`;
     return;
   }
   renderCustomerAuthUI();
   openPanel('accountPanel');
 });
-$('#accountQuickNav')?.addEventListener('click', event => {
-  const button=event.target.closest('[data-account-scroll]');if(!button)return;
-  const target=document.getElementById(button.dataset.accountScroll);if(!target)return;
-  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
-});
-function openReturnedAccount(){
-  if(new URLSearchParams(location.search).get('openAccount')!=='1'||!authUserView())return;
-  renderCustomerAuthUI();openPanel('accountPanel');history.replaceState(null,'',location.pathname+location.hash);
-}
-window.addEventListener('acd-auth-change',openReturnedAccount);
-window.setTimeout(openReturnedAccount,700);
 
 // Daily Offers & Notifications
 function renderDailyOffers() {
@@ -1743,7 +1709,7 @@ $('#clearSearch').addEventListener('click', () => { $('#search').value=''; state
 
 [['#clientName','name'],['#clientPhone','phone'],['#clientLocation','address'],['#clientNote','note']].forEach(([s,k]) => $(s).addEventListener('input', e => { state.customer[k] = e.target.value; saveState(); }));
 
-document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.pic')) e.target.remove(); }, true);
+document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.pic')) handleProductImageError(e.target); }, true);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
 
@@ -1767,7 +1733,7 @@ async function loadRemoteSiteData(){
     const remote = await ACDCloud.getPublicCatalog();
     if(Array.isArray(remote) && remote.length){
       const merged = new Map(PRODUCTS.map(p=>[String(p.id), p]));
-      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ merged.set(id,{...p,id,storeId:p.storeId||null,price:Number(p.price||0),emoji:p.emoji||'🛍️'}); }});
+      remote.forEach((p,i)=>{ const id=String(p.id||p.productId||('product-'+i)); if(p.active===false){ merged.delete(id); } else if(CATEGORIES.some(c=>c[0]===p.cat)){ const localProduct=merged.get(id)||{}; const remoteImage=String(p.img||'').trim(); const localImage=String(localProduct.img||'').trim(); merged.set(id,{...localProduct,...p,id,storeId:p.storeId||localProduct.storeId||null,price:Number(p.price||localProduct.price||0),emoji:p.emoji||localProduct.emoji||'🛍️',img:remoteImage||localImage,imageFallback:remoteImage&&localImage&&remoteImage!==localImage?localImage:(p.imageFallback||localProduct.imageFallback||'')}); }});
       PRODUCTS = Array.from(merged.values());
       byId = new Map(PRODUCTS.map(p=>[p.id,p]));
       renderTiles(); renderStoreFilters();renderStoreDirectory();renderContent(); renderCart();
