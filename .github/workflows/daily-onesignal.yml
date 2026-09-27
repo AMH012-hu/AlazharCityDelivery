@@ -1,0 +1,36 @@
+name: Daily shop push notifications
+
+on:
+  schedule:
+    # Store hours are currently 18:00–02:00 in Cairo.
+    # Run a few minutes after the hour to reduce GitHub schedule queue delays.
+    - cron: '7 18 * * *'
+      timezone: Africa/Cairo
+    - cron: '35 1 * * *'
+      timezone: Africa/Cairo
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-onesignal-${{ github.event.schedule }}
+  cancel-in-progress: false
+
+jobs:
+  send-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out notification sender
+        uses: actions/checkout@v4
+
+      - name: Send scheduled push to subscribed devices
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Send OneSignal notification
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
+        run: node scripts/send-daily-onesignal.mjs
