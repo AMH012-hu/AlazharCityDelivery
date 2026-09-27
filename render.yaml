@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: alazhar-city-notifications
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm ci
+    startCommand: npm run notifications:start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FIREBASE_PROJECT_ID
+        value: alazhar-city-delivery
+      - key: ONESIGNAL_APP_ID
+        value: 4554f317-d06c-4e85-97d0-ea3a0c49106e
+      - key: PUBLIC_SITE_URL
+        value: https://alazhar-city-delivery.web.app
+      - key: ONESIGNAL_REST_API_KEY
+        sync: false
